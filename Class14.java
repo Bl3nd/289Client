@@ -553,15 +553,15 @@ public class Class14
             int k1 = Class44_Sub3_Sub1_Sub1.anInt1423;
             int l1 = Class44_Sub3_Sub1_Sub1.anInt1424;
             int ai[] = Class44_Sub3_Sub1_Sub1.anIntArray1429;
-            int ai1[] = Class44_Sub3_Sub1.anIntArray1369;
-            int i2 = Class44_Sub3_Sub1.anInt1370;
-            int j2 = Class44_Sub3_Sub1.anInt1371;
-            int k2 = Class44_Sub3_Sub1.anInt1374;
-            int l2 = Class44_Sub3_Sub1.anInt1375;
-            int i3 = Class44_Sub3_Sub1.anInt1372;
-            int j3 = Class44_Sub3_Sub1.anInt1373;
+            int ai1[] = Class44_Sub3_Sub1.pixels;
+            int i2 = Class44_Sub3_Sub1.width;
+            int j2 = Class44_Sub3_Sub1.height;
+            int k2 = Class44_Sub3_Sub1.topX;
+            int l2 = Class44_Sub3_Sub1.bottomX;
+            int i3 = Class44_Sub3_Sub1.topY;
+            int j3 = Class44_Sub3_Sub1.bottomY;
             Class44_Sub3_Sub1_Sub1.aBoolean1421 = false;
-            Class44_Sub3_Sub1.method406(-78, class44_sub3_sub1_sub2_1.anIntArray1448, 32, 32);
+            Class44_Sub3_Sub1.initializeDrawingArea(-78, class44_sub3_sub1_sub2_1.anIntArray1448, 32, 32);
             Class44_Sub3_Sub1.method411(0, 210, 0, 32, 0, 32);
             Class44_Sub3_Sub1_Sub1.method419((byte)3);
             int k3 = class14.anInt335;
@@ -656,8 +656,8 @@ public class Class14
             {
                 aClass39_370.method340(j, (byte)76, class44_sub3_sub1_sub2_1);
             }
-            Class44_Sub3_Sub1.method406(-78, ai1, i2, j2);
-            Class44_Sub3_Sub1.method408(aByte321, j3, l2, i3, k2);
+            Class44_Sub3_Sub1.initializeDrawingArea(-78, ai1, i2, j2);
+            Class44_Sub3_Sub1.setDrawingArea(aByte321, j3, l2, i3, k2);
             Class44_Sub3_Sub1_Sub1.anInt1423 = k1;
             Class44_Sub3_Sub1_Sub1.anInt1424 = l1;
             Class44_Sub3_Sub1_Sub1.anIntArray1429 = ai;

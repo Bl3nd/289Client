@@ -127,7 +127,7 @@ public class Class43_Sub1 extends Class43
         }
         aClient1296 = client1;
         aBoolean1295 = true;
-        aClient1296.method12(this, 2);
+        aClient1296.startThread(this, 2);
     }
 
     public void method384()

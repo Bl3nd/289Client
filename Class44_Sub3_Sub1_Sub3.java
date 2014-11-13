@@ -253,37 +253,37 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
             {
                 return;
             }
-            int k = j + i * Class44_Sub3_Sub1.anInt1370;
+            int k = j + i * Class44_Sub3_Sub1.width;
             int l = 0;
             int i1 = anInt1461;
             int j1 = anInt1460;
-            int k1 = Class44_Sub3_Sub1.anInt1370 - j1;
+            int k1 = Class44_Sub3_Sub1.width - j1;
             int l1 = 0;
-            if(i < Class44_Sub3_Sub1.anInt1372)
+            if(i < Class44_Sub3_Sub1.topY)
             {
-                int i2 = Class44_Sub3_Sub1.anInt1372 - i;
+                int i2 = Class44_Sub3_Sub1.topY - i;
                 i1 -= i2;
-                i = Class44_Sub3_Sub1.anInt1372;
+                i = Class44_Sub3_Sub1.topY;
                 l += i2 * j1;
-                k += i2 * Class44_Sub3_Sub1.anInt1370;
+                k += i2 * Class44_Sub3_Sub1.width;
             }
-            if(i + i1 > Class44_Sub3_Sub1.anInt1373)
+            if(i + i1 > Class44_Sub3_Sub1.bottomY)
             {
-                i1 -= (i + i1) - Class44_Sub3_Sub1.anInt1373;
+                i1 -= (i + i1) - Class44_Sub3_Sub1.bottomY;
             }
-            if(j < Class44_Sub3_Sub1.anInt1374)
+            if(j < Class44_Sub3_Sub1.topX)
             {
-                int j2 = Class44_Sub3_Sub1.anInt1374 - j;
+                int j2 = Class44_Sub3_Sub1.topX - j;
                 j1 -= j2;
-                j = Class44_Sub3_Sub1.anInt1374;
+                j = Class44_Sub3_Sub1.topX;
                 l += j2;
                 k += j2;
                 l1 += j2;
                 k1 += j2;
             }
-            if(j + j1 > Class44_Sub3_Sub1.anInt1375)
+            if(j + j1 > Class44_Sub3_Sub1.bottomX)
             {
-                int k2 = (j + j1) - Class44_Sub3_Sub1.anInt1375;
+                int k2 = (j + j1) - Class44_Sub3_Sub1.bottomX;
                 j1 -= k2;
                 l1 += k2;
                 k1 += k2;
@@ -293,7 +293,7 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
                 return;
             } else
             {
-                method454(i1, anIntArray1459, k, Class44_Sub3_Sub1.anIntArray1369, l1, k1, (byte)34, aByteArray1458, j1, l);
+                method454(i1, anIntArray1459, k, Class44_Sub3_Sub1.pixels, l1, k1, (byte)34, aByteArray1458, j1, l);
                 return;
             }
         }

@@ -550,35 +550,35 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
 
     public void method466(byte abyte0[], int i, int j, int k, int l, int i1)
     {
-        int j1 = i + j * Class44_Sub3_Sub1.anInt1370;
-        int k1 = Class44_Sub3_Sub1.anInt1370 - k;
+        int j1 = i + j * Class44_Sub3_Sub1.width;
+        int k1 = Class44_Sub3_Sub1.width - k;
         int l1 = 0;
         int i2 = 0;
-        if(j < Class44_Sub3_Sub1.anInt1372)
+        if(j < Class44_Sub3_Sub1.topY)
         {
-            int j2 = Class44_Sub3_Sub1.anInt1372 - j;
+            int j2 = Class44_Sub3_Sub1.topY - j;
             l -= j2;
-            j = Class44_Sub3_Sub1.anInt1372;
+            j = Class44_Sub3_Sub1.topY;
             i2 += j2 * k;
-            j1 += j2 * Class44_Sub3_Sub1.anInt1370;
+            j1 += j2 * Class44_Sub3_Sub1.width;
         }
-        if(j + l >= Class44_Sub3_Sub1.anInt1373)
+        if(j + l >= Class44_Sub3_Sub1.bottomY)
         {
-            l -= ((j + l) - Class44_Sub3_Sub1.anInt1373) + 1;
+            l -= ((j + l) - Class44_Sub3_Sub1.bottomY) + 1;
         }
-        if(i < Class44_Sub3_Sub1.anInt1374)
+        if(i < Class44_Sub3_Sub1.topX)
         {
-            int k2 = Class44_Sub3_Sub1.anInt1374 - i;
+            int k2 = Class44_Sub3_Sub1.topX - i;
             k -= k2;
-            i = Class44_Sub3_Sub1.anInt1374;
+            i = Class44_Sub3_Sub1.topX;
             i2 += k2;
             j1 += k2;
             l1 += k2;
             k1 += k2;
         }
-        if(i + k >= Class44_Sub3_Sub1.anInt1375)
+        if(i + k >= Class44_Sub3_Sub1.bottomX)
         {
-            int l2 = ((i + k) - Class44_Sub3_Sub1.anInt1375) + 1;
+            int l2 = ((i + k) - Class44_Sub3_Sub1.bottomX) + 1;
             k -= l2;
             l1 += l2;
             k1 += l2;
@@ -588,7 +588,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             return;
         } else
         {
-            method467(Class44_Sub3_Sub1.anIntArray1369, abyte0, i1, i2, j1, k, l, k1, l1);
+            method467(Class44_Sub3_Sub1.pixels, abyte0, i1, i2, j1, k, l, k1, l1);
             return;
         }
     }
@@ -655,35 +655,35 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             {
                 anInt1468 = 122;
             }
-            int k1 = i + k * Class44_Sub3_Sub1.anInt1370;
-            int l1 = Class44_Sub3_Sub1.anInt1370 - j1;
+            int k1 = i + k * Class44_Sub3_Sub1.width;
+            int l1 = Class44_Sub3_Sub1.width - j1;
             int i2 = 0;
             int j2 = 0;
-            if(k < Class44_Sub3_Sub1.anInt1372)
+            if(k < Class44_Sub3_Sub1.topY)
             {
-                int k2 = Class44_Sub3_Sub1.anInt1372 - k;
+                int k2 = Class44_Sub3_Sub1.topY - k;
                 l -= k2;
-                k = Class44_Sub3_Sub1.anInt1372;
+                k = Class44_Sub3_Sub1.topY;
                 j2 += k2 * j1;
-                k1 += k2 * Class44_Sub3_Sub1.anInt1370;
+                k1 += k2 * Class44_Sub3_Sub1.width;
             }
-            if(k + l >= Class44_Sub3_Sub1.anInt1373)
+            if(k + l >= Class44_Sub3_Sub1.bottomY)
             {
-                l -= ((k + l) - Class44_Sub3_Sub1.anInt1373) + 1;
+                l -= ((k + l) - Class44_Sub3_Sub1.bottomY) + 1;
             }
-            if(i < Class44_Sub3_Sub1.anInt1374)
+            if(i < Class44_Sub3_Sub1.topX)
             {
-                int l2 = Class44_Sub3_Sub1.anInt1374 - i;
+                int l2 = Class44_Sub3_Sub1.topX - i;
                 j1 -= l2;
-                i = Class44_Sub3_Sub1.anInt1374;
+                i = Class44_Sub3_Sub1.topX;
                 j2 += l2;
                 k1 += l2;
                 i2 += l2;
                 l1 += l2;
             }
-            if(i + j1 >= Class44_Sub3_Sub1.anInt1375)
+            if(i + j1 >= Class44_Sub3_Sub1.bottomX)
             {
-                int i3 = ((i + j1) - Class44_Sub3_Sub1.anInt1375) + 1;
+                int i3 = ((i + j1) - Class44_Sub3_Sub1.bottomX) + 1;
                 j1 -= i3;
                 i2 += i3;
                 l1 += i3;
@@ -693,7 +693,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
                 return;
             } else
             {
-                method469(i2, j1, j, abyte0, false, Class44_Sub3_Sub1.anIntArray1369, k1, j2, l1, i1, l);
+                method469(i2, j1, j, abyte0, false, Class44_Sub3_Sub1.pixels, k1, j2, l1, i1, l);
                 return;
             }
         }

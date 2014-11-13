@@ -67,7 +67,7 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
     {
         try
         {
-            anIntArray1429 = new int[Class44_Sub3_Sub1.anInt1371];
+            anIntArray1429 = new int[Class44_Sub3_Sub1.height];
             if(byte0 == 3)
             {
                 byte0 = 0;
@@ -75,12 +75,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 anInt1415 = 340;
             }
-            for(int i = 0; i < Class44_Sub3_Sub1.anInt1371; i++)
+            for(int i = 0; i < Class44_Sub3_Sub1.height; i++)
             {
-                anIntArray1429[i] = Class44_Sub3_Sub1.anInt1370 * i;
+                anIntArray1429[i] = Class44_Sub3_Sub1.width * i;
             }
-            anInt1423 = Class44_Sub3_Sub1.anInt1370 / 2;
-            anInt1424 = Class44_Sub3_Sub1.anInt1371 / 2;
+            anInt1423 = Class44_Sub3_Sub1.width / 2;
+            anInt1424 = Class44_Sub3_Sub1.height / 2;
             return;
         }
         catch(RuntimeException runtimeexception)
@@ -513,17 +513,17 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         }
         if(i <= j && i <= k)
         {
-            if(i >= Class44_Sub3_Sub1.anInt1373)
+            if(i >= Class44_Sub3_Sub1.bottomY)
             {
                 return;
             }
-            if(j > Class44_Sub3_Sub1.anInt1373)
+            if(j > Class44_Sub3_Sub1.bottomY)
             {
-                j = Class44_Sub3_Sub1.anInt1373;
+                j = Class44_Sub3_Sub1.bottomY;
             }
-            if(k > Class44_Sub3_Sub1.anInt1373)
+            if(k > Class44_Sub3_Sub1.bottomY)
             {
-                k = Class44_Sub3_Sub1.anInt1373;
+                k = Class44_Sub3_Sub1.bottomY;
             }
             if(j < k)
             {
@@ -549,9 +549,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 {
                     k -= j;
                     j -= i;
-                    for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1370)
+                    for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.width)
                     {
-                        method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+                        method430(Class44_Sub3_Sub1.pixels, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
                         j1 += j3;
                         l += j2;
                         i2 += k3;
@@ -559,20 +559,20 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                     }
                     while(--k >= 0)
                     {
-                        method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+                        method430(Class44_Sub3_Sub1.pixels, i, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
                         j1 += j3;
                         i1 += l2;
                         i2 += k3;
                         l1 += i3;
-                        i += Class44_Sub3_Sub1.anInt1370;
+                        i += Class44_Sub3_Sub1.width;
                     }
                     return;
                 }
                 k -= j;
                 j -= i;
-                for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1370)
+                for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.width)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                     j1 += j3;
                     l += j2;
                     i2 += k3;
@@ -580,12 +580,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 }
                 while(--k >= 0)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, i, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                     j1 += j3;
                     i1 += l2;
                     i2 += k3;
                     l1 += i3;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
@@ -611,9 +611,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 j -= k;
                 k -= i;
-                for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1370)
+                for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.width)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, i, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                     i1 += j3;
                     l += j2;
                     l1 += k3;
@@ -621,20 +621,20 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 }
                 while(--j >= 0)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
                     j1 += l2;
                     l += j2;
                     i2 += i3;
                     k1 += k2;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
             j -= k;
             k -= i;
-            for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1370)
+            for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.width)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, i, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                 i1 += j3;
                 l += j2;
                 l1 += k3;
@@ -642,28 +642,28 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             }
             while(--j >= 0)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                 j1 += l2;
                 l += j2;
                 i2 += i3;
                 k1 += k2;
-                i += Class44_Sub3_Sub1.anInt1370;
+                i += Class44_Sub3_Sub1.width;
             }
             return;
         }
         if(j <= k)
         {
-            if(j >= Class44_Sub3_Sub1.anInt1373)
+            if(j >= Class44_Sub3_Sub1.bottomY)
             {
                 return;
             }
-            if(k > Class44_Sub3_Sub1.anInt1373)
+            if(k > Class44_Sub3_Sub1.bottomY)
             {
-                k = Class44_Sub3_Sub1.anInt1373;
+                k = Class44_Sub3_Sub1.bottomY;
             }
-            if(i > Class44_Sub3_Sub1.anInt1373)
+            if(i > Class44_Sub3_Sub1.bottomY)
             {
-                i = Class44_Sub3_Sub1.anInt1373;
+                i = Class44_Sub3_Sub1.bottomY;
             }
             if(k < i)
             {
@@ -689,9 +689,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 {
                     i -= k;
                     k -= j;
-                    for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1370)
+                    for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.width)
                     {
-                        method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                        method430(Class44_Sub3_Sub1.pixels, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                         l += j2;
                         i1 += l2;
                         k1 += k2;
@@ -699,20 +699,20 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                     }
                     while(--i >= 0)
                     {
-                        method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                        method430(Class44_Sub3_Sub1.pixels, j, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                         l += j2;
                         j1 += j3;
                         k1 += k2;
                         i2 += k3;
-                        j += Class44_Sub3_Sub1.anInt1370;
+                        j += Class44_Sub3_Sub1.width;
                     }
                     return;
                 }
                 i -= k;
                 k -= j;
-                for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1370)
+                for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.width)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                     l += j2;
                     i1 += l2;
                     k1 += k2;
@@ -720,12 +720,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 }
                 while(--i >= 0)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, j, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
                     l += j2;
                     j1 += j3;
                     k1 += k2;
                     i2 += k3;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
@@ -751,9 +751,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 k -= i;
                 i -= j;
-                for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1370)
+                for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.width)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, j, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
                     j1 += j2;
                     i1 += l2;
                     i2 += k2;
@@ -761,20 +761,20 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 }
                 while(--k >= 0)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                     l += j3;
                     i1 += l2;
                     k1 += k3;
                     l1 += i3;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
             k -= i;
             i -= j;
-            for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1370)
+            for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.width)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, j, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                 j1 += j2;
                 i1 += l2;
                 i2 += k2;
@@ -782,26 +782,26 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             }
             while(--k >= 0)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                 l += j3;
                 i1 += l2;
                 k1 += k3;
                 l1 += i3;
-                j += Class44_Sub3_Sub1.anInt1370;
+                j += Class44_Sub3_Sub1.width;
             }
             return;
         }
-        if(k >= Class44_Sub3_Sub1.anInt1373)
+        if(k >= Class44_Sub3_Sub1.bottomY)
         {
             return;
         }
-        if(i > Class44_Sub3_Sub1.anInt1373)
+        if(i > Class44_Sub3_Sub1.bottomY)
         {
-            i = Class44_Sub3_Sub1.anInt1373;
+            i = Class44_Sub3_Sub1.bottomY;
         }
-        if(j > Class44_Sub3_Sub1.anInt1373)
+        if(j > Class44_Sub3_Sub1.bottomY)
         {
-            j = Class44_Sub3_Sub1.anInt1373;
+            j = Class44_Sub3_Sub1.bottomY;
         }
         if(i < j)
         {
@@ -827,9 +827,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 j -= i;
                 i -= k;
-                for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1370)
+                for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.width)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                     i1 += l2;
                     j1 += j3;
                     l1 += i3;
@@ -837,20 +837,20 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 }
                 while(--j >= 0)
                 {
-                    method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                    method430(Class44_Sub3_Sub1.pixels, k, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                     i1 += l2;
                     l += j2;
                     l1 += i3;
                     k1 += k2;
-                    k += Class44_Sub3_Sub1.anInt1370;
+                    k += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
             j -= i;
             i -= k;
-            for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1370)
+            for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.width)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
                 i1 += l2;
                 j1 += j3;
                 l1 += i3;
@@ -858,12 +858,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             }
             while(--j >= 0)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, k, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                 i1 += l2;
                 l += j2;
                 l1 += i3;
                 k1 += k2;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
             }
             return;
         }
@@ -889,9 +889,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         {
             i -= j;
             j -= k;
-            for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1370)
+            for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.width)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, k, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                 l += l2;
                 j1 += j3;
                 k1 += i3;
@@ -899,20 +899,20 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             }
             while(--i >= 0)
             {
-                method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                method430(Class44_Sub3_Sub1.pixels, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                 i1 += j2;
                 j1 += j3;
                 l1 += k2;
                 i2 += k3;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
             }
             return;
         }
         i -= j;
         j -= k;
-        for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1370)
+        for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.width)
         {
-            method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+            method430(Class44_Sub3_Sub1.pixels, k, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
             l += l2;
             j1 += j3;
             k1 += i3;
@@ -920,12 +920,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         }
         while(--i >= 0)
         {
-            method430(Class44_Sub3_Sub1.anIntArray1369, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+            method430(Class44_Sub3_Sub1.pixels, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
             i1 += j2;
             j1 += j3;
             l1 += k2;
             i2 += k3;
-            k += Class44_Sub3_Sub1.anInt1370;
+            k += Class44_Sub3_Sub1.width;
         }
     }
 
@@ -943,9 +943,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 {
                     l1 = 0;
                 }
-                if(i1 > Class44_Sub3_Sub1.anInt1376)
+                if(i1 > Class44_Sub3_Sub1.centerX)
                 {
-                    i1 = Class44_Sub3_Sub1.anInt1376;
+                    i1 = Class44_Sub3_Sub1.centerX;
                 }
                 if(l < 0)
                 {
@@ -1030,9 +1030,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         int i2 = (k1 - j1) / (i1 - l);
         if(aBoolean1419)
         {
-            if(i1 > Class44_Sub3_Sub1.anInt1376)
+            if(i1 > Class44_Sub3_Sub1.centerX)
             {
-                i1 = Class44_Sub3_Sub1.anInt1376;
+                i1 = Class44_Sub3_Sub1.centerX;
             }
             if(l < 0)
             {
@@ -1085,17 +1085,17 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         }
         if(i <= j && i <= k)
         {
-            if(i >= Class44_Sub3_Sub1.anInt1373)
+            if(i >= Class44_Sub3_Sub1.bottomY)
             {
                 return;
             }
-            if(j > Class44_Sub3_Sub1.anInt1373)
+            if(j > Class44_Sub3_Sub1.bottomY)
             {
-                j = Class44_Sub3_Sub1.anInt1373;
+                j = Class44_Sub3_Sub1.bottomY;
             }
-            if(k > Class44_Sub3_Sub1.anInt1373)
+            if(k > Class44_Sub3_Sub1.bottomY)
             {
-                k = Class44_Sub3_Sub1.anInt1373;
+                k = Class44_Sub3_Sub1.bottomY;
             }
             if(j < k)
             {
@@ -1116,35 +1116,35 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 {
                     k -= j;
                     j -= i;
-                    for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1370)
+                    for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.width)
                     {
-                        method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, j1 >> 16, l >> 16);
+                        method432(Class44_Sub3_Sub1.pixels, i, k1, 0, j1 >> 16, l >> 16);
                         j1 += j2;
                         l += l1;
                     }
                     while(--k >= 0)
                     {
-                        method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, j1 >> 16, i1 >> 16);
+                        method432(Class44_Sub3_Sub1.pixels, i, k1, 0, j1 >> 16, i1 >> 16);
                         j1 += j2;
                         i1 += i2;
-                        i += Class44_Sub3_Sub1.anInt1370;
+                        i += Class44_Sub3_Sub1.width;
                     }
                     return;
                 }
                 k -= j;
                 j -= i;
-                for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1370)
+                for(i = anIntArray1429[i]; --j >= 0; i += Class44_Sub3_Sub1.width)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, l >> 16, j1 >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, i, k1, 0, l >> 16, j1 >> 16);
                     j1 += j2;
                     l += l1;
                 }
                 while(--k >= 0)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, i1 >> 16, j1 >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, i, k1, 0, i1 >> 16, j1 >> 16);
                     j1 += j2;
                     i1 += i2;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
@@ -1165,51 +1165,51 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 j -= k;
                 k -= i;
-                for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1370)
+                for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.width)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, i1 >> 16, l >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, i, k1, 0, i1 >> 16, l >> 16);
                     i1 += j2;
                     l += l1;
                 }
                 while(--j >= 0)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, j1 >> 16, l >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, i, k1, 0, j1 >> 16, l >> 16);
                     j1 += i2;
                     l += l1;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
             j -= k;
             k -= i;
-            for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1370)
+            for(i = anIntArray1429[i]; --k >= 0; i += Class44_Sub3_Sub1.width)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, l >> 16, i1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, i, k1, 0, l >> 16, i1 >> 16);
                 i1 += j2;
                 l += l1;
             }
             while(--j >= 0)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, i, k1, 0, l >> 16, j1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, i, k1, 0, l >> 16, j1 >> 16);
                 j1 += i2;
                 l += l1;
-                i += Class44_Sub3_Sub1.anInt1370;
+                i += Class44_Sub3_Sub1.width;
             }
             return;
         }
         if(j <= k)
         {
-            if(j >= Class44_Sub3_Sub1.anInt1373)
+            if(j >= Class44_Sub3_Sub1.bottomY)
             {
                 return;
             }
-            if(k > Class44_Sub3_Sub1.anInt1373)
+            if(k > Class44_Sub3_Sub1.bottomY)
             {
-                k = Class44_Sub3_Sub1.anInt1373;
+                k = Class44_Sub3_Sub1.bottomY;
             }
-            if(i > Class44_Sub3_Sub1.anInt1373)
+            if(i > Class44_Sub3_Sub1.bottomY)
             {
-                i = Class44_Sub3_Sub1.anInt1373;
+                i = Class44_Sub3_Sub1.bottomY;
             }
             if(k < i)
             {
@@ -1230,35 +1230,35 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 {
                     i -= k;
                     k -= j;
-                    for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1370)
+                    for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.width)
                     {
-                        method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, l >> 16, i1 >> 16);
+                        method432(Class44_Sub3_Sub1.pixels, j, k1, 0, l >> 16, i1 >> 16);
                         l += l1;
                         i1 += i2;
                     }
                     while(--i >= 0)
                     {
-                        method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, l >> 16, j1 >> 16);
+                        method432(Class44_Sub3_Sub1.pixels, j, k1, 0, l >> 16, j1 >> 16);
                         l += l1;
                         j1 += j2;
-                        j += Class44_Sub3_Sub1.anInt1370;
+                        j += Class44_Sub3_Sub1.width;
                     }
                     return;
                 }
                 i -= k;
                 k -= j;
-                for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1370)
+                for(j = anIntArray1429[j]; --k >= 0; j += Class44_Sub3_Sub1.width)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, i1 >> 16, l >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, j, k1, 0, i1 >> 16, l >> 16);
                     l += l1;
                     i1 += i2;
                 }
                 while(--i >= 0)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, j1 >> 16, l >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, j, k1, 0, j1 >> 16, l >> 16);
                     l += l1;
                     j1 += j2;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
@@ -1279,49 +1279,49 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 k -= i;
                 i -= j;
-                for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1370)
+                for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.width)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, j1 >> 16, i1 >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, j, k1, 0, j1 >> 16, i1 >> 16);
                     j1 += l1;
                     i1 += i2;
                 }
                 while(--k >= 0)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, l >> 16, i1 >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, j, k1, 0, l >> 16, i1 >> 16);
                     l += j2;
                     i1 += i2;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
             k -= i;
             i -= j;
-            for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1370)
+            for(j = anIntArray1429[j]; --i >= 0; j += Class44_Sub3_Sub1.width)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, i1 >> 16, j1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, j, k1, 0, i1 >> 16, j1 >> 16);
                 j1 += l1;
                 i1 += i2;
             }
             while(--k >= 0)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, j, k1, 0, i1 >> 16, l >> 16);
+                method432(Class44_Sub3_Sub1.pixels, j, k1, 0, i1 >> 16, l >> 16);
                 l += j2;
                 i1 += i2;
-                j += Class44_Sub3_Sub1.anInt1370;
+                j += Class44_Sub3_Sub1.width;
             }
             return;
         }
-        if(k >= Class44_Sub3_Sub1.anInt1373)
+        if(k >= Class44_Sub3_Sub1.bottomY)
         {
             return;
         }
-        if(i > Class44_Sub3_Sub1.anInt1373)
+        if(i > Class44_Sub3_Sub1.bottomY)
         {
-            i = Class44_Sub3_Sub1.anInt1373;
+            i = Class44_Sub3_Sub1.bottomY;
         }
-        if(j > Class44_Sub3_Sub1.anInt1373)
+        if(j > Class44_Sub3_Sub1.bottomY)
         {
-            j = Class44_Sub3_Sub1.anInt1373;
+            j = Class44_Sub3_Sub1.bottomY;
         }
         if(i < j)
         {
@@ -1342,35 +1342,35 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             {
                 j -= i;
                 i -= k;
-                for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1370)
+                for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.width)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, i1 >> 16, j1 >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, k, k1, 0, i1 >> 16, j1 >> 16);
                     i1 += i2;
                     j1 += j2;
                 }
                 while(--j >= 0)
                 {
-                    method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, i1 >> 16, l >> 16);
+                    method432(Class44_Sub3_Sub1.pixels, k, k1, 0, i1 >> 16, l >> 16);
                     i1 += i2;
                     l += l1;
-                    k += Class44_Sub3_Sub1.anInt1370;
+                    k += Class44_Sub3_Sub1.width;
                 }
                 return;
             }
             j -= i;
             i -= k;
-            for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1370)
+            for(k = anIntArray1429[k]; --i >= 0; k += Class44_Sub3_Sub1.width)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, j1 >> 16, i1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, k, k1, 0, j1 >> 16, i1 >> 16);
                 i1 += i2;
                 j1 += j2;
             }
             while(--j >= 0)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, l >> 16, i1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, k, k1, 0, l >> 16, i1 >> 16);
                 i1 += i2;
                 l += l1;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
             }
             return;
         }
@@ -1391,35 +1391,35 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         {
             i -= j;
             j -= k;
-            for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1370)
+            for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.width)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, l >> 16, j1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, k, k1, 0, l >> 16, j1 >> 16);
                 l += i2;
                 j1 += j2;
             }
             while(--i >= 0)
             {
-                method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, i1 >> 16, j1 >> 16);
+                method432(Class44_Sub3_Sub1.pixels, k, k1, 0, i1 >> 16, j1 >> 16);
                 i1 += l1;
                 j1 += j2;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
             }
             return;
         }
         i -= j;
         j -= k;
-        for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1370)
+        for(k = anIntArray1429[k]; --j >= 0; k += Class44_Sub3_Sub1.width)
         {
-            method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, j1 >> 16, l >> 16);
+            method432(Class44_Sub3_Sub1.pixels, k, k1, 0, j1 >> 16, l >> 16);
             l += i2;
             j1 += j2;
         }
         while(--i >= 0)
         {
-            method432(Class44_Sub3_Sub1.anIntArray1369, k, k1, 0, j1 >> 16, i1 >> 16);
+            method432(Class44_Sub3_Sub1.pixels, k, k1, 0, j1 >> 16, i1 >> 16);
             i1 += l1;
             j1 += j2;
-            k += Class44_Sub3_Sub1.anInt1370;
+            k += Class44_Sub3_Sub1.width;
         }
     }
 
@@ -1427,9 +1427,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
     {
         if(aBoolean1419)
         {
-            if(i1 > Class44_Sub3_Sub1.anInt1376)
+            if(i1 > Class44_Sub3_Sub1.centerX)
             {
-                i1 = Class44_Sub3_Sub1.anInt1376;
+                i1 = Class44_Sub3_Sub1.centerX;
             }
             if(l < 0)
             {
@@ -1517,17 +1517,17 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         }
         if(i <= j && i <= k)
         {
-            if(i >= Class44_Sub3_Sub1.anInt1373)
+            if(i >= Class44_Sub3_Sub1.bottomY)
             {
                 return;
             }
-            if(j > Class44_Sub3_Sub1.anInt1373)
+            if(j > Class44_Sub3_Sub1.bottomY)
             {
-                j = Class44_Sub3_Sub1.anInt1373;
+                j = Class44_Sub3_Sub1.bottomY;
             }
-            if(k > Class44_Sub3_Sub1.anInt1373)
+            if(k > Class44_Sub3_Sub1.bottomY)
             {
-                k = Class44_Sub3_Sub1.anInt1373;
+                k = Class44_Sub3_Sub1.bottomY;
             }
             if(j < k)
             {
@@ -1560,24 +1560,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                     i = anIntArray1429[i];
                     while(--j >= 0)
                     {
-                        method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                         j1 += i8;
                         l += i7;
                         i2 += j8;
                         k1 += j7;
-                        i += Class44_Sub3_Sub1.anInt1370;
+                        i += Class44_Sub3_Sub1.width;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
                     }
                     while(--k >= 0)
                     {
-                        method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                         j1 += i8;
                         i1 += k7;
                         i2 += j8;
                         l1 += l7;
-                        i += Class44_Sub3_Sub1.anInt1370;
+                        i += Class44_Sub3_Sub1.width;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
@@ -1589,24 +1589,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 i = anIntArray1429[i];
                 while(--j >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += i8;
                     l += i7;
                     i2 += j8;
                     k1 += j7;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while(--k >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += i8;
                     i1 += k7;
                     i2 += j8;
                     l1 += l7;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1642,24 +1642,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 i = anIntArray1429[i];
                 while(--k >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     i1 += i8;
                     l += i7;
                     l1 += j8;
                     k1 += j7;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while(--j >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += k7;
                     l += i7;
                     i2 += l7;
                     k1 += j7;
-                    i += Class44_Sub3_Sub1.anInt1370;
+                    i += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1671,24 +1671,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             i = anIntArray1429[i];
             while(--k >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += i8;
                 l += i7;
                 l1 += j8;
                 k1 += j7;
-                i += Class44_Sub3_Sub1.anInt1370;
+                i += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while(--j >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 j1 += k7;
                 l += i7;
                 i2 += l7;
                 k1 += j7;
-                i += Class44_Sub3_Sub1.anInt1370;
+                i += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
@@ -1697,17 +1697,17 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         }
         if(j <= k)
         {
-            if(j >= Class44_Sub3_Sub1.anInt1373)
+            if(j >= Class44_Sub3_Sub1.bottomY)
             {
                 return;
             }
-            if(k > Class44_Sub3_Sub1.anInt1373)
+            if(k > Class44_Sub3_Sub1.bottomY)
             {
-                k = Class44_Sub3_Sub1.anInt1373;
+                k = Class44_Sub3_Sub1.bottomY;
             }
-            if(i > Class44_Sub3_Sub1.anInt1373)
+            if(i > Class44_Sub3_Sub1.bottomY)
             {
-                i = Class44_Sub3_Sub1.anInt1373;
+                i = Class44_Sub3_Sub1.bottomY;
             }
             if(k < i)
             {
@@ -1740,24 +1740,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                     j = anIntArray1429[j];
                     while(--k >= 0)
                     {
-                        method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                         l += i7;
                         i1 += k7;
                         k1 += j7;
                         l1 += l7;
-                        j += Class44_Sub3_Sub1.anInt1370;
+                        j += Class44_Sub3_Sub1.width;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
                     }
                     while(--i >= 0)
                     {
-                        method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                         l += i7;
                         j1 += i8;
                         k1 += j7;
                         i2 += j8;
-                        j += Class44_Sub3_Sub1.anInt1370;
+                        j += Class44_Sub3_Sub1.width;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
@@ -1769,24 +1769,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 j = anIntArray1429[j];
                 while(--k >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     l += i7;
                     i1 += k7;
                     k1 += j7;
                     l1 += l7;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while(--i >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     l += i7;
                     j1 += i8;
                     k1 += j7;
                     i2 += j8;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1822,24 +1822,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 j = anIntArray1429[j];
                 while(--i >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += i7;
                     i1 += k7;
                     i2 += j7;
                     l1 += l7;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while(--k >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                     l += i8;
                     i1 += k7;
                     k1 += j8;
                     l1 += l7;
-                    j += Class44_Sub3_Sub1.anInt1370;
+                    j += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1851,41 +1851,41 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             j = anIntArray1429[j];
             while(--i >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 j1 += i7;
                 i1 += k7;
                 i2 += j7;
                 l1 += l7;
-                j += Class44_Sub3_Sub1.anInt1370;
+                j += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while(--k >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                 l += i8;
                 i1 += k7;
                 k1 += j8;
                 l1 += l7;
-                j += Class44_Sub3_Sub1.anInt1370;
+                j += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             return;
         }
-        if(k >= Class44_Sub3_Sub1.anInt1373)
+        if(k >= Class44_Sub3_Sub1.bottomY)
         {
             return;
         }
-        if(i > Class44_Sub3_Sub1.anInt1373)
+        if(i > Class44_Sub3_Sub1.bottomY)
         {
-            i = Class44_Sub3_Sub1.anInt1373;
+            i = Class44_Sub3_Sub1.bottomY;
         }
-        if(j > Class44_Sub3_Sub1.anInt1373)
+        if(j > Class44_Sub3_Sub1.bottomY)
         {
-            j = Class44_Sub3_Sub1.anInt1373;
+            j = Class44_Sub3_Sub1.bottomY;
         }
         if(i < j)
         {
@@ -1918,24 +1918,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
                 k = anIntArray1429[k];
                 while(--i >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                     i1 += k7;
                     j1 += i8;
                     l1 += l7;
                     i2 += j8;
-                    k += Class44_Sub3_Sub1.anInt1370;
+                    k += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while(--j >= 0)
                 {
-                    method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     i1 += k7;
                     l += i7;
                     l1 += l7;
                     k1 += j7;
-                    k += Class44_Sub3_Sub1.anInt1370;
+                    k += Class44_Sub3_Sub1.width;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1947,24 +1947,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             k = anIntArray1429[k];
             while(--i >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += k7;
                 j1 += i8;
                 l1 += l7;
                 i2 += j8;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while(--j >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += k7;
                 l += i7;
                 l1 += l7;
                 k1 += j7;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
@@ -2000,24 +2000,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
             k = anIntArray1429[k];
             while(--j >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 l += k7;
                 j1 += i8;
                 k1 += l7;
                 i2 += j8;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while(--i >= 0)
             {
-                method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += i7;
                 j1 += i8;
                 l1 += j7;
                 i2 += j8;
-                k += Class44_Sub3_Sub1.anInt1370;
+                k += Class44_Sub3_Sub1.width;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
@@ -2029,24 +2029,24 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         k = anIntArray1429[k];
         while(--j >= 0)
         {
-            method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+            method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
             l += k7;
             j1 += i8;
             k1 += l7;
             i2 += j8;
-            k += Class44_Sub3_Sub1.anInt1370;
+            k += Class44_Sub3_Sub1.width;
             l4 += j5;
             k5 += i6;
             j6 += l6;
         }
         while(--i >= 0)
         {
-            method434(Class44_Sub3_Sub1.anIntArray1369, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+            method434(Class44_Sub3_Sub1.pixels, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
             i1 += i7;
             j1 += i8;
             l1 += j7;
             i2 += j8;
-            k += Class44_Sub3_Sub1.anInt1370;
+            k += Class44_Sub3_Sub1.width;
             l4 += j5;
             k5 += i6;
             j6 += l6;
@@ -2065,9 +2065,9 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1
         if(aBoolean1419)
         {
             j3 = (k1 - j1) / (i1 - l);
-            if(i1 > Class44_Sub3_Sub1.anInt1376)
+            if(i1 > Class44_Sub3_Sub1.centerX)
             {
-                i1 = Class44_Sub3_Sub1.anInt1376;
+                i1 = Class44_Sub3_Sub1.centerX;
             }
             if(l < 0)
             {

@@ -2500,7 +2500,7 @@ label0:
         if((i6 - k6) * (l5 - l6) - (j6 - l6) * (k5 - k6) > 0)
         {
             Class44_Sub3_Sub1_Sub1.aBoolean1419 = false;
-            if(i6 < 0 || k6 < 0 || k5 < 0 || i6 > Class44_Sub3_Sub1.anInt1376 || k6 > Class44_Sub3_Sub1.anInt1376 || k5 > Class44_Sub3_Sub1.anInt1376)
+            if(i6 < 0 || k6 < 0 || k5 < 0 || i6 > Class44_Sub3_Sub1.centerX || k6 > Class44_Sub3_Sub1.centerX || k5 > Class44_Sub3_Sub1.centerX)
             {
                 Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
             }
@@ -2534,7 +2534,7 @@ label0:
         if((i5 - k5) * (l6 - l5) - (j5 - l5) * (k6 - k5) > 0)
         {
             Class44_Sub3_Sub1_Sub1.aBoolean1419 = false;
-            if(i5 < 0 || k5 < 0 || k6 < 0 || i5 > Class44_Sub3_Sub1.anInt1376 || k5 > Class44_Sub3_Sub1.anInt1376 || k6 > Class44_Sub3_Sub1.anInt1376)
+            if(i5 < 0 || k5 < 0 || k6 < 0 || i5 > Class44_Sub3_Sub1.centerX || k5 > Class44_Sub3_Sub1.centerX || k6 > Class44_Sub3_Sub1.centerX)
             {
                 Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
             }
@@ -2613,7 +2613,7 @@ label0:
                 if((i4 - j4) * (j5 - i5) - (l4 - i5) * (k4 - j4) > 0)
                 {
                     Class44_Sub3_Sub1_Sub1.aBoolean1419 = false;
-                    if(i4 < 0 || j4 < 0 || k4 < 0 || i4 > Class44_Sub3_Sub1.anInt1376 || j4 > Class44_Sub3_Sub1.anInt1376 || k4 > Class44_Sub3_Sub1.anInt1376)
+                    if(i4 < 0 || j4 < 0 || k4 < 0 || i4 > Class44_Sub3_Sub1.centerX || j4 > Class44_Sub3_Sub1.centerX || k4 > Class44_Sub3_Sub1.centerX)
                     {
                         Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
                     }

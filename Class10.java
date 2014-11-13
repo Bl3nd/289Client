@@ -38,8 +38,8 @@ public class Class10
             {
                 if(anInt259 < 500)
                 {
-                    anIntArray260[anInt259] = ((Applet_Sub1) (aClient256)).anInt21;
-                    anIntArray261[anInt259] = ((Applet_Sub1) (aClient256)).anInt22;
+                    anIntArray260[anInt259] = ((RSApplet) (aClient256)).mouseX;
+                    anIntArray261[anInt259] = ((RSApplet) (aClient256)).mouseY;
                     anInt259++;
                 }
             }

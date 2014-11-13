@@ -11,14 +11,14 @@ public class Class7
     public OutputStream anOutputStream194;
     public Socket aSocket195;
     public boolean aBoolean196;
-    public Applet_Sub1 anApplet_Sub1_197;
+    public RSApplet anApplet_Sub1_197;
     public byte aByteArray198[];
     public int anInt199;
     public int anInt200;
     public boolean aBoolean201;
     public boolean aBoolean202;
 
-    public Class7(Socket socket, int i, Applet_Sub1 applet_sub1)
+    public Class7(Socket socket, int i, RSApplet applet_sub1)
         throws IOException
     {
         aBoolean192 = false;
@@ -155,7 +155,7 @@ public class Class7
                 if(!aBoolean201)
                 {
                     aBoolean201 = true;
-                    anApplet_Sub1_197.method12(this, 3);
+                    anApplet_Sub1_197.startThread(this, 3);
                 }
                 notify();
             }

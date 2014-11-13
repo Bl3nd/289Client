@@ -4,9 +4,9 @@ import sign.signlink;
 public class Frame_Sub1 extends Frame
 {
 
-    public Applet_Sub1 anApplet_Sub1_36;
+    public RSApplet anApplet_Sub1_36;
 
-    public Frame_Sub1(int i, int j, int k, Applet_Sub1 applet_sub1)
+    public Frame_Sub1(int i, int j, int k, RSApplet applet_sub1)
     {
         try
         {

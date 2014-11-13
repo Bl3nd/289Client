@@ -1973,12 +1973,12 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
         }
         int j3 = l1 * l + j1 * i1 >> 16;
         int k3 = j3 - anInt1559 << 9;
-        if(k3 / i3 >= Class44_Sub3_Sub1.anInt1377)
+        if(k3 / i3 >= Class44_Sub3_Sub1.centerY)
         {
             return;
         }
         int l3 = j3 + anInt1559 << 9;
-        if(l3 / i3 <= -Class44_Sub3_Sub1.anInt1377)
+        if(l3 / i3 <= -Class44_Sub3_Sub1.centerY)
         {
             return;
         }
@@ -2128,7 +2128,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     if((i3 - l3) * (anIntArray1575[j2] - anIntArray1575[k1]) - (anIntArray1575[l] - anIntArray1575[k1]) * (k4 - l3) > 0)
                     {
                         aBooleanArray1573[k] = false;
-                        if(i3 < 0 || l3 < 0 || k4 < 0 || i3 > Class44_Sub3_Sub1.anInt1376 || l3 > Class44_Sub3_Sub1.anInt1376 || k4 > Class44_Sub3_Sub1.anInt1376)
+                        if(i3 < 0 || l3 < 0 || k4 < 0 || i3 > Class44_Sub3_Sub1.centerX || l3 > Class44_Sub3_Sub1.centerX || k4 > Class44_Sub3_Sub1.centerX)
                         {
                             aBooleanArray1572[k] = true;
                         } else
@@ -2457,7 +2457,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             Class44_Sub3_Sub1_Sub1.aBoolean1419 = false;
             if(l == 3)
             {
-                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.anInt1376 || j4 > Class44_Sub3_Sub1.anInt1376 || j5 > Class44_Sub3_Sub1.anInt1376)
+                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.centerX || j4 > Class44_Sub3_Sub1.centerX || j5 > Class44_Sub3_Sub1.centerX)
                 {
                     Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
                 }
@@ -2496,7 +2496,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             }
             if(l == 4)
             {
-                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.anInt1376 || j4 > Class44_Sub3_Sub1.anInt1376 || j5 > Class44_Sub3_Sub1.anInt1376 || anIntArray1587[3] < 0 || anIntArray1587[3] > Class44_Sub3_Sub1.anInt1376)
+                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.centerX || j4 > Class44_Sub3_Sub1.centerX || j5 > Class44_Sub3_Sub1.centerX || anIntArray1587[3] < 0 || anIntArray1587[3] > Class44_Sub3_Sub1.centerX)
                 {
                     Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
                 }
