@@ -7,7 +7,7 @@ public class Class49
     public static int anInt807;
     public static int anInt808;
     public static char aCharArray809[] = new char[100];
-    public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_810 = new Class44_Sub3_Sub2(new byte[100], 15787);
+    public static Stream aClass44_Sub3_Sub2_810 = new Stream(new byte[100], 15787);
     public static char aCharArray811[] = {
         ' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r',
         'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p',
@@ -18,7 +18,7 @@ public class Class49
         ']'
     };
 
-    public static String method556(byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2, int i)
+    public static String method556(byte byte0, Stream class44_sub3_sub2, int i)
     {
         try
         {
@@ -26,7 +26,7 @@ public class Class49
             int k = -1;
             for(int l = 0; l < i; l++)
             {
-                int i1 = class44_sub3_sub2.method482();
+                int i1 = class44_sub3_sub2.readUnsignedByte();
                 int j1 = i1 >> 4 & 0xf;
                 if(k == -1)
                 {
@@ -85,7 +85,7 @@ public class Class49
         throw new RuntimeException();
     }
 
-    public static void method557(String s, Class44_Sub3_Sub2 class44_sub3_sub2, int i)
+    public static void method557(String s, Stream class44_sub3_sub2, int i)
     {
         try
         {
@@ -153,14 +153,14 @@ public class Class49
     {
         try
         {
-            aClass44_Sub3_Sub2_810.anInt1392 = 0;
+            aClass44_Sub3_Sub2_810.currentOffset = 0;
             method557(s, aClass44_Sub3_Sub2_810, 991);
-            int j = aClass44_Sub3_Sub2_810.anInt1392;
+            int j = aClass44_Sub3_Sub2_810.currentOffset;
             if(i != 0)
             {
                 anInt807 = -64;
             }
-            aClass44_Sub3_Sub2_810.anInt1392 = 0;
+            aClass44_Sub3_Sub2_810.currentOffset = 0;
             String s1 = method556((byte)-94, aClass44_Sub3_Sub2_810, j);
             return s1;
         }

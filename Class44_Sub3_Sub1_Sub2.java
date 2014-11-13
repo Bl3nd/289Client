@@ -71,12 +71,12 @@ public class Class44_Sub3_Sub1_Sub2 extends Class44_Sub3_Sub1
         anInt1445 = 9;
         aByte1446 = 8;
         aBoolean1447 = true;
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549(s + ".dat", null), 15787);
-        Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(class47.method549("index.dat", null), 15787);
-        class44_sub3_sub2_1.anInt1392 = class44_sub3_sub2.method484();
-        anInt1453 = class44_sub3_sub2_1.method484();
-        anInt1454 = class44_sub3_sub2_1.method484();
-        int j = class44_sub3_sub2_1.method482();
+        Stream class44_sub3_sub2 = new Stream(class47.method549(s + ".dat", null), 15787);
+        Stream class44_sub3_sub2_1 = new Stream(class47.method549("index.dat", null), 15787);
+        class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.readUnsignedWord();
+        anInt1453 = class44_sub3_sub2_1.readUnsignedWord();
+        anInt1454 = class44_sub3_sub2_1.readUnsignedWord();
+        int j = class44_sub3_sub2_1.readUnsignedByte();
         int ai[] = new int[j];
         for(int k = 0; k < j - 1; k++)
         {
@@ -88,22 +88,22 @@ public class Class44_Sub3_Sub1_Sub2 extends Class44_Sub3_Sub1
         }
         for(int l = 0; l < i; l++)
         {
-            class44_sub3_sub2_1.anInt1392 += 2;
-            class44_sub3_sub2.anInt1392 += class44_sub3_sub2_1.method484() * class44_sub3_sub2_1.method484();
-            class44_sub3_sub2_1.anInt1392++;
+            class44_sub3_sub2_1.currentOffset += 2;
+            class44_sub3_sub2.currentOffset += class44_sub3_sub2_1.readUnsignedWord() * class44_sub3_sub2_1.readUnsignedWord();
+            class44_sub3_sub2_1.currentOffset++;
         }
-        anInt1451 = class44_sub3_sub2_1.method482();
-        anInt1452 = class44_sub3_sub2_1.method482();
-        anInt1449 = class44_sub3_sub2_1.method484();
-        anInt1450 = class44_sub3_sub2_1.method484();
-        int i1 = class44_sub3_sub2_1.method482();
+        anInt1451 = class44_sub3_sub2_1.readUnsignedByte();
+        anInt1452 = class44_sub3_sub2_1.readUnsignedByte();
+        anInt1449 = class44_sub3_sub2_1.readUnsignedWord();
+        anInt1450 = class44_sub3_sub2_1.readUnsignedWord();
+        int i1 = class44_sub3_sub2_1.readUnsignedByte();
         int j1 = anInt1449 * anInt1450;
         anIntArray1448 = new int[j1];
         if(i1 == 0)
         {
             for(int k1 = 0; k1 < j1; k1++)
             {
-                anIntArray1448[k1] = ai[class44_sub3_sub2.method482()];
+                anIntArray1448[k1] = ai[class44_sub3_sub2.readUnsignedByte()];
             }
             return;
         }
@@ -113,7 +113,7 @@ public class Class44_Sub3_Sub1_Sub2 extends Class44_Sub3_Sub1
             {
                 for(int i2 = 0; i2 < anInt1450; i2++)
                 {
-                    anIntArray1448[l1 + i2 * anInt1449] = ai[class44_sub3_sub2.method482()];
+                    anIntArray1448[l1 + i2 * anInt1449] = ai[class44_sub3_sub2.readUnsignedByte()];
                 }
             }
         }

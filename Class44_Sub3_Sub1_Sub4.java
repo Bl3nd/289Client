@@ -37,27 +37,27 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
         aBoolean1480 = false;
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549(s + ".dat", null), 15787);
-            Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(class47.method549("index.dat", null), 15787);
+            Stream class44_sub3_sub2 = new Stream(class47.method549(s + ".dat", null), 15787);
+            Stream class44_sub3_sub2_1 = new Stream(class47.method549("index.dat", null), 15787);
             byte byte0 = -1;
-            class44_sub3_sub2_1.anInt1392 = class44_sub3_sub2.method484() + 4;
+            class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.readUnsignedWord() + 4;
             if(i != 9)
             {
                 aBoolean1467 = !aBoolean1467;
             }
-            int k = class44_sub3_sub2_1.method482();
+            int k = class44_sub3_sub2_1.readUnsignedByte();
             if(k > 0)
             {
-                class44_sub3_sub2_1.anInt1392 += 3 * (k - 1);
+                class44_sub3_sub2_1.currentOffset += 3 * (k - 1);
             }
             for(int l = 0; l < 256; l++)
             {
                 int j = l;
-                anIntArray1475[l] = class44_sub3_sub2_1.method482();
-                anIntArray1476[l] = class44_sub3_sub2_1.method482();
-                int i1 = anIntArray1473[l] = class44_sub3_sub2_1.method484();
-                int j1 = anIntArray1474[l] = class44_sub3_sub2_1.method484();
-                int k1 = class44_sub3_sub2_1.method482();
+                anIntArray1475[l] = class44_sub3_sub2_1.readUnsignedByte();
+                anIntArray1476[l] = class44_sub3_sub2_1.readUnsignedByte();
+                int i1 = anIntArray1473[l] = class44_sub3_sub2_1.readUnsignedWord();
+                int j1 = anIntArray1474[l] = class44_sub3_sub2_1.readUnsignedWord();
+                int k1 = class44_sub3_sub2_1.readUnsignedByte();
                 int l1 = i1 * j1;
                 aByteArrayArray1472[l] = new byte[l1];
                 if(k1 == 0)

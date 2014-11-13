@@ -122,7 +122,7 @@ public class Class3
     {
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
+            Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
             for(int i1 = 0; i1 < 4; i1++)
             {
                 for(int j1 = 0; j1 < 64; j1++)
@@ -136,7 +136,7 @@ public class Class3
                             aByteArrayArrayArray69[i1][i2][j2] = 0;
                             do
                             {
-                                int k2 = class44_sub3_sub2.method482();
+                                int k2 = class44_sub3_sub2.readUnsignedByte();
                                 if(k2 == 0)
                                 {
                                     if(i1 == 0)
@@ -150,7 +150,7 @@ public class Class3
                                 }
                                 if(k2 == 1)
                                 {
-                                    int i3 = class44_sub3_sub2.method482();
+                                    int i3 = class44_sub3_sub2.readUnsignedByte();
                                     if(i3 == 1)
                                     {
                                         i3 = 0;
@@ -182,19 +182,19 @@ public class Class3
                         {
                             do
                             {
-                                int l2 = class44_sub3_sub2.method482();
+                                int l2 = class44_sub3_sub2.readUnsignedByte();
                                 if(l2 == 0)
                                 {
                                     break;
                                 }
                                 if(l2 == 1)
                                 {
-                                    class44_sub3_sub2.method482();
+                                    class44_sub3_sub2.readUnsignedByte();
                                     break;
                                 }
                                 if(l2 <= 49)
                                 {
-                                    class44_sub3_sub2.method482();
+                                    class44_sub3_sub2.readUnsignedByte();
                                 }
                             } while(true);
                         }
@@ -223,7 +223,7 @@ public class Class3
 	try
         {
 	    boolean flag = true;
-	    Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
+	    Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
 	    int l = -1;
 	    if(i <= 0)
             {
@@ -248,7 +248,7 @@ public class Class3
                         {
 			    break;
                         }
-			class44_sub3_sub2.method482();
+			class44_sub3_sub2.readUnsignedByte();
 		    } else
                     {
 			int l1 = class44_sub3_sub2.method496();
@@ -259,7 +259,7 @@ public class Class3
 			j1 += l1 - 1;
 			int i2 = j1 & 0x3f;
 			int j2 = j1 >> 6 & 0x3f;
-			int k2 = class44_sub3_sub2.method482() >> 2;
+			int k2 = class44_sub3_sub2.readUnsignedByte() >> 2;
 			int l2 = j2 + k;
 			int i3 = i2 + j;
 			if(l2 > 0 && i3 > 0 && l2 < 103 && i3 < 103)
@@ -283,7 +283,7 @@ public class Class3
 	}
     }
 
-    public static void method160(Class43_Sub1 class43_sub1, Class44_Sub3_Sub2 class44_sub3_sub2, int i)
+    public static void method160(Class43_Sub1 class43_sub1, Stream class44_sub3_sub2, int i)
     {
         try
         {
@@ -309,7 +309,7 @@ public class Class3
                     {
                         break;
                     }
-                    class44_sub3_sub2.method482();
+                    class44_sub3_sub2.readUnsignedByte();
                 } while(true);
             } while(true);
             return;
@@ -325,7 +325,7 @@ public class Class3
     {
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
+            Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
             int k = -1;
             if(byte0 != 4)
             {
@@ -353,7 +353,7 @@ public class Class3
                     int l1 = j1 & 0x3f;
                     int i2 = j1 >> 6 & 0x3f;
                     int j2 = j1 >> 12;
-                    int k2 = class44_sub3_sub2.method482();
+                    int k2 = class44_sub3_sub2.readUnsignedByte();
                     int l2 = k2 >> 2;
                     int i3 = k2 & 3;
                     int j3 = i2 + j;

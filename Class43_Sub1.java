@@ -60,12 +60,12 @@ public class Class43_Sub1 extends Class43
         {
             byte abyte0[] = class47.method549(as[i], null);
             int j = abyte0.length / 2;
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
+            Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
             anIntArrayArray1284[i] = new int[j];
             aByteArrayArray1286[i] = new byte[j];
             for(int l = 0; l < j; l++)
             {
-                anIntArrayArray1284[i][l] = class44_sub3_sub2.method484();
+                anIntArrayArray1284[i][l] = class44_sub3_sub2.readUnsignedWord();
             }
         }
         String as1[] = {
@@ -75,11 +75,11 @@ public class Class43_Sub1 extends Class43
         {
             byte abyte1[] = class47.method549(as1[k], null);
             int i1 = abyte1.length / 4;
-            Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(abyte1, 15787);
+            Stream class44_sub3_sub2_1 = new Stream(abyte1, 15787);
             anIntArrayArray1285[k] = new int[i1];
             for(int l1 = 0; l1 < i1; l1++)
             {
-                anIntArrayArray1285[k][l1] = class44_sub3_sub2_1.method487();
+                anIntArrayArray1285[k][l1] = class44_sub3_sub2_1.readDWord();
             }
         }
         byte abyte2[] = class47.method549("model_index", null);
@@ -96,7 +96,7 @@ public class Class43_Sub1 extends Class43
             }
         }
         abyte2 = class47.method549("map_index", null);
-        Class44_Sub3_Sub2 class44_sub3_sub2_2 = new Class44_Sub3_Sub2(abyte2, 15787);
+        Stream class44_sub3_sub2_2 = new Stream(abyte2, 15787);
         j1 = abyte2.length / 7;
         anIntArray1289 = new int[j1];
         anIntArray1290 = new int[j1];
@@ -104,26 +104,26 @@ public class Class43_Sub1 extends Class43
         anIntArray1292 = new int[j1];
         for(int i2 = 0; i2 < j1; i2++)
         {
-            anIntArray1289[i2] = class44_sub3_sub2_2.method484();
-            anIntArray1290[i2] = class44_sub3_sub2_2.method484();
-            anIntArray1291[i2] = class44_sub3_sub2_2.method484();
-            anIntArray1292[i2] = class44_sub3_sub2_2.method482();
+            anIntArray1289[i2] = class44_sub3_sub2_2.readUnsignedWord();
+            anIntArray1290[i2] = class44_sub3_sub2_2.readUnsignedWord();
+            anIntArray1291[i2] = class44_sub3_sub2_2.readUnsignedWord();
+            anIntArray1292[i2] = class44_sub3_sub2_2.readUnsignedByte();
         }
         abyte2 = class47.method549("anim_index", null);
-        class44_sub3_sub2_2 = new Class44_Sub3_Sub2(abyte2, 15787);
+        class44_sub3_sub2_2 = new Stream(abyte2, 15787);
         j1 = abyte2.length / 2;
         anIntArray1293 = new int[j1];
         for(int j2 = 0; j2 < j1; j2++)
         {
-            anIntArray1293[j2] = class44_sub3_sub2_2.method484();
+            anIntArray1293[j2] = class44_sub3_sub2_2.readUnsignedWord();
         }
         abyte2 = class47.method549("midi_index", null);
-        class44_sub3_sub2_2 = new Class44_Sub3_Sub2(abyte2, 15787);
+        class44_sub3_sub2_2 = new Stream(abyte2, 15787);
         j1 = abyte2.length;
         anIntArray1294 = new int[j1];
         for(int k2 = 0; k2 < j1; k2++)
         {
-            anIntArray1294[k2] = class44_sub3_sub2_2.method482();
+            anIntArray1294[k2] = class44_sub3_sub2_2.readUnsignedByte();
         }
         aClient1296 = client1;
         aBoolean1295 = true;

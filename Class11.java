@@ -29,29 +29,29 @@ public class Class11
     {
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
-            class44_sub3_sub2.anInt1392 = abyte0.length - 8;
-            int j = class44_sub3_sub2.method484();
-            int k = class44_sub3_sub2.method484();
-            int l = class44_sub3_sub2.method484();
-            int i1 = class44_sub3_sub2.method484();
+            Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
+            class44_sub3_sub2.currentOffset = abyte0.length - 8;
+            int j = class44_sub3_sub2.readUnsignedWord();
+            int k = class44_sub3_sub2.readUnsignedWord();
+            int l = class44_sub3_sub2.readUnsignedWord();
+            int i1 = class44_sub3_sub2.readUnsignedWord();
             int j1 = 0;
-            Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(abyte0, 15787);
-            class44_sub3_sub2_1.anInt1392 = j1;
+            Stream class44_sub3_sub2_1 = new Stream(abyte0, 15787);
+            class44_sub3_sub2_1.currentOffset = j1;
             j1 += j + 2;
-            Class44_Sub3_Sub2 class44_sub3_sub2_2 = new Class44_Sub3_Sub2(abyte0, 15787);
-            class44_sub3_sub2_2.anInt1392 = j1;
+            Stream class44_sub3_sub2_2 = new Stream(abyte0, 15787);
+            class44_sub3_sub2_2.currentOffset = j1;
             j1 += k;
-            Class44_Sub3_Sub2 class44_sub3_sub2_3 = new Class44_Sub3_Sub2(abyte0, 15787);
-            class44_sub3_sub2_3.anInt1392 = j1;
+            Stream class44_sub3_sub2_3 = new Stream(abyte0, 15787);
+            class44_sub3_sub2_3.currentOffset = j1;
             j1 += l;
-            Class44_Sub3_Sub2 class44_sub3_sub2_4 = new Class44_Sub3_Sub2(abyte0, 15787);
-            class44_sub3_sub2_4.anInt1392 = j1;
+            Stream class44_sub3_sub2_4 = new Stream(abyte0, 15787);
+            class44_sub3_sub2_4.currentOffset = j1;
             j1 += i1;
-            Class44_Sub3_Sub2 class44_sub3_sub2_5 = new Class44_Sub3_Sub2(abyte0, 15787);
-            class44_sub3_sub2_5.anInt1392 = j1;
+            Stream class44_sub3_sub2_5 = new Stream(abyte0, 15787);
+            class44_sub3_sub2_5.currentOffset = j1;
             Class9 class9 = new Class9(class44_sub3_sub2_5, anInt262);
-            int k1 = class44_sub3_sub2_1.method484();
+            int k1 = class44_sub3_sub2_1.readUnsignedWord();
             if(i != 2)
             {
                 return;
@@ -62,16 +62,16 @@ public class Class11
             int ai3[] = new int[500];
             for(int l1 = 0; l1 < k1; l1++)
             {
-                int i2 = class44_sub3_sub2_1.method484();
+                int i2 = class44_sub3_sub2_1.readUnsignedWord();
                 Class11 class11 = aClass11Array264[i2] = new Class11();
-                class11.anInt265 = class44_sub3_sub2_4.method482();
+                class11.anInt265 = class44_sub3_sub2_4.readUnsignedByte();
                 class11.aClass9_266 = class9;
-                int j2 = class44_sub3_sub2_1.method482();
+                int j2 = class44_sub3_sub2_1.readUnsignedByte();
                 int k2 = -1;
                 int l2 = 0;
                 for(int i3 = 0; i3 < j2; i3++)
                 {
-                    int j3 = class44_sub3_sub2_2.method482();
+                    int j3 = class44_sub3_sub2_2.readUnsignedByte();
                     if(j3 > 0)
                     {
                         if(class9.anIntArray254[i3] != 0)

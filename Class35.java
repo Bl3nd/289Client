@@ -23,8 +23,8 @@ public class Class35
             {
                 return;
             }
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549("varbit.dat", null), 15787);
-            anInt589 = class44_sub3_sub2.method484();
+            Stream class44_sub3_sub2 = new Stream(class47.method549("varbit.dat", null), 15787);
+            anInt589 = class44_sub3_sub2.readUnsignedWord();
             if(aClass35Array590 == null)
             {
                 aClass35Array590 = new Class35[anInt589];
@@ -41,7 +41,7 @@ public class Class35
                     Class38.aClass38Array674[aClass35Array590[i].anInt592].aBoolean686 = true;
                 }
             }
-            if(class44_sub3_sub2.anInt1392 != class44_sub3_sub2.aByteArray1391.length)
+            if(class44_sub3_sub2.currentOffset != class44_sub3_sub2.buffer.length)
             {
                 System.out.println("varbit load mismatch");
                 return;
@@ -54,23 +54,23 @@ public class Class35
         }
     }
 
-    public void method276(int i, int j, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method276(int i, int j, Stream class44_sub3_sub2)
     {
         try
         {
             i = 55 / i;
             do
             {
-                int k = class44_sub3_sub2.method482();
+                int k = class44_sub3_sub2.readUnsignedByte();
                 if(k == 0)
                 {
                     return;
                 }
                 if(k == 1)
                 {
-                    anInt592 = class44_sub3_sub2.method484();
-                    anInt593 = class44_sub3_sub2.method482();
-                    anInt594 = class44_sub3_sub2.method482();
+                    anInt592 = class44_sub3_sub2.readUnsignedWord();
+                    anInt593 = class44_sub3_sub2.readUnsignedByte();
+                    anInt594 = class44_sub3_sub2.readUnsignedByte();
                 } else
                 if(k == 10)
                 {
@@ -82,11 +82,11 @@ public class Class35
                 } else
                 if(k == 3)
                 {
-                    anInt596 = class44_sub3_sub2.method487();
+                    anInt596 = class44_sub3_sub2.readDWord();
                 } else
                 if(k == 4)
                 {
-                    anInt597 = class44_sub3_sub2.method487();
+                    anInt597 = class44_sub3_sub2.readDWord();
                 } else
                 {
                     System.out.println("Error unrecognised config code: " + k);

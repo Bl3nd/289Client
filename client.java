@@ -19,7 +19,7 @@ public class client extends RSApplet
     public int anInt819;
     public boolean aBoolean820;
     public static int anInt821;
-    public Class44_Sub3_Sub2 aClass44_Sub3_Sub2_822;
+    public Stream aClass44_Sub3_Sub2_822;
     public String aString823;
     public int anInt824;
     public int anInt825;
@@ -47,7 +47,7 @@ public class client extends RSApplet
     public boolean aBoolean847;
     public int anInt848;
     public int anIntArray849[];
-    public Class44_Sub3_Sub2 aClass44_Sub3_Sub2_850;
+    public Stream aClass44_Sub3_Sub2_850;
     public int anIntArray851[];
     public Class44_Sub3_Sub1_Sub3 aClass44_Sub3_Sub1_Sub3_852;
     public Class44_Sub3_Sub1_Sub3 aClass44_Sub3_Sub1_Sub3_853;
@@ -350,7 +350,7 @@ public class client extends RSApplet
     public RSImageProducer aClass34_1129;
     public RSImageProducer aClass34_1130;
     public RSImageProducer aClass34_1131;
-    public Class44_Sub3_Sub2 aClass44_Sub3_Sub2_1132;
+    public Stream aClass44_Sub3_Sub2_1132;
     public int anIntArray1133[];
     public int anIntArray1134[];
     public static BigInteger aBigInteger1135 = new BigInteger("7162900525229798032761816791230527296329313291232324290237849263501208207972894053929065636522363163621000728841182238772712427862772219676577293600221789");
@@ -454,7 +454,7 @@ public class client extends RSApplet
     public int anIntArray1227[];
     public int anInt1228;
     public int anIntArray1229[];
-    public Class44_Sub3_Sub2 aClass44_Sub3_Sub2Array1230[];
+    public Stream aClass44_Sub3_Sub2Array1230[];
     public int anInt1231;
     public static int anInt1232 = 10;
     public static int anInt1233;
@@ -534,7 +534,7 @@ public class client extends RSApplet
         {
             if(i != 9)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             if(aBoolean1236 || aBoolean1055 || aBoolean820)
             {
@@ -846,7 +846,7 @@ public class client extends RSApplet
             }
             if(byte0 != -115)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             anIntArray1002[0] = i;
             aStringArray1003[0] = s1;
@@ -1811,8 +1811,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == -1)
                 {
-                    aClass7_1099.method194(aClass44_Sub3_Sub2_1132.aByteArray1391, 0, 1);
-                    anInt1170 = aClass44_Sub3_Sub2_1132.aByteArray1391[0] & 0xff;
+                    aClass7_1099.method194(aClass44_Sub3_Sub2_1132.buffer, 0, 1);
+                    anInt1170 = aClass44_Sub3_Sub2_1132.buffer[0] & 0xff;
                     if(aClass46_927 != null)
                     {
                         anInt1170 = anInt1170 - aClass46_927.method545() & 0xff;
@@ -1824,8 +1824,8 @@ public class client extends RSApplet
                 {
                     if(i > 0)
                     {
-                        aClass7_1099.method194(aClass44_Sub3_Sub2_1132.aByteArray1391, 0, 1);
-                        anInt1169 = aClass44_Sub3_Sub2_1132.aByteArray1391[0] & 0xff;
+                        aClass7_1099.method194(aClass44_Sub3_Sub2_1132.buffer, 0, 1);
+                        anInt1169 = aClass44_Sub3_Sub2_1132.buffer[0] & 0xff;
                         i--;
                     } else
                     {
@@ -1836,9 +1836,9 @@ public class client extends RSApplet
                 {
                     if(i > 1)
                     {
-                        aClass7_1099.method194(aClass44_Sub3_Sub2_1132.aByteArray1391, 0, 2);
-                        aClass44_Sub3_Sub2_1132.anInt1392 = 0;
-                        anInt1169 = aClass44_Sub3_Sub2_1132.method484();
+                        aClass7_1099.method194(aClass44_Sub3_Sub2_1132.buffer, 0, 2);
+                        aClass44_Sub3_Sub2_1132.currentOffset = 0;
+                        anInt1169 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                         i -= 2;
                     } else
                     {
@@ -1849,16 +1849,16 @@ public class client extends RSApplet
                 {
                     return false;
                 }
-                aClass44_Sub3_Sub2_1132.anInt1392 = 0;
-                aClass7_1099.method194(aClass44_Sub3_Sub2_1132.aByteArray1391, 0, anInt1169);
+                aClass44_Sub3_Sub2_1132.currentOffset = 0;
+                aClass7_1099.method194(aClass44_Sub3_Sub2_1132.buffer, 0, anInt1169);
                 anInt1171 = 0;
                 anInt1069 = anInt1068;
                 anInt1068 = anInt1067;
                 anInt1067 = anInt1170;
                 if(anInt1170 == 55) // Interface Inventory
                 {
-                    int j = aClass44_Sub3_Sub2_1132.method484();
-                    int l9 = aClass44_Sub3_Sub2_1132.method484();
+                    int j = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int l9 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     if(anInt1253 != -1)
                     {
                         anInt1253 = -1;
@@ -1879,9 +1879,9 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 13)
                 {
-                    anInt843 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt895 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1168 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt843 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt895 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1168 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     aBoolean1062 = true;
                     aBoolean1049 = true;
                     anInt1170 = -1;
@@ -1893,7 +1893,7 @@ public class client extends RSApplet
                     {
                         aBoolean898 = true;
                     }
-                    anInt936 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt936 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     anInt1170 = -1;
                     return true;
                 }
@@ -1909,7 +1909,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 59)
                 {
-                    int k = aClass44_Sub3_Sub2_1132.method484();
+                    int k = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     String s2 = aClass44_Sub3_Sub2_1132.method489();
                     Class5.aClass5Array100[k].aString141 = s2;
                     if(Class5.aClass5Array100[k].anInt106 == anIntArray1060[anInt1027])
@@ -1921,14 +1921,14 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 120) // Initialize Player
                 {
-                    anInt1115 = aClass44_Sub3_Sub2_1132.method484();
-                    anInt1089 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1115 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    anInt1089 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     anInt1170 = -1;
                     return true;
                 }
                 if(anInt1170 == 79)
                 {
-                    int l = aClass44_Sub3_Sub2_1132.method484();
+                    int l = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     int i10 = aClass44_Sub3_Sub2_1132.method485();
                     int i15 = aClass44_Sub3_Sub2_1132.method485();
                     Class5 class5_5 = Class5.aClass5Array100[l];
@@ -1939,7 +1939,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 252)
                 {
-                    int i1 = aClass44_Sub3_Sub2_1132.method484();
+                    int i1 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     method104(i1, -44196);
                     if(anInt1253 != -1)
                     {
@@ -1961,10 +1961,10 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 115)
                 {
-                    anInt1005 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1005 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     if(anInt1005 == 1)
                     {
-                        anInt901 = aClass44_Sub3_Sub2_1132.method484();
+                        anInt901 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     }
                     if(anInt1005 >= 2 && anInt1005 <= 6)
                     {
@@ -1994,20 +1994,20 @@ public class client extends RSApplet
                             anInt1252 = 128;
                         }
                         anInt1005 = 2;
-                        anInt1248 = aClass44_Sub3_Sub2_1132.method484();
-                        anInt1249 = aClass44_Sub3_Sub2_1132.method484();
-                        anInt1250 = aClass44_Sub3_Sub2_1132.method482();
+                        anInt1248 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                        anInt1249 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                        anInt1250 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     }
                     if(anInt1005 == 10)
                     {
-                        anInt909 = aClass44_Sub3_Sub2_1132.method484();
+                        anInt909 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     }
                     anInt1170 = -1;
                     return true;
                 }
                 if(anInt1170 == 211)
                 {
-                    int j1 = aClass44_Sub3_Sub2_1132.method484();
+                    int j1 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     int j10 = aClass44_Sub3_Sub2_1132.method485();
                     Class5 class5_3 = Class5.aClass5Array100[j1];
                     class5_3.anInt153 = j10;
@@ -2021,7 +2021,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 136)
                 {
-                    anInt848 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt848 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     anInt1170 = -1;
                     return true;
                 }
@@ -2033,7 +2033,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 28)
                 {
-                    int k1 = aClass44_Sub3_Sub2_1132.method484();
+                    int k1 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     Class5 class5 = Class5.aClass5Array100[k1];
                     for(int j15 = 0; j15 < class5.anIntArray101.length; j15++)
                     {
@@ -2045,8 +2045,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 144)
                 {
-                    anInt1037 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1038 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1037 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1038 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     for(int l1 = anInt1037; l1 < anInt1037 + 8; l1++)
                     {
                         for(int k10 = anInt1038; k10 < anInt1038 + 8; k10++)
@@ -2071,9 +2071,9 @@ public class client extends RSApplet
                 if(anInt1170 == 154)
                 {
                     aBoolean898 = true;
-                    int i2 = aClass44_Sub3_Sub2_1132.method482();
-                    int l10 = aClass44_Sub3_Sub2_1132.method487();
-                    int k15 = aClass44_Sub3_Sub2_1132.method482();
+                    int i2 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    int l10 = aClass44_Sub3_Sub2_1132.readDWord();
+                    int k15 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     anIntArray851[i2] = l10;
                     anIntArray1035[i2] = k15;
                     anIntArray1090[i2] = 1;
@@ -2088,7 +2088,7 @@ public class client extends RSApplet
                     return true;
                 }
                 if(anInt1170 == 181) {
-                    anInt833 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt833 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     if(anInt833 == anInt1027) {
                         if(anInt833 == 3) {
                             anInt1027 = 1;
@@ -2103,11 +2103,11 @@ public class client extends RSApplet
                 if(anInt1170 == 73)
                 {
                     aBoolean829 = true;
-                    anInt1118 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1119 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1120 = aClass44_Sub3_Sub2_1132.method484();
-                    anInt1121 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1122 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1118 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1119 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1120 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    anInt1121 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1122 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     if(anInt1122 >= 100)
                     {
                         anInt875 = anInt1118 * 128 + 64;
@@ -2126,8 +2126,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 244)
                 {
-                    int j2 = aClass44_Sub3_Sub2_1132.method484();
-                    int i11 = aClass44_Sub3_Sub2_1132.method484();
+                    int j2 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int i11 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     Class5.aClass5Array100[j2].anInt149 = 2;
                     Class5.aClass5Array100[j2].anInt150 = i11;
                     anInt1170 = -1;
@@ -2141,7 +2141,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 119)
                 {
-                    int k2 = aClass44_Sub3_Sub2_1132.method484();
+                    int k2 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     method104(k2, -44196);
                     if(anInt889 != -1)
                     {
@@ -2167,7 +2167,7 @@ public class client extends RSApplet
                 if(anInt1170 == 168)
                 {
                     long l2 = aClass44_Sub3_Sub2_1132.method488(true);
-                    int l15 = aClass44_Sub3_Sub2_1132.method482();
+                    int l15 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     String s7 = Class48.method554(Class48.method551(l2, true), true);
                     for(int i21 = 0; i21 < anInt1104; i21++)
                     {
@@ -2232,8 +2232,8 @@ public class client extends RSApplet
                 if(anInt1170 == 243)
                 {
                     long l3 = aClass44_Sub3_Sub2_1132.method488(true);
-                    int i16 = aClass44_Sub3_Sub2_1132.method487();
-                    int i19 = aClass44_Sub3_Sub2_1132.method482();
+                    int i16 = aClass44_Sub3_Sub2_1132.readDWord();
+                    int i19 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     boolean flag2 = false;
                     for(int i23 = 0; i23 < 100; i23++)
                     {
@@ -2286,10 +2286,10 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 208)
                 {
-                    int i3 = aClass44_Sub3_Sub2_1132.method482();
-                    int j11 = aClass44_Sub3_Sub2_1132.method482();
-                    int j16 = aClass44_Sub3_Sub2_1132.method482();
-                    int j19 = aClass44_Sub3_Sub2_1132.method482();
+                    int i3 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    int j11 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    int j16 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    int j19 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     aBooleanArray1209[i3] = true;
                     anIntArray976[i3] = j11;
                     anIntArray1206[i3] = j16;
@@ -2301,16 +2301,16 @@ public class client extends RSApplet
                 if(anInt1170 == 107) // Update Items
                 {
                     aBoolean898 = true;
-                    int j3 = aClass44_Sub3_Sub2_1132.method484();
+                    int j3 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     Class5 class5_1 = Class5.aClass5Array100[j3];
-                    int k16 = aClass44_Sub3_Sub2_1132.method484();
+                    int k16 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     for(int k19 = 0; k19 < k16; k19++)
                     {
-                        class5_1.anIntArray101[k19] = aClass44_Sub3_Sub2_1132.method484();
-                        int j21 = aClass44_Sub3_Sub2_1132.method482();
+                        class5_1.anIntArray101[k19] = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                        int j21 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                         if(j21 == 255)
                         {
-                            j21 = aClass44_Sub3_Sub2_1132.method487();
+                            j21 = aClass44_Sub3_Sub2_1132.readDWord();
                         }
                         class5_1.anIntArray102[k19] = j21;
                     }
@@ -2332,8 +2332,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 219)
                 {
-                    int i4 = aClass44_Sub3_Sub2_1132.method484();
-                    int k11 = aClass44_Sub3_Sub2_1132.method484();
+                    int i4 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int k11 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     if(anInt841 == i4 && anInt842 == k11 && anInt882 == 2)
                     {
                         anInt1170 = -1;
@@ -2487,8 +2487,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 63)
                 {
-                    int j4 = aClass44_Sub3_Sub2_1132.method484();
-                    int l11 = aClass44_Sub3_Sub2_1132.method482();
+                    int j4 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int l11 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     if(j4 == 65535)
                     {
                         j4 = -1;
@@ -2501,8 +2501,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 184)
                 {
-                    int k4 = aClass44_Sub3_Sub2_1132.method484();
-                    int i12 = aClass44_Sub3_Sub2_1132.method484();
+                    int k4 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int i12 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     Class5 class5_4 = Class5.aClass5Array100[k4];
                     if(class5_4 != null && class5_4.anInt107 == 0)
                     {
@@ -2521,17 +2521,17 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 204)
                 {
-                    anInt998 = aClass44_Sub3_Sub2_1132.method484() * 30;
+                    anInt998 = aClass44_Sub3_Sub2_1132.readUnsignedWord() * 30;
                     anInt1170 = -1;
                     return true;
                 }
                 if(anInt1170 == 253) // Welcome Screen
                 {
-                    anInt1231 = aClass44_Sub3_Sub2_1132.method487();
-                    anInt947 = aClass44_Sub3_Sub2_1132.method484();
-                    anInt869 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1023 = aClass44_Sub3_Sub2_1132.method484();
-                    anInt917 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1231 = aClass44_Sub3_Sub2_1132.readDWord();
+                    anInt947 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    anInt869 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1023 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    anInt917 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     if(anInt1231 != 0 && anInt1199 == -1)
                     {
                         signlink.dnslookup(Class48.method553(anInt1231, (byte)1));
@@ -2558,7 +2558,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 30)
                 {
-                    int l4 = aClass44_Sub3_Sub2_1132.method484();
+                    int l4 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     Class5.aClass5Array100[l4].anInt149 = 3;
                     if(aClass44_Sub3_Sub4_Sub6_Sub1_1047.aClass12_1694 == null)
                     {
@@ -2595,8 +2595,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 21)
                 {
-                    int i5 = aClass44_Sub3_Sub2_1132.method482();
-                    int k12 = aClass44_Sub3_Sub2_1132.method482();
+                    int i5 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    int k12 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     String s6 = aClass44_Sub3_Sub2_1132.method489();
                     if(i5 >= 1 && i5 <= 5)
                     {
@@ -2612,7 +2612,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 189)
                 {
-                    anInt1027 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1027 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     aBoolean898 = true;
                     aBoolean1154 = true;
                     anInt1170 = -1;
@@ -2687,9 +2687,9 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 18)
                 {
-                    int j5 = aClass44_Sub3_Sub2_1132.method484();
-                    int l12 = aClass44_Sub3_Sub2_1132.method484();
-                    int i17 = aClass44_Sub3_Sub2_1132.method484();
+                    int j5 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int l12 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int i17 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     if(l12 == 65535)
                     {
                         Class5.aClass5Array100[j5].anInt149 = 0;
@@ -2709,7 +2709,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 187)
                 {
-                    int k5 = aClass44_Sub3_Sub2_1132.method484();
+                    int k5 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     if(k5 == 65535)
                     {
                         k5 = -1;
@@ -2726,8 +2726,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 29)
                 {
-                    int l5 = aClass44_Sub3_Sub2_1132.method484();
-                    int i13 = aClass44_Sub3_Sub2_1132.method484();
+                    int l5 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int i13 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     if(aBoolean1057 && !aBoolean1235)
                     {
                         anInt1190 = l5;
@@ -2740,9 +2740,9 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 177)
                 {
-                    int i6 = aClass44_Sub3_Sub2_1132.method484();
-                    int j13 = aClass44_Sub3_Sub2_1132.method482();
-                    int j17 = aClass44_Sub3_Sub2_1132.method484();
+                    int i6 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int j13 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    int j17 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     if(aBoolean1050 && !aBoolean1235 && anInt968 < 50)
                     {
                         anIntArray846[anInt968] = i6;
@@ -2755,11 +2755,11 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 112)
                 {
-                    anInt1037 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1038 = aClass44_Sub3_Sub2_1132.method482();
-                    while(aClass44_Sub3_Sub2_1132.anInt1392 < anInt1169)
+                    anInt1037 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1038 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    while(aClass44_Sub3_Sub2_1132.currentOffset < anInt1169)
                     {
-                        int j6 = aClass44_Sub3_Sub2_1132.method482();
+                        int j6 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                         method67(aClass44_Sub3_Sub2_1132, -6563, j6);
                     }
                     anInt1170 = -1;
@@ -2781,8 +2781,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 160)
                 {
-                    int l6 = aClass44_Sub3_Sub2_1132.method484();
-                    int k13 = aClass44_Sub3_Sub2_1132.method484();
+                    int l6 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int k13 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     int k17 = k13 >> 10 & 0x1f;
                     int j20 = k13 >> 5 & 0x1f;
                     int j22 = k13 & 0x1f;
@@ -2808,8 +2808,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 222)
                 {
-                    int j7 = aClass44_Sub3_Sub2_1132.method484();
-                    int l13 = aClass44_Sub3_Sub2_1132.method484();
+                    int j7 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int l13 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     Class5.aClass5Array100[j7].anInt149 = 1;
                     Class5.aClass5Array100[j7].anInt150 = l13;
                     anInt1170 = -1;
@@ -2828,7 +2828,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 75)
                 {
-                    int l7 = aClass44_Sub3_Sub2_1132.method484();
+                    int l7 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     byte byte0 = aClass44_Sub3_Sub2_1132.method483();
                     anIntArray1024[l7] = byte0;
                     if(anIntArray1214[l7] != byte0)
@@ -2847,11 +2847,11 @@ public class client extends RSApplet
                 if(anInt1170 == 82)
                 {
                     aBoolean829 = true;
-                    anInt989 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt990 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt991 = aClass44_Sub3_Sub2_1132.method484();
-                    anInt992 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt993 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt989 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt990 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt991 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    anInt992 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt993 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     if(anInt993 >= 100)
                     {
                         int i8 = anInt989 * 128 + 64;
@@ -2877,7 +2877,7 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 81)
                 {
-                    int j8 = aClass44_Sub3_Sub2_1132.method484();
+                    int j8 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
                     method104(j8, -44196);
                     if(anInt889 != -1)
                     {
@@ -2894,21 +2894,21 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 138)
                 {
-                    int k8 = aClass44_Sub3_Sub2_1132.method484();
-                    boolean flag1 = aClass44_Sub3_Sub2_1132.method482() == 1;
+                    int k8 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    boolean flag1 = aClass44_Sub3_Sub2_1132.readUnsignedByte() == 1;
                     Class5.aClass5Array100[k8].aBoolean121 = flag1;
                     anInt1170 = -1;
                     return true;
                 }
                 if(anInt1170 == 247)
                 {
-                    anInt1112 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1112 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     anInt1170 = -1;
                     return true;
                 }
                 if(anInt1170 == 235)
                 {
-                    anInt1105 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1105 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     aBoolean898 = true;
                     anInt1170 = -1;
                     return true;
@@ -2916,20 +2916,20 @@ public class client extends RSApplet
                 if(anInt1170 == 76) // Update Item
                 {
                     aBoolean898 = true;
-                    int l8 = aClass44_Sub3_Sub2_1132.method484();
+                    int l8 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
 					System.out.println(l8);
                     Class5 class5_2 = Class5.aClass5Array100[l8];
-                    while(aClass44_Sub3_Sub2_1132.anInt1392 < anInt1169)
+                    while(aClass44_Sub3_Sub2_1132.currentOffset < anInt1169)
                     {
                         int j18 = aClass44_Sub3_Sub2_1132.method496();
 						System.out.println(j18);
-                        int l20 = aClass44_Sub3_Sub2_1132.method484();
+                        int l20 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
 						System.out.println(l20);
-                        int l22 = aClass44_Sub3_Sub2_1132.method482();
+                        int l22 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
 						System.out.println(l22);
                         if(l22 == 255)
                         {
-                            l22 = aClass44_Sub3_Sub2_1132.method487();
+                            l22 = aClass44_Sub3_Sub2_1132.readDWord();
                         }
                         if(j18 >= 0 && j18 < class5_2.anIntArray101.length)
                         {
@@ -2980,8 +2980,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 97)
                 {
-                    int k9 = aClass44_Sub3_Sub2_1132.method484();
-                    int k14 = aClass44_Sub3_Sub2_1132.method487();
+                    int k9 = aClass44_Sub3_Sub2_1132.readUnsignedWord();
+                    int k14 = aClass44_Sub3_Sub2_1132.readDWord();
                     anIntArray1024[k9] = k14;
                     if(anIntArray1214[k9] != k14)
                     {
@@ -2998,8 +2998,8 @@ public class client extends RSApplet
                 }
                 if(anInt1170 == 155)
                 {
-                    anInt1037 = aClass44_Sub3_Sub2_1132.method482();
-                    anInt1038 = aClass44_Sub3_Sub2_1132.method482();
+                    anInt1037 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
+                    anInt1038 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                     anInt1170 = -1;
                     return true;
                 }
@@ -3015,7 +3015,7 @@ public class client extends RSApplet
                 String s1 = "T2 - " + anInt1170 + "," + anInt1068 + "," + anInt1069 + " - " + anInt1169 + "," + (anInt1184 + ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0]) + "," + (anInt1185 + ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]) + " - ";
                 for(int l14 = 0; l14 < anInt1169 && l14 < 50; l14++)
                 {
-                    s1 = s1 + aClass44_Sub3_Sub2_1132.aByteArray1391[l14] + ",";
+                    s1 = s1 + aClass44_Sub3_Sub2_1132.buffer[l14] + ",";
                 }
                 signlink.reporterror(s1);
                 method22((byte)25);
@@ -3500,7 +3500,7 @@ public class client extends RSApplet
             {
                 drawLoadupText(false, 90, "Unpacking sounds");
                 byte abyte0[] = class47_5.method549("sounds.dat", null);
-                Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
+                Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
                 Class4.method175(true, class44_sub3_sub2);
             }
             drawLoadupText(false, 95, "Unpacking interfaces");
@@ -4761,7 +4761,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method42(byte byte0, int i, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method42(byte byte0, int i, Stream class44_sub3_sub2)
     {
         try
         {
@@ -5109,7 +5109,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method46(int i, byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2, int j, Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1)
+    public void method46(int i, byte byte0, Stream class44_sub3_sub2, int j, Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1)
     {
         try
         {
@@ -5121,16 +5121,16 @@ public class client extends RSApplet
             }
             if((i & 1) == 1) // Appearance
             {
-                int l = class44_sub3_sub2.method482();
+                int l = class44_sub3_sub2.readUnsignedByte();
                 byte abyte0[] = new byte[l];
-                Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(abyte0, 15787);
+                Stream class44_sub3_sub2_1 = new Stream(abyte0, 15787);
                 class44_sub3_sub2.method491((byte)95, abyte0, 0, l);
                 aClass44_Sub3_Sub2Array1230[j] = class44_sub3_sub2_1;
                 class44_sub3_sub4_sub6_sub1.method537(false, class44_sub3_sub2_1);
             }
             if((i & 2) == 2)
             {
-                int i1 = class44_sub3_sub2.method484();
+                int i1 = class44_sub3_sub2.readUnsignedWord();
                 if(i1 == 65535)
                 {
                     i1 = -1;
@@ -5139,7 +5139,7 @@ public class client extends RSApplet
                 {
                     class44_sub3_sub4_sub6_sub1.anInt1647 = 0;
                 }
-                int j2 = class44_sub3_sub2.method482();
+                int j2 = class44_sub3_sub2.readUnsignedByte();
                 if(i1 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1643 && i1 != -1)
                 {
                     int j3 = Class26.aClass26Array508[i1].anInt522;
@@ -5167,7 +5167,7 @@ public class client extends RSApplet
             }
             if((i & 4) == 4)
             {
-                class44_sub3_sub4_sub6_sub1.anInt1637 = class44_sub3_sub2.method484();
+                class44_sub3_sub4_sub6_sub1.anInt1637 = class44_sub3_sub2.readUnsignedWord();
                 if(((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1637 == 65535)
                 {
                     class44_sub3_sub4_sub6_sub1.anInt1637 = -1;
@@ -5191,24 +5191,24 @@ public class client extends RSApplet
             }
             if((i & 0x10) == 16)
             {
-                int j1 = class44_sub3_sub2.method482();
-                int k2 = class44_sub3_sub2.method482();
+                int j1 = class44_sub3_sub2.readUnsignedByte();
+                int k2 = class44_sub3_sub2.readUnsignedByte();
                 class44_sub3_sub4_sub6_sub1.method536(k2, anInt1240, j1, false);
                 class44_sub3_sub4_sub6_sub1.anInt1634 = anInt1240 + 300;
-                class44_sub3_sub4_sub6_sub1.anInt1635 = class44_sub3_sub2.method482();
-                class44_sub3_sub4_sub6_sub1.anInt1636 = class44_sub3_sub2.method482();
+                class44_sub3_sub4_sub6_sub1.anInt1635 = class44_sub3_sub2.readUnsignedByte();
+                class44_sub3_sub4_sub6_sub1.anInt1636 = class44_sub3_sub2.readUnsignedByte();
             }
             if((i & 0x20) == 32)
             {
-                class44_sub3_sub4_sub6_sub1.anInt1638 = class44_sub3_sub2.method484();
-                class44_sub3_sub4_sub6_sub1.anInt1639 = class44_sub3_sub2.method484();
+                class44_sub3_sub4_sub6_sub1.anInt1638 = class44_sub3_sub2.readUnsignedWord();
+                class44_sub3_sub4_sub6_sub1.anInt1639 = class44_sub3_sub2.readUnsignedWord();
             }
             if((i & 0x40) == 64)
             {
-                int k1 = class44_sub3_sub2.method484();
-                int l2 = class44_sub3_sub2.method482();
-                int k3 = class44_sub3_sub2.method482();
-                int l3 = class44_sub3_sub2.anInt1392;
+                int k1 = class44_sub3_sub2.readUnsignedWord();
+                int l2 = class44_sub3_sub2.readUnsignedByte();
+                int k3 = class44_sub3_sub2.readUnsignedByte();
+                int l3 = class44_sub3_sub2.currentOffset;
                 if(class44_sub3_sub4_sub6_sub1.aString1672 != null && class44_sub3_sub4_sub6_sub1.aBoolean1673)
                 {
                     long l4 = Class48.method550(class44_sub3_sub4_sub6_sub1.aString1672);
@@ -5253,12 +5253,12 @@ public class client extends RSApplet
                         }
                     }
                 }
-                class44_sub3_sub2.anInt1392 = l3 + k3;
+                class44_sub3_sub2.currentOffset = l3 + k3;
             }
             if((i & 0x100) == 256)
             {
-                class44_sub3_sub4_sub6_sub1.anInt1648 = class44_sub3_sub2.method484();
-                int l1 = class44_sub3_sub2.method487();
+                class44_sub3_sub4_sub6_sub1.anInt1648 = class44_sub3_sub2.readUnsignedWord();
+                int l1 = class44_sub3_sub2.readDWord();
                 class44_sub3_sub4_sub6_sub1.anInt1652 = l1 >> 16;
                 class44_sub3_sub4_sub6_sub1.anInt1651 = anInt1240 + (l1 & 0xffff);
                 class44_sub3_sub4_sub6_sub1.anInt1649 = 0;
@@ -5274,23 +5274,23 @@ public class client extends RSApplet
             }
             if((i & 0x200) == 512)
             {
-                class44_sub3_sub4_sub6_sub1.anInt1653 = class44_sub3_sub2.method482();
-                class44_sub3_sub4_sub6_sub1.anInt1655 = class44_sub3_sub2.method482();
-                class44_sub3_sub4_sub6_sub1.anInt1654 = class44_sub3_sub2.method482();
-                class44_sub3_sub4_sub6_sub1.anInt1656 = class44_sub3_sub2.method482();
-                class44_sub3_sub4_sub6_sub1.anInt1657 = class44_sub3_sub2.method484() + anInt1240;
-                class44_sub3_sub4_sub6_sub1.anInt1658 = class44_sub3_sub2.method484() + anInt1240;
-                class44_sub3_sub4_sub6_sub1.anInt1659 = class44_sub3_sub2.method482();
+                class44_sub3_sub4_sub6_sub1.anInt1653 = class44_sub3_sub2.readUnsignedByte();
+                class44_sub3_sub4_sub6_sub1.anInt1655 = class44_sub3_sub2.readUnsignedByte();
+                class44_sub3_sub4_sub6_sub1.anInt1654 = class44_sub3_sub2.readUnsignedByte();
+                class44_sub3_sub4_sub6_sub1.anInt1656 = class44_sub3_sub2.readUnsignedByte();
+                class44_sub3_sub4_sub6_sub1.anInt1657 = class44_sub3_sub2.readUnsignedWord() + anInt1240;
+                class44_sub3_sub4_sub6_sub1.anInt1658 = class44_sub3_sub2.readUnsignedWord() + anInt1240;
+                class44_sub3_sub4_sub6_sub1.anInt1659 = class44_sub3_sub2.readUnsignedByte();
                 class44_sub3_sub4_sub6_sub1.method534(false);
             }
             if((i & 0x400) == 1024)
             {
-                int i2 = class44_sub3_sub2.method482();
-                int i3 = class44_sub3_sub2.method482();
+                int i2 = class44_sub3_sub2.readUnsignedByte();
+                int i3 = class44_sub3_sub2.readUnsignedByte();
                 class44_sub3_sub4_sub6_sub1.method536(i3, anInt1240, i2, false);
                 class44_sub3_sub4_sub6_sub1.anInt1634 = anInt1240 + 300;
-                class44_sub3_sub4_sub6_sub1.anInt1635 = class44_sub3_sub2.method482();
-                class44_sub3_sub4_sub6_sub1.anInt1636 = class44_sub3_sub2.method482();
+                class44_sub3_sub4_sub6_sub1.anInt1635 = class44_sub3_sub2.readUnsignedByte();
+                class44_sub3_sub4_sub6_sub1.anInt1636 = class44_sub3_sub2.readUnsignedByte();
                 return;
             }
         }
@@ -6122,11 +6122,11 @@ public class client extends RSApplet
                     {
                         aClass44_Sub3_Sub2_850.method471(-34003, 229);
                         aClass44_Sub3_Sub2_850.method472(0);
-                        int j2 = aClass44_Sub3_Sub2_850.anInt1392;
+                        int j2 = aClass44_Sub3_Sub2_850.currentOffset;
                         int j3 = 0;
                         for(int j4 = 0; j4 < aClass10_866.anInt259; j4++)
                         {
-                            if(j2 - aClass44_Sub3_Sub2_850.anInt1392 >= 240)
+                            if(j2 - aClass44_Sub3_Sub2_850.currentOffset >= 240)
                             {
                                 break;
                             }
@@ -6186,7 +6186,7 @@ public class client extends RSApplet
                                 }
                             }
                         }
-                        aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.anInt1392 - j2, anInt1152);
+                        aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.currentOffset - j2, anInt1152);
                         if(j3 >= aClass10_866.anInt259)
                         {
                             aClass10_866.anInt259 = 0;
@@ -6524,10 +6524,10 @@ public class client extends RSApplet
             }
             try
             {
-                if(aClass7_1099 != null && aClass44_Sub3_Sub2_850.anInt1392 > 0)
+                if(aClass7_1099 != null && aClass44_Sub3_Sub2_850.currentOffset > 0)
                 {
-                    aClass7_1099.method195(0, aClass44_Sub3_Sub2_850.aByteArray1391, 2, aClass44_Sub3_Sub2_850.anInt1392);
-                    aClass44_Sub3_Sub2_850.anInt1392 = 0;
+                    aClass7_1099.method195(0, aClass44_Sub3_Sub2_850.buffer, 2, aClass44_Sub3_Sub2_850.currentOffset);
+                    aClass44_Sub3_Sub2_850.currentOffset = 0;
                     anInt1172 = 0;
                     return;
                 }
@@ -6550,7 +6550,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method57(int i, byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method57(int i, byte byte0, Stream class44_sub3_sub2)
     {
         try
         {
@@ -6572,9 +6572,9 @@ public class client extends RSApplet
             {
                 anInt1074 = 376;
             }
-            if(class44_sub3_sub2.anInt1392 != i)
+            if(class44_sub3_sub2.currentOffset != i)
             {
-                signlink.reporterror("Error packet size mismatch in getplayer pos:" + class44_sub3_sub2.anInt1392 + " psize:" + i);
+                signlink.reporterror("Error packet size mismatch in getplayer pos:" + class44_sub3_sub2.currentOffset + " psize:" + i);
                 throw new RuntimeException("eek");
             }
             for(int l = 0; l < anInt1226; l++)
@@ -7138,7 +7138,7 @@ public class client extends RSApplet
             int j = 0;
             while(i >= 0)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             if(anInt998 != 0)
             {
@@ -7408,7 +7408,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method67(Class44_Sub3_Sub2 class44_sub3_sub2, int i, int j)
+    public void method67(Stream class44_sub3_sub2, int i, int j)
     {
         try
         {
@@ -7420,10 +7420,10 @@ public class client extends RSApplet
             }
             if(j == 90 || j == 194)
             {
-                int l = class44_sub3_sub2.method482();
+                int l = class44_sub3_sub2.readUnsignedByte();
                 int j3 = anInt1037 + (l >> 4 & 7);
                 int l5 = anInt1038 + (l & 7);
-                int j8 = class44_sub3_sub2.method482();
+                int j8 = class44_sub3_sub2.readUnsignedByte();
                 int l10 = j8 >> 2;
                 int i13 = j8 & 3;
                 int i15 = anIntArray1142[l10];
@@ -7433,7 +7433,7 @@ public class client extends RSApplet
                     j16 = -1;
                 } else
                 {
-                    j16 = class44_sub3_sub2.method484();
+                    j16 = class44_sub3_sub2.readUnsignedWord();
                 }
                 if(j3 >= 0 && l5 >= 0 && j3 < 104 && l5 < 104)
                 {
@@ -7443,14 +7443,14 @@ public class client extends RSApplet
             }
             if(j == 106)
             {
-                int i1 = class44_sub3_sub2.method482();
+                int i1 = class44_sub3_sub2.readUnsignedByte();
                 int k3 = anInt1037 + (i1 >> 4 & 7);
                 int i6 = anInt1038 + (i1 & 7);
-                int k8 = class44_sub3_sub2.method482();
+                int k8 = class44_sub3_sub2.readUnsignedByte();
                 int i11 = k8 >> 2;
                 int j13 = k8 & 3;
                 int j15 = anIntArray1142[i11];
-                int k16 = class44_sub3_sub2.method484();
+                int k16 = class44_sub3_sub2.readUnsignedWord();
                 if(k3 >= 0 && i6 >= 0 && k3 < 103 && i6 < 103)
                 {
                     int j17 = anIntArrayArrayArray865[anInt1155][k3][i6];
@@ -7506,11 +7506,11 @@ public class client extends RSApplet
             }
             if(j == 60)
             {
-                int j1 = class44_sub3_sub2.method482();
+                int j1 = class44_sub3_sub2.readUnsignedByte();
                 int l3 = anInt1037 + (j1 >> 4 & 7);
                 int j6 = anInt1038 + (j1 & 7);
-                int l8 = class44_sub3_sub2.method484();
-                int j11 = class44_sub3_sub2.method484();
+                int l8 = class44_sub3_sub2.readUnsignedWord();
+                int j11 = class44_sub3_sub2.readUnsignedWord();
                 if(l3 >= 0 && j6 >= 0 && l3 < 104 && j6 < 104)
                 {
                     Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2 = new Class44_Sub3_Sub4_Sub2();
@@ -7527,10 +7527,10 @@ public class client extends RSApplet
             }
             if(j == 71)
             {
-                int k1 = class44_sub3_sub2.method482();
+                int k1 = class44_sub3_sub2.readUnsignedByte();
                 int i4 = anInt1037 + (k1 >> 4 & 7);
                 int k6 = anInt1038 + (k1 & 7);
-                int i9 = class44_sub3_sub2.method484();
+                int i9 = class44_sub3_sub2.readUnsignedWord();
                 if(i4 >= 0 && k6 >= 0 && i4 < 104 && k6 < 104)
                 {
                     Class28 class28 = aClass28ArrayArrayArray1146[anInt1155][i4][k6];
@@ -7556,19 +7556,19 @@ public class client extends RSApplet
             }
             if(j == 87)
             {
-                int l1 = class44_sub3_sub2.method482();
+                int l1 = class44_sub3_sub2.readUnsignedByte();
                 int j4 = anInt1037 + (l1 >> 4 & 7);
                 int l6 = anInt1038 + (l1 & 7);
                 int j9 = j4 + class44_sub3_sub2.method483();
                 int k11 = l6 + class44_sub3_sub2.method483();
                 int k13 = class44_sub3_sub2.method485();
-                int k15 = class44_sub3_sub2.method484();
-                int l16 = class44_sub3_sub2.method482() * 4;
-                int k17 = class44_sub3_sub2.method482() * 4;
-                int j18 = class44_sub3_sub2.method484();
-                int i19 = class44_sub3_sub2.method484();
-                int l19 = class44_sub3_sub2.method482();
-                int i20 = class44_sub3_sub2.method482();
+                int k15 = class44_sub3_sub2.readUnsignedWord();
+                int l16 = class44_sub3_sub2.readUnsignedByte() * 4;
+                int k17 = class44_sub3_sub2.readUnsignedByte() * 4;
+                int j18 = class44_sub3_sub2.readUnsignedWord();
+                int i19 = class44_sub3_sub2.readUnsignedWord();
+                int l19 = class44_sub3_sub2.readUnsignedByte();
+                int i20 = class44_sub3_sub2.readUnsignedByte();
                 if(j4 >= 0 && l6 >= 0 && j4 < 104 && l6 < 104 && j9 >= 0 && k11 >= 0 && j9 < 104 && k11 < 104)
                 {
                     j4 = j4 * 128 + 64;
@@ -7583,12 +7583,12 @@ public class client extends RSApplet
             }
             if(j == 233)
             {
-                int i2 = class44_sub3_sub2.method482();
+                int i2 = class44_sub3_sub2.readUnsignedByte();
                 int k4 = anInt1037 + (i2 >> 4 & 7);
                 int i7 = anInt1038 + (i2 & 7);
-                int k9 = class44_sub3_sub2.method484();
-                int l11 = class44_sub3_sub2.method482();
-                int l13 = class44_sub3_sub2.method484();
+                int k9 = class44_sub3_sub2.readUnsignedWord();
+                int l11 = class44_sub3_sub2.readUnsignedByte();
+                int l13 = class44_sub3_sub2.readUnsignedWord();
                 if(k4 >= 0 && i7 >= 0 && k4 < 104 && i7 < 104)
                 {
                     k4 = k4 * 128 + 64;
@@ -7600,12 +7600,12 @@ public class client extends RSApplet
             }
             if(j == 176)
             {
-                int j2 = class44_sub3_sub2.method482();
+                int j2 = class44_sub3_sub2.readUnsignedByte();
                 int l4 = anInt1037 + (j2 >> 4 & 7);
                 int j7 = anInt1038 + (j2 & 7);
-                int l9 = class44_sub3_sub2.method484();
-                int i12 = class44_sub3_sub2.method484();
-                int i14 = class44_sub3_sub2.method484();
+                int l9 = class44_sub3_sub2.readUnsignedWord();
+                int i12 = class44_sub3_sub2.readUnsignedWord();
+                int i14 = class44_sub3_sub2.readUnsignedWord();
                 if(l4 >= 0 && j7 >= 0 && l4 < 104 && j7 < 104 && i14 != anInt1115)
                 {
                     Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2_2 = new Class44_Sub3_Sub4_Sub2();
@@ -7622,17 +7622,17 @@ public class client extends RSApplet
             }
             if(j == 83)
             {
-                int k2 = class44_sub3_sub2.method482();
+                int k2 = class44_sub3_sub2.readUnsignedByte();
                 int i5 = anInt1037 + (k2 >> 4 & 7);
                 int k7 = anInt1038 + (k2 & 7);
-                int i10 = class44_sub3_sub2.method482();
+                int i10 = class44_sub3_sub2.readUnsignedByte();
                 int j12 = i10 >> 2;
                 int j14 = i10 & 3;
                 int l15 = anIntArray1142[j12];
-                int i17 = class44_sub3_sub2.method484();
-                int l17 = class44_sub3_sub2.method484();
-                int k18 = class44_sub3_sub2.method484();
-                int j19 = class44_sub3_sub2.method484();
+                int i17 = class44_sub3_sub2.readUnsignedWord();
+                int l17 = class44_sub3_sub2.readUnsignedWord();
+                int k18 = class44_sub3_sub2.readUnsignedWord();
+                int j19 = class44_sub3_sub2.readUnsignedWord();
                 byte byte0 = class44_sub3_sub2.method483();
                 byte byte1 = class44_sub3_sub2.method483();
                 byte byte2 = class44_sub3_sub2.method483();
@@ -7690,12 +7690,12 @@ public class client extends RSApplet
             }
             if(j == 117)
             {
-                int l2 = class44_sub3_sub2.method482();
+                int l2 = class44_sub3_sub2.readUnsignedByte();
                 int j5 = anInt1037 + (l2 >> 4 & 7);
                 int l7 = anInt1038 + (l2 & 7);
-                int j10 = class44_sub3_sub2.method484();
-                int k12 = class44_sub3_sub2.method484();
-                int k14 = class44_sub3_sub2.method484();
+                int j10 = class44_sub3_sub2.readUnsignedWord();
+                int k12 = class44_sub3_sub2.readUnsignedWord();
+                int k14 = class44_sub3_sub2.readUnsignedWord();
                 if(j5 >= 0 && l7 >= 0 && j5 < 104 && l7 < 104)
                 {
                     Class28 class28_1 = aClass28ArrayArrayArray1146[anInt1155][j5][l7];
@@ -7717,11 +7717,11 @@ public class client extends RSApplet
             }
             if(j == 91)
             {
-                int i3 = class44_sub3_sub2.method482();
+                int i3 = class44_sub3_sub2.readUnsignedByte();
                 int k5 = anInt1037 + (i3 >> 4 & 7);
                 int i8 = anInt1038 + (i3 & 7);
-                int k10 = class44_sub3_sub2.method484();
-                int l12 = class44_sub3_sub2.method482();
+                int k10 = class44_sub3_sub2.readUnsignedWord();
+                int l12 = class44_sub3_sub2.readUnsignedByte();
                 int l14 = l12 >> 4 & 0xf;
                 int i16 = l12 & 7;
                 if(((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0] >= k5 - l14 && ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0] <= k5 + l14 && ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0] >= i8 - l14 && ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0] <= i8 + l14 && aBoolean1050 && !aBoolean1235 && anInt968 < 50)
@@ -7867,7 +7867,7 @@ public class client extends RSApplet
                 anInt1167 = 0;
                 aClass44_Sub3_Sub2_850.method471(-34003, 130);
                 aClass44_Sub3_Sub2_850.method472(0);
-                int i = aClass44_Sub3_Sub2_850.anInt1392;
+                int i = aClass44_Sub3_Sub2_850.currentOffset;
                 if((int)(Math.random() * 2D) == 0)
                 {
                     aClass44_Sub3_Sub2_850.method473(11499);
@@ -7890,7 +7890,7 @@ public class client extends RSApplet
                 }
                 aClass44_Sub3_Sub2_850.method472((int)(Math.random() * 256D));
                 aClass44_Sub3_Sub2_850.method473(22990);
-                aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.anInt1392 - i, anInt1152);
+                aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.currentOffset - i, anInt1152);
                 return;
             }
         }
@@ -7921,7 +7921,7 @@ public class client extends RSApplet
             }
             if(byte0 != -127)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                 return;
             }
         }
@@ -7932,7 +7932,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method71(Class44_Sub3_Sub2 class44_sub3_sub2, boolean flag, int i)
+    public void method71(Stream class44_sub3_sub2, boolean flag, int i)
     {
         try
         {
@@ -7944,10 +7944,10 @@ public class client extends RSApplet
             {
                 int k = anIntArray1229[j];
                 Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
-                int l = class44_sub3_sub2.method482();
+                int l = class44_sub3_sub2.readUnsignedByte();
                 if((l & 0x80) == 128)
                 {
-                    l += class44_sub3_sub2.method482() << 8;
+                    l += class44_sub3_sub2.readUnsignedByte() << 8;
                 }
                 method46(l, (byte)-106, class44_sub3_sub2, k, class44_sub3_sub4_sub6_sub1);
             }
@@ -8218,7 +8218,7 @@ public class client extends RSApplet
                 anInt1207 = 0;
                 aClass44_Sub3_Sub2_850.method471(-34003, 154);
                 aClass44_Sub3_Sub2_850.method472(0);
-                int i2 = aClass44_Sub3_Sub2_850.anInt1392;
+                int i2 = aClass44_Sub3_Sub2_850.currentOffset;
                 if((int)(Math.random() * 2D) == 0)
                 {
                     aClass44_Sub3_Sub2_850.method473(16791);
@@ -8235,7 +8235,7 @@ public class client extends RSApplet
                 }
                 aClass44_Sub3_Sub2_850.method473(46628);
                 aClass44_Sub3_Sub2_850.method472((int)(Math.random() * 256D));
-                aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.anInt1392 - i2, anInt1152);
+                aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.currentOffset - i2, anInt1152);
             }
             if(k1 == 10 || k1 == 11 || k1 == 22)
             {
@@ -8631,7 +8631,7 @@ public class client extends RSApplet
         {
             if(!flag)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             signlink.wavevol = i;
             return;
@@ -9040,7 +9040,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method90(int i, Class44_Sub3_Sub2 class44_sub3_sub2, int j)
+    public void method90(int i, Stream class44_sub3_sub2, int j)
     {
         try
         {
@@ -9161,7 +9161,7 @@ public class client extends RSApplet
         {
             if(flag)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             do
             {
@@ -9219,7 +9219,7 @@ public class client extends RSApplet
                         }
                     }
                 } while(class44_sub3_sub3.anInt1405 != 93 || !aClass43_Sub1_814.method389(class44_sub3_sub3.anInt1406, anInt857));
-                Class3.method160(aClass43_Sub1_814, new Class44_Sub3_Sub2(class44_sub3_sub3.aByteArray1407, 15787), anInt1247);
+                Class3.method160(aClass43_Sub1_814, new Stream(class44_sub3_sub3.aByteArray1407, 15787), anInt1247);
             } while(true);
         }
         catch(RuntimeException runtimeexception)
@@ -9486,10 +9486,10 @@ public class client extends RSApplet
             aClass7_1099 = new Class7(method34(43594 + anInt1233), 32596, this);
             long l = Class48.method550(s);
             int i = (int)(l >> 16 & 31L);
-            aClass44_Sub3_Sub2_850.anInt1392 = 0;
+            aClass44_Sub3_Sub2_850.currentOffset = 0;
             aClass44_Sub3_Sub2_850.method472(14);
             aClass44_Sub3_Sub2_850.method472(i);
-            aClass7_1099.method195(0, aClass44_Sub3_Sub2_850.aByteArray1391, 2, 2);
+            aClass7_1099.method195(0, aClass44_Sub3_Sub2_850.buffer, 2, 2);
             for(int j = 0; j < 8; j++)
             {
                 aClass7_1099.method192();
@@ -9497,15 +9497,15 @@ public class client extends RSApplet
             int k = aClass7_1099.method192();
             if(k == 0)
             {
-                aClass7_1099.method194(aClass44_Sub3_Sub2_1132.aByteArray1391, 0, 8);
-                aClass44_Sub3_Sub2_1132.anInt1392 = 0;
+                aClass7_1099.method194(aClass44_Sub3_Sub2_1132.buffer, 0, 8);
+                aClass44_Sub3_Sub2_1132.currentOffset = 0;
                 aLong813 = aClass44_Sub3_Sub2_1132.method488(true);
                 int ai[] = new int[4];
                 ai[0] = (int)(Math.random() * 99999999D);
                 ai[1] = (int)(Math.random() * 99999999D);
                 ai[2] = (int)(aLong813 >> 32);
                 ai[3] = (int)aLong813;
-                aClass44_Sub3_Sub2_850.anInt1392 = 0;
+                aClass44_Sub3_Sub2_850.currentOffset = 0;
                 aClass44_Sub3_Sub2_850.method472(10);
                 aClass44_Sub3_Sub2_850.method476(ai[0]);
                 aClass44_Sub3_Sub2_850.method476(ai[1]);
@@ -9515,7 +9515,7 @@ public class client extends RSApplet
                 aClass44_Sub3_Sub2_850.method479(s);
                 aClass44_Sub3_Sub2_850.method479(s1);
                 aClass44_Sub3_Sub2_850.method497(/*aBigInteger1135, aBigInteger1045,*/ 0 );
-                aClass44_Sub3_Sub2_822.anInt1392 = 0;
+                aClass44_Sub3_Sub2_822.currentOffset = 0;
                 if(flag)
                 {
                     aClass44_Sub3_Sub2_822.method472(18);
@@ -9523,7 +9523,7 @@ public class client extends RSApplet
                 {
                     aClass44_Sub3_Sub2_822.method472(16);
                 }
-                aClass44_Sub3_Sub2_822.method472(aClass44_Sub3_Sub2_850.anInt1392 + 36 + 1 + 1 + 2);
+                aClass44_Sub3_Sub2_822.method472(aClass44_Sub3_Sub2_850.currentOffset + 36 + 1 + 1 + 2);
                 aClass44_Sub3_Sub2_822.method472(255);
                 aClass44_Sub3_Sub2_822.method473(289);
                 aClass44_Sub3_Sub2_822.method472(aBoolean1235 ? 1 : 0);
@@ -9531,14 +9531,14 @@ public class client extends RSApplet
                 {
                     aClass44_Sub3_Sub2_822.method476(anIntArray1051[k1]);
                 }
-                aClass44_Sub3_Sub2_822.method480(aClass44_Sub3_Sub2_850.aByteArray1391, aClass44_Sub3_Sub2_850.anInt1392, 0, true);
+                aClass44_Sub3_Sub2_822.method480(aClass44_Sub3_Sub2_850.buffer, aClass44_Sub3_Sub2_850.currentOffset, 0, true);
                 aClass44_Sub3_Sub2_850.aClass46_1396 = new Class46(ai, (byte)-23);
                 for(int i2 = 0; i2 < 4; i2++)
                 {
                     ai[i2] += 50;
                 }
                 aClass46_927 = new Class46(ai, (byte)-23);
-                aClass7_1099.method195(0, aClass44_Sub3_Sub2_822.aByteArray1391, 2, aClass44_Sub3_Sub2_822.anInt1392);
+                aClass7_1099.method195(0, aClass44_Sub3_Sub2_822.buffer, 2, aClass44_Sub3_Sub2_822.currentOffset);
                 k = aClass7_1099.method192();
             }
             if(k == 1)
@@ -9563,8 +9563,8 @@ public class client extends RSApplet
                 super.awtFocus = true;
                 aBoolean934 = true;
                 aBoolean863 = true;
-                aClass44_Sub3_Sub2_850.anInt1392 = 0;
-                aClass44_Sub3_Sub2_1132.anInt1392 = 0;
+                aClass44_Sub3_Sub2_850.currentOffset = 0;
+                aClass44_Sub3_Sub2_1132.currentOffset = 0;
                 anInt1170 = -1;
                 anInt1067 = -1;
                 anInt1068 = -1;
@@ -9734,8 +9734,8 @@ public class client extends RSApplet
             if(k == 15)
             {
                 aBoolean863 = true;
-                aClass44_Sub3_Sub2_850.anInt1392 = 0;
-                aClass44_Sub3_Sub2_1132.anInt1392 = 0;
+                aClass44_Sub3_Sub2_850.currentOffset = 0;
+                aClass44_Sub3_Sub2_1132.currentOffset = 0;
                 anInt1170 = -1;
                 anInt1067 = -1;
                 anInt1068 = -1;
@@ -9810,7 +9810,7 @@ public class client extends RSApplet
         {
             if(byte0 != 122)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             if(anInt1014 == 0)
             {
@@ -10101,7 +10101,7 @@ public class client extends RSApplet
         throw new RuntimeException();
     }
 
-    public void method103(int i, Class44_Sub3_Sub2 class44_sub3_sub2, int j)
+    public void method103(int i, Stream class44_sub3_sub2, int j)
     {
         try
         {
@@ -10214,7 +10214,7 @@ public class client extends RSApplet
         throw new RuntimeException();
     }
 
-    public void method105(boolean flag, int i, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method105(boolean flag, int i, Stream class44_sub3_sub2)
     {
         try
         {
@@ -10225,7 +10225,7 @@ public class client extends RSApplet
             method140(0, class44_sub3_sub2, i);
             if(!flag)
             {
-                anInt1170 = class44_sub3_sub2.method482();
+                anInt1170 = class44_sub3_sub2.readUnsignedByte();
             }
             for(int j = 0; j < anInt940; j++)
             {
@@ -10236,9 +10236,9 @@ public class client extends RSApplet
                     aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k] = null;
                 }
             }
-            if(class44_sub3_sub2.anInt1392 != i)
+            if(class44_sub3_sub2.currentOffset != i)
             {
-                signlink.reporterror(aString1071 + " size mismatch in getnpcpos - pos:" + class44_sub3_sub2.anInt1392 + " psize:" + i);
+                signlink.reporterror(aString1071 + " size mismatch in getnpcpos - pos:" + class44_sub3_sub2.currentOffset + " psize:" + i);
                 throw new RuntimeException("eek");
             }
             for(int l = 0; l < anInt1009; l++)
@@ -10431,12 +10431,12 @@ public class client extends RSApplet
                             }
                         } else
                         {
-                            Class44_Sub3_Sub2 class44_sub3_sub2 = Class4.method176(anIntArray1006[j], 7, anIntArray846[j]);
-                            if(System.currentTimeMillis() + (long)(class44_sub3_sub2.anInt1392 / 22) > aLong1048 + (long)(anInt1028 / 22))
+                            Stream class44_sub3_sub2 = Class4.method176(anIntArray1006[j], 7, anIntArray846[j]);
+                            if(System.currentTimeMillis() + (long)(class44_sub3_sub2.currentOffset / 22) > aLong1048 + (long)(anInt1028 / 22))
                             {
-                                anInt1028 = class44_sub3_sub2.anInt1392;
+                                anInt1028 = class44_sub3_sub2.currentOffset;
                                 aLong1048 = System.currentTimeMillis();
-                                if(method146(class44_sub3_sub2.aByteArray1391, 0, class44_sub3_sub2.anInt1392))
+                                if(method146(class44_sub3_sub2.buffer, 0, class44_sub3_sub2.currentOffset))
                                 {
                                     anInt900 = anIntArray846[j];
                                     anInt1177 = anIntArray1006[j];
@@ -10568,7 +10568,7 @@ public class client extends RSApplet
             int i = anInt1226;
             if(!flag)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             if(flag1)
             {
@@ -11012,7 +11012,7 @@ public class client extends RSApplet
         {
             if(i != -34028)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
             }
             if(class44_sub3_sub4_sub6.anInt1615 < 128 || class44_sub3_sub4_sub6.anInt1616 < 128 || class44_sub3_sub4_sub6.anInt1615 >= 13184 || class44_sub3_sub4_sub6.anInt1616 >= 13184)
             {
@@ -11130,7 +11130,7 @@ public class client extends RSApplet
             class44_sub3_sub4_sub6.anInt1617 = class44_sub3_sub4_sub6.anInt1662;
             if(i != 37395)
             {
-                anInt1170 = aClass44_Sub3_Sub2_1132.method482();
+                anInt1170 = aClass44_Sub3_Sub2_1132.readUnsignedByte();
                 return;
             }
         }
@@ -12087,8 +12087,8 @@ public class client extends RSApplet
                     DataInputStream datainputstream = method77(s1 + k);
                     byte abyte1[] = new byte[6];
                     datainputstream.readFully(abyte1, 0, 6);
-                    Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte1, 15787);
-                    class44_sub3_sub2.anInt1392 = 3;
+                    Stream class44_sub3_sub2 = new Stream(abyte1, 15787);
+                    class44_sub3_sub2.currentOffset = 3;
                     int i2 = class44_sub3_sub2.method486() + 6;
                     int j2 = 6;
                     abyte0 = new byte[i2];
@@ -12562,7 +12562,7 @@ public class client extends RSApplet
         throw new RuntimeException();
     }
 
-    public void method130(int i, Class44_Sub3_Sub2 class44_sub3_sub2, boolean flag)
+    public void method130(int i, Stream class44_sub3_sub2, boolean flag)
     {
         try
         {
@@ -12575,7 +12575,7 @@ public class client extends RSApplet
             int k = class44_sub3_sub2.method493(2, false);
             if(flag)
             {
-                anInt1170 = class44_sub3_sub2.method482();
+                anInt1170 = class44_sub3_sub2.readUnsignedByte();
             }
             if(k == 0)
             {
@@ -12844,10 +12844,10 @@ public class client extends RSApplet
                         {
                             aClass44_Sub3_Sub2_850.method471(-34003, 107);
                             aClass44_Sub3_Sub2_850.method472(0);
-                            int k = aClass44_Sub3_Sub2_850.anInt1392;
+                            int k = aClass44_Sub3_Sub2_850.currentOffset;
                             aClass44_Sub3_Sub2_850.method478(aLong967, true);
                             Class49.method557(aString1007, aClass44_Sub3_Sub2_850, 991);
-                            aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.anInt1392 - k, anInt1152);
+                            aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.currentOffset - k, anInt1152);
                             aString1007 = Class49.method558(aString1007, anInt1242);
                             aString1007 = Class41.method352(aString1007, anInt1242);
                             method17(6, (byte)-115, aString1007, Class48.method554(Class48.method551(aLong967, true), true));
@@ -13034,11 +13034,11 @@ public class client extends RSApplet
                             }
                             aClass44_Sub3_Sub2_850.method471(-34003, 156);
                             aClass44_Sub3_Sub2_850.method472(0);
-                            int j2 = aClass44_Sub3_Sub2_850.anInt1392;
+                            int j2 = aClass44_Sub3_Sub2_850.currentOffset;
                             aClass44_Sub3_Sub2_850.method472(k1);
                             aClass44_Sub3_Sub2_850.method472(i2);
                             Class49.method557(aString1141, aClass44_Sub3_Sub2_850, 991);
-                            aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.anInt1392 - j2, anInt1152);
+                            aClass44_Sub3_Sub2_850.method481(aClass44_Sub3_Sub2_850.currentOffset - j2, anInt1152);
                             aString1141 = Class49.method558(aString1141, anInt1242);
                             aString1141 = Class41.method352(aString1141, anInt1242);
                             aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1627 = aString1141;
@@ -14261,7 +14261,7 @@ public class client extends RSApplet
         throw new RuntimeException();
     }
 
-    public void method140(int i, Class44_Sub3_Sub2 class44_sub3_sub2, int j)
+    public void method140(int i, Stream class44_sub3_sub2, int j)
     {
         try
         {
@@ -14270,19 +14270,19 @@ public class client extends RSApplet
             {
                 int l = anIntArray1229[k];
                 Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[l];
-                int i1 = class44_sub3_sub2.method482();
+                int i1 = class44_sub3_sub2.readUnsignedByte();
                 if((i1 & 1) == 1)
                 {
-                    int j1 = class44_sub3_sub2.method482();
-                    int j2 = class44_sub3_sub2.method482();
+                    int j1 = class44_sub3_sub2.readUnsignedByte();
+                    int j2 = class44_sub3_sub2.readUnsignedByte();
                     class44_sub3_sub4_sub6_sub2.method536(j2, anInt1240, j1, false);
                     class44_sub3_sub4_sub6_sub2.anInt1634 = anInt1240 + 300;
-                    class44_sub3_sub4_sub6_sub2.anInt1635 = class44_sub3_sub2.method482();
-                    class44_sub3_sub4_sub6_sub2.anInt1636 = class44_sub3_sub2.method482();
+                    class44_sub3_sub4_sub6_sub2.anInt1635 = class44_sub3_sub2.readUnsignedByte();
+                    class44_sub3_sub4_sub6_sub2.anInt1636 = class44_sub3_sub2.readUnsignedByte();
                 }
                 if((i1 & 2) == 2)
                 {
-                    int k1 = class44_sub3_sub2.method484();
+                    int k1 = class44_sub3_sub2.readUnsignedWord();
                     if(k1 == 65535)
                     {
                         k1 = -1;
@@ -14291,7 +14291,7 @@ public class client extends RSApplet
                     {
                         class44_sub3_sub4_sub6_sub2.anInt1647 = 0;
                     }
-                    int k2 = class44_sub3_sub2.method482();
+                    int k2 = class44_sub3_sub2.readUnsignedByte();
                     if(k1 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1643 && k1 != -1)
                     {
                         int i3 = Class26.aClass26Array508[k1].anInt522;
@@ -14319,7 +14319,7 @@ public class client extends RSApplet
                 }
                 if((i1 & 4) == 4)
                 {
-                    class44_sub3_sub4_sub6_sub2.anInt1637 = class44_sub3_sub2.method484();
+                    class44_sub3_sub4_sub6_sub2.anInt1637 = class44_sub3_sub2.readUnsignedWord();
                     if(((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1637 == 65535)
                     {
                         class44_sub3_sub4_sub6_sub2.anInt1637 = -1;
@@ -14332,16 +14332,16 @@ public class client extends RSApplet
                 }
                 if((i1 & 0x10) == 16)
                 {
-                    int l1 = class44_sub3_sub2.method482();
-                    int l2 = class44_sub3_sub2.method482();
+                    int l1 = class44_sub3_sub2.readUnsignedByte();
+                    int l2 = class44_sub3_sub2.readUnsignedByte();
                     class44_sub3_sub4_sub6_sub2.method536(l2, anInt1240, l1, false);
                     class44_sub3_sub4_sub6_sub2.anInt1634 = anInt1240 + 300;
-                    class44_sub3_sub4_sub6_sub2.anInt1635 = class44_sub3_sub2.method482();
-                    class44_sub3_sub4_sub6_sub2.anInt1636 = class44_sub3_sub2.method482();
+                    class44_sub3_sub4_sub6_sub2.anInt1635 = class44_sub3_sub2.readUnsignedByte();
+                    class44_sub3_sub4_sub6_sub2.anInt1636 = class44_sub3_sub2.readUnsignedByte();
                 }
                 if((i1 & 0x20) == 32)
                 {
-                    class44_sub3_sub4_sub6_sub2.aClass12_1700 = Class12.method214(class44_sub3_sub2.method484());
+                    class44_sub3_sub4_sub6_sub2.aClass12_1700 = Class12.method214(class44_sub3_sub2.readUnsignedWord());
                     class44_sub3_sub4_sub6_sub2.anInt1619 = class44_sub3_sub4_sub6_sub2.aClass12_1700.aByte284;
                     class44_sub3_sub4_sub6_sub2.anInt1663 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt306;
                     class44_sub3_sub4_sub6_sub2.anInt1622 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt288;
@@ -14352,8 +14352,8 @@ public class client extends RSApplet
                 }
                 if((i1 & 0x40) == 64)
                 {
-                    class44_sub3_sub4_sub6_sub2.anInt1648 = class44_sub3_sub2.method484();
-                    int i2 = class44_sub3_sub2.method487();
+                    class44_sub3_sub4_sub6_sub2.anInt1648 = class44_sub3_sub2.readUnsignedWord();
+                    int i2 = class44_sub3_sub2.readDWord();
                     class44_sub3_sub4_sub6_sub2.anInt1652 = i2 >> 16;
                     class44_sub3_sub4_sub6_sub2.anInt1651 = anInt1240 + (i2 & 0xffff);
                     class44_sub3_sub4_sub6_sub2.anInt1649 = 0;
@@ -14369,8 +14369,8 @@ public class client extends RSApplet
                 }
                 if((i1 & 0x80) == 128)
                 {
-                    class44_sub3_sub4_sub6_sub2.anInt1638 = class44_sub3_sub2.method484();
-                    class44_sub3_sub4_sub6_sub2.anInt1639 = class44_sub3_sub2.method484();
+                    class44_sub3_sub4_sub6_sub2.anInt1638 = class44_sub3_sub2.readUnsignedWord();
+                    class44_sub3_sub4_sub6_sub2.anInt1639 = class44_sub3_sub2.readUnsignedWord();
                 }
             }
             return;
@@ -14512,7 +14512,7 @@ public class client extends RSApplet
         }
     }
 
-    public void method144(int i, Class44_Sub3_Sub2 class44_sub3_sub2, int j)
+    public void method144(int i, Stream class44_sub3_sub2, int j)
     {
         try
         {
@@ -14971,7 +14971,7 @@ public class client extends RSApplet
     {
         aBoolean812 = false;
         aBoolean820 = false;
-        aClass44_Sub3_Sub2_822 = Class44_Sub3_Sub2.method470(-929, 1);
+        aClass44_Sub3_Sub2_822 = Stream.create(-929, 1);
         anIntArray827 = new int[1000];
         anIntArray828 = new int[1000];
         aBoolean829 = false;
@@ -14986,7 +14986,7 @@ public class client extends RSApplet
         anIntArray846 = new int[50];
         aBoolean847 = false;
         anIntArray849 = new int[7];
-        aClass44_Sub3_Sub2_850 = Class44_Sub3_Sub2.method470(-929, 1);
+        aClass44_Sub3_Sub2_850 = Stream.create(-929, 1);
         anIntArray851 = new int[Class29.anInt536];
         aBoolean863 = false;
         aClass44_Sub3_Sub1_Sub2Array867 = new Class44_Sub3_Sub1_Sub2[8];
@@ -15096,7 +15096,7 @@ public class client extends RSApplet
         anIntArrayArray1113 = new int[104][104];
         anInt1115 = -1;
         aClass28_1116 = new Class28(-199);
-        aClass44_Sub3_Sub2_1132 = Class44_Sub3_Sub2.method470(-929, 1);
+        aClass44_Sub3_Sub2_1132 = Stream.create(-929, 1);
         aString1141 = "";
         aClass28ArrayArrayArray1146 = new Class28[4][104][104];
         aBoolean1147 = false;
@@ -15137,7 +15137,7 @@ public class client extends RSApplet
         aClass44_Sub3_Sub4_Sub6_Sub1Array1225 = new Class44_Sub3_Sub4_Sub6_Sub1[anInt1223];
         anIntArray1227 = new int[anInt1223];
         anIntArray1229 = new int[anInt1223];
-        aClass44_Sub3_Sub2Array1230 = new Class44_Sub3_Sub2[anInt1223];
+        aClass44_Sub3_Sub2Array1230 = new Stream[anInt1223];
         aBoolean1236 = false;
         aBoolean1237 = false;
         aClass44_Sub3_Sub1_Sub3Array1241 = new Class44_Sub3_Sub1_Sub3[100];

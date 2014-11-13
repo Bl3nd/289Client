@@ -31,9 +31,9 @@ public class Class38
             {
                 aBoolean671 = !aBoolean671;
             }
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549("varp.dat", null), 15787);
+            Stream class44_sub3_sub2 = new Stream(class47.method549("varp.dat", null), 15787);
             anInt675 = 0;
-            anInt673 = class44_sub3_sub2.method484();
+            anInt673 = class44_sub3_sub2.readUnsignedWord();
             if(aClass38Array674 == null)
             {
                 aClass38Array674 = new Class38[anInt673];
@@ -50,7 +50,7 @@ public class Class38
                 }
                 aClass38Array674[i].method338(anInt672, i, class44_sub3_sub2);
             }
-            if(class44_sub3_sub2.anInt1392 != class44_sub3_sub2.aByteArray1391.length)
+            if(class44_sub3_sub2.currentOffset != class44_sub3_sub2.buffer.length)
             {
                 System.out.println("varptype load mismatch");
                 return;
@@ -63,7 +63,7 @@ public class Class38
         }
     }
 
-    public void method338(int i, int j, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method338(int i, int j, Stream class44_sub3_sub2)
     {
         try
         {
@@ -73,18 +73,18 @@ public class Class38
             }
             do
             {
-                int k = class44_sub3_sub2.method482();
+                int k = class44_sub3_sub2.readUnsignedByte();
                 if(k == 0)
                 {
                     return;
                 }
                 if(k == 1)
                 {
-                    anInt678 = class44_sub3_sub2.method482();
+                    anInt678 = class44_sub3_sub2.readUnsignedByte();
                 } else
                 if(k == 2)
                 {
-                    anInt679 = class44_sub3_sub2.method482();
+                    anInt679 = class44_sub3_sub2.readUnsignedByte();
                 } else
                 if(k == 3)
                 {
@@ -97,7 +97,7 @@ public class Class38
                 } else
                 if(k == 5)
                 {
-                    anInt682 = class44_sub3_sub2.method484();
+                    anInt682 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(k == 6)
                 {
@@ -105,7 +105,7 @@ public class Class38
                 } else
                 if(k == 7)
                 {
-                    anInt684 = class44_sub3_sub2.method487();
+                    anInt684 = class44_sub3_sub2.readDWord();
                 } else
                 if(k == 8)
                 {
@@ -122,7 +122,7 @@ public class Class38
                 } else
                 if(k == 12)
                 {
-                    anInt687 = class44_sub3_sub2.method487();
+                    anInt687 = class44_sub3_sub2.readDWord();
                 } else
                 if(k == 13)
                 {

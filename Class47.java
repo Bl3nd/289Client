@@ -39,7 +39,7 @@ public class Class47
     {
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, 15787);
+            Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
             int i = class44_sub3_sub2.method486();
             int j = class44_sub3_sub2.method486();
             if(j != i)
@@ -47,14 +47,14 @@ public class Class47
                 byte abyte1[] = new byte[i];
                 Class37.method329(abyte1, i, abyte0, j, 6);
                 aByteArray791 = abyte1;
-                class44_sub3_sub2 = new Class44_Sub3_Sub2(aByteArray791, 15787);
+                class44_sub3_sub2 = new Stream(aByteArray791, 15787);
                 aBoolean797 = true;
             } else
             {
                 aByteArray791 = abyte0;
                 aBoolean797 = false;
             }
-            anInt792 = class44_sub3_sub2.method484();
+            anInt792 = class44_sub3_sub2.readUnsignedWord();
             anIntArray793 = new int[anInt792];
             if(byte0 == 9)
             {
@@ -66,10 +66,10 @@ public class Class47
             anIntArray794 = new int[anInt792];
             anIntArray795 = new int[anInt792];
             anIntArray796 = new int[anInt792];
-            int k = class44_sub3_sub2.anInt1392 + anInt792 * 10;
+            int k = class44_sub3_sub2.currentOffset + anInt792 * 10;
             for(int l = 0; l < anInt792; l++)
             {
-                anIntArray793[l] = class44_sub3_sub2.method487();
+                anIntArray793[l] = class44_sub3_sub2.readDWord();
                 anIntArray794[l] = class44_sub3_sub2.method486();
                 anIntArray795[l] = class44_sub3_sub2.method486();
                 anIntArray796[l] = k;

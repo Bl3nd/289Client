@@ -24,8 +24,8 @@ public class Class20
     {
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549("flo.dat", null), 15787);
-            anInt429 = class44_sub3_sub2.method484();
+            Stream class44_sub3_sub2 = new Stream(class47.method549("flo.dat", null), 15787);
+            anInt429 = class44_sub3_sub2.readUnsignedWord();
             if(aClass20Array430 == null)
             {
                 aClass20Array430 = new Class20[anInt429];
@@ -51,7 +51,7 @@ public class Class20
         }
     }
 
-    public void method244(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method244(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
@@ -63,7 +63,7 @@ public class Class20
             }
             do
             {
-                int j = class44_sub3_sub2.method482();
+                int j = class44_sub3_sub2.readUnsignedByte();
                 if(j == 0)
                 {
                     return;
@@ -75,7 +75,7 @@ public class Class20
                 } else
                 if(j == 2)
                 {
-                    anInt433 = class44_sub3_sub2.method482();
+                    anInt433 = class44_sub3_sub2.readUnsignedByte();
                 } else
                 if(j == 3)
                 {

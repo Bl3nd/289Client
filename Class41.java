@@ -27,14 +27,14 @@ public class Class41
 
     public static void method342(Class47 class47)
     {
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549("fragmentsenc.txt", null), 15787);
-        Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(class47.method549("badenc.txt", null), 15787);
-        Class44_Sub3_Sub2 class44_sub3_sub2_2 = new Class44_Sub3_Sub2(class47.method549("domainenc.txt", null), 15787);
-        Class44_Sub3_Sub2 class44_sub3_sub2_3 = new Class44_Sub3_Sub2(class47.method549("tldlist.txt", null), 15787);
+        Stream class44_sub3_sub2 = new Stream(class47.method549("fragmentsenc.txt", null), 15787);
+        Stream class44_sub3_sub2_1 = new Stream(class47.method549("badenc.txt", null), 15787);
+        Stream class44_sub3_sub2_2 = new Stream(class47.method549("domainenc.txt", null), 15787);
+        Stream class44_sub3_sub2_3 = new Stream(class47.method549("tldlist.txt", null), 15787);
         method343(class44_sub3_sub2, class44_sub3_sub2_1, class44_sub3_sub2_2, class44_sub3_sub2_3);
     }
 
-    public static void method343(Class44_Sub3_Sub2 class44_sub3_sub2, Class44_Sub3_Sub2 class44_sub3_sub2_1, Class44_Sub3_Sub2 class44_sub3_sub2_2, Class44_Sub3_Sub2 class44_sub3_sub2_3)
+    public static void method343(Stream class44_sub3_sub2, Stream class44_sub3_sub2_1, Stream class44_sub3_sub2_2, Stream class44_sub3_sub2_3)
     {
         method345(class44_sub3_sub2_1, 5);
         method346(true, class44_sub3_sub2_2);
@@ -42,7 +42,7 @@ public class Class41
         method344(anInt749, class44_sub3_sub2_3);
     }
 
-    public static void method344(int i, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public static void method344(int i, Stream class44_sub3_sub2)
     {
         try
         {
@@ -50,16 +50,16 @@ public class Class41
             {
                 aBoolean748 = !aBoolean748;
             }
-            int j = class44_sub3_sub2.method487();
+            int j = class44_sub3_sub2.readDWord();
             aCharArrayArray760 = new char[j][];
             anIntArray761 = new int[j];
             for(int k = 0; k < j; k++)
             {
-                anIntArray761[k] = class44_sub3_sub2.method482();
-                char ac[] = new char[class44_sub3_sub2.method482()];
+                anIntArray761[k] = class44_sub3_sub2.readUnsignedByte();
+                char ac[] = new char[class44_sub3_sub2.readUnsignedByte()];
                 for(int l = 0; l < ac.length; l++)
                 {
-                    ac[l] = (char)class44_sub3_sub2.method482();
+                    ac[l] = (char)class44_sub3_sub2.readUnsignedByte();
                 }
                 aCharArrayArray760[k] = ac;
             }
@@ -72,11 +72,11 @@ public class Class41
         throw new RuntimeException();
     }
 
-    public static void method345(Class44_Sub3_Sub2 class44_sub3_sub2, int i)
+    public static void method345(Stream class44_sub3_sub2, int i)
     {
         try
         {
-            int j = class44_sub3_sub2.method487();
+            int j = class44_sub3_sub2.readDWord();
             aCharArrayArray757 = new char[j][];
             aByteArrayArrayArray758 = new byte[j][][];
             method348(aCharArrayArray757, aByteArrayArrayArray758, class44_sub3_sub2, 4);
@@ -92,11 +92,11 @@ public class Class41
         }
     }
 
-    public static void method346(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public static void method346(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
-            int i = class44_sub3_sub2.method487();
+            int i = class44_sub3_sub2.readDWord();
             aCharArrayArray759 = new char[i][];
             method349(class44_sub3_sub2, 961, aCharArrayArray759);
             if(!flag)
@@ -111,14 +111,14 @@ public class Class41
         }
     }
 
-    public static void method347(Class44_Sub3_Sub2 class44_sub3_sub2, byte byte0)
+    public static void method347(Stream class44_sub3_sub2, byte byte0)
     {
         try
         {
-            anIntArray756 = new int[class44_sub3_sub2.method487()];
+            anIntArray756 = new int[class44_sub3_sub2.readDWord()];
             for(int i = 0; i < anIntArray756.length; i++)
             {
-                anIntArray756[i] = class44_sub3_sub2.method484();
+                anIntArray756[i] = class44_sub3_sub2.readUnsignedWord();
             }
             if(byte0 != -47)
             {
@@ -135,7 +135,7 @@ public class Class41
         }
     }
 
-    public static void method348(char ac[][], byte abyte0[][][], Class44_Sub3_Sub2 class44_sub3_sub2, int i)
+    public static void method348(char ac[][], byte abyte0[][][], Stream class44_sub3_sub2, int i)
     {
         try
         {
@@ -145,17 +145,17 @@ public class Class41
             }
             for(int j = 0; j < ac.length; j++)
             {
-                char ac1[] = new char[class44_sub3_sub2.method482()];
+                char ac1[] = new char[class44_sub3_sub2.readUnsignedByte()];
                 for(int k = 0; k < ac1.length; k++)
                 {
-                    ac1[k] = (char)class44_sub3_sub2.method482();
+                    ac1[k] = (char)class44_sub3_sub2.readUnsignedByte();
                 }
                 ac[j] = ac1;
-                byte abyte1[][] = new byte[class44_sub3_sub2.method482()][2];
+                byte abyte1[][] = new byte[class44_sub3_sub2.readUnsignedByte()][2];
                 for(int l = 0; l < abyte1.length; l++)
                 {
-                    abyte1[l][0] = (byte)class44_sub3_sub2.method482();
-                    abyte1[l][1] = (byte)class44_sub3_sub2.method482();
+                    abyte1[l][0] = (byte)class44_sub3_sub2.readUnsignedByte();
+                    abyte1[l][1] = (byte)class44_sub3_sub2.readUnsignedByte();
                 }
                 if(abyte1.length > 0)
                 {
@@ -171,17 +171,17 @@ public class Class41
         throw new RuntimeException();
     }
 
-    public static void method349(Class44_Sub3_Sub2 class44_sub3_sub2, int i, char ac[][])
+    public static void method349(Stream class44_sub3_sub2, int i, char ac[][])
     {
         try
         {
             i = 75 / i;
             for(int j = 0; j < ac.length; j++)
             {
-                char ac1[] = new char[class44_sub3_sub2.method482()];
+                char ac1[] = new char[class44_sub3_sub2.readUnsignedByte()];
                 for(int k = 0; k < ac1.length; k++)
                 {
-                    ac1[k] = (char)class44_sub3_sub2.method482();
+                    ac1[k] = (char)class44_sub3_sub2.readUnsignedByte();
                 }
                 ac[j] = ac1;
             }

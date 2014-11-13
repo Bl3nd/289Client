@@ -8,7 +8,7 @@ public class Class12
     public byte aByte275;
     public static int anInt276;
     public static int anIntArray277[];
-    public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_278;
+    public static Stream aClass44_Sub3_Sub2_278;
     public static Class12 aClass12Array279[];
     public static int anInt280;
     public long aLong281;
@@ -41,15 +41,15 @@ public class Class12
 
     public static void method212(Class47 class47)
     {
-        aClass44_Sub3_Sub2_278 = new Class44_Sub3_Sub2(class47.method549("npc.dat", null), 15787);
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549("npc.idx", null), 15787);
-        anInt276 = class44_sub3_sub2.method484();
+        aClass44_Sub3_Sub2_278 = new Stream(class47.method549("npc.dat", null), 15787);
+        Stream class44_sub3_sub2 = new Stream(class47.method549("npc.idx", null), 15787);
+        anInt276 = class44_sub3_sub2.readUnsignedWord();
         anIntArray277 = new int[anInt276];
         int i = 2;
         for(int j = 0; j < anInt276; j++)
         {
             anIntArray277[j] = i;
-            i += class44_sub3_sub2.method484();
+            i += class44_sub3_sub2.readUnsignedWord();
         }
         aClass12Array279 = new Class12[20];
         for(int k = 0; k < 20; k++)
@@ -92,13 +92,13 @@ public class Class12
         }
         anInt280 = (anInt280 + 1) % 20;
         Class12 class12 = aClass12Array279[anInt280] = new Class12();
-        aClass44_Sub3_Sub2_278.anInt1392 = anIntArray277[i];
+        aClass44_Sub3_Sub2_278.currentOffset = anIntArray277[i];
         class12.aLong281 = i;
         class12.method215(false, aClass44_Sub3_Sub2_278);
         return class12;
     }
 
-    public void method215(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method215(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
@@ -110,18 +110,18 @@ public class Class12
             }
             do
             {
-                int j = class44_sub3_sub2.method482();
+                int j = class44_sub3_sub2.readUnsignedByte();
                 if(j == 0)
                 {
                     return;
                 }
                 if(j == 1)
                 {
-                    int k = class44_sub3_sub2.method482();
+                    int k = class44_sub3_sub2.readUnsignedByte();
                     anIntArray285 = new int[k];
                     for(int j1 = 0; j1 < k; j1++)
                     {
-                        anIntArray285[j1] = class44_sub3_sub2.method484();
+                        anIntArray285[j1] = class44_sub3_sub2.readUnsignedWord();
                     }
                 } else
                 if(j == 2)
@@ -138,18 +138,18 @@ public class Class12
                 } else
                 if(j == 13)
                 {
-                    anInt287 = class44_sub3_sub2.method484();
+                    anInt287 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 14)
                 {
-                    anInt288 = class44_sub3_sub2.method484();
+                    anInt288 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 17)
                 {
-                    anInt288 = class44_sub3_sub2.method484();
-                    anInt289 = class44_sub3_sub2.method484();
-                    anInt290 = class44_sub3_sub2.method484();
-                    anInt291 = class44_sub3_sub2.method484();
+                    anInt288 = class44_sub3_sub2.readUnsignedWord();
+                    anInt289 = class44_sub3_sub2.readUnsignedWord();
+                    anInt290 = class44_sub3_sub2.readUnsignedWord();
+                    anInt291 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j >= 30 && j < 40)
                 {
@@ -165,35 +165,35 @@ public class Class12
                 } else
                 if(j == 40)
                 {
-                    int l = class44_sub3_sub2.method482();
+                    int l = class44_sub3_sub2.readUnsignedByte();
                     anIntArray292 = new int[l];
                     anIntArray293 = new int[l];
                     for(int k1 = 0; k1 < l; k1++)
                     {
-                        anIntArray292[k1] = class44_sub3_sub2.method484();
-                        anIntArray293[k1] = class44_sub3_sub2.method484();
+                        anIntArray292[k1] = class44_sub3_sub2.readUnsignedWord();
+                        anIntArray293[k1] = class44_sub3_sub2.readUnsignedWord();
                     }
                 } else
                 if(j == 60)
                 {
-                    int i1 = class44_sub3_sub2.method482();
+                    int i1 = class44_sub3_sub2.readUnsignedByte();
                     anIntArray286 = new int[i1];
                     for(int l1 = 0; l1 < i1; l1++)
                     {
-                        anIntArray286[l1] = class44_sub3_sub2.method484();
+                        anIntArray286[l1] = class44_sub3_sub2.readUnsignedWord();
                     }
                 } else
                 if(j == 90)
                 {
-                    anInt295 = class44_sub3_sub2.method484();
+                    anInt295 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 91)
                 {
-                    anInt296 = class44_sub3_sub2.method484();
+                    anInt296 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 92)
                 {
-                    anInt297 = class44_sub3_sub2.method484();
+                    anInt297 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 93)
                 {
@@ -201,15 +201,15 @@ public class Class12
                 } else
                 if(j == 95)
                 {
-                    anInt299 = class44_sub3_sub2.method484();
+                    anInt299 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 97)
                 {
-                    anInt300 = class44_sub3_sub2.method484();
+                    anInt300 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 98)
                 {
-                    anInt301 = class44_sub3_sub2.method484();
+                    anInt301 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 99)
                 {
@@ -225,11 +225,11 @@ public class Class12
                 } else
                 if(j == 102)
                 {
-                    anInt305 = class44_sub3_sub2.method484();
+                    anInt305 = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(j == 103)
                 {
-                    anInt306 = class44_sub3_sub2.method484();
+                    anInt306 = class44_sub3_sub2.readUnsignedWord();
                 }
             } while(true);
         }

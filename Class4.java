@@ -9,7 +9,7 @@ public class Class4
     public static Class4 aClass4Array91[] = new Class4[1000];
     public static int anIntArray92[] = new int[1000];
     public static byte aByteArray93[];
-    public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_94;
+    public static Stream aClass44_Sub3_Sub2_94;
     public Class6 aClass6Array95[];
     public int anInt96;
     public int anInt97;
@@ -37,7 +37,7 @@ public class Class4
         }
     }
 
-    public static void method175(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public static void method175(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
@@ -46,11 +46,11 @@ public class Class4
             {
                 return;
             }
-            aClass44_Sub3_Sub2_94 = new Class44_Sub3_Sub2(aByteArray93, 15787);
+            aClass44_Sub3_Sub2_94 = new Stream(aByteArray93, 15787);
             Class6.method187();
             do
             {
-                int i = class44_sub3_sub2.method484();
+                int i = class44_sub3_sub2.readUnsignedWord();
                 if(i == 65535)
                 {
                     return;
@@ -67,7 +67,7 @@ public class Class4
         throw new RuntimeException();
     }
 
-    public static Class44_Sub3_Sub2 method176(int i, int j, int k)
+    public static Stream method176(int i, int j, int k)
     {
         try
         {
@@ -91,16 +91,16 @@ public class Class4
         throw new RuntimeException();
     }
 
-    public void method177(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method177(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
             for(int i = 0; i < 10; i++)
             {
-                int j = class44_sub3_sub2.method482();
+                int j = class44_sub3_sub2.readUnsignedByte();
                 if(j != 0)
                 {
-                    class44_sub3_sub2.anInt1392--;
+                    class44_sub3_sub2.currentOffset--;
                     aClass6Array95[i] = new Class6();
                     aClass6Array95[i].method190(false, class44_sub3_sub2);
                 }
@@ -109,8 +109,8 @@ public class Class4
             {
                 aBoolean90 = !aBoolean90;
             }
-            anInt96 = class44_sub3_sub2.method484();
-            anInt97 = class44_sub3_sub2.method484();
+            anInt96 = class44_sub3_sub2.readUnsignedWord();
+            anInt97 = class44_sub3_sub2.readUnsignedWord();
             return;
         }
         catch(RuntimeException runtimeexception)
@@ -165,12 +165,12 @@ public class Class4
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub2 method179(int i, int j)
+    public Stream method179(int i, int j)
     {
         try
         {
             int k = method180(i);
-            aClass44_Sub3_Sub2_94.anInt1392 = 0;
+            aClass44_Sub3_Sub2_94.currentOffset = 0;
             aClass44_Sub3_Sub2_94.method476(0x52494646);
             aClass44_Sub3_Sub2_94.method477(26965, 36 + k);
             aClass44_Sub3_Sub2_94.method476(0x57415645);
@@ -185,7 +185,7 @@ public class Class4
             aClass44_Sub3_Sub2_94.method474(8, false);
             aClass44_Sub3_Sub2_94.method476(0x64617461);
             aClass44_Sub3_Sub2_94.method477(26965, k);
-            aClass44_Sub3_Sub2_94.anInt1392 += k;
+            aClass44_Sub3_Sub2_94.currentOffset += k;
             return aClass44_Sub3_Sub2_94;
         }
         catch(RuntimeException runtimeexception)

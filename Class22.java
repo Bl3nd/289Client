@@ -23,12 +23,12 @@ public class Class22
     {
         try
         {
-            Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method549("idk.dat", null), 15787);
+            Stream class44_sub3_sub2 = new Stream(class47.method549("idk.dat", null), 15787);
             if(!flag)
             {
                 aBoolean462 = !aBoolean462;
             }
-            anInt463 = class44_sub3_sub2.method484();
+            anInt463 = class44_sub3_sub2.readUnsignedWord();
             if(aClass22Array464 == null)
             {
                 aClass22Array464 = new Class22[anInt463];
@@ -50,7 +50,7 @@ public class Class22
         throw new RuntimeException();
     }
 
-    public void method248(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method248(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
@@ -60,22 +60,22 @@ public class Class22
             }
             do
             {
-                int i = class44_sub3_sub2.method482();
+                int i = class44_sub3_sub2.readUnsignedByte();
                 if(i == 0)
                 {
                     return;
                 }
                 if(i == 1)
                 {
-                    anInt465 = class44_sub3_sub2.method482();
+                    anInt465 = class44_sub3_sub2.readUnsignedByte();
                 } else
                 if(i == 2)
                 {
-                    int j = class44_sub3_sub2.method482();
+                    int j = class44_sub3_sub2.readUnsignedByte();
                     anIntArray466 = new int[j];
                     for(int k = 0; k < j; k++)
                     {
-                        anIntArray466[k] = class44_sub3_sub2.method484();
+                        anIntArray466[k] = class44_sub3_sub2.readUnsignedWord();
                     }
                 } else
                 if(i == 3)
@@ -84,15 +84,15 @@ public class Class22
                 } else
                 if(i >= 40 && i < 50)
                 {
-                    anIntArray467[i - 40] = class44_sub3_sub2.method484();
+                    anIntArray467[i - 40] = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(i >= 50 && i < 60)
                 {
-                    anIntArray468[i - 50] = class44_sub3_sub2.method484();
+                    anIntArray468[i - 50] = class44_sub3_sub2.readUnsignedWord();
                 } else
                 if(i >= 60 && i < 70)
                 {
-                    anIntArray469[i - 60] = class44_sub3_sub2.method484();
+                    anIntArray469[i - 60] = class44_sub3_sub2.readUnsignedWord();
                 } else
                 {
                     System.out.println("Error unrecognised config code: " + i);

@@ -31,7 +31,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
     public int anInt1695;
     public static Class39 aClass39_1696 = new Class39((byte)7, 260);
 
-    public void method537(boolean flag, Class44_Sub3_Sub2 class44_sub3_sub2)
+    public void method537(boolean flag, Stream class44_sub3_sub2)
     {
         try
         {
@@ -39,24 +39,24 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             {
                 aBoolean1671 = !aBoolean1671;
             }
-            class44_sub3_sub2.anInt1392 = 0;
-            anInt1674 = class44_sub3_sub2.method482();
-            anInt1675 = class44_sub3_sub2.method482();
+            class44_sub3_sub2.currentOffset = 0;
+            anInt1674 = class44_sub3_sub2.readUnsignedByte();
+            anInt1675 = class44_sub3_sub2.readUnsignedByte();
             aClass12_1694 = null;
             anInt1695 = 0;
             for(int i = 0; i < 12; i++)
             {
-                int j = class44_sub3_sub2.method482();
+                int j = class44_sub3_sub2.readUnsignedByte();
                 if(j == 0)
                 {
                     anIntArray1676[i] = 0;
                     continue;
                 }
-                int l = class44_sub3_sub2.method482();
+                int l = class44_sub3_sub2.readUnsignedByte();
                 anIntArray1676[i] = (j << 8) + l;
                 if(i == 0 && anIntArray1676[0] == 65535)
                 {
-                    aClass12_1694 = Class12.method214(class44_sub3_sub2.method484());
+                    aClass12_1694 = Class12.method214(class44_sub3_sub2.readUnsignedWord());
                     break;
                 }
                 if(anIntArray1676[i] >= 512 && anIntArray1676[i] - 512 < Class14.anInt323)
@@ -70,51 +70,51 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             }
             for(int k = 0; k < 5; k++)
             {
-                int i1 = class44_sub3_sub2.method482();
+                int i1 = class44_sub3_sub2.readUnsignedByte();
                 if(i1 < 0 || i1 >= client.anIntArrayArray1073[k].length)
                 {
                     i1 = 0;
                 }
                 anIntArray1677[k] = i1;
             }
-            super.anInt1620 = class44_sub3_sub2.method484();
+            super.anInt1620 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1620 == 65535)
             {
                 super.anInt1620 = -1;
             }
-            super.anInt1621 = class44_sub3_sub2.method484();
+            super.anInt1621 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1621 == 65535)
             {
                 super.anInt1621 = -1;
             }
-            super.anInt1622 = class44_sub3_sub2.method484();
+            super.anInt1622 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1622 == 65535)
             {
                 super.anInt1622 = -1;
             }
-            super.anInt1623 = class44_sub3_sub2.method484();
+            super.anInt1623 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1623 == 65535)
             {
                 super.anInt1623 = -1;
             }
-            super.anInt1624 = class44_sub3_sub2.method484();
+            super.anInt1624 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1624 == 65535)
             {
                 super.anInt1624 = -1;
             }
-            super.anInt1625 = class44_sub3_sub2.method484();
+            super.anInt1625 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1625 == 65535)
             {
                 super.anInt1625 = -1;
             }
-            super.anInt1626 = class44_sub3_sub2.method484();
+            super.anInt1626 = class44_sub3_sub2.readUnsignedWord();
             if(super.anInt1626 == 65535)
             {
                 super.anInt1626 = -1;
             }
             aString1672 = Class48.method554(Class48.method551(class44_sub3_sub2.method488(true), true), true);
-            anInt1678 = class44_sub3_sub2.method482();
-            anInt1679 = class44_sub3_sub2.method484();
+            anInt1678 = class44_sub3_sub2.readUnsignedByte();
+            anInt1679 = class44_sub3_sub2.readUnsignedWord();
             aBoolean1673 = true;
             aLong1680 = 0L;
             for(int j1 = 0; j1 < 12; j1++)
