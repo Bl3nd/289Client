@@ -37,7 +37,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	public Graphics graphics;
 	public RSImageProducer fullGameScreen;
 	public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2Array15[];
-	public Frame_Sub1 rsFrame;
+	public RSFrame rsFrame;
 	public boolean clearScreen;
 	public boolean awtFocus;
 	public int idleTime;
@@ -62,7 +62,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		try {
 			frameWidth = width;
 			frameHeight = height;
-			rsFrame = new Frame_Sub1(frameHeight, 27016, frameWidth, this);
+			rsFrame = new RSFrame(frameHeight, 27016, frameWidth, this);
 			graphics = getFrame(7).getGraphics();
 			if (dummy != 0) {
 				anInt4 = -480;
