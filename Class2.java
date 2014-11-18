@@ -120,28 +120,28 @@ public class Class2 {
 				for (int j = 1; j > 0; j++) {
 				}
 			}
-			int k = stream.readUnsignedByte();
+			int k = stream.getUnsignedByte();
 			anIntArray52[0] = k >> 4;
 			anIntArray52[1] = k & 0xf;
 			if (k != 0) {
-				anIntArray55[0] = stream.readUnsignedWord();
-				anIntArray55[1] = stream.readUnsignedWord();
-				int l = stream.readUnsignedByte();
+				anIntArray55[0] = stream.getUnsignedLEShort();
+				anIntArray55[1] = stream.getUnsignedLEShort();
+				int l = stream.getUnsignedByte();
 				for (int i1 = 0; i1 < 2; i1++) {
 					for (int j1 = 0; j1 < anIntArray52[i1]; j1++) {
 						anIntArrayArrayArray53[i1][0][j1] = stream
-								.readUnsignedWord();
+								.getUnsignedLEShort();
 						anIntArrayArrayArray54[i1][0][j1] = stream
-								.readUnsignedWord();
+								.getUnsignedLEShort();
 					}
 				}
 				for (int k1 = 0; k1 < 2; k1++) {
 					for (int l1 = 0; l1 < anIntArray52[k1]; l1++) {
 						if ((l & 1 << k1 * 4 << l1) != 0) {
 							anIntArrayArrayArray53[k1][1][l1] = stream
-									.readUnsignedWord();
+									.getUnsignedLEShort();
 							anIntArrayArrayArray54[k1][1][l1] = stream
-									.readUnsignedWord();
+									.getUnsignedLEShort();
 						} else {
 							anIntArrayArrayArray53[k1][1][l1] = anIntArrayArrayArray53[k1][0][l1];
 							anIntArrayArrayArray54[k1][1][l1] = anIntArrayArrayArray54[k1][0][l1];

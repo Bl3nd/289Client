@@ -40,12 +40,12 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             Stream class44_sub3_sub2 = new Stream(class47.method549(s + ".dat", null), 15787);
             Stream class44_sub3_sub2_1 = new Stream(class47.method549("index.dat", null), 15787);
             byte byte0 = -1;
-            class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.readUnsignedWord() + 4;
+            class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.getUnsignedLEShort() + 4;
             if(i != 9)
             {
                 aBoolean1467 = !aBoolean1467;
             }
-            int k = class44_sub3_sub2_1.readUnsignedByte();
+            int k = class44_sub3_sub2_1.getUnsignedByte();
             if(k > 0)
             {
                 class44_sub3_sub2_1.currentOffset += 3 * (k - 1);
@@ -53,18 +53,18 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             for(int l = 0; l < 256; l++)
             {
                 int j = l;
-                anIntArray1475[l] = class44_sub3_sub2_1.readUnsignedByte();
-                anIntArray1476[l] = class44_sub3_sub2_1.readUnsignedByte();
-                int i1 = anIntArray1473[l] = class44_sub3_sub2_1.readUnsignedWord();
-                int j1 = anIntArray1474[l] = class44_sub3_sub2_1.readUnsignedWord();
-                int k1 = class44_sub3_sub2_1.readUnsignedByte();
+                anIntArray1475[l] = class44_sub3_sub2_1.getUnsignedByte();
+                anIntArray1476[l] = class44_sub3_sub2_1.getUnsignedByte();
+                int i1 = anIntArray1473[l] = class44_sub3_sub2_1.getUnsignedLEShort();
+                int j1 = anIntArray1474[l] = class44_sub3_sub2_1.getUnsignedLEShort();
+                int k1 = class44_sub3_sub2_1.getUnsignedByte();
                 int l1 = i1 * j1;
                 aByteArrayArray1472[l] = new byte[l1];
                 if(k1 == 0)
                 {
                     for(int i2 = 0; i2 < l1; i2++)
                     {
-                        aByteArrayArray1472[l][i2] = class44_sub3_sub2.method483();
+                        aByteArrayArray1472[l][i2] = class44_sub3_sub2.get();
                     }
                 } else
                 if(k1 == 1)
@@ -73,7 +73,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
                     {
                         for(int l2 = 0; l2 < j1; l2++)
                         {
-                            aByteArrayArray1472[l][j2 + l2 * i1] = class44_sub3_sub2.method483();
+                            aByteArrayArray1472[l][j2 + l2 * i1] = class44_sub3_sub2.get();
                         }
                     }
                 }

@@ -7,7 +7,7 @@ public class Class42
     public boolean aBoolean765;
     public int anInt766;
     public int anInt767;
-    public Class44 aClass44Array768[];
+    public Node aClass44Array768[];
 
     public Class42(int i, byte byte0)
     {
@@ -17,12 +17,12 @@ public class Class42
         try
         {
             anInt767 = i;
-            aClass44Array768 = new Class44[i];
+            aClass44Array768 = new Node[i];
             for(int j = 0; j < i; j++)
             {
-                Class44 class44 = aClass44Array768[j] = new Class44();
-                class44.aClass44_770 = class44;
-                class44.aClass44_771 = class44;
+                Node class44 = aClass44Array768[j] = new Node();
+                class44.previousNode = class44;
+                class44.nextNode = class44;
             }
             if(byte0 != 124)
             {
@@ -39,12 +39,12 @@ public class Class42
         }
     }
 
-    public Class44 method380(long l)
+    public Node method380(long l)
     {
-        Class44 class44 = aClass44Array768[(int)(l & (long)(anInt767 - 1))];
-        for(Class44 class44_1 = class44.aClass44_770; class44_1 != class44; class44_1 = class44_1.aClass44_770)
+        Node class44 = aClass44Array768[(int)(l & (long)(anInt767 - 1))];
+        for(Node class44_1 = class44.previousNode; class44_1 != class44; class44_1 = class44_1.previousNode)
         {
-            if(class44_1.aLong769 == l)
+            if(class44_1.id == l)
             {
                 return class44_1;
             }
@@ -52,24 +52,24 @@ public class Class42
         return null;
     }
 
-    public void method381(boolean flag, Class44 class44, long l)
+    public void method381(boolean flag, Node class44, long l)
     {
         try
         {
-            if(class44.aClass44_771 != null)
+            if(class44.nextNode != null)
             {
-                class44.method404();
+                class44.unlink();
             }
-            Class44 class44_1 = aClass44Array768[(int)(l & (long)(anInt767 - 1))];
-            class44.aClass44_771 = class44_1.aClass44_771;
+            Node class44_1 = aClass44Array768[(int)(l & (long)(anInt767 - 1))];
+            class44.nextNode = class44_1.nextNode;
             if(flag)
             {
                 aBoolean764 = !aBoolean764;
             }
-            class44.aClass44_770 = class44_1;
-            class44.aClass44_771.aClass44_770 = class44;
-            class44.aClass44_770.aClass44_771 = class44;
-            class44.aLong769 = l;
+            class44.previousNode = class44_1;
+            class44.nextNode.previousNode = class44;
+            class44.previousNode.nextNode = class44;
+            class44.id = l;
         }
         catch(RuntimeException runtimeexception)
         {

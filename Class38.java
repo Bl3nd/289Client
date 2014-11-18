@@ -33,7 +33,7 @@ public class Class38
             }
             Stream class44_sub3_sub2 = new Stream(class47.method549("varp.dat", null), 15787);
             anInt675 = 0;
-            anInt673 = class44_sub3_sub2.readUnsignedWord();
+            anInt673 = class44_sub3_sub2.getUnsignedLEShort();
             if(aClass38Array674 == null)
             {
                 aClass38Array674 = new Class38[anInt673];
@@ -73,18 +73,18 @@ public class Class38
             }
             do
             {
-                int k = class44_sub3_sub2.readUnsignedByte();
+                int k = class44_sub3_sub2.getUnsignedByte();
                 if(k == 0)
                 {
                     return;
                 }
                 if(k == 1)
                 {
-                    anInt678 = class44_sub3_sub2.readUnsignedByte();
+                    anInt678 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(k == 2)
                 {
-                    anInt679 = class44_sub3_sub2.readUnsignedByte();
+                    anInt679 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(k == 3)
                 {
@@ -97,7 +97,7 @@ public class Class38
                 } else
                 if(k == 5)
                 {
-                    anInt682 = class44_sub3_sub2.readUnsignedWord();
+                    anInt682 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(k == 6)
                 {
@@ -105,7 +105,7 @@ public class Class38
                 } else
                 if(k == 7)
                 {
-                    anInt684 = class44_sub3_sub2.readDWord();
+                    anInt684 = class44_sub3_sub2.getInt();
                 } else
                 if(k == 8)
                 {
@@ -114,7 +114,7 @@ public class Class38
                 } else
                 if(k == 10)
                 {
-                    aString677 = class44_sub3_sub2.method489();
+                    aString677 = class44_sub3_sub2.getString();
                 } else
                 if(k == 11)
                 {
@@ -122,7 +122,7 @@ public class Class38
                 } else
                 if(k == 12)
                 {
-                    anInt687 = class44_sub3_sub2.readDWord();
+                    anInt687 = class44_sub3_sub2.getInt();
                 } else
                 if(k == 13)
                 {

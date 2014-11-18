@@ -2,31 +2,36 @@ import java.awt.*;
 
 import sign.signlink;
 
+/**
+ * Fully renamed 11/18/14 2:49PM
+ * 
+ * @author Cody
+ *
+ */
 public class RSFrame extends Frame {
 
 	/**
 	 * Generated Serial Version UID.
 	 */
 	private static final long serialVersionUID = -754657267634315329L;
-	public RSApplet anApplet_Sub1_36;
+	public RSApplet rsApplet;
 
 	@SuppressWarnings("deprecation")
-	public RSFrame(int i, int j, int k, RSApplet applet_sub1) {
+	public RSFrame(int height, int dummy, int width, RSApplet applet) {
 		try {
-			anApplet_Sub1_36 = applet_sub1;
+			rsApplet = applet;
 			setTitle("Jagex");
 			setResizable(false);
-			if (j != 27016) {
+			if (dummy != 27016) {
 				throw new NullPointerException();
 			} else {
 				show();
 				toFront();
-				resize(k + 8, i + 28);
+				resize(width + 8, height + 28);
 				return;
 			}
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("79865, " + i + ", " + j + ", " + k + ", "
-					+ applet_sub1 + ", " + runtimeexception.toString());
+			signlink.reporterror("79865, " + height + ", " + dummy + ", " + width + ", " + applet + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
@@ -38,10 +43,10 @@ public class RSFrame extends Frame {
 	}
 
 	public void update(Graphics g) {
-		anApplet_Sub1_36.update(g);
+		rsApplet.update(g);
 	}
 
 	public void paint(Graphics g) {
-		anApplet_Sub1_36.paint(g);
+		rsApplet.paint(g);
 	}
 }

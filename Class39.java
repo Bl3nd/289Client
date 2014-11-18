@@ -65,12 +65,12 @@ public class Class39
             if(anInt694 == 0)
             {
                 Class44_Sub3 class44_sub3_1 = aClass31_696.method265();
-                class44_sub3_1.method404();
+                class44_sub3_1.unlink();
                 class44_sub3_1.method405();
                 if(class44_sub3_1 == aClass44_Sub3_692)
                 {
                     Class44_Sub3 class44_sub3_2 = aClass31_696.method265();
-                    class44_sub3_2.method404();
+                    class44_sub3_2.unlink();
                     class44_sub3_2.method405();
                 }
             } else
@@ -95,7 +95,7 @@ public class Class39
             Class44_Sub3 class44_sub3 = aClass31_696.method265();
             if(class44_sub3 != null)
             {
-                class44_sub3.method404();
+                class44_sub3.unlink();
                 class44_sub3.method405();
             } else
             {

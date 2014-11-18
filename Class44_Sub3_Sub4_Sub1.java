@@ -3,7 +3,7 @@ import sign.signlink;
 public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
 {
 
-    public static client aClient1481;
+    public static Client aClient1481;
     public int anInt1482;
     public int anInt1483;
     public int anInt1484;
@@ -37,7 +37,7 @@ public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
             {
                 aClass26_1489 = Class26.aClass26Array508[k1];
                 anInt1490 = 0;
-                anInt1491 = client.anInt1240;
+                anInt1491 = Client.anInt1240;
                 if(flag1 && aClass26_1489.anInt513 != -1)
                 {
                     anInt1490 = (int)(Math.random() * (double)aClass26_1489.anInt509);
@@ -69,7 +69,7 @@ public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
             int k = -1;
             if(aClass26_1489 != null)
             {
-                int l = client.anInt1240 - anInt1491;
+                int l = Client.anInt1240 - anInt1491;
                 if(l > 100 && aClass26_1489.anInt513 > 0)
                 {
                     l = 100;
@@ -90,7 +90,7 @@ public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
                     aClass26_1489 = null;
                     break;
                 }
-                anInt1491 = client.anInt1240 - l;
+                anInt1491 = Client.anInt1240 - l;
                 k = aClass26_1489.anIntArray510[anInt1490];
             }
             Class8 class8;
@@ -100,7 +100,7 @@ public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
                 int i1 = class35.anInt592;
                 int j1 = class35.anInt593;
                 int k1 = class35.anInt594;
-                int l1 = client.anIntArray1088[k1 - j1];
+                int l1 = Client.anIntArray1088[k1 - j1];
                 int i2 = aClient1481.anIntArray1214[i1] >> j1 & l1;
                 if(i2 < 0 || i2 >= anIntArray1493.length || anIntArray1493[i2] == -1)
                 {

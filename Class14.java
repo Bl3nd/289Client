@@ -63,13 +63,13 @@ public class Class14
     {
         aClass44_Sub3_Sub2_325 = new Stream(class47.method549("obj.dat", null), 15787);
         Stream class44_sub3_sub2 = new Stream(class47.method549("obj.idx", null), 15787);
-        anInt323 = class44_sub3_sub2.readUnsignedWord();
+        anInt323 = class44_sub3_sub2.getUnsignedLEShort();
         anIntArray324 = new int[anInt323];
         int i = 2;
         for(int j = 0; j < anInt323; j++)
         {
             anIntArray324[j] = i;
-            i += class44_sub3_sub2.readUnsignedWord();
+            i += class44_sub3_sub2.getUnsignedLEShort();
         }
         aClass14Array326 = new Class14[10];
         for(int k = 0; k < 10; k++)
@@ -182,38 +182,38 @@ public class Class14
             }
             do
             {
-                int i = class44_sub3_sub2.readUnsignedByte();
+                int i = class44_sub3_sub2.getUnsignedByte();
                 if(i == 0)
                 {
                     return;
                 }
                 if(i == 1)
                 {
-                    anInt330 = class44_sub3_sub2.readUnsignedWord();
+                    anInt330 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 2)
                 {
-                    aString331 = class44_sub3_sub2.method489();
+                    aString331 = class44_sub3_sub2.getString();
                 } else
                 if(i == 3)
                 {
-                    aByteArray332 = class44_sub3_sub2.method490(anInt317);
+                    aByteArray332 = class44_sub3_sub2.readBytes(anInt317);
                 } else
                 if(i == 4)
                 {
-                    anInt335 = class44_sub3_sub2.readUnsignedWord();
+                    anInt335 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 5)
                 {
-                    anInt336 = class44_sub3_sub2.readUnsignedWord();
+                    anInt336 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 6)
                 {
-                    anInt337 = class44_sub3_sub2.readUnsignedWord();
+                    anInt337 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 7)
                 {
-                    anInt339 = class44_sub3_sub2.readUnsignedWord();
+                    anInt339 = class44_sub3_sub2.getUnsignedLEShort();
                     if(anInt339 > 32767)
                     {
                         anInt339 -= 0x10000;
@@ -221,7 +221,7 @@ public class Class14
                 } else
                 if(i == 8)
                 {
-                    anInt340 = class44_sub3_sub2.readUnsignedWord();
+                    anInt340 = class44_sub3_sub2.getUnsignedLEShort();
                     if(anInt340 > 32767)
                     {
                         anInt340 -= 0x10000;
@@ -229,7 +229,7 @@ public class Class14
                 } else
                 if(i == 10)
                 {
-                    anInt341 = class44_sub3_sub2.readUnsignedWord();
+                    anInt341 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 11)
                 {
@@ -237,7 +237,7 @@ public class Class14
                 } else
                 if(i == 12)
                 {
-                    anInt343 = class44_sub3_sub2.readDWord();
+                    anInt343 = class44_sub3_sub2.getInt();
                 } else
                 if(i == 16)
                 {
@@ -245,21 +245,21 @@ public class Class14
                 } else
                 if(i == 23)
                 {
-                    anInt347 = class44_sub3_sub2.readUnsignedWord();
-                    aByte349 = class44_sub3_sub2.method483();
+                    anInt347 = class44_sub3_sub2.getUnsignedLEShort();
+                    aByte349 = class44_sub3_sub2.get();
                 } else
                 if(i == 24)
                 {
-                    anInt348 = class44_sub3_sub2.readUnsignedWord();
+                    anInt348 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 25)
                 {
-                    anInt350 = class44_sub3_sub2.readUnsignedWord();
-                    aByte352 = class44_sub3_sub2.method483();
+                    anInt350 = class44_sub3_sub2.getUnsignedLEShort();
+                    aByte352 = class44_sub3_sub2.get();
                 } else
                 if(i == 26)
                 {
-                    anInt351 = class44_sub3_sub2.readUnsignedWord();
+                    anInt351 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i >= 30 && i < 35)
                 {
@@ -267,7 +267,7 @@ public class Class14
                     {
                         aStringArray345 = new String[5];
                     }
-                    aStringArray345[i - 30] = class44_sub3_sub2.method489();
+                    aStringArray345[i - 30] = class44_sub3_sub2.getString();
                     if(aStringArray345[i - 30].equalsIgnoreCase("hidden"))
                     {
                         aStringArray345[i - 30] = null;
@@ -279,54 +279,54 @@ public class Class14
                     {
                         aStringArray346 = new String[5];
                     }
-                    aStringArray346[i - 35] = class44_sub3_sub2.method489();
+                    aStringArray346[i - 35] = class44_sub3_sub2.getString();
                 } else
                 if(i == 40)
                 {
-                    int j = class44_sub3_sub2.readUnsignedByte();
+                    int j = class44_sub3_sub2.getUnsignedByte();
                     anIntArray333 = new int[j];
                     anIntArray334 = new int[j];
                     for(int k = 0; k < j; k++)
                     {
-                        anIntArray333[k] = class44_sub3_sub2.readUnsignedWord();
-                        anIntArray334[k] = class44_sub3_sub2.readUnsignedWord();
+                        anIntArray333[k] = class44_sub3_sub2.getUnsignedLEShort();
+                        anIntArray334[k] = class44_sub3_sub2.getUnsignedLEShort();
                     }
                 } else
                 if(i == 78)
                 {
-                    anInt353 = class44_sub3_sub2.readUnsignedWord();
+                    anInt353 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 79)
                 {
-                    anInt354 = class44_sub3_sub2.readUnsignedWord();
+                    anInt354 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 90)
                 {
-                    anInt355 = class44_sub3_sub2.readUnsignedWord();
+                    anInt355 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 91)
                 {
-                    anInt357 = class44_sub3_sub2.readUnsignedWord();
+                    anInt357 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 92)
                 {
-                    anInt356 = class44_sub3_sub2.readUnsignedWord();
+                    anInt356 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 93)
                 {
-                    anInt358 = class44_sub3_sub2.readUnsignedWord();
+                    anInt358 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 95)
                 {
-                    anInt338 = class44_sub3_sub2.readUnsignedWord();
+                    anInt338 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 97)
                 {
-                    anInt361 = class44_sub3_sub2.readUnsignedWord();
+                    anInt361 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 98)
                 {
-                    anInt362 = class44_sub3_sub2.readUnsignedWord();
+                    anInt362 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i >= 100 && i < 110)
                 {
@@ -335,32 +335,32 @@ public class Class14
                         anIntArray359 = new int[10];
                         anIntArray360 = new int[10];
                     }
-                    anIntArray359[i - 100] = class44_sub3_sub2.readUnsignedWord();
-                    anIntArray360[i - 100] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray359[i - 100] = class44_sub3_sub2.getUnsignedLEShort();
+                    anIntArray360[i - 100] = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 110)
                 {
-                    anInt363 = class44_sub3_sub2.readUnsignedWord();
+                    anInt363 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 111)
                 {
-                    anInt364 = class44_sub3_sub2.readUnsignedWord();
+                    anInt364 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 112)
                 {
-                    anInt365 = class44_sub3_sub2.readUnsignedWord();
+                    anInt365 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 113)
                 {
-                    anInt366 = class44_sub3_sub2.method483();
+                    anInt366 = class44_sub3_sub2.get();
                 } else
                 if(i == 114)
                 {
-                    anInt367 = class44_sub3_sub2.method483() * 5;
+                    anInt367 = class44_sub3_sub2.get() * 5;
                 } else
                 if(i == 115)
                 {
-                    anInt368 = class44_sub3_sub2.readUnsignedByte();
+                    anInt368 = class44_sub3_sub2.getUnsignedByte();
                 }
             } while(true);
         }
@@ -507,7 +507,7 @@ public class Class14
                 Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2 = (Class44_Sub3_Sub1_Sub2)aClass39_370.method339(j);
                 if(class44_sub3_sub1_sub2 != null && class44_sub3_sub1_sub2.anInt1454 != l && class44_sub3_sub1_sub2.anInt1454 != -1)
                 {
-                    class44_sub3_sub1_sub2.method404();
+                    class44_sub3_sub1_sub2.unlink();
                     class44_sub3_sub1_sub2 = null;
                 }
                 if(class44_sub3_sub1_sub2 != null)

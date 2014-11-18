@@ -26,7 +26,7 @@ public class Class49
             int k = -1;
             for(int l = 0; l < i; l++)
             {
-                int i1 = class44_sub3_sub2.readUnsignedByte();
+                int i1 = class44_sub3_sub2.getUnsignedByte();
                 int j1 = i1 >> 4 & 0xf;
                 if(k == -1)
                 {
@@ -123,22 +123,22 @@ public class Class49
                         j = l;
                     } else
                     {
-                        class44_sub3_sub2.method472(l);
+                        class44_sub3_sub2.putByte(l);
                     }
                 } else
                 if(l < 13)
                 {
-                    class44_sub3_sub2.method472((j << 4) + l);
+                    class44_sub3_sub2.putByte((j << 4) + l);
                     j = -1;
                 } else
                 {
-                    class44_sub3_sub2.method472((j << 4) + (l >> 4));
+                    class44_sub3_sub2.putByte((j << 4) + (l >> 4));
                     j = l & 0xf;
                 }
             }
             if(j != -1)
             {
-                class44_sub3_sub2.method472(j << 4);
+                class44_sub3_sub2.putByte(j << 4);
                 return;
             }
         }

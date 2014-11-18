@@ -18,9 +18,9 @@ public class Class1 {
 
 	public void method148(boolean flag, Stream stream) {
 		try {
-			anInt43 = stream.readUnsignedByte();
-			anInt41 = stream.readDWord();
-			anInt42 = stream.readDWord();
+			anInt43 = stream.getUnsignedByte();
+			anInt41 = stream.getInt();
+			anInt42 = stream.getInt();
 			if (flag) {
 				for (int i = 1; i > 0; i++) {
 				}
@@ -38,12 +38,12 @@ public class Class1 {
 			if (i != 0) {
 				return;
 			}
-			anInt38 = stream.readUnsignedByte();
+			anInt38 = stream.getUnsignedByte();
 			anIntArray39 = new int[anInt38];
 			anIntArray40 = new int[anInt38];
 			for (int j = 0; j < anInt38; j++) {
-				anIntArray39[j] = stream.readUnsignedWord();
-				anIntArray40[j] = stream.readUnsignedWord();
+				anIntArray39[j] = stream.getUnsignedLEShort();
+				anIntArray40[j] = stream.getUnsignedLEShort();
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {

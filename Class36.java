@@ -61,7 +61,7 @@ public class Class36
     public static Class23 aClass23ArrayArray644[][];
     public static int anInt645;
     public static Class23 aClass23Array646[] = new Class23[500];
-    public static Class28 aClass28_647 = new Class28(-199);
+    public static NodeList aClass28_647 = new NodeList(-199);
     public static int anIntArray648[] = {
         19, 55, 38, 155, 255, 110, 137, 205, 76
     };
@@ -1845,13 +1845,13 @@ label0:
 
     public void method318(Class44_Sub2 class44_sub2, boolean flag)
     {
-        aClass28_647.method256(class44_sub2);
+        aClass28_647.insertHead(class44_sub2);
         do
         {
             Class44_Sub2 class44_sub2_1;
             do
             {
-                class44_sub2_1 = (Class44_Sub2)aClass28_647.method258();
+                class44_sub2_1 = (Class44_Sub2)aClass28_647.popHead();
                 if(class44_sub2_1 == null)
                 {
                     return;
@@ -2092,7 +2092,7 @@ label0:
                         Class44_Sub2 class44_sub2_17 = aclass44_sub2[i + 1][j];
                         if(class44_sub2_17 != null && class44_sub2_17.aBoolean1352)
                         {
-                            aClass28_647.method256(class44_sub2_17);
+                            aClass28_647.insertHead(class44_sub2_17);
                         }
                     }
                     if(j < anInt624 && (k4 & 2) != 0)
@@ -2100,7 +2100,7 @@ label0:
                         Class44_Sub2 class44_sub2_18 = aclass44_sub2[i][j + 1];
                         if(class44_sub2_18 != null && class44_sub2_18.aBoolean1352)
                         {
-                            aClass28_647.method256(class44_sub2_18);
+                            aClass28_647.insertHead(class44_sub2_18);
                         }
                     }
                     if(i > anInt623 && (k4 & 1) != 0)
@@ -2108,7 +2108,7 @@ label0:
                         Class44_Sub2 class44_sub2_19 = aclass44_sub2[i - 1][j];
                         if(class44_sub2_19 != null && class44_sub2_19.aBoolean1352)
                         {
-                            aClass28_647.method256(class44_sub2_19);
+                            aClass28_647.insertHead(class44_sub2_19);
                         }
                     }
                     if(j > anInt624 && (k4 & 8) != 0)
@@ -2116,7 +2116,7 @@ label0:
                         Class44_Sub2 class44_sub2_20 = aclass44_sub2[i][j - 1];
                         if(class44_sub2_20 != null && class44_sub2_20.aBoolean1352)
                         {
-                            aClass28_647.method256(class44_sub2_20);
+                            aClass28_647.insertHead(class44_sub2_20);
                         }
                     }
                 }
@@ -2259,11 +2259,11 @@ label0:
                                 Class44_Sub2 class44_sub2_22 = aclass44_sub2[k7][l8];
                                 if(class44_sub2_22.anInt1354 != 0)
                                 {
-                                    aClass28_647.method256(class44_sub2_22);
+                                    aClass28_647.insertHead(class44_sub2_22);
                                 } else
                                 if((k7 != i || l8 != j) && class44_sub2_22.aBoolean1352)
                                 {
-                                    aClass28_647.method256(class44_sub2_22);
+                                    aClass28_647.insertHead(class44_sub2_22);
                                 }
                             }
                         }
@@ -2395,7 +2395,7 @@ label0:
                 Class44_Sub2 class44_sub2_12 = aClass44_Sub2ArrayArrayArray611[k + 1][i][j];
                 if(class44_sub2_12 != null && class44_sub2_12.aBoolean1352)
                 {
-                    aClass28_647.method256(class44_sub2_12);
+                    aClass28_647.insertHead(class44_sub2_12);
                 }
             }
             if(i < anInt623)
@@ -2403,7 +2403,7 @@ label0:
                 Class44_Sub2 class44_sub2_13 = aclass44_sub2[i + 1][j];
                 if(class44_sub2_13 != null && class44_sub2_13.aBoolean1352)
                 {
-                    aClass28_647.method256(class44_sub2_13);
+                    aClass28_647.insertHead(class44_sub2_13);
                 }
             }
             if(j < anInt624)
@@ -2411,7 +2411,7 @@ label0:
                 Class44_Sub2 class44_sub2_14 = aclass44_sub2[i][j + 1];
                 if(class44_sub2_14 != null && class44_sub2_14.aBoolean1352)
                 {
-                    aClass28_647.method256(class44_sub2_14);
+                    aClass28_647.insertHead(class44_sub2_14);
                 }
             }
             if(i > anInt623)
@@ -2419,7 +2419,7 @@ label0:
                 Class44_Sub2 class44_sub2_15 = aclass44_sub2[i - 1][j];
                 if(class44_sub2_15 != null && class44_sub2_15.aBoolean1352)
                 {
-                    aClass28_647.method256(class44_sub2_15);
+                    aClass28_647.insertHead(class44_sub2_15);
                 }
             }
             if(j > anInt624)
@@ -2427,7 +2427,7 @@ label0:
                 Class44_Sub2 class44_sub2_16 = aclass44_sub2[i][j - 1];
                 if(class44_sub2_16 != null && class44_sub2_16.aBoolean1352)
                 {
-                    aClass28_647.method256(class44_sub2_16);
+                    aClass28_647.insertHead(class44_sub2_16);
                 }
             }
         } while(true);

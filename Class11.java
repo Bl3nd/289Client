@@ -31,10 +31,10 @@ public class Class11
         {
             Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
             class44_sub3_sub2.currentOffset = abyte0.length - 8;
-            int j = class44_sub3_sub2.readUnsignedWord();
-            int k = class44_sub3_sub2.readUnsignedWord();
-            int l = class44_sub3_sub2.readUnsignedWord();
-            int i1 = class44_sub3_sub2.readUnsignedWord();
+            int j = class44_sub3_sub2.getUnsignedLEShort();
+            int k = class44_sub3_sub2.getUnsignedLEShort();
+            int l = class44_sub3_sub2.getUnsignedLEShort();
+            int i1 = class44_sub3_sub2.getUnsignedLEShort();
             int j1 = 0;
             Stream class44_sub3_sub2_1 = new Stream(abyte0, 15787);
             class44_sub3_sub2_1.currentOffset = j1;
@@ -51,7 +51,7 @@ public class Class11
             Stream class44_sub3_sub2_5 = new Stream(abyte0, 15787);
             class44_sub3_sub2_5.currentOffset = j1;
             Class9 class9 = new Class9(class44_sub3_sub2_5, anInt262);
-            int k1 = class44_sub3_sub2_1.readUnsignedWord();
+            int k1 = class44_sub3_sub2_1.getUnsignedLEShort();
             if(i != 2)
             {
                 return;
@@ -62,16 +62,16 @@ public class Class11
             int ai3[] = new int[500];
             for(int l1 = 0; l1 < k1; l1++)
             {
-                int i2 = class44_sub3_sub2_1.readUnsignedWord();
+                int i2 = class44_sub3_sub2_1.getUnsignedLEShort();
                 Class11 class11 = aClass11Array264[i2] = new Class11();
-                class11.anInt265 = class44_sub3_sub2_4.readUnsignedByte();
+                class11.anInt265 = class44_sub3_sub2_4.getUnsignedByte();
                 class11.aClass9_266 = class9;
-                int j2 = class44_sub3_sub2_1.readUnsignedByte();
+                int j2 = class44_sub3_sub2_1.getUnsignedByte();
                 int k2 = -1;
                 int l2 = 0;
                 for(int i3 = 0; i3 < j2; i3++)
                 {
-                    int j3 = class44_sub3_sub2_2.readUnsignedByte();
+                    int j3 = class44_sub3_sub2_2.getUnsignedByte();
                     if(j3 > 0)
                     {
                         if(class9.anIntArray254[i3] != 0)
@@ -98,21 +98,21 @@ public class Class11
                         }
                         if((j3 & 1) != 0)
                         {
-                            ai1[l2] = class44_sub3_sub2_3.method495();
+                            ai1[l2] = class44_sub3_sub2_3.getSmartA();
                         } else
                         {
                             ai1[l2] = c;
                         }
                         if((j3 & 2) != 0)
                         {
-                            ai2[l2] = class44_sub3_sub2_3.method495();
+                            ai2[l2] = class44_sub3_sub2_3.getSmartA();
                         } else
                         {
                             ai2[l2] = c;
                         }
                         if((j3 & 4) != 0)
                         {
-                            ai3[l2] = class44_sub3_sub2_3.method495();
+                            ai3[l2] = class44_sub3_sub2_3.getSmartA();
                         } else
                         {
                             ai3[l2] = c;

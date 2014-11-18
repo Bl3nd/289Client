@@ -144,18 +144,18 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             class44_sub3_sub2.currentOffset = abyte0.length - 18;
             Class21 class21_1 = aClass21Array1570[i] = new Class21();
             class21_1.aByteArray442 = abyte0;
-            class21_1.anInt443 = class44_sub3_sub2.readUnsignedWord();
-            class21_1.anInt444 = class44_sub3_sub2.readUnsignedWord();
-            class21_1.anInt445 = class44_sub3_sub2.readUnsignedByte();
-            int j = class44_sub3_sub2.readUnsignedByte();
-            int k = class44_sub3_sub2.readUnsignedByte();
-            int l = class44_sub3_sub2.readUnsignedByte();
-            int i1 = class44_sub3_sub2.readUnsignedByte();
-            int j1 = class44_sub3_sub2.readUnsignedByte();
-            int k1 = class44_sub3_sub2.readUnsignedWord();
-            int l1 = class44_sub3_sub2.readUnsignedWord();
-            int i2 = class44_sub3_sub2.readUnsignedWord();
-            int j2 = class44_sub3_sub2.readUnsignedWord();
+            class21_1.anInt443 = class44_sub3_sub2.getUnsignedLEShort();
+            class21_1.anInt444 = class44_sub3_sub2.getUnsignedLEShort();
+            class21_1.anInt445 = class44_sub3_sub2.getUnsignedByte();
+            int j = class44_sub3_sub2.getUnsignedByte();
+            int k = class44_sub3_sub2.getUnsignedByte();
+            int l = class44_sub3_sub2.getUnsignedByte();
+            int i1 = class44_sub3_sub2.getUnsignedByte();
+            int j1 = class44_sub3_sub2.getUnsignedByte();
+            int k1 = class44_sub3_sub2.getUnsignedLEShort();
+            int l1 = class44_sub3_sub2.getUnsignedLEShort();
+            int i2 = class44_sub3_sub2.getUnsignedLEShort();
+            int j2 = class44_sub3_sub2.getUnsignedLEShort();
             int k2 = 0;
             class21_1.anInt446 = k2;
             k2 += class21_1.anInt443;
@@ -376,21 +376,21 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             int l = 0;
             for(int i1 = 0; i1 < anInt1535; i1++)
             {
-                int j1 = class44_sub3_sub2.readUnsignedByte();
+                int j1 = class44_sub3_sub2.getUnsignedByte();
                 int l1 = 0;
                 if((j1 & 1) != 0)
                 {
-                    l1 = class44_sub3_sub2_1.method495();
+                    l1 = class44_sub3_sub2_1.getSmartA();
                 }
                 int j2 = 0;
                 if((j1 & 2) != 0)
                 {
-                    j2 = class44_sub3_sub2_2.method495();
+                    j2 = class44_sub3_sub2_2.getSmartA();
                 }
                 int l2 = 0;
                 if((j1 & 4) != 0)
                 {
-                    l2 = class44_sub3_sub2_3.method495();
+                    l2 = class44_sub3_sub2_3.getSmartA();
                 }
                 anIntArray1536[i1] = j + l1;
                 anIntArray1537[i1] = k + j2;
@@ -400,7 +400,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 l = anIntArray1538[i1];
                 if(anIntArray1564 != null)
                 {
-                    anIntArray1564[i1] = class44_sub3_sub2_4.readUnsignedByte();
+                    anIntArray1564[i1] = class44_sub3_sub2_4.getUnsignedByte();
                 }
             }
             class44_sub3_sub2.currentOffset = class21.anInt453;
@@ -410,22 +410,22 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             class44_sub3_sub2_4.currentOffset = class21.anInt457;
             for(int k1 = 0; k1 < anInt1539; k1++)
             {
-                anIntArray1549[k1] = class44_sub3_sub2.readUnsignedWord();
+                anIntArray1549[k1] = class44_sub3_sub2.getUnsignedLEShort();
                 if(anIntArray1546 != null)
                 {
-                    anIntArray1546[k1] = class44_sub3_sub2_1.readUnsignedByte();
+                    anIntArray1546[k1] = class44_sub3_sub2_1.getUnsignedByte();
                 }
                 if(anIntArray1547 != null)
                 {
-                    anIntArray1547[k1] = class44_sub3_sub2_2.readUnsignedByte();
+                    anIntArray1547[k1] = class44_sub3_sub2_2.getUnsignedByte();
                 }
                 if(anIntArray1548 != null)
                 {
-                    anIntArray1548[k1] = class44_sub3_sub2_3.readUnsignedByte();
+                    anIntArray1548[k1] = class44_sub3_sub2_3.getUnsignedByte();
                 }
                 if(anIntArray1565 != null)
                 {
-                    anIntArray1565[k1] = class44_sub3_sub2_4.readUnsignedByte();
+                    anIntArray1565[k1] = class44_sub3_sub2_4.getUnsignedByte();
                 }
             }
             class44_sub3_sub2.currentOffset = class21.anInt451;
@@ -442,14 +442,14 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             }
             for(int l3 = 0; l3 < anInt1539; l3++)
             {
-                int i4 = class44_sub3_sub2_1.readUnsignedByte();
+                int i4 = class44_sub3_sub2_1.getUnsignedByte();
                 if(i4 == 1)
                 {
-                    i2 = class44_sub3_sub2.method495() + j3;
+                    i2 = class44_sub3_sub2.getSmartA() + j3;
                     j3 = i2;
-                    k2 = class44_sub3_sub2.method495() + j3;
+                    k2 = class44_sub3_sub2.getSmartA() + j3;
                     j3 = k2;
-                    i3 = class44_sub3_sub2.method495() + j3;
+                    i3 = class44_sub3_sub2.getSmartA() + j3;
                     j3 = i3;
                     anIntArray1540[l3] = i2;
                     anIntArray1541[l3] = k2;
@@ -459,7 +459,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 {
                     i2 = i2;
                     k2 = i3;
-                    i3 = class44_sub3_sub2.method495() + j3;
+                    i3 = class44_sub3_sub2.getSmartA() + j3;
                     j3 = i3;
                     anIntArray1540[l3] = i2;
                     anIntArray1541[l3] = k2;
@@ -469,7 +469,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 {
                     i2 = i3;
                     k2 = k2;
-                    i3 = class44_sub3_sub2.method495() + j3;
+                    i3 = class44_sub3_sub2.getSmartA() + j3;
                     j3 = i3;
                     anIntArray1540[l3] = i2;
                     anIntArray1541[l3] = k2;
@@ -480,7 +480,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     int k4 = i2;
                     i2 = k2;
                     k2 = k4;
-                    i3 = class44_sub3_sub2.method495() + j3;
+                    i3 = class44_sub3_sub2.getSmartA() + j3;
                     j3 = i3;
                     anIntArray1540[l3] = i2;
                     anIntArray1541[l3] = k2;
@@ -490,9 +490,9 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             class44_sub3_sub2.currentOffset = class21.anInt458;
             for(int j4 = 0; j4 < anInt1551; j4++)
             {
-                anIntArray1552[j4] = class44_sub3_sub2.readUnsignedWord();
-                anIntArray1553[j4] = class44_sub3_sub2.readUnsignedWord();
-                anIntArray1554[j4] = class44_sub3_sub2.readUnsignedWord();
+                anIntArray1552[j4] = class44_sub3_sub2.getUnsignedLEShort();
+                anIntArray1553[j4] = class44_sub3_sub2.getUnsignedLEShort();
+                anIntArray1554[j4] = class44_sub3_sub2.getUnsignedLEShort();
             }
             return;
         }

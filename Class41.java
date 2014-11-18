@@ -50,16 +50,16 @@ public class Class41
             {
                 aBoolean748 = !aBoolean748;
             }
-            int j = class44_sub3_sub2.readDWord();
+            int j = class44_sub3_sub2.getInt();
             aCharArrayArray760 = new char[j][];
             anIntArray761 = new int[j];
             for(int k = 0; k < j; k++)
             {
-                anIntArray761[k] = class44_sub3_sub2.readUnsignedByte();
-                char ac[] = new char[class44_sub3_sub2.readUnsignedByte()];
+                anIntArray761[k] = class44_sub3_sub2.getUnsignedByte();
+                char ac[] = new char[class44_sub3_sub2.getUnsignedByte()];
                 for(int l = 0; l < ac.length; l++)
                 {
-                    ac[l] = (char)class44_sub3_sub2.readUnsignedByte();
+                    ac[l] = (char)class44_sub3_sub2.getUnsignedByte();
                 }
                 aCharArrayArray760[k] = ac;
             }
@@ -76,7 +76,7 @@ public class Class41
     {
         try
         {
-            int j = class44_sub3_sub2.readDWord();
+            int j = class44_sub3_sub2.getInt();
             aCharArrayArray757 = new char[j][];
             aByteArrayArrayArray758 = new byte[j][][];
             method348(aCharArrayArray757, aByteArrayArrayArray758, class44_sub3_sub2, 4);
@@ -96,7 +96,7 @@ public class Class41
     {
         try
         {
-            int i = class44_sub3_sub2.readDWord();
+            int i = class44_sub3_sub2.getInt();
             aCharArrayArray759 = new char[i][];
             method349(class44_sub3_sub2, 961, aCharArrayArray759);
             if(!flag)
@@ -115,10 +115,10 @@ public class Class41
     {
         try
         {
-            anIntArray756 = new int[class44_sub3_sub2.readDWord()];
+            anIntArray756 = new int[class44_sub3_sub2.getInt()];
             for(int i = 0; i < anIntArray756.length; i++)
             {
-                anIntArray756[i] = class44_sub3_sub2.readUnsignedWord();
+                anIntArray756[i] = class44_sub3_sub2.getUnsignedLEShort();
             }
             if(byte0 != -47)
             {
@@ -145,17 +145,17 @@ public class Class41
             }
             for(int j = 0; j < ac.length; j++)
             {
-                char ac1[] = new char[class44_sub3_sub2.readUnsignedByte()];
+                char ac1[] = new char[class44_sub3_sub2.getUnsignedByte()];
                 for(int k = 0; k < ac1.length; k++)
                 {
-                    ac1[k] = (char)class44_sub3_sub2.readUnsignedByte();
+                    ac1[k] = (char)class44_sub3_sub2.getUnsignedByte();
                 }
                 ac[j] = ac1;
-                byte abyte1[][] = new byte[class44_sub3_sub2.readUnsignedByte()][2];
+                byte abyte1[][] = new byte[class44_sub3_sub2.getUnsignedByte()][2];
                 for(int l = 0; l < abyte1.length; l++)
                 {
-                    abyte1[l][0] = (byte)class44_sub3_sub2.readUnsignedByte();
-                    abyte1[l][1] = (byte)class44_sub3_sub2.readUnsignedByte();
+                    abyte1[l][0] = (byte)class44_sub3_sub2.getUnsignedByte();
+                    abyte1[l][1] = (byte)class44_sub3_sub2.getUnsignedByte();
                 }
                 if(abyte1.length > 0)
                 {
@@ -178,10 +178,10 @@ public class Class41
             i = 75 / i;
             for(int j = 0; j < ac.length; j++)
             {
-                char ac1[] = new char[class44_sub3_sub2.readUnsignedByte()];
+                char ac1[] = new char[class44_sub3_sub2.getUnsignedByte()];
                 for(int k = 0; k < ac1.length; k++)
                 {
-                    ac1[k] = (char)class44_sub3_sub2.readUnsignedByte();
+                    ac1[k] = (char)class44_sub3_sub2.getUnsignedByte();
                 }
                 ac[j] = ac1;
             }

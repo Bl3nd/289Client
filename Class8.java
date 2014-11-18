@@ -58,13 +58,13 @@ public class Class8
     {
         aClass44_Sub3_Sub2_211 = new Stream(class47.method549("loc.dat", null), 15787);
         Stream class44_sub3_sub2 = new Stream(class47.method549("loc.idx", null), 15787);
-        anInt209 = class44_sub3_sub2.readUnsignedWord();
+        anInt209 = class44_sub3_sub2.getUnsignedLEShort();
         anIntArray210 = new int[anInt209];
         int i = 2;
         for(int j = 0; j < anInt209; j++)
         {
             anIntArray210[j] = i;
-            i += class44_sub3_sub2.readUnsignedWord();
+            i += class44_sub3_sub2.getUnsignedLEShort();
         }
         aClass8Array212 = new Class8[20];
         for(int k = 0; k < 20; k++)
@@ -166,53 +166,53 @@ label0:
                 int j;
                 do
                 {
-                    j = class44_sub3_sub2.readUnsignedByte();
+                    j = class44_sub3_sub2.getUnsignedByte();
                     if(j == 0)
                     {
                         break label0;
                     }
                     if(j == 1)
                     {
-                        int k = class44_sub3_sub2.readUnsignedByte();
+                        int k = class44_sub3_sub2.getUnsignedByte();
                         if(k > 0)
                         {
                             anIntArray217 = new int[k];
                             anIntArray216 = new int[k];
                             for(int k1 = 0; k1 < k; k1++)
                             {
-                                anIntArray216[k1] = class44_sub3_sub2.readUnsignedWord();
-                                anIntArray217[k1] = class44_sub3_sub2.readUnsignedByte();
+                                anIntArray216[k1] = class44_sub3_sub2.getUnsignedLEShort();
+                                anIntArray217[k1] = class44_sub3_sub2.getUnsignedByte();
                             }
                         }
                     } else
                     if(j == 2)
                     {
-                        aString218 = class44_sub3_sub2.method489();
+                        aString218 = class44_sub3_sub2.getString();
                     } else
                     if(j == 3)
                     {
-                        aByteArray219 = class44_sub3_sub2.method490(anInt204);
+                        aByteArray219 = class44_sub3_sub2.readBytes(anInt204);
                     } else
                     if(j == 5)
                     {
-                        int l = class44_sub3_sub2.readUnsignedByte();
+                        int l = class44_sub3_sub2.getUnsignedByte();
                         if(l > 0)
                         {
                             anIntArray217 = null;
                             anIntArray216 = new int[l];
                             for(int l1 = 0; l1 < l; l1++)
                             {
-                                anIntArray216[l1] = class44_sub3_sub2.readUnsignedWord();
+                                anIntArray216[l1] = class44_sub3_sub2.getUnsignedLEShort();
                             }
                         }
                     } else
                     if(j == 14)
                     {
-                        anInt222 = class44_sub3_sub2.readUnsignedByte();
+                        anInt222 = class44_sub3_sub2.getUnsignedByte();
                     } else
                     if(j == 15)
                     {
-                        anInt223 = class44_sub3_sub2.readUnsignedByte();
+                        anInt223 = class44_sub3_sub2.getUnsignedByte();
                     } else
                     if(j == 17)
                     {
@@ -224,7 +224,7 @@ label0:
                     } else
                     if(j == 19)
                     {
-                        i = class44_sub3_sub2.readUnsignedByte();
+                        i = class44_sub3_sub2.getUnsignedByte();
                         if(i == 1)
                         {
                             aBoolean226 = true;
@@ -244,7 +244,7 @@ label0:
                     } else
                     if(j == 24)
                     {
-                        anInt230 = class44_sub3_sub2.readUnsignedWord();
+                        anInt230 = class44_sub3_sub2.getUnsignedLEShort();
                         if(anInt230 == 65535)
                         {
                             anInt230 = -1;
@@ -252,15 +252,15 @@ label0:
                     } else
                     if(j == 28)
                     {
-                        anInt231 = class44_sub3_sub2.readUnsignedByte();
+                        anInt231 = class44_sub3_sub2.getUnsignedByte();
                     } else
                     if(j == 29)
                     {
-                        aByte232 = class44_sub3_sub2.method483();
+                        aByte232 = class44_sub3_sub2.get();
                     } else
                     if(j == 39)
                     {
-                        aByte233 = class44_sub3_sub2.method483();
+                        aByte233 = class44_sub3_sub2.get();
                     } else
                     if(j >= 30 && j < 39)
                     {
@@ -268,7 +268,7 @@ label0:
                         {
                             aStringArray234 = new String[5];
                         }
-                        aStringArray234[j - 30] = class44_sub3_sub2.method489();
+                        aStringArray234[j - 30] = class44_sub3_sub2.getString();
                         if(aStringArray234[j - 30].equalsIgnoreCase("hidden"))
                         {
                             aStringArray234[j - 30] = null;
@@ -276,18 +276,18 @@ label0:
                     } else
                     if(j == 40)
                     {
-                        int i1 = class44_sub3_sub2.readUnsignedByte();
+                        int i1 = class44_sub3_sub2.getUnsignedByte();
                         anIntArray220 = new int[i1];
                         anIntArray221 = new int[i1];
                         for(int i2 = 0; i2 < i1; i2++)
                         {
-                            anIntArray220[i2] = class44_sub3_sub2.readUnsignedWord();
-                            anIntArray221[i2] = class44_sub3_sub2.readUnsignedWord();
+                            anIntArray220[i2] = class44_sub3_sub2.getUnsignedLEShort();
+                            anIntArray221[i2] = class44_sub3_sub2.getUnsignedLEShort();
                         }
                     } else
                     if(j == 60)
                     {
-                        anInt235 = class44_sub3_sub2.readUnsignedWord();
+                        anInt235 = class44_sub3_sub2.getUnsignedLEShort();
                     } else
                     if(j == 62)
                     {
@@ -299,35 +299,35 @@ label0:
                     } else
                     if(j == 65)
                     {
-                        anInt239 = class44_sub3_sub2.readUnsignedWord();
+                        anInt239 = class44_sub3_sub2.getUnsignedLEShort();
                     } else
                     if(j == 66)
                     {
-                        anInt240 = class44_sub3_sub2.readUnsignedWord();
+                        anInt240 = class44_sub3_sub2.getUnsignedLEShort();
                     } else
                     if(j == 67)
                     {
-                        anInt241 = class44_sub3_sub2.readUnsignedWord();
+                        anInt241 = class44_sub3_sub2.getUnsignedLEShort();
                     } else
                     if(j == 68)
                     {
-                        anInt236 = class44_sub3_sub2.readUnsignedWord();
+                        anInt236 = class44_sub3_sub2.getUnsignedLEShort();
                     } else
                     if(j == 69)
                     {
-                        anInt245 = class44_sub3_sub2.readUnsignedByte();
+                        anInt245 = class44_sub3_sub2.getUnsignedByte();
                     } else
                     if(j == 70)
                     {
-                        anInt242 = class44_sub3_sub2.method485();
+                        anInt242 = class44_sub3_sub2.getForceLEShort();
                     } else
                     if(j == 71)
                     {
-                        anInt243 = class44_sub3_sub2.method485();
+                        anInt243 = class44_sub3_sub2.getForceLEShort();
                     } else
                     if(j == 72)
                     {
-                        anInt244 = class44_sub3_sub2.method485();
+                        anInt244 = class44_sub3_sub2.getForceLEShort();
                     } else
                     if(j == 73)
                     {
@@ -342,16 +342,16 @@ label0:
                         {
                             continue;
                         }
-                        anInt248 = class44_sub3_sub2.readUnsignedByte();
+                        anInt248 = class44_sub3_sub2.getUnsignedByte();
                     }
                     continue label0;
                 } while(j != 77);
-                anInt249 = class44_sub3_sub2.readUnsignedWord();
-                int j1 = class44_sub3_sub2.readUnsignedByte();
+                anInt249 = class44_sub3_sub2.getUnsignedLEShort();
+                int j1 = class44_sub3_sub2.getUnsignedByte();
                 anIntArray250 = new int[j1 + 1];
                 for(int j2 = 0; j2 <= j1; j2++)
                 {
-                    anIntArray250[j2] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray250[j2] = class44_sub3_sub2.getUnsignedLEShort();
                     if(anIntArray250[j2] == 65535)
                     {
                         anIntArray250[j2] = -1;

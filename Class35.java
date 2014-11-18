@@ -24,7 +24,7 @@ public class Class35
                 return;
             }
             Stream class44_sub3_sub2 = new Stream(class47.method549("varbit.dat", null), 15787);
-            anInt589 = class44_sub3_sub2.readUnsignedWord();
+            anInt589 = class44_sub3_sub2.getUnsignedLEShort();
             if(aClass35Array590 == null)
             {
                 aClass35Array590 = new Class35[anInt589];
@@ -61,20 +61,20 @@ public class Class35
             i = 55 / i;
             do
             {
-                int k = class44_sub3_sub2.readUnsignedByte();
+                int k = class44_sub3_sub2.getUnsignedByte();
                 if(k == 0)
                 {
                     return;
                 }
                 if(k == 1)
                 {
-                    anInt592 = class44_sub3_sub2.readUnsignedWord();
-                    anInt593 = class44_sub3_sub2.readUnsignedByte();
-                    anInt594 = class44_sub3_sub2.readUnsignedByte();
+                    anInt592 = class44_sub3_sub2.getUnsignedLEShort();
+                    anInt593 = class44_sub3_sub2.getUnsignedByte();
+                    anInt594 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(k == 10)
                 {
-                    aString591 = class44_sub3_sub2.method489();
+                    aString591 = class44_sub3_sub2.getString();
                 } else
                 if(k == 2)
                 {
@@ -82,11 +82,11 @@ public class Class35
                 } else
                 if(k == 3)
                 {
-                    anInt596 = class44_sub3_sub2.readDWord();
+                    anInt596 = class44_sub3_sub2.getInt();
                 } else
                 if(k == 4)
                 {
-                    anInt597 = class44_sub3_sub2.readDWord();
+                    anInt597 = class44_sub3_sub2.getInt();
                 } else
                 {
                     System.out.println("Error unrecognised config code: " + k);

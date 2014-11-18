@@ -23,17 +23,17 @@ public class Class43_Sub1 extends Class43
     public int anIntArray1293[];
     public int anIntArray1294[];
     public boolean aBoolean1295;
-    public client aClient1296;
+    public Client aClient1296;
     public CRC32 aCRC32_1297;
     public boolean aBoolean1298;
     public int anInt1299;
     public int anInt1300;
     public Class31 aClass31_1301;
-    public Class28 aClass28_1302;
-    public Class28 aClass28_1303;
-    public Class28 aClass28_1304;
-    public Class28 aClass28_1305;
-    public Class28 aClass28_1306;
+    public NodeList aClass28_1302;
+    public NodeList aClass28_1303;
+    public NodeList aClass28_1304;
+    public NodeList aClass28_1305;
+    public NodeList aClass28_1306;
     public String aString1307;
     public int anInt1308;
     public int anInt1309;
@@ -51,7 +51,7 @@ public class Class43_Sub1 extends Class43
     public long aLong1321;
     public int anInt1322;
 
-    public void method383(Class47 class47, client client1)
+    public void method383(Class47 class47, Client client1)
     {
         String as[] = {
             "model_version", "anim_version", "midi_version", "map_version"
@@ -65,7 +65,7 @@ public class Class43_Sub1 extends Class43
             aByteArrayArray1286[i] = new byte[j];
             for(int l = 0; l < j; l++)
             {
-                anIntArrayArray1284[i][l] = class44_sub3_sub2.readUnsignedWord();
+                anIntArrayArray1284[i][l] = class44_sub3_sub2.getUnsignedLEShort();
             }
         }
         String as1[] = {
@@ -79,7 +79,7 @@ public class Class43_Sub1 extends Class43
             anIntArrayArray1285[k] = new int[i1];
             for(int l1 = 0; l1 < i1; l1++)
             {
-                anIntArrayArray1285[k][l1] = class44_sub3_sub2_1.readDWord();
+                anIntArrayArray1285[k][l1] = class44_sub3_sub2_1.getInt();
             }
         }
         byte abyte2[] = class47.method549("model_index", null);
@@ -104,10 +104,10 @@ public class Class43_Sub1 extends Class43
         anIntArray1292 = new int[j1];
         for(int i2 = 0; i2 < j1; i2++)
         {
-            anIntArray1289[i2] = class44_sub3_sub2_2.readUnsignedWord();
-            anIntArray1290[i2] = class44_sub3_sub2_2.readUnsignedWord();
-            anIntArray1291[i2] = class44_sub3_sub2_2.readUnsignedWord();
-            anIntArray1292[i2] = class44_sub3_sub2_2.readUnsignedByte();
+            anIntArray1289[i2] = class44_sub3_sub2_2.getUnsignedLEShort();
+            anIntArray1290[i2] = class44_sub3_sub2_2.getUnsignedLEShort();
+            anIntArray1291[i2] = class44_sub3_sub2_2.getUnsignedLEShort();
+            anIntArray1292[i2] = class44_sub3_sub2_2.getUnsignedByte();
         }
         abyte2 = class47.method549("anim_index", null);
         class44_sub3_sub2_2 = new Stream(abyte2, 15787);
@@ -115,7 +115,7 @@ public class Class43_Sub1 extends Class43
         anIntArray1293 = new int[j1];
         for(int j2 = 0; j2 < j1; j2++)
         {
-            anIntArray1293[j2] = class44_sub3_sub2_2.readUnsignedWord();
+            anIntArray1293[j2] = class44_sub3_sub2_2.getUnsignedLEShort();
         }
         abyte2 = class47.method549("midi_index", null);
         class44_sub3_sub2_2 = new Stream(abyte2, 15787);
@@ -123,7 +123,7 @@ public class Class43_Sub1 extends Class43
         anIntArray1294 = new int[j1];
         for(int k2 = 0; k2 < j1; k2++)
         {
-            anIntArray1294[k2] = class44_sub3_sub2_2.readUnsignedByte();
+            anIntArray1294[k2] = class44_sub3_sub2_2.getUnsignedByte();
         }
         aClient1296 = client1;
         aBoolean1295 = true;
@@ -318,7 +318,7 @@ public class Class43_Sub1 extends Class43
             class44_sub3_sub3_1.aBoolean1409 = true;
             synchronized(aClass28_1302)
             {
-                aClass28_1302.method256(class44_sub3_sub3_1);
+                aClass28_1302.insertHead(class44_sub3_sub3_1);
             }
             aClass31_1301.method264(class44_sub3_sub3_1);
         }
@@ -338,7 +338,7 @@ public class Class43_Sub1 extends Class43
         Class44_Sub3_Sub3 class44_sub3_sub3;
         synchronized(aClass28_1305)
         {
-            class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1305.method258();
+            class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1305.popHead();
         }
         if(class44_sub3_sub3 == null)
         {
@@ -428,7 +428,7 @@ public class Class43_Sub1 extends Class43
             }
             synchronized(aClass28_1306)
             {
-                aClass28_1306.method263();
+                aClass28_1306.removeAll();
             }
             return;
         }
@@ -469,7 +469,7 @@ public class Class43_Sub1 extends Class43
             }
             synchronized(aClass28_1306)
             {
-                aClass28_1306.method256(class44_sub3_sub3);
+                aClass28_1306.insertHead(class44_sub3_sub3);
             }
             return;
         }
@@ -520,7 +520,7 @@ public class Class43_Sub1 extends Class43
                     }
                 }
                 boolean flag = false;
-                for(Class44_Sub3_Sub3 class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.method259(); class44_sub3_sub3 != null; class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.method261(false))
+                for(Class44_Sub3_Sub3 class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.getBack(); class44_sub3_sub3 != null; class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.reverseGetNext(false))
                 {
                     if(class44_sub3_sub3.aBoolean1409)
                     {
@@ -535,7 +535,7 @@ public class Class43_Sub1 extends Class43
                 }
                 if(!flag)
                 {
-                    for(Class44_Sub3_Sub3 class44_sub3_sub3_1 = (Class44_Sub3_Sub3)aClass28_1304.method259(); class44_sub3_sub3_1 != null; class44_sub3_sub3_1 = (Class44_Sub3_Sub3)aClass28_1304.method261(false))
+                    for(Class44_Sub3_Sub3 class44_sub3_sub3_1 = (Class44_Sub3_Sub3)aClass28_1304.getBack(); class44_sub3_sub3_1 != null; class44_sub3_sub3_1 = (Class44_Sub3_Sub3)aClass28_1304.reverseGetNext(false))
                     {
                         flag = true;
                         class44_sub3_sub3_1.anInt1408++;
@@ -604,7 +604,7 @@ public class Class43_Sub1 extends Class43
             Class44_Sub3_Sub3 class44_sub3_sub3;
             synchronized(aClass28_1302)
             {
-                class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1302.method258();
+                class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1302.popHead();
             }
             if(byte0 != -101)
             {
@@ -626,16 +626,16 @@ public class Class43_Sub1 extends Class43
                 {
                     if(abyte0 == null)
                     {
-                        aClass28_1303.method256(class44_sub3_sub3);
+                        aClass28_1303.insertHead(class44_sub3_sub3);
                     } else
                     {
                         class44_sub3_sub3.aByteArray1407 = abyte0;
                         synchronized(aClass28_1305)
                         {
-                            aClass28_1305.method256(class44_sub3_sub3);
+                            aClass28_1305.insertHead(class44_sub3_sub3);
                         }
                     }
-                    class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1302.method258();
+                    class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1302.popHead();
                 }
             }
             return;
@@ -657,7 +657,7 @@ public class Class43_Sub1 extends Class43
             {
                 anInt1282 = -238;
             }
-            for(Class44_Sub3_Sub3 class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.method259(); class44_sub3_sub3 != null; class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.method261(false))
+            for(Class44_Sub3_Sub3 class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.getBack(); class44_sub3_sub3 != null; class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.reverseGetNext(false))
             {
                 if(class44_sub3_sub3.aBoolean1409)
                 {
@@ -669,7 +669,7 @@ public class Class43_Sub1 extends Class43
             }
             while(anInt1299 < 10)
             {
-                Class44_Sub3_Sub3 class44_sub3_sub3_1 = (Class44_Sub3_Sub3)aClass28_1303.method258();
+                Class44_Sub3_Sub3 class44_sub3_sub3_1 = (Class44_Sub3_Sub3)aClass28_1303.popHead();
                 if(class44_sub3_sub3_1 == null)
                 {
                     break;
@@ -679,7 +679,7 @@ public class Class43_Sub1 extends Class43
                     anInt1308++;
                 }
                 aByteArrayArray1286[class44_sub3_sub3_1.anInt1405][class44_sub3_sub3_1.anInt1406] = 0;
-                aClass28_1304.method256(class44_sub3_sub3_1);
+                aClass28_1304.insertHead(class44_sub3_sub3_1);
                 anInt1299++;
                 method403(class44_sub3_sub3_1, 409);
                 aBoolean1298 = true;
@@ -721,14 +721,14 @@ label0:
                     Class44_Sub3_Sub3 class44_sub3_sub3;
                     synchronized(aClass28_1306)
                     {
-                        class44_sub3_sub3 = (Class44_Sub3_Sub3) aClass28_1306.method258();
+                        class44_sub3_sub3 = (Class44_Sub3_Sub3) aClass28_1306.popHead();
                     }
                     while(class44_sub3_sub3 != null)
                     {
                         if(aByteArrayArray1286[class44_sub3_sub3.anInt1405][class44_sub3_sub3.anInt1406] != 0)
                         {
                             aByteArrayArray1286[class44_sub3_sub3.anInt1405][class44_sub3_sub3.anInt1406] = (byte)0;
-                            aClass28_1304.method256(class44_sub3_sub3);
+                            aClass28_1304.insertHead(class44_sub3_sub3);
                             method403(class44_sub3_sub3, 409);
                             aBoolean1298 = true;
                             if(anInt1308 < anInt1309)
@@ -744,7 +744,7 @@ label0:
                         }
                         synchronized(aClass28_1306)
                         {
-                            class44_sub3_sub3 = ((Class44_Sub3_Sub3)aClass28_1306.method258());
+                            class44_sub3_sub3 = ((Class44_Sub3_Sub3)aClass28_1306.popHead());
                         }
                     }
                     for(int j = 0; j < 4; j++)
@@ -760,7 +760,7 @@ label0:
                                 class44_sub3_sub3.anInt1405 = j;
                                 class44_sub3_sub3.anInt1406 = l;
                                 class44_sub3_sub3.aBoolean1409 = false;
-                                aClass28_1304.method256(class44_sub3_sub3);
+                                aClass28_1304.insertHead(class44_sub3_sub3);
                                 method403(class44_sub3_sub3, 409);
                                 aBoolean1298 = true;
                                 if(anInt1308 < anInt1309)
@@ -807,7 +807,7 @@ label0:
                     int l1 = ((aByteArray1317[3] & 0xff) << 8) + (aByteArray1317[4] & 0xff);
                     int i2 = aByteArray1317[5] & 0xff;
                     aClass44_Sub3_Sub3_1314 = null;
-                    for(Class44_Sub3_Sub3 class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.method259(); class44_sub3_sub3 != null; class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.method261(false))
+                    for(Class44_Sub3_Sub3 class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.getBack(); class44_sub3_sub3 != null; class44_sub3_sub3 = (Class44_Sub3_Sub3)aClass28_1304.reverseGetNext(false))
                     {
                         if(class44_sub3_sub3.anInt1405 == l && class44_sub3_sub3.anInt1406 == j1)
                         {
@@ -829,11 +829,11 @@ label0:
                             {
                                 synchronized(aClass28_1305)
                                 {
-                                    aClass28_1305.method256(aClass44_Sub3_Sub3_1314);
+                                    aClass28_1305.insertHead(aClass44_Sub3_Sub3_1314);
                                 }
                             } else
                             {
-                                aClass44_Sub3_Sub3_1314.method404();
+                                aClass44_Sub3_Sub3_1314.unlink();
                             }
                             aClass44_Sub3_Sub3_1314 = null;
                         } else
@@ -883,11 +883,11 @@ label0:
                         {
                             synchronized(aClass28_1305)
                             {
-                                aClass28_1305.method256(aClass44_Sub3_Sub3_1314);
+                                aClass28_1305.insertHead(aClass44_Sub3_Sub3_1314);
                             }
                         } else
                         {
-                            aClass44_Sub3_Sub3_1314.method404();
+                            aClass44_Sub3_Sub3_1314.unlink();
                         }
                     }
                     anInt1316 = 0;
@@ -962,7 +962,7 @@ label0:
                         return;
                     }
                     aLong1321 = l;
-                    aSocket1310 = aClient1296.method34(43594 + client.anInt1233);
+                    aSocket1310 = aClient1296.method34(43594 + Client.anInt1233);
                     anInputStream1311 = aSocket1310.getInputStream();
                     anOutputStream1312 = aSocket1310.getOutputStream();
                     anOutputStream1312.write(15);
@@ -1027,11 +1027,11 @@ label0:
         aCRC32_1297 = new CRC32();
         aBoolean1298 = false;
         aClass31_1301 = new Class31(9);
-        aClass28_1302 = new Class28(-199);
-        aClass28_1303 = new Class28(-199);
-        aClass28_1304 = new Class28(-199);
-        aClass28_1305 = new Class28(-199);
-        aClass28_1306 = new Class28(-199);
+        aClass28_1302 = new NodeList(-199);
+        aClass28_1303 = new NodeList(-199);
+        aClass28_1304 = new NodeList(-199);
+        aClass28_1305 = new NodeList(-199);
+        aClass28_1306 = new NodeList(-199);
         aString1307 = "";
         aByteArray1317 = new byte[500];
         aByteArray1318 = new byte[65000];

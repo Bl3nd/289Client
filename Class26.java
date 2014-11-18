@@ -31,7 +31,7 @@ public class Class26
         try
         {
             Stream class44_sub3_sub2 = new Stream(class47.method549("seq.dat", null), 15787);
-            anInt507 = class44_sub3_sub2.readUnsignedWord();
+            anInt507 = class44_sub3_sub2.getUnsignedLEShort();
             if(aClass26Array508 == null)
             {
                 aClass26Array508 = new Class26[anInt507];
@@ -99,39 +99,39 @@ public class Class26
             }
             do
             {
-                int i = class44_sub3_sub2.readUnsignedByte();
+                int i = class44_sub3_sub2.getUnsignedByte();
                 if(i == 0)
                 {
                     break;
                 }
                 if(i == 1)
                 {
-                    anInt509 = class44_sub3_sub2.readUnsignedByte();
+                    anInt509 = class44_sub3_sub2.getUnsignedByte();
                     anIntArray510 = new int[anInt509];
                     anIntArray511 = new int[anInt509];
                     anIntArray512 = new int[anInt509];
                     for(int j = 0; j < anInt509; j++)
                     {
-                        anIntArray510[j] = class44_sub3_sub2.readUnsignedWord();
-                        anIntArray511[j] = class44_sub3_sub2.readUnsignedWord();
+                        anIntArray510[j] = class44_sub3_sub2.getUnsignedLEShort();
+                        anIntArray511[j] = class44_sub3_sub2.getUnsignedLEShort();
                         if(anIntArray511[j] == 65535)
                         {
                             anIntArray511[j] = -1;
                         }
-                        anIntArray512[j] = class44_sub3_sub2.readUnsignedWord();
+                        anIntArray512[j] = class44_sub3_sub2.getUnsignedLEShort();
                     }
                 } else
                 if(i == 2)
                 {
-                    anInt513 = class44_sub3_sub2.readUnsignedWord();
+                    anInt513 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 3)
                 {
-                    int k = class44_sub3_sub2.readUnsignedByte();
+                    int k = class44_sub3_sub2.getUnsignedByte();
                     anIntArray514 = new int[k + 1];
                     for(int l = 0; l < k; l++)
                     {
-                        anIntArray514[l] = class44_sub3_sub2.readUnsignedByte();
+                        anIntArray514[l] = class44_sub3_sub2.getUnsignedByte();
                     }
                     anIntArray514[k] = 0x98967f;
                 } else
@@ -141,35 +141,35 @@ public class Class26
                 } else
                 if(i == 5)
                 {
-                    anInt516 = class44_sub3_sub2.readUnsignedByte();
+                    anInt516 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 6)
                 {
-                    anInt517 = class44_sub3_sub2.readUnsignedWord();
+                    anInt517 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 7)
                 {
-                    anInt518 = class44_sub3_sub2.readUnsignedWord();
+                    anInt518 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 8)
                 {
-                    anInt519 = class44_sub3_sub2.readUnsignedByte();
+                    anInt519 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 9)
                 {
-                    anInt520 = class44_sub3_sub2.readUnsignedByte();
+                    anInt520 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 10)
                 {
-                    anInt521 = class44_sub3_sub2.readUnsignedByte();
+                    anInt521 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 11)
                 {
-                    anInt522 = class44_sub3_sub2.readUnsignedByte();
+                    anInt522 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 12)
                 {
-                    anInt523 = class44_sub3_sub2.readDWord();
+                    anInt523 = class44_sub3_sub2.getInt();
                 } else
                 {
                     System.out.println("Error unrecognised seq config code: " + i);

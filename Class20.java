@@ -25,7 +25,7 @@ public class Class20
         try
         {
             Stream class44_sub3_sub2 = new Stream(class47.method549("flo.dat", null), 15787);
-            anInt429 = class44_sub3_sub2.readUnsignedWord();
+            anInt429 = class44_sub3_sub2.getUnsignedLEShort();
             if(aClass20Array430 == null)
             {
                 aClass20Array430 = new Class20[anInt429];
@@ -63,19 +63,19 @@ public class Class20
             }
             do
             {
-                int j = class44_sub3_sub2.readUnsignedByte();
+                int j = class44_sub3_sub2.getUnsignedByte();
                 if(j == 0)
                 {
                     return;
                 }
                 if(j == 1)
                 {
-                    anInt432 = class44_sub3_sub2.method486();
+                    anInt432 = class44_sub3_sub2.get24BitInt();
                     method245(anInt432, true);
                 } else
                 if(j == 2)
                 {
-                    anInt433 = class44_sub3_sub2.readUnsignedByte();
+                    anInt433 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(j == 3)
                 {
@@ -87,7 +87,7 @@ public class Class20
                 } else
                 if(j == 6)
                 {
-                    aString431 = class44_sub3_sub2.method489();
+                    aString431 = class44_sub3_sub2.getString();
                 } else
                 {
                     System.out.println("Error unrecognised config code: " + j);

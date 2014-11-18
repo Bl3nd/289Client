@@ -28,7 +28,7 @@ public class Class22
             {
                 aBoolean462 = !aBoolean462;
             }
-            anInt463 = class44_sub3_sub2.readUnsignedWord();
+            anInt463 = class44_sub3_sub2.getUnsignedLEShort();
             if(aClass22Array464 == null)
             {
                 aClass22Array464 = new Class22[anInt463];
@@ -60,22 +60,22 @@ public class Class22
             }
             do
             {
-                int i = class44_sub3_sub2.readUnsignedByte();
+                int i = class44_sub3_sub2.getUnsignedByte();
                 if(i == 0)
                 {
                     return;
                 }
                 if(i == 1)
                 {
-                    anInt465 = class44_sub3_sub2.readUnsignedByte();
+                    anInt465 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 2)
                 {
-                    int j = class44_sub3_sub2.readUnsignedByte();
+                    int j = class44_sub3_sub2.getUnsignedByte();
                     anIntArray466 = new int[j];
                     for(int k = 0; k < j; k++)
                     {
-                        anIntArray466[k] = class44_sub3_sub2.readUnsignedWord();
+                        anIntArray466[k] = class44_sub3_sub2.getUnsignedLEShort();
                     }
                 } else
                 if(i == 3)
@@ -84,15 +84,15 @@ public class Class22
                 } else
                 if(i >= 40 && i < 50)
                 {
-                    anIntArray467[i - 40] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray467[i - 40] = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i >= 50 && i < 60)
                 {
-                    anIntArray468[i - 50] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray468[i - 50] = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i >= 60 && i < 70)
                 {
-                    anIntArray469[i - 60] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray469[i - 60] = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 {
                     System.out.println("Error unrecognised config code: " + i);

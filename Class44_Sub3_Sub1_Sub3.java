@@ -22,33 +22,33 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
         anInt1457 = 9;
         Stream class44_sub3_sub2 = new Stream(class47.method549(s + ".dat", null), 15787);
         Stream class44_sub3_sub2_1 = new Stream(class47.method549("index.dat", null), 15787);
-        class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.readUnsignedWord();
-        anInt1464 = class44_sub3_sub2_1.readUnsignedWord();
-        anInt1465 = class44_sub3_sub2_1.readUnsignedWord();
-        int j = class44_sub3_sub2_1.readUnsignedByte();
+        class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.getUnsignedLEShort();
+        anInt1464 = class44_sub3_sub2_1.getUnsignedLEShort();
+        anInt1465 = class44_sub3_sub2_1.getUnsignedLEShort();
+        int j = class44_sub3_sub2_1.getUnsignedByte();
         anIntArray1459 = new int[j];
         for(int k = 0; k < j - 1; k++)
         {
-            anIntArray1459[k + 1] = class44_sub3_sub2_1.method486();
+            anIntArray1459[k + 1] = class44_sub3_sub2_1.get24BitInt();
         }
         for(int l = 0; l < i; l++)
         {
             class44_sub3_sub2_1.currentOffset += 2;
-            class44_sub3_sub2.currentOffset += class44_sub3_sub2_1.readUnsignedWord() * class44_sub3_sub2_1.readUnsignedWord();
+            class44_sub3_sub2.currentOffset += class44_sub3_sub2_1.getUnsignedLEShort() * class44_sub3_sub2_1.getUnsignedLEShort();
             class44_sub3_sub2_1.currentOffset++;
         }
-        anInt1462 = class44_sub3_sub2_1.readUnsignedByte();
-        anInt1463 = class44_sub3_sub2_1.readUnsignedByte();
-        anInt1460 = class44_sub3_sub2_1.readUnsignedWord();
-        anInt1461 = class44_sub3_sub2_1.readUnsignedWord();
-        int i1 = class44_sub3_sub2_1.readUnsignedByte();
+        anInt1462 = class44_sub3_sub2_1.getUnsignedByte();
+        anInt1463 = class44_sub3_sub2_1.getUnsignedByte();
+        anInt1460 = class44_sub3_sub2_1.getUnsignedLEShort();
+        anInt1461 = class44_sub3_sub2_1.getUnsignedLEShort();
+        int i1 = class44_sub3_sub2_1.getUnsignedByte();
         int j1 = anInt1460 * anInt1461;
         aByteArray1458 = new byte[j1];
         if(i1 == 0)
         {
             for(int k1 = 0; k1 < j1; k1++)
             {
-                aByteArray1458[k1] = class44_sub3_sub2.method483();
+                aByteArray1458[k1] = class44_sub3_sub2.get();
             }
             return;
         }
@@ -58,7 +58,7 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
             {
                 for(int i2 = 0; i2 < anInt1461; i2++)
                 {
-                    aByteArray1458[l1 + i2 * anInt1460] = class44_sub3_sub2.method483();
+                    aByteArray1458[l1 + i2 * anInt1460] = class44_sub3_sub2.get();
                 }
             }
         }

@@ -265,7 +265,7 @@ public class Class6 {
 			aClass1_167.method148(false, stream);
 			aClass1_168 = new Class1();
 			aClass1_168.method148(false, stream);
-			int i = stream.readUnsignedByte();
+			int i = stream.getUnsignedByte();
 			if (i != 0) {
 				stream.currentOffset--;
 				aClass1_169 = new Class1();
@@ -273,7 +273,7 @@ public class Class6 {
 				aClass1_170 = new Class1();
 				aClass1_170.method148(false, stream);
 			}
-			i = stream.readUnsignedByte();
+			i = stream.getUnsignedByte();
 			if (i != 0) {
 				stream.currentOffset--;
 				aClass1_171 = new Class1();
@@ -281,7 +281,7 @@ public class Class6 {
 				aClass1_172 = new Class1();
 				aClass1_172.method148(false, stream);
 			}
-			i = stream.readUnsignedByte();
+			i = stream.getUnsignedByte();
 			if (i != 0) {
 				stream.currentOffset--;
 				aClass1_173 = new Class1();
@@ -290,18 +290,18 @@ public class Class6 {
 				aClass1_174.method148(false, stream);
 			}
 			for (int j = 0; j < 10; j++) {
-				int k = stream.method496();
+				int k = stream.getSmartB();
 				if (k == 0) {
 					break;
 				}
 				anIntArray175[j] = k;
-				anIntArray176[j] = stream.method495();
-				anIntArray177[j] = stream.method496();
+				anIntArray176[j] = stream.getSmartA();
+				anIntArray177[j] = stream.getSmartB();
 			}
-			anInt178 = stream.method496();
-			anInt179 = stream.method496();
-			anInt182 = stream.readUnsignedWord();
-			anInt183 = stream.readUnsignedWord();
+			anInt178 = stream.getSmartB();
+			anInt179 = stream.getSmartB();
+			anInt182 = stream.getUnsignedLEShort();
+			anInt183 = stream.getUnsignedLEShort();
 			aClass2_180 = new Class2();
 			aClass1_181 = new Class1();
 			aClass2_180.method156(anInt166, aClass1_181, stream);

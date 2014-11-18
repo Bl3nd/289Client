@@ -40,8 +40,8 @@ public class Class47
         try
         {
             Stream class44_sub3_sub2 = new Stream(abyte0, 15787);
-            int i = class44_sub3_sub2.method486();
-            int j = class44_sub3_sub2.method486();
+            int i = class44_sub3_sub2.get24BitInt();
+            int j = class44_sub3_sub2.get24BitInt();
             if(j != i)
             {
                 byte abyte1[] = new byte[i];
@@ -54,7 +54,7 @@ public class Class47
                 aByteArray791 = abyte0;
                 aBoolean797 = false;
             }
-            anInt792 = class44_sub3_sub2.readUnsignedWord();
+            anInt792 = class44_sub3_sub2.getUnsignedLEShort();
             anIntArray793 = new int[anInt792];
             if(byte0 == 9)
             {
@@ -69,9 +69,9 @@ public class Class47
             int k = class44_sub3_sub2.currentOffset + anInt792 * 10;
             for(int l = 0; l < anInt792; l++)
             {
-                anIntArray793[l] = class44_sub3_sub2.readDWord();
-                anIntArray794[l] = class44_sub3_sub2.method486();
-                anIntArray795[l] = class44_sub3_sub2.method486();
+                anIntArray793[l] = class44_sub3_sub2.getInt();
+                anIntArray794[l] = class44_sub3_sub2.get24BitInt();
+                anIntArray795[l] = class44_sub3_sub2.get24BitInt();
                 anIntArray796[l] = k;
                 k += anIntArray795[l];
             }

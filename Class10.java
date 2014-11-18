@@ -4,14 +4,14 @@ public class Class10
     implements Runnable
 {
 
-    public client aClient256;
+    public Client aClient256;
     public boolean aBoolean257;
     public Object anObject258;
     public int anInt259;
     public int anIntArray260[];
     public int anIntArray261[];
 
-    public Class10(int i, client client1)
+    public Class10(int i, Client client1)
     {
         aBoolean257 = true;
         anObject258 = new Object();

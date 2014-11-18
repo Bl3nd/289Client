@@ -136,7 +136,7 @@ public class Class3
                             aByteArrayArrayArray69[i1][i2][j2] = 0;
                             do
                             {
-                                int k2 = class44_sub3_sub2.readUnsignedByte();
+                                int k2 = class44_sub3_sub2.getUnsignedByte();
                                 if(k2 == 0)
                                 {
                                     if(i1 == 0)
@@ -150,7 +150,7 @@ public class Class3
                                 }
                                 if(k2 == 1)
                                 {
-                                    int i3 = class44_sub3_sub2.readUnsignedByte();
+                                    int i3 = class44_sub3_sub2.getUnsignedByte();
                                     if(i3 == 1)
                                     {
                                         i3 = 0;
@@ -166,7 +166,7 @@ public class Class3
                                 }
                                 if(k2 <= 49)
                                 {
-                                    aByteArrayArrayArray71[i1][i2][j2] = class44_sub3_sub2.method483();
+                                    aByteArrayArrayArray71[i1][i2][j2] = class44_sub3_sub2.get();
                                     aByteArrayArrayArray72[i1][i2][j2] = (byte)((k2 - 2) / 4);
                                     aByteArrayArrayArray73[i1][i2][j2] = (byte)(k2 - 2 & 3);
                                 } else
@@ -182,19 +182,19 @@ public class Class3
                         {
                             do
                             {
-                                int l2 = class44_sub3_sub2.readUnsignedByte();
+                                int l2 = class44_sub3_sub2.getUnsignedByte();
                                 if(l2 == 0)
                                 {
                                     break;
                                 }
                                 if(l2 == 1)
                                 {
-                                    class44_sub3_sub2.readUnsignedByte();
+                                    class44_sub3_sub2.getUnsignedByte();
                                     break;
                                 }
                                 if(l2 <= 49)
                                 {
-                                    class44_sub3_sub2.readUnsignedByte();
+                                    class44_sub3_sub2.getUnsignedByte();
                                 }
                             } while(true);
                         }
@@ -231,7 +231,7 @@ public class Class3
             }
 	    while(true)
             {
-		int i1 = class44_sub3_sub2.method496();
+		int i1 = class44_sub3_sub2.getSmartB();
 		if(i1 == 0)
                 {
 		    break;
@@ -243,15 +243,15 @@ public class Class3
                 {
 		    if(flag1)
                     {
-			int k1 = class44_sub3_sub2.method496();
+			int k1 = class44_sub3_sub2.getSmartB();
 			if(k1 == 0)
                         {
 			    break;
                         }
-			class44_sub3_sub2.readUnsignedByte();
+			class44_sub3_sub2.getUnsignedByte();
 		    } else
                     {
-			int l1 = class44_sub3_sub2.method496();
+			int l1 = class44_sub3_sub2.getSmartB();
 			if(l1 == 0)
                         {
 			    break;
@@ -259,7 +259,7 @@ public class Class3
 			j1 += l1 - 1;
 			int i2 = j1 & 0x3f;
 			int j2 = j1 >> 6 & 0x3f;
-			int k2 = class44_sub3_sub2.readUnsignedByte() >> 2;
+			int k2 = class44_sub3_sub2.getUnsignedByte() >> 2;
 			int l2 = j2 + k;
 			int i3 = i2 + j;
 			if(l2 > 0 && i3 > 0 && l2 < 103 && i3 < 103)
@@ -294,7 +294,7 @@ public class Class3
             }
             do
             {
-                int k = class44_sub3_sub2.method496();
+                int k = class44_sub3_sub2.getSmartB();
                 if(k == 0)
                 {
                     break;
@@ -304,12 +304,12 @@ public class Class3
                 class8.method204(class43_sub1, (byte)2);
                 do
                 {
-                    int l = class44_sub3_sub2.method496();
+                    int l = class44_sub3_sub2.getSmartB();
                     if(l == 0)
                     {
                         break;
                     }
-                    class44_sub3_sub2.readUnsignedByte();
+                    class44_sub3_sub2.getUnsignedByte();
                 } while(true);
             } while(true);
             return;
@@ -335,7 +335,7 @@ public class Class3
             }
             do
             {
-                int i1 = class44_sub3_sub2.method496();
+                int i1 = class44_sub3_sub2.getSmartB();
                 if(i1 == 0)
                 {
                     break;
@@ -344,7 +344,7 @@ public class Class3
                 int j1 = 0;
                 do
                 {
-                    int k1 = class44_sub3_sub2.method496();
+                    int k1 = class44_sub3_sub2.getSmartB();
                     if(k1 == 0)
                     {
                         break;
@@ -353,7 +353,7 @@ public class Class3
                     int l1 = j1 & 0x3f;
                     int i2 = j1 >> 6 & 0x3f;
                     int j2 = j1 >> 12;
-                    int k2 = class44_sub3_sub2.readUnsignedByte();
+                    int k2 = class44_sub3_sub2.getUnsignedByte();
                     int l2 = k2 >> 2;
                     int i3 = k2 & 3;
                     int j3 = i2 + j;

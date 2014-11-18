@@ -50,7 +50,7 @@ public class Class4
             Class6.method187();
             do
             {
-                int i = class44_sub3_sub2.readUnsignedWord();
+                int i = class44_sub3_sub2.getUnsignedLEShort();
                 if(i == 65535)
                 {
                     return;
@@ -97,7 +97,7 @@ public class Class4
         {
             for(int i = 0; i < 10; i++)
             {
-                int j = class44_sub3_sub2.readUnsignedByte();
+                int j = class44_sub3_sub2.getUnsignedByte();
                 if(j != 0)
                 {
                     class44_sub3_sub2.currentOffset--;
@@ -109,8 +109,8 @@ public class Class4
             {
                 aBoolean90 = !aBoolean90;
             }
-            anInt96 = class44_sub3_sub2.readUnsignedWord();
-            anInt97 = class44_sub3_sub2.readUnsignedWord();
+            anInt96 = class44_sub3_sub2.getUnsignedLEShort();
+            anInt97 = class44_sub3_sub2.getUnsignedLEShort();
             return;
         }
         catch(RuntimeException runtimeexception)
@@ -171,20 +171,20 @@ public class Class4
         {
             int k = method180(i);
             aClass44_Sub3_Sub2_94.currentOffset = 0;
-            aClass44_Sub3_Sub2_94.method476(0x52494646);
-            aClass44_Sub3_Sub2_94.method477(26965, 36 + k);
-            aClass44_Sub3_Sub2_94.method476(0x57415645);
-            aClass44_Sub3_Sub2_94.method476(0x666d7420);
-            aClass44_Sub3_Sub2_94.method477(26965, 16);
-            aClass44_Sub3_Sub2_94.method474(1, false);
-            aClass44_Sub3_Sub2_94.method474(1, false);
-            aClass44_Sub3_Sub2_94.method477(26965, 22050);
-            aClass44_Sub3_Sub2_94.method477(26965, 22050);
+            aClass44_Sub3_Sub2_94.putInt(0x52494646);
+            aClass44_Sub3_Sub2_94.putLEInt(26965, 36 + k);
+            aClass44_Sub3_Sub2_94.putInt(0x57415645);
+            aClass44_Sub3_Sub2_94.putInt(0x666d7420);
+            aClass44_Sub3_Sub2_94.putLEInt(26965, 16);
+            aClass44_Sub3_Sub2_94.putLEShort(1, false);
+            aClass44_Sub3_Sub2_94.putLEShort(1, false);
+            aClass44_Sub3_Sub2_94.putLEInt(26965, 22050);
+            aClass44_Sub3_Sub2_94.putLEInt(26965, 22050);
             j = 98 / j;
-            aClass44_Sub3_Sub2_94.method474(1, false);
-            aClass44_Sub3_Sub2_94.method474(8, false);
-            aClass44_Sub3_Sub2_94.method476(0x64617461);
-            aClass44_Sub3_Sub2_94.method477(26965, k);
+            aClass44_Sub3_Sub2_94.putLEShort(1, false);
+            aClass44_Sub3_Sub2_94.putLEShort(8, false);
+            aClass44_Sub3_Sub2_94.putInt(0x64617461);
+            aClass44_Sub3_Sub2_94.putLEInt(26965, k);
             aClass44_Sub3_Sub2_94.currentOffset += k;
             return aClass44_Sub3_Sub2_94;
         }

@@ -1,5 +1,5 @@
 
-public class Class44_Sub2 extends Class44
+public class Class44_Sub2 extends Node
 {
 
     public boolean aBoolean1335;

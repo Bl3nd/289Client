@@ -26,7 +26,7 @@ public class Class32
         try
         {
             Stream class44_sub3_sub2 = new Stream(class47.method549("spotanim.dat", null), 15787);
-            anInt558 = class44_sub3_sub2.readUnsignedWord();
+            anInt558 = class44_sub3_sub2.getUnsignedLEShort();
             if(!flag)
             {
                 return;
@@ -63,18 +63,18 @@ public class Class32
             }
             do
             {
-                int i = class44_sub3_sub2.readUnsignedByte();
+                int i = class44_sub3_sub2.getUnsignedByte();
                 if(i == 0)
                 {
                     return;
                 }
                 if(i == 1)
                 {
-                    anInt561 = class44_sub3_sub2.readUnsignedWord();
+                    anInt561 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 2)
                 {
-                    anInt562 = class44_sub3_sub2.readUnsignedWord();
+                    anInt562 = class44_sub3_sub2.getUnsignedLEShort();
                     if(Class26.aClass26Array508 != null)
                     {
                         aClass26_563 = Class26.aClass26Array508[anInt562];
@@ -82,31 +82,31 @@ public class Class32
                 } else
                 if(i == 4)
                 {
-                    anInt566 = class44_sub3_sub2.readUnsignedWord();
+                    anInt566 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 5)
                 {
-                    anInt567 = class44_sub3_sub2.readUnsignedWord();
+                    anInt567 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 6)
                 {
-                    anInt568 = class44_sub3_sub2.readUnsignedWord();
+                    anInt568 = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 7)
                 {
-                    anInt569 = class44_sub3_sub2.readUnsignedByte();
+                    anInt569 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 8)
                 {
-                    anInt570 = class44_sub3_sub2.readUnsignedByte();
+                    anInt570 = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i >= 40 && i < 50)
                 {
-                    anIntArray564[i - 40] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray564[i - 40] = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i >= 50 && i < 60)
                 {
-                    anIntArray565[i - 50] = class44_sub3_sub2.readUnsignedWord();
+                    anIntArray565[i - 50] = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 {
                     System.out.println("Error unrecognised spotanim config code: " + i);
