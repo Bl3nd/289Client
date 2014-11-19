@@ -1,13 +1,13 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub4_Sub2 extends Class44_Sub3_Sub4
+public class Class44_Sub3_Sub4_Sub2 extends Animable
 {
 
     public boolean aBoolean1494;
     public int anInt1495;
     public int anInt1496;
 
-    public Class44_Sub3_Sub4_Sub4 method499(int i)
+    public Model getRotatedModel(int i)
     {
         try
         {

@@ -1,6 +1,6 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
+public class Class44_Sub3_Sub4_Sub1 extends Animable
 {
 
     public static Client aClient1481;
@@ -56,7 +56,7 @@ public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method499(int i)
+    public Model getRotatedModel(int i)
     {
         try
         {
@@ -111,7 +111,7 @@ public class Class44_Sub3_Sub4_Sub1 extends Class44_Sub3_Sub4
             {
                 class8 = Class8.method199(anInt1482);
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = class8.method205(anInt1483, anInt1484, anInt1485, anInt1486, anInt1487, anInt1488, k);
+            Model class44_sub3_sub4_sub4 = class8.method205(anInt1483, anInt1484, anInt1485, anInt1486, anInt1487, anInt1488, k);
             return class44_sub3_sub4_sub4;
         }
         catch(RuntimeException runtimeexception)

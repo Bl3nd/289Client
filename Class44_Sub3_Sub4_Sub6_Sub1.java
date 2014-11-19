@@ -20,7 +20,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
     public int anInt1684;
     public int anInt1685;
     public int anInt1686;
-    public Class44_Sub3_Sub4_Sub4 aClass44_Sub3_Sub4_Sub4_1687;
+    public Model aClass44_Sub3_Sub4_Sub4_1687;
     public int anInt1688;
     public int anInt1689;
     public int anInt1690;
@@ -149,7 +149,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method499(int i)
+    public Model getRotatedModel(int i)
     {
         try
         {
@@ -157,7 +157,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             {
                 return null;
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = method538(false);
+            Model class44_sub3_sub4_sub4 = method538(false);
             if(i != -37770)
             {
                 throw new NullPointerException();
@@ -166,7 +166,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             {
                 return null;
             }
-            super.anInt1661 = ((Class44_Sub3_Sub4) (class44_sub3_sub4_sub4)).anInt1412;
+            super.anInt1661 = ((Animable) (class44_sub3_sub4_sub4)).modelHeight;
             class44_sub3_sub4_sub4.aBoolean1568 = true;
             if(aBoolean1692)
             {
@@ -175,10 +175,10 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             if(super.anInt1648 != -1 && super.anInt1649 != -1)
             {
                 Class32 class32 = Class32.aClass32Array559[super.anInt1648];
-                Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_2 = class32.method271();
+                Model class44_sub3_sub4_sub4_2 = class32.method271();
                 if(class44_sub3_sub4_sub4_2 != null)
                 {
-                    Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_3 = new Class44_Sub3_Sub4_Sub4(class44_sub3_sub4_sub4_2, Class11.method211(super.anInt1649, 0), false, anInt1670, true);
+                    Model class44_sub3_sub4_sub4_3 = new Model(class44_sub3_sub4_sub4_2, Class11.method211(super.anInt1649, 0), false, anInt1670, true);
                     class44_sub3_sub4_sub4_3.method519(-super.anInt1652, 0, (byte)2, 0);
                     class44_sub3_sub4_sub4_3.method513((byte)3);
                     class44_sub3_sub4_sub4_3.method514(class32.aClass26_563.anIntArray510[super.anInt1649], 188);
@@ -189,10 +189,10 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                         class44_sub3_sub4_sub4_3.method522(class32.anInt566, class32.anInt566, class32.anInt567, (byte)31);
                     }
                     class44_sub3_sub4_sub4_3.method523(64 + class32.anInt569, 850 + class32.anInt570, -30, -50, -30, true);
-                    Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4_1[] = {
+                    Model aclass44_sub3_sub4_sub4_1[] = {
                         class44_sub3_sub4_sub4, class44_sub3_sub4_sub4_3
                     };
-                    class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(true, 0, aclass44_sub3_sub4_sub4_1, 2);
+                    class44_sub3_sub4_sub4 = new Model(true, 0, aclass44_sub3_sub4_sub4_1, 2);
                 }
             }
             if(aClass44_Sub3_Sub4_Sub4_1687 != null)
@@ -203,7 +203,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                 }
                 if(Client.anInt1240 >= anInt1682 && Client.anInt1240 < anInt1683)
                 {
-                    Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = aClass44_Sub3_Sub4_Sub4_1687;
+                    Model class44_sub3_sub4_sub4_1 = aClass44_Sub3_Sub4_Sub4_1687;
                     class44_sub3_sub4_sub4_1.method519(anInt1685 - anInt1681, anInt1684 - super.anInt1615, (byte)2, anInt1686 - super.anInt1616);
                     if(super.anInt1662 == 512)
                     {
@@ -220,10 +220,10 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                     {
                         class44_sub3_sub4_sub4_1.method517(0);
                     }
-                    Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = {
+                    Model aclass44_sub3_sub4_sub4[] = {
                         class44_sub3_sub4_sub4, class44_sub3_sub4_sub4_1
                     };
-                    class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(true, 0, aclass44_sub3_sub4_sub4, 2);
+                    class44_sub3_sub4_sub4 = new Model(true, 0, aclass44_sub3_sub4_sub4, 2);
                     if(super.anInt1662 == 512)
                     {
                         class44_sub3_sub4_sub4_1.method517(0);
@@ -252,7 +252,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method538(boolean flag)
+    public Model method538(boolean flag)
     {
         try
         {
@@ -267,7 +267,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                 {
                     i = Class26.aClass26Array508[super.anInt1640].anIntArray510[super.anInt1641];
                 }
-                Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = aClass12_1694.method216(0, -1, i, null);
+                Model class44_sub3_sub4_sub4 = aClass12_1694.method216(0, -1, i, null);
                 return class44_sub3_sub4_sub4;
             }
             long l = aLong1680;
@@ -298,7 +298,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             {
                 j = Class26.aClass26Array508[super.anInt1640].anIntArray510[super.anInt1641];
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = (Class44_Sub3_Sub4_Sub4)aClass39_1696.method339(l);
+            Model class44_sub3_sub4_sub4_1 = (Model)aClass39_1696.method339(l);
             if(flag)
             {
                 aBoolean1671 = !aBoolean1671;
@@ -330,7 +330,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                 {
                     if(aLong1693 != -1L)
                     {
-                        class44_sub3_sub4_sub4_1 = (Class44_Sub3_Sub4_Sub4)aClass39_1696.method339(aLong1693);
+                        class44_sub3_sub4_sub4_1 = (Model)aClass39_1696.method339(aLong1693);
                     }
                     if(class44_sub3_sub4_sub4_1 == null)
                     {
@@ -340,7 +340,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             }
             if(class44_sub3_sub4_sub4_1 == null)
             {
-                Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = new Class44_Sub3_Sub4_Sub4[12];
+                Model aclass44_sub3_sub4_sub4[] = new Model[12];
                 int l1 = 0;
                 for(int j2 = 0; j2 < 12; j2++)
                 {
@@ -355,7 +355,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                     }
                     if(k2 >= 256 && k2 < 512)
                     {
-                        Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_3 = Class22.aClass22Array464[k2 - 256].method250(0);
+                        Model class44_sub3_sub4_sub4_3 = Class22.aClass22Array464[k2 - 256].method250(0);
                         if(class44_sub3_sub4_sub4_3 != null)
                         {
                             aclass44_sub3_sub4_sub4[l1++] = class44_sub3_sub4_sub4_3;
@@ -363,14 +363,14 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                     }
                     if(k2 >= 512)
                     {
-                        Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_4 = Class14.method220(k2 - 512).method228(anInt1674, 0);
+                        Model class44_sub3_sub4_sub4_4 = Class14.method220(k2 - 512).method228(anInt1674, 0);
                         if(class44_sub3_sub4_sub4_4 != null)
                         {
                             aclass44_sub3_sub4_sub4[l1++] = class44_sub3_sub4_sub4_4;
                         }
                     }
                 }
-                class44_sub3_sub4_sub4_1 = new Class44_Sub3_Sub4_Sub4(aclass44_sub3_sub4_sub4, l1, -33019);
+                class44_sub3_sub4_sub4_1 = new Model(aclass44_sub3_sub4_sub4, l1, -33019);
                 for(int l2 = 0; l2 < 5; l2++)
                 {
                     if(anIntArray1677[l2] != 0)
@@ -391,7 +391,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             {
                 return class44_sub3_sub4_sub4_1;
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_2 = Class44_Sub3_Sub4_Sub4.aClass44_Sub3_Sub4_Sub4_1530;
+            Model class44_sub3_sub4_sub4_2 = Model.aClass44_Sub3_Sub4_Sub4_1530;
             class44_sub3_sub4_sub4_2.method508(Class11.method211(j, 0) & Class11.method211(k, 0), class44_sub3_sub4_sub4_1, 0);
             if(j != -1 && k != -1)
             {
@@ -413,7 +413,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method539(boolean flag)
+    public Model method539(boolean flag)
     {
         try
         {
@@ -448,14 +448,14 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
             {
                 return null;
             }
-            Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = new Class44_Sub3_Sub4_Sub4[12];
+            Model aclass44_sub3_sub4_sub4[] = new Model[12];
             int l = 0;
             for(int i1 = 0; i1 < 12; i1++)
             {
                 int j1 = anIntArray1676[i1];
                 if(j1 >= 256 && j1 < 512)
                 {
-                    Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = Class22.aClass22Array464[j1 - 256].method252((byte)-45);
+                    Model class44_sub3_sub4_sub4_1 = Class22.aClass22Array464[j1 - 256].method252((byte)-45);
                     if(class44_sub3_sub4_sub4_1 != null)
                     {
                         aclass44_sub3_sub4_sub4[l++] = class44_sub3_sub4_sub4_1;
@@ -463,14 +463,14 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6
                 }
                 if(j1 >= 512)
                 {
-                    Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_2 = Class14.method220(j1 - 512).method230(481, anInt1674);
+                    Model class44_sub3_sub4_sub4_2 = Class14.method220(j1 - 512).method230(481, anInt1674);
                     if(class44_sub3_sub4_sub4_2 != null)
                     {
                         aclass44_sub3_sub4_sub4[l++] = class44_sub3_sub4_sub4_2;
                     }
                 }
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aclass44_sub3_sub4_sub4, l, -33019);
+            Model class44_sub3_sub4_sub4 = new Model(aclass44_sub3_sub4_sub4, l, -33019);
             for(int k1 = 0; k1 < 5; k1++)
             {
                 if(anIntArray1677[k1] != 0)

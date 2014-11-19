@@ -121,7 +121,7 @@ public class Class22
             }
             for(int j = 0; j < anIntArray466.length; j++)
             {
-                if(!Class44_Sub3_Sub4_Sub4.method507(anIntArray466[j]))
+                if(!Model.method507(anIntArray466[j]))
                 {
                     flag = false;
                 }
@@ -135,7 +135,7 @@ public class Class22
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method250(int i)
+    public Model method250(int i)
     {
         try
         {
@@ -143,22 +143,22 @@ public class Class22
             {
                 return null;
             }
-            Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = new Class44_Sub3_Sub4_Sub4[anIntArray466.length];
+            Model aclass44_sub3_sub4_sub4[] = new Model[anIntArray466.length];
             if(i != 0)
             {
                 anInt461 = 428;
             }
             for(int j = 0; j < anIntArray466.length; j++)
             {
-                aclass44_sub3_sub4_sub4[j] = Class44_Sub3_Sub4_Sub4.method506(anIntArray466[j], aByte460);
+                aclass44_sub3_sub4_sub4[j] = Model.method506(anIntArray466[j], aByte460);
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4;
+            Model class44_sub3_sub4_sub4;
             if(aclass44_sub3_sub4_sub4.length == 1)
             {
                 class44_sub3_sub4_sub4 = aclass44_sub3_sub4_sub4[0];
             } else
             {
-                class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aclass44_sub3_sub4_sub4, aclass44_sub3_sub4_sub4.length, -33019);
+                class44_sub3_sub4_sub4 = new Model(aclass44_sub3_sub4_sub4, aclass44_sub3_sub4_sub4.length, -33019);
             }
             for(int k = 0; k < 6; k++)
             {
@@ -188,7 +188,7 @@ public class Class22
             boolean flag = true;
             for(int i = 0; i < 5; i++)
             {
-                if(anIntArray469[i] != -1 && !Class44_Sub3_Sub4_Sub4.method507(anIntArray469[i]))
+                if(anIntArray469[i] != -1 && !Model.method507(anIntArray469[i]))
                 {
                     flag = false;
                 }
@@ -202,17 +202,17 @@ public class Class22
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method252(byte byte0)
+    public Model method252(byte byte0)
     {
         try
         {
-            Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = new Class44_Sub3_Sub4_Sub4[5];
+            Model aclass44_sub3_sub4_sub4[] = new Model[5];
             int i = 0;
             for(int j = 0; j < 5; j++)
             {
                 if(anIntArray469[j] != -1)
                 {
-                    aclass44_sub3_sub4_sub4[i++] = Class44_Sub3_Sub4_Sub4.method506(anIntArray469[j], aByte460);
+                    aclass44_sub3_sub4_sub4[i++] = Model.method506(anIntArray469[j], aByte460);
                 }
             }
             if(byte0 != -45)
@@ -221,7 +221,7 @@ public class Class22
                 {
                 }
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aclass44_sub3_sub4_sub4, i, -33019);
+            Model class44_sub3_sub4_sub4 = new Model(aclass44_sub3_sub4_sub4, i, -33019);
             for(int l = 0; l < 6; l++)
             {
                 if(anIntArray467[l] == 0)

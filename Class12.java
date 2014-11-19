@@ -240,11 +240,11 @@ public class Class12
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method216(int i, int j, int k, int ai[])
+    public Model method216(int i, int j, int k, int ai[])
     {
         try
         {
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = (Class44_Sub3_Sub4_Sub4)aClass39_307.method339(aLong281);
+            Model class44_sub3_sub4_sub4 = (Model)aClass39_307.method339(aLong281);
             if(i != 0)
             {
                 for(int l = 1; l > 0; l++)
@@ -256,7 +256,7 @@ public class Class12
                 boolean flag = false;
                 for(int i1 = 0; i1 < anIntArray285.length; i1++)
                 {
-                    if(!Class44_Sub3_Sub4_Sub4.method507(anIntArray285[i1]))
+                    if(!Model.method507(anIntArray285[i1]))
                     {
                         flag = true;
                     }
@@ -265,17 +265,17 @@ public class Class12
                 {
                     return null;
                 }
-                Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = new Class44_Sub3_Sub4_Sub4[anIntArray285.length];
+                Model aclass44_sub3_sub4_sub4[] = new Model[anIntArray285.length];
                 for(int j1 = 0; j1 < anIntArray285.length; j1++)
                 {
-                    aclass44_sub3_sub4_sub4[j1] = Class44_Sub3_Sub4_Sub4.method506(anIntArray285[j1], aByte275);
+                    aclass44_sub3_sub4_sub4[j1] = Model.method506(anIntArray285[j1], aByte275);
                 }
                 if(aclass44_sub3_sub4_sub4.length == 1)
                 {
                     class44_sub3_sub4_sub4 = aclass44_sub3_sub4_sub4[0];
                 } else
                 {
-                    class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aclass44_sub3_sub4_sub4, aclass44_sub3_sub4_sub4.length, -33019);
+                    class44_sub3_sub4_sub4 = new Model(aclass44_sub3_sub4_sub4, aclass44_sub3_sub4_sub4.length, -33019);
                 }
                 if(anIntArray292 != null)
                 {
@@ -288,7 +288,7 @@ public class Class12
                 class44_sub3_sub4_sub4.method523(64 + anInt303, 850 + anInt304, -30, -50, -30, true);
                 aClass39_307.method340(aLong281, (byte)76, class44_sub3_sub4_sub4);
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = Class44_Sub3_Sub4_Sub4.aClass44_Sub3_Sub4_Sub4_1530;
+            Model class44_sub3_sub4_sub4_1 = Model.aClass44_Sub3_Sub4_Sub4_1530;
             class44_sub3_sub4_sub4_1.method508(Class11.method211(k, 0) & Class11.method211(j, 0), class44_sub3_sub4_sub4, 0);
             if(k != -1 && j != -1)
             {
@@ -318,7 +318,7 @@ public class Class12
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method217(byte byte0)
+    public Model method217(byte byte0)
     {
         try
         {
@@ -333,7 +333,7 @@ public class Class12
             boolean flag = false;
             for(int i = 0; i < anIntArray286.length; i++)
             {
-                if(!Class44_Sub3_Sub4_Sub4.method507(anIntArray286[i]))
+                if(!Model.method507(anIntArray286[i]))
                 {
                     flag = true;
                 }
@@ -342,18 +342,18 @@ public class Class12
             {
                 return null;
             }
-            Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = new Class44_Sub3_Sub4_Sub4[anIntArray286.length];
+            Model aclass44_sub3_sub4_sub4[] = new Model[anIntArray286.length];
             for(int j = 0; j < anIntArray286.length; j++)
             {
-                aclass44_sub3_sub4_sub4[j] = Class44_Sub3_Sub4_Sub4.method506(anIntArray286[j], aByte275);
+                aclass44_sub3_sub4_sub4[j] = Model.method506(anIntArray286[j], aByte275);
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4;
+            Model class44_sub3_sub4_sub4;
             if(aclass44_sub3_sub4_sub4.length == 1)
             {
                 class44_sub3_sub4_sub4 = aclass44_sub3_sub4_sub4[0];
             } else
             {
-                class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aclass44_sub3_sub4_sub4, aclass44_sub3_sub4_sub4.length, -33019);
+                class44_sub3_sub4_sub4 = new Model(aclass44_sub3_sub4_sub4, aclass44_sub3_sub4_sub4.length, -33019);
             }
             if(anIntArray292 != null)
             {

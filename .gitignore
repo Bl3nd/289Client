@@ -177,3 +177,8 @@
 /SubNode.class
 /DrawingArea.class
 /Rasterizer.class
+/Sprite.class
+/Animable.class
+/VertextNormal.class
+/Vertex.class
+/Model.class

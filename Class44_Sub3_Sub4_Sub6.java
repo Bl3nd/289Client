@@ -1,6 +1,6 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub4_Sub6 extends Class44_Sub3_Sub4
+public class Class44_Sub3_Sub4_Sub6 extends Animable
 {
 
     public boolean aBoolean1613;

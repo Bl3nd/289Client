@@ -14,7 +14,7 @@ public class Class8
     public static Stream aClass44_Sub3_Sub2_211;
     public static Class8 aClass8Array212[];
     public static int anInt213;
-    public static Class44_Sub3_Sub4_Sub4 aClass44_Sub3_Sub4_Sub4Array214[] = new Class44_Sub3_Sub4_Sub4[4];
+    public static Model aClass44_Sub3_Sub4_Sub4Array214[] = new Model[4];
     public int anInt215;
     public int anIntArray216[];
     public int anIntArray217[];
@@ -406,7 +406,7 @@ label0:
                 boolean flag = true;
                 for(int l = 0; l < anIntArray216.length; l++)
                 {
-                    flag &= Class44_Sub3_Sub4_Sub4.method507(anIntArray216[l] & 0xffff);
+                    flag &= Model.method507(anIntArray216[l] & 0xffff);
                 }
                 return flag;
             }
@@ -414,7 +414,7 @@ label0:
             {
                 if(anIntArray217[k] == i)
                 {
-                    return Class44_Sub3_Sub4_Sub4.method507(anIntArray216[k] & 0xffff);
+                    return Model.method507(anIntArray216[k] & 0xffff);
                 }
             }
             return true;
@@ -437,7 +437,7 @@ label0:
             boolean flag = true;
             for(int j = 0; j < anIntArray216.length; j++)
             {
-                flag &= Class44_Sub3_Sub4_Sub4.method507(anIntArray216[j] & 0xffff);
+                flag &= Model.method507(anIntArray216[j] & 0xffff);
             }
             while(i >= 0)
             {
@@ -481,16 +481,16 @@ label0:
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method205(int i, int j, int k, int l, int i1, int j1, int k1)
+    public Model method205(int i, int j, int k, int l, int i1, int j1, int k1)
     {
-        Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = method206((byte)-74, k1, j, i);
+        Model class44_sub3_sub4_sub4 = method206((byte)-74, k1, j, i);
         if(class44_sub3_sub4_sub4 == null)
         {
             return null;
         }
         if(aBoolean227 || aBoolean228)
         {
-            class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aBoolean228, 0, class44_sub3_sub4_sub4, aBoolean227);
+            class44_sub3_sub4_sub4 = new Model(aBoolean228, 0, class44_sub3_sub4_sub4, aBoolean227);
         }
         if(aBoolean227)
         {
@@ -509,11 +509,11 @@ label0:
         return class44_sub3_sub4_sub4;
     }
 
-    public Class44_Sub3_Sub4_Sub4 method206(byte byte0, int i, int j, int k)
+    public Model method206(byte byte0, int i, int j, int k)
     {
         try
         {
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = null;
+            Model class44_sub3_sub4_sub4 = null;
             long l;
             if(anIntArray217 == null)
             {
@@ -522,7 +522,7 @@ label0:
                     return null;
                 }
                 l = (long)((anInt215 << 6) + j) + ((long)(i + 1) << 32);
-                Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = (Class44_Sub3_Sub4_Sub4)aClass39_252.method339(l);
+                Model class44_sub3_sub4_sub4_1 = (Model)aClass39_252.method339(l);
                 if(class44_sub3_sub4_sub4_1 != null)
                 {
                     return class44_sub3_sub4_sub4_1;
@@ -540,10 +540,10 @@ label0:
                     {
                         k2 += 0x10000;
                     }
-                    class44_sub3_sub4_sub4 = (Class44_Sub3_Sub4_Sub4)aClass39_251.method339(k2);
+                    class44_sub3_sub4_sub4 = (Model)aClass39_251.method339(k2);
                     if(class44_sub3_sub4_sub4 == null)
                     {
-                        class44_sub3_sub4_sub4 = Class44_Sub3_Sub4_Sub4.method506(k2 & 0xffff, aByte205);
+                        class44_sub3_sub4_sub4 = Model.method506(k2 & 0xffff, aByte205);
                         if(class44_sub3_sub4_sub4 == null)
                         {
                             return null;
@@ -561,7 +561,7 @@ label0:
                 }
                 if(k1 > 1)
                 {
-                    class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(aClass44_Sub3_Sub4_Sub4Array214, k1, -33019);
+                    class44_sub3_sub4_sub4 = new Model(aClass44_Sub3_Sub4_Sub4Array214, k1, -33019);
                 }
             } else
             {
@@ -580,7 +580,7 @@ label0:
                     return null;
                 }
                 l = (long)((anInt215 << 6) + (i1 << 3) + j) + ((long)(i + 1) << 32);
-                Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_2 = (Class44_Sub3_Sub4_Sub4)aClass39_252.method339(l);
+                Model class44_sub3_sub4_sub4_2 = (Model)aClass39_252.method339(l);
                 if(class44_sub3_sub4_sub4_2 != null)
                 {
                     return class44_sub3_sub4_sub4_2;
@@ -591,10 +591,10 @@ label0:
                 {
                     i2 += 0x10000;
                 }
-                class44_sub3_sub4_sub4 = (Class44_Sub3_Sub4_Sub4)aClass39_251.method339(i2);
+                class44_sub3_sub4_sub4 = (Model)aClass39_251.method339(i2);
                 if(class44_sub3_sub4_sub4 == null)
                 {
-                    class44_sub3_sub4_sub4 = Class44_Sub3_Sub4_Sub4.method506(i2 & 0xffff, aByte205);
+                    class44_sub3_sub4_sub4 = Model.method506(i2 & 0xffff, aByte205);
                     if(class44_sub3_sub4_sub4 == null)
                     {
                         return null;
@@ -626,7 +626,7 @@ label0:
             {
                 flag2 = false;
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_3 = new Class44_Sub3_Sub4_Sub4(class44_sub3_sub4_sub4, Class11.method211(i, 0), j == 0 && i == -1 && !flag && !flag2, anInt206, anIntArray220 == null);
+            Model class44_sub3_sub4_sub4_3 = new Model(class44_sub3_sub4_sub4, Class11.method211(i, 0), j == 0 && i == -1 && !flag && !flag2, anInt206, anIntArray220 == null);
             if(i != -1)
             {
                 class44_sub3_sub4_sub4_3.method513((byte)3);
@@ -656,7 +656,7 @@ label0:
             class44_sub3_sub4_sub4_3.method523(64 + aByte232, 768 + aByte233 * 5, -50, -10, -50, !aBoolean228);
             if(anInt248 == 1)
             {
-                class44_sub3_sub4_sub4_3.anInt1563 = ((Class44_Sub3_Sub4) (class44_sub3_sub4_sub4_3)).anInt1412;
+                class44_sub3_sub4_sub4_3.anInt1563 = ((Animable) (class44_sub3_sub4_sub4_3)).modelHeight;
             }
             aClass39_252.method340(l, (byte)76, class44_sub3_sub4_sub4_3);
             return class44_sub3_sub4_sub4_3;

@@ -4,7 +4,7 @@ public class InteractiveObject {
 	public int anInt540;
 	public int anInt541;
 	public int anInt542;
-	public Class44_Sub3_Sub4 aClass44_Sub3_Sub4_543;
+	public Animable renderable;
 	public int anInt544;
 	public int anInt545;
 	public int anInt546;

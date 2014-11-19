@@ -36,7 +36,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	public int frameHeight;
 	public Graphics graphics;
 	public RSImageProducer fullGameScreen;
-	public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2Array15[];
+	public Sprite aClass44_Sub3_Sub1_Sub2Array15[];
 	public RSFrame rsFrame;
 	public boolean clearScreen;
 	public boolean awtFocus;
@@ -604,7 +604,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		minDelay = 1;
 		otims = new long[10];
 		debug = false;
-		aClass44_Sub3_Sub1_Sub2Array15 = new Class44_Sub3_Sub1_Sub2[6];
+		aClass44_Sub3_Sub1_Sub2Array15 = new Sprite[6];
 		clearScreen = true;
 		awtFocus = true;
 		keyStatus = new int[128];

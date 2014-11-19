@@ -120,14 +120,14 @@ public class Class32
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method271()
+    public Model method271()
     {
-        Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = (Class44_Sub3_Sub4_Sub4)aClass39_571.method339(anInt560);
+        Model class44_sub3_sub4_sub4 = (Model)aClass39_571.method339(anInt560);
         if(class44_sub3_sub4_sub4 != null)
         {
             return class44_sub3_sub4_sub4;
         }
-        class44_sub3_sub4_sub4 = Class44_Sub3_Sub4_Sub4.method506(anInt561, aByte557);
+        class44_sub3_sub4_sub4 = Model.method506(anInt561, aByte557);
         if(class44_sub3_sub4_sub4 == null)
         {
             return null;

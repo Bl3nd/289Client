@@ -1,6 +1,6 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub4_Sub5 extends Class44_Sub3_Sub4
+public class Class44_Sub3_Sub4_Sub5 extends Animable
 {
 
     public int anInt1602;
@@ -69,7 +69,7 @@ public class Class44_Sub3_Sub4_Sub5 extends Class44_Sub3_Sub4
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method499(int i)
+    public Model getRotatedModel(int i)
     {
         try
         {
@@ -79,13 +79,13 @@ public class Class44_Sub3_Sub4_Sub5 extends Class44_Sub3_Sub4
                 {
                 }
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = aClass32_1604.method271();
+            Model class44_sub3_sub4_sub4 = aClass32_1604.method271();
             if(class44_sub3_sub4_sub4 == null)
             {
                 return null;
             }
             int k = aClass32_1604.aClass26_563.anIntArray510[anInt1610];
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = new Class44_Sub3_Sub4_Sub4(class44_sub3_sub4_sub4, Class11.method211(k, 0), false, anInt1602, true);
+            Model class44_sub3_sub4_sub4_1 = new Model(class44_sub3_sub4_sub4, Class11.method211(k, 0), false, anInt1602, true);
             if(!aBoolean1612)
             {
                 class44_sub3_sub4_sub4_1.method513((byte)3);

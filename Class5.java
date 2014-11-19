@@ -38,7 +38,7 @@ public class Class5
     public boolean aBoolean130;
     public int anInt131;
     public int anInt132;
-    public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2Array133[];
+    public Sprite aClass44_Sub3_Sub1_Sub2Array133[];
     public int anIntArray134[];
     public int anIntArray135[];
     public String aStringArray136[];
@@ -52,8 +52,8 @@ public class Class5
     public int anInt144;
     public int anInt145;
     public int anInt146;
-    public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2_147;
-    public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2_148;
+    public Sprite aClass44_Sub3_Sub1_Sub2_147;
+    public Sprite aClass44_Sub3_Sub1_Sub2_148;
     public int anInt149;
     public int anInt150;
     public int anInt151;
@@ -165,7 +165,7 @@ public class Class5
                     class5.anInt132 = class44_sub3_sub2.getUnsignedByte();
                     class5.anIntArray134 = new int[20];
                     class5.anIntArray135 = new int[20];
-                    class5.aClass44_Sub3_Sub1_Sub2Array133 = new Class44_Sub3_Sub1_Sub2[20];
+                    class5.aClass44_Sub3_Sub1_Sub2Array133 = new Sprite[20];
                     for(int k2 = 0; k2 < 20; k2++)
                     {
                         int l3 = class44_sub3_sub2.getUnsignedByte();
@@ -359,7 +359,7 @@ public class Class5
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method183(int i, int j, int k, boolean flag)
+    public Model method183(int i, int j, int k, boolean flag)
     {
         try
         {
@@ -369,7 +369,7 @@ public class Class5
                 {
                 }
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4;
+            Model class44_sub3_sub4_sub4;
             if(flag)
             {
                 class44_sub3_sub4_sub4 = method184(anInt151, anInt152);
@@ -385,7 +385,7 @@ public class Class5
             {
                 return class44_sub3_sub4_sub4;
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = new Class44_Sub3_Sub4_Sub4(class44_sub3_sub4_sub4, Class11.method211(k, 0) & Class11.method211(j, 0), false, anInt99, true);
+            Model class44_sub3_sub4_sub4_1 = new Model(class44_sub3_sub4_sub4, Class11.method211(k, 0) & Class11.method211(j, 0), false, anInt99, true);
             if(k != -1 || j != -1)
             {
                 class44_sub3_sub4_sub4_1.method513((byte)3);
@@ -408,16 +408,16 @@ public class Class5
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method184(int i, int j)
+    public Model method184(int i, int j)
     {
-        Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = (Class44_Sub3_Sub4_Sub4)aClass39_162.method339((i << 16) + j);
+        Model class44_sub3_sub4_sub4 = (Model)aClass39_162.method339((i << 16) + j);
         if(class44_sub3_sub4_sub4 != null)
         {
             return class44_sub3_sub4_sub4;
         }
         if(i == 1)
         {
-            class44_sub3_sub4_sub4 = Class44_Sub3_Sub4_Sub4.method506(j, aByte98);
+            class44_sub3_sub4_sub4 = Model.method506(j, aByte98);
         }
         if(i == 2)
         {
@@ -442,7 +442,7 @@ public class Class5
         return class44_sub3_sub4_sub4;
     }
 
-    public static void method185(int i, Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4, int j, int k)
+    public static void method185(int i, Model class44_sub3_sub4_sub4, int j, int k)
     {
         try
         {
@@ -466,7 +466,7 @@ public class Class5
         }
     }
 
-    public static Class44_Sub3_Sub1_Sub2 method186(boolean flag, int i, Class47 class47, String s)
+    public static Sprite method186(boolean flag, int i, Class47 class47, String s)
     {
         try
         {
@@ -475,14 +475,14 @@ public class Class5
                 throw new NullPointerException();
             }
             long l = (Class48.method552(-5562, s) << 8) + (long)i;
-            Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2 = (Class44_Sub3_Sub1_Sub2)aClass39_163.method339(l);
+            Sprite class44_sub3_sub1_sub2 = (Sprite)aClass39_163.method339(l);
             if(class44_sub3_sub1_sub2 != null)
             {
                 return class44_sub3_sub1_sub2;
             }
             try
             {
-                class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47, s, i);
+                class44_sub3_sub1_sub2 = new Sprite(class47, s, i);
                 aClass39_163.method340(l, (byte)76, class44_sub3_sub1_sub2);
             }
             catch(Exception _ex)

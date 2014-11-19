@@ -8,7 +8,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub2 extends Class44_Sub3_Sub4_Sub6
     public boolean aBoolean1699;
     public Class12 aClass12_1700;
 
-    public Class44_Sub3_Sub4_Sub4 method499(int i)
+    public Model getRotatedModel(int i)
     {
         try
         {
@@ -16,7 +16,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub2 extends Class44_Sub3_Sub4_Sub6
             {
                 return null;
             }
-            Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4 = method540(false);
+            Model class44_sub3_sub4_sub4 = method540(false);
             if(i != -37770)
             {
                 throw new NullPointerException();
@@ -25,15 +25,15 @@ public class Class44_Sub3_Sub4_Sub6_Sub2 extends Class44_Sub3_Sub4_Sub6
             {
                 return null;
             }
-            super.anInt1661 = ((Class44_Sub3_Sub4) (class44_sub3_sub4_sub4)).anInt1412;
+            super.anInt1661 = ((Animable) (class44_sub3_sub4_sub4)).modelHeight;
             if(super.anInt1648 != -1 && super.anInt1649 != -1)
             {
                 Class32 class32 = Class32.aClass32Array559[super.anInt1648];
-                Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_1 = class32.method271();
+                Model class44_sub3_sub4_sub4_1 = class32.method271();
                 if(class44_sub3_sub4_sub4_1 != null)
                 {
                     int j = class32.aClass26_563.anIntArray510[super.anInt1649];
-                    Class44_Sub3_Sub4_Sub4 class44_sub3_sub4_sub4_2 = new Class44_Sub3_Sub4_Sub4(class44_sub3_sub4_sub4_1, Class11.method211(j, 0), false, anInt1697, true);
+                    Model class44_sub3_sub4_sub4_2 = new Model(class44_sub3_sub4_sub4_1, Class11.method211(j, 0), false, anInt1697, true);
                     class44_sub3_sub4_sub4_2.method519(-super.anInt1652, 0, (byte)2, 0);
                     class44_sub3_sub4_sub4_2.method513((byte)3);
                     class44_sub3_sub4_sub4_2.method514(j, 188);
@@ -44,10 +44,10 @@ public class Class44_Sub3_Sub4_Sub6_Sub2 extends Class44_Sub3_Sub4_Sub6
                         class44_sub3_sub4_sub4_2.method522(class32.anInt566, class32.anInt566, class32.anInt567, (byte)31);
                     }
                     class44_sub3_sub4_sub4_2.method523(64 + class32.anInt569, 850 + class32.anInt570, -30, -50, -30, true);
-                    Class44_Sub3_Sub4_Sub4 aclass44_sub3_sub4_sub4[] = {
+                    Model aclass44_sub3_sub4_sub4[] = {
                         class44_sub3_sub4_sub4, class44_sub3_sub4_sub4_2
                     };
-                    class44_sub3_sub4_sub4 = new Class44_Sub3_Sub4_Sub4(true, 0, aclass44_sub3_sub4_sub4, 2);
+                    class44_sub3_sub4_sub4 = new Model(true, 0, aclass44_sub3_sub4_sub4, 2);
                 }
             }
             if(aClass12_1700.aByte284 == 1)
@@ -63,7 +63,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub2 extends Class44_Sub3_Sub4_Sub6
         throw new RuntimeException();
     }
 
-    public Class44_Sub3_Sub4_Sub4 method540(boolean flag)
+    public Model method540(boolean flag)
     {
         try
         {
