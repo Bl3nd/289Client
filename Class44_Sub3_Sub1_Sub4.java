@@ -1,7 +1,7 @@
 import java.util.Random;
 import sign.signlink;
 
-public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
+public class Class44_Sub3_Sub1_Sub4 extends DrawingArea
 {
 
     public int anInt1466;
@@ -390,7 +390,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             }
             if(aBoolean1480)
             {
-                Class44_Sub3_Sub1.method414(l - i1, i1, 0x800000, true, k + (int)((double)anInt1478 * 0.69999999999999996D));
+                DrawingArea.drawHorizontalLine(l - i1, i1, 0x800000, true, k + (int)((double)anInt1478 * 0.69999999999999996D));
                 return;
             }
         }
@@ -550,35 +550,35 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
 
     public void method466(byte abyte0[], int i, int j, int k, int l, int i1)
     {
-        int j1 = i + j * Class44_Sub3_Sub1.width;
-        int k1 = Class44_Sub3_Sub1.width - k;
+        int j1 = i + j * DrawingArea.width;
+        int k1 = DrawingArea.width - k;
         int l1 = 0;
         int i2 = 0;
-        if(j < Class44_Sub3_Sub1.topY)
+        if(j < DrawingArea.topY)
         {
-            int j2 = Class44_Sub3_Sub1.topY - j;
+            int j2 = DrawingArea.topY - j;
             l -= j2;
-            j = Class44_Sub3_Sub1.topY;
+            j = DrawingArea.topY;
             i2 += j2 * k;
-            j1 += j2 * Class44_Sub3_Sub1.width;
+            j1 += j2 * DrawingArea.width;
         }
-        if(j + l >= Class44_Sub3_Sub1.bottomY)
+        if(j + l >= DrawingArea.bottomY)
         {
-            l -= ((j + l) - Class44_Sub3_Sub1.bottomY) + 1;
+            l -= ((j + l) - DrawingArea.bottomY) + 1;
         }
-        if(i < Class44_Sub3_Sub1.topX)
+        if(i < DrawingArea.topX)
         {
-            int k2 = Class44_Sub3_Sub1.topX - i;
+            int k2 = DrawingArea.topX - i;
             k -= k2;
-            i = Class44_Sub3_Sub1.topX;
+            i = DrawingArea.topX;
             i2 += k2;
             j1 += k2;
             l1 += k2;
             k1 += k2;
         }
-        if(i + k >= Class44_Sub3_Sub1.bottomX)
+        if(i + k >= DrawingArea.bottomX)
         {
-            int l2 = ((i + k) - Class44_Sub3_Sub1.bottomX) + 1;
+            int l2 = ((i + k) - DrawingArea.bottomX) + 1;
             k -= l2;
             l1 += l2;
             k1 += l2;
@@ -588,7 +588,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             return;
         } else
         {
-            method467(Class44_Sub3_Sub1.pixels, abyte0, i1, i2, j1, k, l, k1, l1);
+            method467(DrawingArea.pixels, abyte0, i1, i2, j1, k, l, k1, l1);
             return;
         }
     }
@@ -655,35 +655,35 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
             {
                 anInt1468 = 122;
             }
-            int k1 = i + k * Class44_Sub3_Sub1.width;
-            int l1 = Class44_Sub3_Sub1.width - j1;
+            int k1 = i + k * DrawingArea.width;
+            int l1 = DrawingArea.width - j1;
             int i2 = 0;
             int j2 = 0;
-            if(k < Class44_Sub3_Sub1.topY)
+            if(k < DrawingArea.topY)
             {
-                int k2 = Class44_Sub3_Sub1.topY - k;
+                int k2 = DrawingArea.topY - k;
                 l -= k2;
-                k = Class44_Sub3_Sub1.topY;
+                k = DrawingArea.topY;
                 j2 += k2 * j1;
-                k1 += k2 * Class44_Sub3_Sub1.width;
+                k1 += k2 * DrawingArea.width;
             }
-            if(k + l >= Class44_Sub3_Sub1.bottomY)
+            if(k + l >= DrawingArea.bottomY)
             {
-                l -= ((k + l) - Class44_Sub3_Sub1.bottomY) + 1;
+                l -= ((k + l) - DrawingArea.bottomY) + 1;
             }
-            if(i < Class44_Sub3_Sub1.topX)
+            if(i < DrawingArea.topX)
             {
-                int l2 = Class44_Sub3_Sub1.topX - i;
+                int l2 = DrawingArea.topX - i;
                 j1 -= l2;
-                i = Class44_Sub3_Sub1.topX;
+                i = DrawingArea.topX;
                 j2 += l2;
                 k1 += l2;
                 i2 += l2;
                 l1 += l2;
             }
-            if(i + j1 >= Class44_Sub3_Sub1.bottomX)
+            if(i + j1 >= DrawingArea.bottomX)
             {
-                int i3 = ((i + j1) - Class44_Sub3_Sub1.bottomX) + 1;
+                int i3 = ((i + j1) - DrawingArea.bottomX) + 1;
                 j1 -= i3;
                 i2 += i3;
                 l1 += i3;
@@ -693,7 +693,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1
                 return;
             } else
             {
-                method469(i2, j1, j, abyte0, false, Class44_Sub3_Sub1.pixels, k1, j2, l1, i1, l);
+                method469(i2, j1, j, abyte0, false, DrawingArea.pixels, k1, j2, l1, i1, l);
                 return;
             }
         }

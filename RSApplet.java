@@ -26,10 +26,10 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	public int anInt2;
 	public int anInt3;
 	public int anInt4;
-	public int anInt5;
+	public int gameState;
 	public int delayTime;
 	public int minDelay;
-	public long aLongArray8[];
+	public long otims[];
 	public int fps;
 	public boolean debug;
 	public int frameWidth;
@@ -41,19 +41,19 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	public boolean clearScreen;
 	public boolean awtFocus;
 	public int idleTime;
-	public int clickMode2;
+	public int mouseButton;
 	public int mouseX;
 	public int mouseY;
-	public int clickMode1;
+	public int eventMouseButton;
+	public int eventClickX;
+	public int eventClickY;
+	public long eventClickTime;
+	public int clickType;
 	public int clickX;
 	public int clickY;
 	public long clickTime;
-	public int clickMode3;
-	public int saveClickX;
-	public int saveClickY;
-	public long aLong30;
-	public int keyArray[];
-	public int charQueue[];
+	public int keyStatus[];
+	public int inputBuffer[];
 	public int readIndex;
 	public int writeIndex;
 	public static boolean aBoolean35;
@@ -106,17 +106,17 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		int oPos = 0;
 		int ratio = 256;
 		int delay = 1;
-		int i1 = 0;
+		int count = 0;
 		int intex = 0;
-		for (int k1 = 0; k1 < 10; k1++) {
-			aLongArray8[k1] = System.currentTimeMillis();
+		for (int otim = 0; otim < 10; otim++) {
+			otims[otim] = System.currentTimeMillis();
 		}
 		@SuppressWarnings("unused")
 		long l = System.currentTimeMillis();
-		while (anInt5 >= 0) {
-			if (anInt5 > 0) {
-				anInt5--;
-				if (anInt5 == 0) {
+		while (gameState >= 0) {
+			if (gameState > 0) {
+				gameState--;
+				if (gameState == 0) {
 					exit(0);
 					return;
 				}
@@ -125,29 +125,29 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			int j2 = delay;
 			ratio = 300;
 			delay = 1;
-			long nTime = System.currentTimeMillis();
-			if (aLongArray8[oPos] == 0L) {
+			long currentTime = System.currentTimeMillis();
+			if (otims[oPos] == 0L) {
 				ratio = i2;
 				delay = j2;
-			} else if (nTime > aLongArray8[oPos]) {
-				ratio = (int) ((long) (2560 * delayTime) / (nTime - aLongArray8[oPos]));
+			} else if (currentTime > otims[oPos]) {
+				ratio = (int) ((long) (2560 * delayTime) / (currentTime - otims[oPos]));
 			}
 			if (ratio < 25) {
 				ratio = 25;
 			}
 			if (ratio > 256) {
 				ratio = 256;
-				delay = (int) ((long) delayTime - (nTime - aLongArray8[oPos]) / 10L);
+				delay = (int) ((long) delayTime - (currentTime - otims[oPos]) / 10L);
 			}
 			if (delay > delayTime) {
 				delay = delayTime;
 			}
-			aLongArray8[oPos] = nTime;
+			otims[oPos] = currentTime;
 			oPos = (oPos + 1) % 10;
 			if (delay > 1) {
 				for (int k2 = 0; k2 < 10; k2++) {
-					if (aLongArray8[k2] != 0L) {
-						aLongArray8[k2] += delay;
+					if (otims[k2] != 0L) {
+						otims[k2] += delay;
 					}
 				}
 			}
@@ -159,41 +159,41 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			} catch (InterruptedException _ex) {
 				intex++;
 			}
-			for (; i1 < 256; i1 += ratio) {
-				clickMode3 = clickMode1;
-				saveClickX = clickX;
-				saveClickY = clickY;
-				aLong30 = clickTime;
-				clickMode1 = 0;
+			for (; count < 256; count += ratio) {
+				clickType = eventMouseButton;
+				clickX = eventClickX;
+				clickY = eventClickY;
+				clickTime = eventClickTime;
+				eventMouseButton = 0;
 				processGameLoop(9);
 				readIndex = writeIndex;
 			}
-			i1 &= 0xff;
+			count &= 0xff;
 			if (delayTime > 0) {
 				fps = (1000 * ratio) / (delayTime * 256);
 			}
 			processDrawing((byte) 1);
 			if (debug) {
-				System.out.println("ntime:" + nTime);
+				System.out.println("ntime:" + currentTime);
 				for (int l2 = 0; l2 < 10; l2++) {
 					int oTim = ((oPos - l2 - 1) + 20) % 10;
-					System.out.println("otim" + oTim + ":" + aLongArray8[oTim]);
+					System.out.println("otim" + oTim + ":" + otims[oTim]);
 				}
-				System.out.println("fps:" + fps + " ratio:" + ratio + " count:" + i1);
+				System.out.println("fps:" + fps + " ratio:" + ratio + " count:" + count);
 				System.out.println("del:" + delay + " deltime:" + delayTime + " mindel:" + minDelay);
 				System.out.println("intex:" + intex + " opos:" + oPos);
 				debug = false;
 				intex = 0;
 			}
 		}
-		if (anInt5 == -1) {
+		if (gameState == -1) {
 			exit(0);
 		}
 	}
 
 	public void exit(int i) {
 		try {
-			anInt5 = -2;
+			gameState = -2;
 			cleanUpForQuit(874);
 			if (i != 0) {
 				return;
@@ -216,40 +216,39 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		}
 	}
 
-	public void method4(int i, int j) {
+	public void setFrameRate(int frameRate, int j) {
 		try {
 			if (j <= 0) {
 				return;
 			} else {
-				delayTime = 1000 / i;
+				delayTime = 1000 / frameRate;
 				return;
 			}
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("19917, " + i + ", " + j + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("19917, " + frameRate + ", " + j + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
 
 	public void start() {
-		if (anInt5 >= 0) {
-			anInt5 = 0;
+		if (gameState >= 0) {
+			gameState = 0;
 		}
 	}
 
 	public void stop() {
-		if (anInt5 >= 0) {
-			anInt5 = 4000 / delayTime;
+		if (gameState >= 0) {
+			gameState = 4000 / delayTime;
 		}
 	}
 
 	public void destroy() {
-		anInt5 = -1;
+		gameState = -1;
 		try {
 			Thread.sleep(5000L);
 		} catch (Exception _ex) {
 		}
-		if (anInt5 == -1) {
+		if (gameState == -1) {
 			exit(0);
 		}
 	}
@@ -278,23 +277,23 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			y -= 22;
 		}
 		idleTime = 0;
-		clickX = x;
-		clickY = y;
-		clickTime = System.currentTimeMillis();
+		eventClickX = x;
+		eventClickY = y;
+		eventClickTime = System.currentTimeMillis();
 		if (mouseevent.isMetaDown()) {
-			clickMode1 = 2;
-			clickMode2 = 2;
+			eventMouseButton = 2;
+			mouseButton = 2;
 			return;
 		} else {
-			clickMode1 = 1;
-			clickMode2 = 1;
+			eventMouseButton = 1;
+			mouseButton = 1;
 			return;
 		}
 	}
 
 	public void mouseReleased(MouseEvent mouseevent) {
 		idleTime = 0;
-		clickMode2 = 0;
+		mouseButton = 0;
 	}
 
 	public void mouseClicked(MouseEvent mouseevent) {
@@ -383,10 +382,10 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			keyCharacter = 1003;
 		}
 		if (keyCharacter > 0 && keyCharacter < 128) {
-			keyArray[keyCharacter] = 1;
+			keyStatus[keyCharacter] = 1;
 		}
 		if (keyCharacter > 4) {
-			charQueue[writeIndex] = keyCharacter;
+			inputBuffer[writeIndex] = keyCharacter;
 			writeIndex = writeIndex + 1 & 0x7f;
 		}
 	}
@@ -426,7 +425,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 			keyCharacter = '\n';
 		}
 		if (keyCharacter > 0 && keyCharacter < '\200') {
-			keyArray[keyCharacter] = 0;
+			keyStatus[keyCharacter] = 0;
 		}
 	}
 
@@ -435,15 +434,15 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 
 	public int readCharacter(int i) {
 		try {
-			int j = -1;
+			int character = -1;
 			if (i >= 0) {
 				aBoolean1 = !aBoolean1;
 			}
 			if (writeIndex != readIndex) {
-				j = charQueue[readIndex];
+				character = inputBuffer[readIndex];
 				readIndex = readIndex + 1 & 0x7f;
 			}
-			return j;
+			return character;
 		} catch (RuntimeException runtimeexception) {
 			signlink.reporterror("9078, " + i + ", " + runtimeexception.toString());
 		}
@@ -458,8 +457,8 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 
 	public void focusLost(FocusEvent focusevent) {
 		awtFocus = false;
-		for (int i = 0; i < 128; i++) {
-			keyArray[i] = 0;
+		for (int key = 0; key < 128; key++) {
+			keyStatus[key] = 0;
 		}
 	}
 
@@ -528,8 +527,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 				return;
 			}
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("4586, " + flag + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("4586, " + flag + ", " + runtimeexception.toString());
 			throw new RuntimeException();
 		}
 	}
@@ -579,15 +577,15 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 				clearScreen = false;
 			}
 			Color color = new Color(140, 17, 17);
-			int j = frameHeight / 2 - 18;
+			int centerHeight = frameHeight / 2 - 18;
 			graphics.setColor(color);
-			graphics.drawRect(frameWidth / 2 - 152, j, 304, 34);
-			graphics.fillRect(frameWidth / 2 - 150, j + 2, i * 3, 30);
+			graphics.drawRect(frameWidth / 2 - 152, centerHeight, 304, 34);
+			graphics.fillRect(frameWidth / 2 - 150, centerHeight + 2, i * 3, 30);
 			graphics.setColor(Color.black);
-			graphics.fillRect((frameWidth / 2 - 150) + i * 3, j + 2, 300 - i * 3, 30);
+			graphics.fillRect((frameWidth / 2 - 150) + i * 3, centerHeight + 2, 300 - i * 3, 30);
 			graphics.setFont(font);
 			graphics.setColor(Color.white);
-			graphics.drawString(s, (frameWidth - fontmetrics.stringWidth(s)) / 2, j + 22);
+			graphics.drawString(s, (frameWidth - fontmetrics.stringWidth(s)) / 2, centerHeight + 22);
 			if (flag) {
 				return;
 			}
@@ -604,12 +602,12 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 		anInt4 = -6002;
 		delayTime = 20;
 		minDelay = 1;
-		aLongArray8 = new long[10];
+		otims = new long[10];
 		debug = false;
 		aClass44_Sub3_Sub1_Sub2Array15 = new Class44_Sub3_Sub1_Sub2[6];
 		clearScreen = true;
 		awtFocus = true;
-		keyArray = new int[128];
-		charQueue = new int[128];
+		keyStatus = new int[128];
+		inputBuffer = new int[128];
 	}
 }

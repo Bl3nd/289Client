@@ -4,17 +4,17 @@ public class Class31
 {
 
     public int anInt553;
-    public Class44_Sub3 aClass44_Sub3_554;
-    public Class44_Sub3 aClass44_Sub3_555;
+    public SubNode aClass44_Sub3_554;
+    public SubNode aClass44_Sub3_555;
 
     public Class31(int i)
     {
         anInt553 = 195;
-        aClass44_Sub3_554 = new Class44_Sub3();
+        aClass44_Sub3_554 = new SubNode();
         try
         {
-            aClass44_Sub3_554.aClass44_Sub3_1360 = aClass44_Sub3_554;
-            aClass44_Sub3_554.aClass44_Sub3_1361 = aClass44_Sub3_554;
+            aClass44_Sub3_554.previousSubNode = aClass44_Sub3_554;
+            aClass44_Sub3_554.nextSubNode = aClass44_Sub3_554;
             if(i != 9)
             {
                 anInt553 = 185;
@@ -28,21 +28,21 @@ public class Class31
         }
     }
 
-    public void method264(Class44_Sub3 class44_sub3)
+    public void method264(SubNode class44_sub3)
     {
-        if(class44_sub3.aClass44_Sub3_1361 != null)
+        if(class44_sub3.nextSubNode != null)
         {
             class44_sub3.method405();
         }
-        class44_sub3.aClass44_Sub3_1361 = aClass44_Sub3_554.aClass44_Sub3_1361;
-        class44_sub3.aClass44_Sub3_1360 = aClass44_Sub3_554;
-        class44_sub3.aClass44_Sub3_1361.aClass44_Sub3_1360 = class44_sub3;
-        class44_sub3.aClass44_Sub3_1360.aClass44_Sub3_1361 = class44_sub3;
+        class44_sub3.nextSubNode = aClass44_Sub3_554.nextSubNode;
+        class44_sub3.previousSubNode = aClass44_Sub3_554;
+        class44_sub3.nextSubNode.previousSubNode = class44_sub3;
+        class44_sub3.previousSubNode.nextSubNode = class44_sub3;
     }
 
-    public Class44_Sub3 method265()
+    public SubNode method265()
     {
-        Class44_Sub3 class44_sub3 = aClass44_Sub3_554.aClass44_Sub3_1360;
+        SubNode class44_sub3 = aClass44_Sub3_554.previousSubNode;
         if(class44_sub3 == aClass44_Sub3_554)
         {
             return null;
@@ -53,25 +53,25 @@ public class Class31
         }
     }
 
-    public Class44_Sub3 method266()
+    public SubNode method266()
     {
-        Class44_Sub3 class44_sub3 = aClass44_Sub3_554.aClass44_Sub3_1360;
+        SubNode class44_sub3 = aClass44_Sub3_554.previousSubNode;
         if(class44_sub3 == aClass44_Sub3_554)
         {
             aClass44_Sub3_555 = null;
             return null;
         } else
         {
-            aClass44_Sub3_555 = class44_sub3.aClass44_Sub3_1360;
+            aClass44_Sub3_555 = class44_sub3.previousSubNode;
             return class44_sub3;
         }
     }
 
-    public Class44_Sub3 method267(boolean flag)
+    public SubNode method267(boolean flag)
     {
         try
         {
-            Class44_Sub3 class44_sub3 = aClass44_Sub3_555;
+            SubNode class44_sub3 = aClass44_Sub3_555;
             if(flag)
             {
                 throw new NullPointerException();
@@ -82,7 +82,7 @@ public class Class31
                 return null;
             } else
             {
-                aClass44_Sub3_555 = class44_sub3.aClass44_Sub3_1360;
+                aClass44_Sub3_555 = class44_sub3.previousSubNode;
                 return class44_sub3;
             }
         }
@@ -96,7 +96,7 @@ public class Class31
     public int method268()
     {
         int i = 0;
-        for(Class44_Sub3 class44_sub3 = aClass44_Sub3_554.aClass44_Sub3_1360; class44_sub3 != aClass44_Sub3_554; class44_sub3 = class44_sub3.aClass44_Sub3_1360)
+        for(SubNode class44_sub3 = aClass44_Sub3_554.previousSubNode; class44_sub3 != aClass44_Sub3_554; class44_sub3 = class44_sub3.previousSubNode)
         {
             i++;
         }

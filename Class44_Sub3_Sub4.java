@@ -1,6 +1,6 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub4 extends Class44_Sub3
+public class Class44_Sub3_Sub4 extends SubNode
 {
 
     public int anInt1410;

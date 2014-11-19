@@ -1027,7 +1027,7 @@ public class Class3
                                     int l21 = 0;
                                     if(i21 != -1)
                                     {
-                                        l21 = Class44_Sub3_Sub1_Sub1.anIntArray1439[method170(j21, 96)];
+                                        l21 = Rasterizer.HSL_TO_RGB[method170(j21, 96)];
                                     }
                                     if(l18 == 0)
                                     {
@@ -1042,7 +1042,7 @@ public class Class3
                                         int j23;
                                         if(l22 >= 0)
                                         {
-                                            j23 = Class44_Sub3_Sub1_Sub1.method424(0, l22);
+                                            j23 = Rasterizer.getAverageTextureColor(0, l22);
                                             i23 = -1;
                                         } else
                                         if(class20_2.anInt432 == 0xff00ff)
@@ -1053,7 +1053,7 @@ public class Class3
                                         } else
                                         {
                                             i23 = method172(class20_2.anInt436, class20_2.anInt437, class20_2.anInt438);
-                                            j23 = Class44_Sub3_Sub1_Sub1.anIntArray1439[method171(class20_2.anInt441, 96)];
+                                            j23 = Rasterizer.HSL_TO_RGB[method171(class20_2.anInt441, 96)];
                                         }
                                         class36.method283(k, k6, j17, j22, byte5, l22, i19, j19, k19, l19, method170(i21, i20), method170(i21, j20), method170(i21, k20), method170(i21, l20), method171(i23, i20), method171(i23, j20), method171(i23, k20), method171(i23, l20), l21, j23);
                                     }
@@ -1317,7 +1317,7 @@ label5:
 
     public static int method167(int i, int j, int k, int l)
     {
-        int i1 = 0x10000 - Class44_Sub3_Sub1_Sub1.anIntArray1428[(k * 1024) / l] >> 1;
+        int i1 = 0x10000 - Rasterizer.anIntArray1428[(k * 1024) / l] >> 1;
         return (i * (0x10000 - i1) >> 16) + (j * i1 >> 16);
     }
 

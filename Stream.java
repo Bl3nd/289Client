@@ -8,7 +8,7 @@ import sign.signlink;
  * @author Cody
  *
  */
-public class Stream extends Class44_Sub3 {
+public class Stream extends SubNode {
 
 	public int anInt1380;
 	public byte aByte1381;

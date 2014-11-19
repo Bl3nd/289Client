@@ -1,5 +1,5 @@
 
-public class Class44_Sub3_Sub3 extends Class44_Sub3
+public class Class44_Sub3_Sub3 extends SubNode
 {
 
     public int anInt1405;

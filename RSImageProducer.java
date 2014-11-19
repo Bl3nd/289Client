@@ -40,7 +40,7 @@ public class RSImageProducer implements ImageProducer, ImageObserver {
 
 	public void initializeDrawingArea(byte b) {
 		try {
-			Class44_Sub3_Sub1.initializeDrawingArea(-78, framePixels, frameWidth, frameHeight);
+			DrawingArea.initializeDrawingArea(-78, framePixels, frameWidth, frameHeight);
 			if (b != 5) {
 				return;
 			}

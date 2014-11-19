@@ -550,20 +550,20 @@ public class Class14
                 }
             }
             Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2_1 = new Class44_Sub3_Sub1_Sub2(32, 32);
-            int k1 = Class44_Sub3_Sub1_Sub1.anInt1423;
-            int l1 = Class44_Sub3_Sub1_Sub1.anInt1424;
-            int ai[] = Class44_Sub3_Sub1_Sub1.anIntArray1429;
-            int ai1[] = Class44_Sub3_Sub1.pixels;
-            int i2 = Class44_Sub3_Sub1.width;
-            int j2 = Class44_Sub3_Sub1.height;
-            int k2 = Class44_Sub3_Sub1.topX;
-            int l2 = Class44_Sub3_Sub1.bottomX;
-            int i3 = Class44_Sub3_Sub1.topY;
-            int j3 = Class44_Sub3_Sub1.bottomY;
-            Class44_Sub3_Sub1_Sub1.aBoolean1421 = false;
-            Class44_Sub3_Sub1.initializeDrawingArea(-78, class44_sub3_sub1_sub2_1.anIntArray1448, 32, 32);
-            Class44_Sub3_Sub1.method411(0, 210, 0, 32, 0, 32);
-            Class44_Sub3_Sub1_Sub1.method419((byte)3);
+            int k1 = Rasterizer.centerX;
+            int l1 = Rasterizer.centerY;
+            int ai[] = Rasterizer.lineOffsets;
+            int ai1[] = DrawingArea.pixels;
+            int i2 = DrawingArea.width;
+            int j2 = DrawingArea.height;
+            int k2 = DrawingArea.topX;
+            int l2 = DrawingArea.bottomX;
+            int i3 = DrawingArea.topY;
+            int j3 = DrawingArea.bottomY;
+            Rasterizer.textured = false;
+            DrawingArea.initializeDrawingArea(-78, class44_sub3_sub1_sub2_1.anIntArray1448, 32, 32);
+            DrawingArea.method411(0, 210, 0, 32, 0, 32);
+            Rasterizer.setDefaultBounds((byte)3);
             int k3 = class14.anInt335;
             if(k == -1)
             {
@@ -573,8 +573,8 @@ public class Class14
             {
                 k3 = (int)((double)k3 * 1.04D);
             }
-            int l3 = Class44_Sub3_Sub1_Sub1.anIntArray1427[class14.anInt336] * k3 >> 16;
-            int i4 = Class44_Sub3_Sub1_Sub1.anIntArray1428[class14.anInt336] * k3 >> 16;
+            int l3 = Rasterizer.anIntArray1427[class14.anInt336] * k3 >> 16;
+            int i4 = Rasterizer.anIntArray1428[class14.anInt336] * k3 >> 16;
             class44_sub3_sub4_sub4.method526(0, class14.anInt337, class14.anInt338, class14.anInt336, class14.anInt339, l3 + ((Class44_Sub3_Sub4) (class44_sub3_sub4_sub4)).anInt1412 / 2 + class14.anInt340, i4 + class14.anInt340);
             for(int i5 = 31; i5 >= 0; i5--)
             {
@@ -656,12 +656,12 @@ public class Class14
             {
                 aClass39_370.method340(j, (byte)76, class44_sub3_sub1_sub2_1);
             }
-            Class44_Sub3_Sub1.initializeDrawingArea(-78, ai1, i2, j2);
-            Class44_Sub3_Sub1.setDrawingArea(aByte321, j3, l2, i3, k2);
-            Class44_Sub3_Sub1_Sub1.anInt1423 = k1;
-            Class44_Sub3_Sub1_Sub1.anInt1424 = l1;
-            Class44_Sub3_Sub1_Sub1.anIntArray1429 = ai;
-            Class44_Sub3_Sub1_Sub1.aBoolean1421 = true;
+            DrawingArea.initializeDrawingArea(-78, ai1, i2, j2);
+            DrawingArea.setDrawingArea(aByte321, j3, l2, i3, k2);
+            Rasterizer.centerX = k1;
+            Rasterizer.centerY = l1;
+            Rasterizer.lineOffsets = ai;
+            Rasterizer.textured = true;
             if(class14.aBoolean342)
             {
                 class44_sub3_sub1_sub2_1.anInt1453 = 33;

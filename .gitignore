@@ -170,3 +170,10 @@
 /Client.class
 /NodeList.class
 /Node.class
+/GameObjectSpawnRequest.class
+/InteractiveObject.class
+/Ground.class
+/NodeSub.class
+/SubNode.class
+/DrawingArea.class
+/Rasterizer.class

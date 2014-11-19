@@ -1899,8 +1899,8 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
 
     public void method526(int i, int j, int k, int l, int i1, int j1, int k1)
     {
-        int l1 = Class44_Sub3_Sub1_Sub1.anInt1423;
-        int i2 = Class44_Sub3_Sub1_Sub1.anInt1424;
+        int l1 = Rasterizer.centerX;
+        int i2 = Rasterizer.centerY;
         int j2 = anIntArray1598[i];
         int k2 = anIntArray1599[i];
         int l2 = anIntArray1598[j];
@@ -1973,25 +1973,25 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
         }
         int j3 = l1 * l + j1 * i1 >> 16;
         int k3 = j3 - anInt1559 << 9;
-        if(k3 / i3 >= Class44_Sub3_Sub1.centerY)
+        if(k3 / i3 >= DrawingArea.viewportCenterX)
         {
             return;
         }
         int l3 = j3 + anInt1559 << 9;
-        if(l3 / i3 <= -Class44_Sub3_Sub1.centerY)
+        if(l3 / i3 <= -DrawingArea.viewportCenterX)
         {
             return;
         }
         int i4 = k1 * k - j2 * j >> 16;
         int j4 = anInt1559 * j >> 16;
         int k4 = i4 + j4 << 9;
-        if(k4 / i3 <= -Class44_Sub3_Sub1.anInt1378)
+        if(k4 / i3 <= -DrawingArea.viewportCenterY)
         {
             return;
         }
         int l4 = j4 + (super.anInt1412 * k >> 16);
         int i5 = i4 - l4 << 9;
-        if(i5 / i3 >= Class44_Sub3_Sub1.anInt1378)
+        if(i5 / i3 >= DrawingArea.viewportCenterY)
         {
             return;
         }
@@ -2027,8 +2027,8 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 k4 /= i3;
                 i5 /= k5;
             }
-            int i6 = anInt1594 - Class44_Sub3_Sub1_Sub1.anInt1423;
-            int k6 = anInt1595 - Class44_Sub3_Sub1_Sub1.anInt1424;
+            int i6 = anInt1594 - Rasterizer.centerX;
+            int k6 = anInt1595 - Rasterizer.centerY;
             if(i6 > k3 && i6 < l3 && k6 > i5 && k6 < k4)
             {
                 if(aBoolean1568)
@@ -2040,8 +2040,8 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 }
             }
         }
-        int l5 = Class44_Sub3_Sub1_Sub1.anInt1423;
-        int j6 = Class44_Sub3_Sub1_Sub1.anInt1424;
+        int l5 = Rasterizer.centerX;
+        int j6 = Rasterizer.centerY;
         int l6 = 0;
         int i7 = 0;
         if(i != 0)
@@ -2128,7 +2128,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     if((i3 - l3) * (anIntArray1575[j2] - anIntArray1575[k1]) - (anIntArray1575[l] - anIntArray1575[k1]) * (k4 - l3) > 0)
                     {
                         aBooleanArray1573[k] = false;
-                        if(i3 < 0 || l3 < 0 || k4 < 0 || i3 > Class44_Sub3_Sub1.centerX || l3 > Class44_Sub3_Sub1.centerX || k4 > Class44_Sub3_Sub1.centerX)
+                        if(i3 < 0 || l3 < 0 || k4 < 0 || i3 > DrawingArea.centerX || l3 > DrawingArea.centerX || k4 > DrawingArea.centerX)
                         {
                             aBooleanArray1572[k] = true;
                         } else
@@ -2315,13 +2315,13 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
         int j = anIntArray1540[i];
         int k = anIntArray1541[i];
         int l = anIntArray1542[i];
-        Class44_Sub3_Sub1_Sub1.aBoolean1419 = aBooleanArray1572[i];
+        Rasterizer.restrictEdges = aBooleanArray1572[i];
         if(anIntArray1548 == null)
         {
-            Class44_Sub3_Sub1_Sub1.anInt1422 = 0;
+            Rasterizer.alpha = 0;
         } else
         {
-            Class44_Sub3_Sub1_Sub1.anInt1422 = anIntArray1548[i];
+            Rasterizer.alpha = anIntArray1548[i];
         }
         int i1;
         if(anIntArray1546 == null)
@@ -2333,12 +2333,12 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
         }
         if(i1 == 0)
         {
-            Class44_Sub3_Sub1_Sub1.method429(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1543[i], anIntArray1544[i], anIntArray1545[i]);
+            Rasterizer.drawShadedTriangle(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1543[i], anIntArray1544[i], anIntArray1545[i]);
             return;
         }
         if(i1 == 1)
         {
-            Class44_Sub3_Sub1_Sub1.method431(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1600[anIntArray1543[i]]);
+            Rasterizer.method431(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1600[anIntArray1543[i]]);
             return;
         }
         if(i1 == 2)
@@ -2347,7 +2347,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             int l1 = anIntArray1552[j1];
             int j2 = anIntArray1553[j1];
             int l2 = anIntArray1554[j1];
-            Class44_Sub3_Sub1_Sub1.method433(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1543[i], anIntArray1544[i], anIntArray1545[i], anIntArray1577[l1], anIntArray1577[j2], anIntArray1577[l2], anIntArray1578[l1], anIntArray1578[j2], anIntArray1578[l2], anIntArray1579[l1], anIntArray1579[j2], anIntArray1579[l2], anIntArray1549[i]);
+            Rasterizer.method433(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1543[i], anIntArray1544[i], anIntArray1545[i], anIntArray1577[l1], anIntArray1577[j2], anIntArray1577[l2], anIntArray1578[l1], anIntArray1578[j2], anIntArray1578[l2], anIntArray1579[l1], anIntArray1579[j2], anIntArray1579[l2], anIntArray1549[i]);
             return;
         }
         if(i1 == 3)
@@ -2356,14 +2356,14 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
             int i2 = anIntArray1552[k1];
             int k2 = anIntArray1553[k1];
             int i3 = anIntArray1554[k1];
-            Class44_Sub3_Sub1_Sub1.method433(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[i2], anIntArray1577[k2], anIntArray1577[i3], anIntArray1578[i2], anIntArray1578[k2], anIntArray1578[i3], anIntArray1579[i2], anIntArray1579[k2], anIntArray1579[i3], anIntArray1549[i]);
+            Rasterizer.method433(anIntArray1575[j], anIntArray1575[k], anIntArray1575[l], anIntArray1574[j], anIntArray1574[k], anIntArray1574[l], anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[i2], anIntArray1577[k2], anIntArray1577[i3], anIntArray1578[i2], anIntArray1578[k2], anIntArray1578[i3], anIntArray1579[i2], anIntArray1579[k2], anIntArray1579[i3], anIntArray1549[i]);
         }
     }
 
     public void method529(int i)
     {
-        int j = Class44_Sub3_Sub1_Sub1.anInt1423;
-        int k = Class44_Sub3_Sub1_Sub1.anInt1424;
+        int j = Rasterizer.centerX;
+        int k = Rasterizer.centerY;
         int l = 0;
         int i1 = anIntArray1540[i];
         int j1 = anIntArray1541[i];
@@ -2454,12 +2454,12 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
         int k7 = anIntArray1588[2];
         if((j3 - j4) * (k7 - j7) - (i7 - j7) * (j5 - j4) > 0)
         {
-            Class44_Sub3_Sub1_Sub1.aBoolean1419 = false;
+            Rasterizer.restrictEdges = false;
             if(l == 3)
             {
-                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.centerX || j4 > Class44_Sub3_Sub1.centerX || j5 > Class44_Sub3_Sub1.centerX)
+                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > DrawingArea.centerX || j4 > DrawingArea.centerX || j5 > DrawingArea.centerX)
                 {
-                    Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
+                    Rasterizer.restrictEdges = true;
                 }
                 int l7;
                 if(anIntArray1546 == null)
@@ -2471,11 +2471,11 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 }
                 if(l7 == 0)
                 {
-                    Class44_Sub3_Sub1_Sub1.method429(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2]);
+                    Rasterizer.drawShadedTriangle(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2]);
                 } else
                 if(l7 == 1)
                 {
-                    Class44_Sub3_Sub1_Sub1.method431(i7, j7, k7, j3, j4, j5, anIntArray1600[anIntArray1543[i]]);
+                    Rasterizer.method431(i7, j7, k7, j3, j4, j5, anIntArray1600[anIntArray1543[i]]);
                 } else
                 if(l7 == 2)
                 {
@@ -2483,7 +2483,7 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     int k9 = anIntArray1552[j8];
                     int k10 = anIntArray1553[j8];
                     int k11 = anIntArray1554[j8];
-                    Class44_Sub3_Sub1_Sub1.method433(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2], anIntArray1577[k9], anIntArray1577[k10], anIntArray1577[k11], anIntArray1578[k9], anIntArray1578[k10], anIntArray1578[k11], anIntArray1579[k9], anIntArray1579[k10], anIntArray1579[k11], anIntArray1549[i]);
+                    Rasterizer.method433(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2], anIntArray1577[k9], anIntArray1577[k10], anIntArray1577[k11], anIntArray1578[k9], anIntArray1578[k10], anIntArray1578[k11], anIntArray1579[k9], anIntArray1579[k10], anIntArray1579[k11], anIntArray1549[i]);
                 } else
                 if(l7 == 3)
                 {
@@ -2491,14 +2491,14 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     int l9 = anIntArray1552[k8];
                     int l10 = anIntArray1553[k8];
                     int l11 = anIntArray1554[k8];
-                    Class44_Sub3_Sub1_Sub1.method433(i7, j7, k7, j3, j4, j5, anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[l9], anIntArray1577[l10], anIntArray1577[l11], anIntArray1578[l9], anIntArray1578[l10], anIntArray1578[l11], anIntArray1579[l9], anIntArray1579[l10], anIntArray1579[l11], anIntArray1549[i]);
+                    Rasterizer.method433(i7, j7, k7, j3, j4, j5, anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[l9], anIntArray1577[l10], anIntArray1577[l11], anIntArray1578[l9], anIntArray1578[l10], anIntArray1578[l11], anIntArray1579[l9], anIntArray1579[l10], anIntArray1579[l11], anIntArray1549[i]);
                 }
             }
             if(l == 4)
             {
-                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.centerX || j4 > Class44_Sub3_Sub1.centerX || j5 > Class44_Sub3_Sub1.centerX || anIntArray1587[3] < 0 || anIntArray1587[3] > Class44_Sub3_Sub1.centerX)
+                if(j3 < 0 || j4 < 0 || j5 < 0 || j3 > DrawingArea.centerX || j4 > DrawingArea.centerX || j5 > DrawingArea.centerX || anIntArray1587[3] < 0 || anIntArray1587[3] > DrawingArea.centerX)
                 {
-                    Class44_Sub3_Sub1_Sub1.aBoolean1419 = true;
+                    Rasterizer.restrictEdges = true;
                 }
                 int i8;
                 if(anIntArray1546 == null)
@@ -2510,15 +2510,15 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                 }
                 if(i8 == 0)
                 {
-                    Class44_Sub3_Sub1_Sub1.method429(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2]);
-                    Class44_Sub3_Sub1_Sub1.method429(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], anIntArray1589[0], anIntArray1589[2], anIntArray1589[3]);
+                    Rasterizer.drawShadedTriangle(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2]);
+                    Rasterizer.drawShadedTriangle(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], anIntArray1589[0], anIntArray1589[2], anIntArray1589[3]);
                     return;
                 }
                 if(i8 == 1)
                 {
                     int l8 = anIntArray1600[anIntArray1543[i]];
-                    Class44_Sub3_Sub1_Sub1.method431(i7, j7, k7, j3, j4, j5, l8);
-                    Class44_Sub3_Sub1_Sub1.method431(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], l8);
+                    Rasterizer.method431(i7, j7, k7, j3, j4, j5, l8);
+                    Rasterizer.method431(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], l8);
                     return;
                 }
                 if(i8 == 2)
@@ -2527,8 +2527,8 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     int i10 = anIntArray1552[i9];
                     int i11 = anIntArray1553[i9];
                     int i12 = anIntArray1554[i9];
-                    Class44_Sub3_Sub1_Sub1.method433(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2], anIntArray1577[i10], anIntArray1577[i11], anIntArray1577[i12], anIntArray1578[i10], anIntArray1578[i11], anIntArray1578[i12], anIntArray1579[i10], anIntArray1579[i11], anIntArray1579[i12], anIntArray1549[i]);
-                    Class44_Sub3_Sub1_Sub1.method433(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], anIntArray1589[0], anIntArray1589[2], anIntArray1589[3], anIntArray1577[i10], anIntArray1577[i11], anIntArray1577[i12], anIntArray1578[i10], anIntArray1578[i11], anIntArray1578[i12], anIntArray1579[i10], anIntArray1579[i11], anIntArray1579[i12], anIntArray1549[i]);
+                    Rasterizer.method433(i7, j7, k7, j3, j4, j5, anIntArray1589[0], anIntArray1589[1], anIntArray1589[2], anIntArray1577[i10], anIntArray1577[i11], anIntArray1577[i12], anIntArray1578[i10], anIntArray1578[i11], anIntArray1578[i12], anIntArray1579[i10], anIntArray1579[i11], anIntArray1579[i12], anIntArray1549[i]);
+                    Rasterizer.method433(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], anIntArray1589[0], anIntArray1589[2], anIntArray1589[3], anIntArray1577[i10], anIntArray1577[i11], anIntArray1577[i12], anIntArray1578[i10], anIntArray1578[i11], anIntArray1578[i12], anIntArray1579[i10], anIntArray1579[i11], anIntArray1579[i12], anIntArray1549[i]);
                     return;
                 }
                 if(i8 == 3)
@@ -2537,8 +2537,8 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
                     int j10 = anIntArray1552[j9];
                     int j11 = anIntArray1553[j9];
                     int j12 = anIntArray1554[j9];
-                    Class44_Sub3_Sub1_Sub1.method433(i7, j7, k7, j3, j4, j5, anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[j10], anIntArray1577[j11], anIntArray1577[j12], anIntArray1578[j10], anIntArray1578[j11], anIntArray1578[j12], anIntArray1579[j10], anIntArray1579[j11], anIntArray1579[j12], anIntArray1549[i]);
-                    Class44_Sub3_Sub1_Sub1.method433(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[j10], anIntArray1577[j11], anIntArray1577[j12], anIntArray1578[j10], anIntArray1578[j11], anIntArray1578[j12], anIntArray1579[j10], anIntArray1579[j11], anIntArray1579[j12], anIntArray1549[i]);
+                    Rasterizer.method433(i7, j7, k7, j3, j4, j5, anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[j10], anIntArray1577[j11], anIntArray1577[j12], anIntArray1578[j10], anIntArray1578[j11], anIntArray1578[j12], anIntArray1579[j10], anIntArray1579[j11], anIntArray1579[j12], anIntArray1549[i]);
+                    Rasterizer.method433(i7, k7, anIntArray1588[3], j3, j5, anIntArray1587[3], anIntArray1543[i], anIntArray1543[i], anIntArray1543[i], anIntArray1577[j10], anIntArray1577[j11], anIntArray1577[j12], anIntArray1578[j10], anIntArray1578[j11], anIntArray1578[j12], anIntArray1579[j10], anIntArray1579[j11], anIntArray1579[j12], anIntArray1549[i]);
                 }
             }
         }
@@ -2564,9 +2564,9 @@ public class Class44_Sub3_Sub4_Sub4 extends Class44_Sub3_Sub4
 
     static
     {
-        anIntArray1598 = Class44_Sub3_Sub1_Sub1.anIntArray1427;
-        anIntArray1599 = Class44_Sub3_Sub1_Sub1.anIntArray1428;
-        anIntArray1600 = Class44_Sub3_Sub1_Sub1.anIntArray1439;
-        anIntArray1601 = Class44_Sub3_Sub1_Sub1.anIntArray1426;
+        anIntArray1598 = Rasterizer.anIntArray1427;
+        anIntArray1599 = Rasterizer.anIntArray1428;
+        anIntArray1600 = Rasterizer.HSL_TO_RGB;
+        anIntArray1601 = Rasterizer.anIntArray1426;
     }
 }

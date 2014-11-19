@@ -1,6 +1,6 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub1 extends Class44_Sub3 {
+public class DrawingArea extends SubNode {
 
 	public static int anInt1363 = 1623;
 	public static boolean aBoolean1364;
@@ -16,8 +16,8 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 	public static int topX;
 	public static int bottomX;
 	public static int centerX;
-	public static int centerY;
-	public static int anInt1378;
+	public static int viewportCenterX;
+	public static int viewportCenterY;
 	public static int anInt1379;
 
 	public static void initializeDrawingArea(int i, int framePixels[], int frameWidth, int frameHeight) {
@@ -35,7 +35,7 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 		throw new RuntimeException();
 	}
 
-	public static void method407(byte byte0) {
+	public static void defaultDrawingAreaSize(byte byte0) {
 		try {
 			topX = 0;
 			topY = 0;
@@ -45,11 +45,10 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 				aBoolean1364 = !aBoolean1364;
 			}
 			centerX = bottomX - 1;
-			centerY = bottomX / 2;
+			viewportCenterX = bottomX / 2;
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("75622, " + byte0 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("75622, " + byte0 + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
@@ -78,8 +77,8 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 			bottomX = frameWidth;
 			bottomY = frameHeight;
 			centerX = bottomX - 1;
-			centerY = bottomX / 2;
-			anInt1378 = bottomY / 2;
+			viewportCenterX = bottomX / 2;
+			viewportCenterY = bottomY / 2;
 			return;
 		} catch (RuntimeException runtimeexception) {
 			signlink.reporterror("52567, " + b + ", " + frameHeight + ", " + frameWidth + ", " + k + ", " + l + ", " + runtimeexception.toString());
@@ -87,9 +86,9 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 		throw new RuntimeException();
 	}
 
-	public static void method409(byte byte0) {
+	public static void clear(byte b) {
 		try {
-			if (byte0 != 127) {
+			if (b != 127) {
 				return;
 			}
 			int i = width * height;
@@ -98,14 +97,12 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("10068, " + byte0 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("10068, " + b + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
 
-	public static void method410(int i, int j, int k, int l, int i1, int j1,
-			boolean flag) {
+	public static void drawFilledRectangleAlpha(int i, int j, int k, int l, int i1, int j1, boolean flag) {
 		try {
 			if (j1 < topX) {
 				i1 -= topX - j1;
@@ -135,17 +132,14 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 					int k2 = (pixels[k3] >> 16 & 0xff) * k1;
 					int l2 = (pixels[k3] >> 8 & 0xff) * k1;
 					int i3 = (pixels[k3] & 0xff) * k1;
-					int j4 = ((l1 + k2 >> 8) << 16) + ((i2 + l2 >> 8) << 8)
-							+ (j2 + i3 >> 8);
+					int j4 = ((l1 + k2 >> 8) << 16) + ((i2 + l2 >> 8) << 8) + (j2 + i3 >> 8);
 					pixels[k3++] = j4;
 				}
 				k3 += j3;
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("68601, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + j1 + ", " + flag + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("68601, " + i + ", " + j + ", " + k + ", " + l + ", " + i1 + ", " + j1 + ", " + flag + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
@@ -177,33 +171,28 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("43392, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + j1 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("43392, " + i + ", " + j + ", " + k + ", " + l + ", " + i1 + ", " + j1 + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
 
-	public static void method412(int i, int j, int k, int l, int i1, int j1) {
+	public static void drawUnfilledRectangle(int i, int j, int k, int l, int i1, int j1) {
 		try {
-			method414(k, j, l, true, i1);
-			method414(k, j, l, true, (i1 + j1) - 1);
-			method416(i1, j, l, j1, 0);
+			drawHorizontalLine(k, j, l, true, i1);
+			drawHorizontalLine(k, j, l, true, (i1 + j1) - 1);
+			drawVerticalLine(i1, j, l, j1, 0);
 			if (i < anInt1367 || i > anInt1367) {
 				aBoolean1364 = !aBoolean1364;
 			}
-			method416(i1, (j + k) - 1, l, j1, 0);
+			drawVerticalLine(i1, (j + k) - 1, l, j1, 0);
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("9711, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + j1 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("9711, " + i + ", " + j + ", " + k + ", " + l + ", " + i1 + ", " + j1 + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
 
-	public static void method413(int i, int j, int k, int l, int i1, int j1,
-			int k1) {
+	public static void drawUnfilledRectangleAlpha(int i, int j, int k, int l, int i1, int j1, int k1) {
 		try {
 			method415(-985, k, j, i1, j1, l);
 			method415(-985, k, j, i1, (j1 + i) - 1, l);
@@ -216,36 +205,33 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 				return;
 			}
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("90957, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + j1 + ", " + k1 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("90957, " + i + ", " + j + ", " + k + ", " + l + ", " + i1 + ", " + j1 + ", " + k1 + ", " + runtimeexception.toString());
 			throw new RuntimeException();
 		}
 	}
 
-	public static void method414(int i, int j, int k, boolean flag, int l) {
+	public static void drawHorizontalLine(int frameWidth, int y, int k, boolean flag, int x) {
 		try {
 			if (!flag) {
 				return;
 			}
-			if (l < topY || l >= bottomY) {
+			if (x < topY || x >= bottomY) {
 				return;
 			}
-			if (j < topX) {
-				i -= topX - j;
-				j = topX;
+			if (y < topX) {
+				frameWidth -= topX - y;
+				y = topX;
 			}
-			if (j + i > bottomX) {
-				i = bottomX - j;
+			if (y + frameWidth > bottomX) {
+				frameWidth = bottomX - y;
 			}
-			int i1 = j + l * width;
-			for (int j1 = 0; j1 < i; j1++) {
-				pixels[i1 + j1] = k;
+			int pointer = y + x * width;
+			for (int j1 = 0; j1 < frameWidth; j1++) {
+				pixels[pointer + j1] = k;
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("26422, " + i + ", " + j + ", " + k + ", "
-					+ flag + ", " + l + ", " + runtimeexception.toString());
+			signlink.reporterror("26422, " + frameWidth + ", " + y + ", " + k + ", " + flag + ", " + x + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
@@ -281,36 +267,33 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("78053, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + j1 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("78053, " + i + ", " + j + ", " + k + ", " + l + ", " + i1 + ", " + j1 + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
 
-	public static void method416(int i, int j, int k, int l, int i1) {
+	public static void drawVerticalLine(int y, int x, int k, int frameHeight, int i1) {
 		try {
 			if (i1 != 0) {
 				aBoolean1365 = !aBoolean1365;
 			}
-			if (j < topX || j >= bottomX) {
+			if (x < topX || x >= bottomX) {
 				return;
 			}
-			if (i < topY) {
-				l -= topY - i;
-				i = topY;
+			if (y < topY) {
+				frameHeight -= topY - y;
+				y = topY;
 			}
-			if (i + l > bottomY) {
-				l = bottomY - i;
+			if (y + frameHeight > bottomY) {
+				frameHeight = bottomY - y;
 			}
-			int j1 = j + i * width;
-			for (int k1 = 0; k1 < l; k1++) {
-				pixels[j1 + k1 * width] = k;
+			int pointer = x + y * width;
+			for (int k1 = 0; k1 < frameHeight; k1++) {
+				pixels[pointer + k1 * width] = k;
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("94910, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + runtimeexception.toString());
+			signlink.reporterror("94910, " + y + ", " + x + ", " + k + ", " + frameHeight + ", " + i1 + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
@@ -344,14 +327,12 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
 			}
 			return;
 		} catch (RuntimeException runtimeexception) {
-			signlink.reporterror("35599, " + i + ", " + j + ", " + k + ", " + l
-					+ ", " + i1 + ", " + j1 + ", "
-					+ runtimeexception.toString());
+			signlink.reporterror("35599, " + i + ", " + j + ", " + k + ", " + l + ", " + i1 + ", " + j1 + ", " + runtimeexception.toString());
 		}
 		throw new RuntimeException();
 	}
 
-	public Class44_Sub3_Sub1() {
+	public DrawingArea() {
 	}
 
 }

@@ -7,7 +7,7 @@ public class Class39
     public boolean aBoolean689;
     public int anInt690;
     public int anInt691;
-    public Class44_Sub3 aClass44_Sub3_692;
+    public SubNode aClass44_Sub3_692;
     public int anInt693;
     public int anInt694;
     public Class42 aClass42_695;
@@ -17,7 +17,7 @@ public class Class39
     {
         aBoolean688 = true;
         aBoolean689 = false;
-        aClass44_Sub3_692 = new Class44_Sub3();
+        aClass44_Sub3_692 = new SubNode();
         aClass31_696 = new Class31(9);
         try
         {
@@ -40,9 +40,9 @@ public class Class39
         throw new RuntimeException();
     }
 
-    public Class44_Sub3 method339(long l)
+    public SubNode method339(long l)
     {
-        Class44_Sub3 class44_sub3 = (Class44_Sub3)aClass42_695.method380(l);
+        SubNode class44_sub3 = (SubNode)aClass42_695.method380(l);
         if(class44_sub3 != null)
         {
             aClass31_696.method264(class44_sub3);
@@ -54,7 +54,7 @@ public class Class39
         return class44_sub3;
     }
 
-    public void method340(long l, byte byte0, Class44_Sub3 class44_sub3)
+    public void method340(long l, byte byte0, SubNode class44_sub3)
     {
         try
         {
@@ -64,12 +64,12 @@ public class Class39
             }
             if(anInt694 == 0)
             {
-                Class44_Sub3 class44_sub3_1 = aClass31_696.method265();
+                SubNode class44_sub3_1 = aClass31_696.method265();
                 class44_sub3_1.unlink();
                 class44_sub3_1.method405();
                 if(class44_sub3_1 == aClass44_Sub3_692)
                 {
-                    Class44_Sub3 class44_sub3_2 = aClass31_696.method265();
+                    SubNode class44_sub3_2 = aClass31_696.method265();
                     class44_sub3_2.unlink();
                     class44_sub3_2.method405();
                 }
@@ -92,7 +92,7 @@ public class Class39
     {
         do
         {
-            Class44_Sub3 class44_sub3 = aClass31_696.method265();
+            SubNode class44_sub3 = aClass31_696.method265();
             if(class44_sub3 != null)
             {
                 class44_sub3.unlink();

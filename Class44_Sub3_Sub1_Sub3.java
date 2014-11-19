@@ -1,18 +1,18 @@
 import sign.signlink;
 
-public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
+public class Class44_Sub3_Sub1_Sub3 extends DrawingArea
 {
 
     public boolean aBoolean1455;
     public boolean aBoolean1456;
     public int anInt1457;
-    public byte aByteArray1458[];
+    public byte imagePixels[];
     public int anIntArray1459[];
-    public int anInt1460;
+    public int imageWidth;
     public int anInt1461;
     public int anInt1462;
     public int anInt1463;
-    public int anInt1464;
+    public int libWidth;
     public int anInt1465;
 
     public Class44_Sub3_Sub1_Sub3(Class47 class47, String s, int i)
@@ -23,7 +23,7 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
         Stream class44_sub3_sub2 = new Stream(class47.method549(s + ".dat", null), 15787);
         Stream class44_sub3_sub2_1 = new Stream(class47.method549("index.dat", null), 15787);
         class44_sub3_sub2_1.currentOffset = class44_sub3_sub2.getUnsignedLEShort();
-        anInt1464 = class44_sub3_sub2_1.getUnsignedLEShort();
+        libWidth = class44_sub3_sub2_1.getUnsignedLEShort();
         anInt1465 = class44_sub3_sub2_1.getUnsignedLEShort();
         int j = class44_sub3_sub2_1.getUnsignedByte();
         anIntArray1459 = new int[j];
@@ -39,26 +39,26 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
         }
         anInt1462 = class44_sub3_sub2_1.getUnsignedByte();
         anInt1463 = class44_sub3_sub2_1.getUnsignedByte();
-        anInt1460 = class44_sub3_sub2_1.getUnsignedLEShort();
+        imageWidth = class44_sub3_sub2_1.getUnsignedLEShort();
         anInt1461 = class44_sub3_sub2_1.getUnsignedLEShort();
         int i1 = class44_sub3_sub2_1.getUnsignedByte();
-        int j1 = anInt1460 * anInt1461;
-        aByteArray1458 = new byte[j1];
+        int j1 = imageWidth * anInt1461;
+        imagePixels = new byte[j1];
         if(i1 == 0)
         {
             for(int k1 = 0; k1 < j1; k1++)
             {
-                aByteArray1458[k1] = class44_sub3_sub2.get();
+                imagePixels[k1] = class44_sub3_sub2.get();
             }
             return;
         }
         if(i1 == 1)
         {
-            for(int l1 = 0; l1 < anInt1460; l1++)
+            for(int l1 = 0; l1 < imageWidth; l1++)
             {
                 for(int i2 = 0; i2 < anInt1461; i2++)
                 {
-                    aByteArray1458[l1 + i2 * anInt1460] = class44_sub3_sub2.get();
+                    imagePixels[l1 + i2 * imageWidth] = class44_sub3_sub2.get();
                 }
             }
         }
@@ -68,19 +68,19 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
     {
         try
         {
-            anInt1464 /= 2;
+            libWidth /= 2;
             anInt1465 /= 2;
-            byte abyte0[] = new byte[anInt1464 * anInt1465];
+            byte abyte0[] = new byte[libWidth * anInt1465];
             int j = 0;
             for(int k = 0; k < anInt1461; k++)
             {
-                for(int l = 0; l < anInt1460; l++)
+                for(int l = 0; l < imageWidth; l++)
                 {
-                    abyte0[(l + anInt1462 >> 1) + (k + anInt1463 >> 1) * anInt1464] = aByteArray1458[j++];
+                    abyte0[(l + anInt1462 >> 1) + (k + anInt1463 >> 1) * libWidth] = imagePixels[j++];
                 }
             }
-            aByteArray1458 = abyte0;
-            anInt1460 = anInt1464;
+            imagePixels = abyte0;
+            imageWidth = libWidth;
             if(i != 0)
             {
                 aBoolean1455 = !aBoolean1455;
@@ -101,21 +101,21 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
     {
         try
         {
-            if(anInt1460 == anInt1464 && anInt1461 == anInt1465)
+            if(imageWidth == libWidth && anInt1461 == anInt1465)
             {
                 return;
             }
-            byte abyte0[] = new byte[anInt1464 * anInt1465];
+            byte abyte0[] = new byte[libWidth * anInt1465];
             int j = 0;
             for(int k = 0; k < anInt1461; k++)
             {
-                for(int l = 0; l < anInt1460; l++)
+                for(int l = 0; l < imageWidth; l++)
                 {
-                    abyte0[l + anInt1462 + (k + anInt1463) * anInt1464] = aByteArray1458[j++];
+                    abyte0[l + anInt1462 + (k + anInt1463) * libWidth] = imagePixels[j++];
                 }
             }
-            aByteArray1458 = abyte0;
-            anInt1460 = anInt1464;
+            imagePixels = abyte0;
+            imageWidth = libWidth;
             anInt1461 = anInt1465;
             anInt1462 = 0;
             anInt1463 = 0;
@@ -136,21 +136,21 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
     {
         try
         {
-            byte abyte0[] = new byte[anInt1460 * anInt1461];
+            byte abyte0[] = new byte[imageWidth * anInt1461];
             int j = 0;
             for(int k = 0; k < anInt1461; k++)
             {
-                for(int l = anInt1460 - 1; l >= 0; l--)
+                for(int l = imageWidth - 1; l >= 0; l--)
                 {
-                    abyte0[j++] = aByteArray1458[l + k * anInt1460];
+                    abyte0[j++] = imagePixels[l + k * imageWidth];
                 }
             }
-            aByteArray1458 = abyte0;
+            imagePixels = abyte0;
             if(i != 6)
             {
                 anInt1457 = 352;
             }
-            anInt1462 = anInt1464 - anInt1460 - anInt1462;
+            anInt1462 = libWidth - imageWidth - anInt1462;
             return;
         }
         catch(RuntimeException runtimeexception)
@@ -164,13 +164,13 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
     {
         try
         {
-            byte abyte0[] = new byte[anInt1460 * anInt1461];
+            byte abyte0[] = new byte[imageWidth * anInt1461];
             int j = 0;
             for(int k = anInt1461 - 1; k >= 0; k--)
             {
-                for(int l = 0; l < anInt1460; l++)
+                for(int l = 0; l < imageWidth; l++)
                 {
-                    abyte0[j++] = aByteArray1458[l + k * anInt1460];
+                    abyte0[j++] = imagePixels[l + k * imageWidth];
                 }
             }
             if(i != 35509)
@@ -178,7 +178,7 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
                 return;
             } else
             {
-                aByteArray1458 = abyte0;
+                imagePixels = abyte0;
                 anInt1463 = anInt1465 - anInt1461 - anInt1463;
                 return;
             }
@@ -253,37 +253,37 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
             {
                 return;
             }
-            int k = j + i * Class44_Sub3_Sub1.width;
+            int k = j + i * DrawingArea.width;
             int l = 0;
             int i1 = anInt1461;
-            int j1 = anInt1460;
-            int k1 = Class44_Sub3_Sub1.width - j1;
+            int j1 = imageWidth;
+            int k1 = DrawingArea.width - j1;
             int l1 = 0;
-            if(i < Class44_Sub3_Sub1.topY)
+            if(i < DrawingArea.topY)
             {
-                int i2 = Class44_Sub3_Sub1.topY - i;
+                int i2 = DrawingArea.topY - i;
                 i1 -= i2;
-                i = Class44_Sub3_Sub1.topY;
+                i = DrawingArea.topY;
                 l += i2 * j1;
-                k += i2 * Class44_Sub3_Sub1.width;
+                k += i2 * DrawingArea.width;
             }
-            if(i + i1 > Class44_Sub3_Sub1.bottomY)
+            if(i + i1 > DrawingArea.bottomY)
             {
-                i1 -= (i + i1) - Class44_Sub3_Sub1.bottomY;
+                i1 -= (i + i1) - DrawingArea.bottomY;
             }
-            if(j < Class44_Sub3_Sub1.topX)
+            if(j < DrawingArea.topX)
             {
-                int j2 = Class44_Sub3_Sub1.topX - j;
+                int j2 = DrawingArea.topX - j;
                 j1 -= j2;
-                j = Class44_Sub3_Sub1.topX;
+                j = DrawingArea.topX;
                 l += j2;
                 k += j2;
                 l1 += j2;
                 k1 += j2;
             }
-            if(j + j1 > Class44_Sub3_Sub1.bottomX)
+            if(j + j1 > DrawingArea.bottomX)
             {
-                int k2 = (j + j1) - Class44_Sub3_Sub1.bottomX;
+                int k2 = (j + j1) - DrawingArea.bottomX;
                 j1 -= k2;
                 l1 += k2;
                 k1 += k2;
@@ -293,7 +293,7 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1
                 return;
             } else
             {
-                method454(i1, anIntArray1459, k, Class44_Sub3_Sub1.pixels, l1, k1, (byte)34, aByteArray1458, j1, l);
+                method454(i1, anIntArray1459, k, DrawingArea.pixels, l1, k1, (byte)34, imagePixels, j1, l);
                 return;
             }
         }
