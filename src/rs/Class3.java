@@ -1,7 +1,7 @@
 package src.rs;
 import sign.signlink;
 import src.rs.animable.Animable;
-import src.rs.animable.impl.Class44_Sub3_Sub4_Sub1;
+import src.rs.animable.impl.GameObject;
 import src.rs.animable.impl.Model;
 import src.rs.drawing.impl.Rasterizer;
 import src.rs.stream.Stream;
@@ -433,7 +433,7 @@ public class Class3
                     obj = class8.method205(22, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj = new Class44_Sub3_Sub4_Sub1(l, k1, 22, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj = new GameObject(l, k1, 22, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method284(byte0, i3, i1, j1, true, l2, ((Animable) (obj)), j);
                 if(class8.aBoolean224 && class8.aBoolean226 && class18 != null)
@@ -450,7 +450,7 @@ public class Class3
                     obj1 = class8.method205(10, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj1 = new Class44_Sub3_Sub4_Sub1(l, k1, 10, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj1 = new GameObject(l, k1, 10, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 if(obj1 != null)
                 {
@@ -514,7 +514,7 @@ public class Class3
                     obj2 = class8.method205(i, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj2 = new Class44_Sub3_Sub4_Sub1(l, k1, i, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj2 = new GameObject(l, k1, i, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method288(0, j1, j, l2, byte0, i3, 0, 1, i1, ((Animable) (obj2)), 1);
                 if(i >= 12 && i <= 17 && i != 13 && i1 > 0)
@@ -535,7 +535,7 @@ public class Class3
                     obj3 = class8.method205(0, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj3 = new Class44_Sub3_Sub4_Sub1(l, k1, 0, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj3 = new GameObject(l, k1, 0, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method286(byte0, anIntArray82[l], l2, i3, j, ((Animable) (obj3)), -927, 0, null, i1, j1);
                 if(l == 0)
@@ -604,7 +604,7 @@ public class Class3
                     obj4 = class8.method205(1, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj4 = new Class44_Sub3_Sub4_Sub1(l, k1, 1, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj4 = new GameObject(l, k1, 1, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method286(byte0, anIntArray83[l], l2, i3, j, ((Animable) (obj4)), -927, 0, null, i1, j1);
                 if(class8.aBoolean238)
@@ -643,8 +643,8 @@ public class Class3
                     obj12 = class8.method205(2, j3, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj11 = new Class44_Sub3_Sub4_Sub1(4 + l, k1, 2, k2, j2, false, l1, class8.anInt230, true, i2);
-                    obj12 = new Class44_Sub3_Sub4_Sub1(j3, k1, 2, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj11 = new GameObject(4 + l, k1, 2, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj12 = new GameObject(j3, k1, 2, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method286(byte0, anIntArray82[l], l2, i3, j, ((Animable) (obj11)), -927, anIntArray82[j3], ((Animable) (obj12)), i1, j1);
                 if(class8.aBoolean229)
@@ -688,7 +688,7 @@ public class Class3
                     obj5 = class8.method205(3, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj5 = new Class44_Sub3_Sub4_Sub1(l, k1, 3, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj5 = new GameObject(l, k1, 3, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method286(byte0, anIntArray83[l], l2, i3, j, ((Animable) (obj5)), -927, 0, null, i1, j1);
                 if(class8.aBoolean238)
@@ -724,7 +724,7 @@ public class Class3
                     obj6 = class8.method205(i, l, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj6 = new Class44_Sub3_Sub4_Sub1(l, k1, i, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj6 = new GameObject(l, k1, i, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method288(0, j1, j, l2, byte0, i3, 0, 1, i1, ((Animable) (obj6)), 1);
                 if(class8.aBoolean224 && class18 != null)
@@ -769,7 +769,7 @@ public class Class3
                     obj7 = class8.method205(4, 0, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj7 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj7 = new GameObject(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method287(j1, i1, l2, ((Animable) (obj7)), byte0, anIntArray82[l], l * 512, i3, 0, anInt61, j, 0);
                 return;
@@ -788,7 +788,7 @@ public class Class3
                     obj13 = class8.method205(4, 0, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj13 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj13 = new GameObject(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method287(j1, i1, l2, ((Animable) (obj13)), byte0, anIntArray82[l], l * 512, i3, anIntArray84[l] * j4, anInt61, j, anIntArray85[l] * j4);
                 return;
@@ -801,7 +801,7 @@ public class Class3
                     obj8 = class8.method205(4, 0, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj8 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj8 = new GameObject(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method287(j1, i1, l2, ((Animable) (obj8)), byte0, 256, l, i3, 0, anInt61, j, 0);
                 return;
@@ -814,7 +814,7 @@ public class Class3
                     obj9 = class8.method205(4, 0, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj9 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj9 = new GameObject(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method287(j1, i1, l2, ((Animable) (obj9)), byte0, 512, l, i3, 0, anInt61, j, 0);
                 return;
@@ -827,7 +827,7 @@ public class Class3
                     obj10 = class8.method205(4, 0, l1, i2, j2, k2, -1);
                 } else
                 {
-                    obj10 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
+                    obj10 = new GameObject(0, k1, 4, k2, j2, false, l1, class8.anInt230, true, i2);
                 }
                 class36.method287(j1, i1, l2, ((Animable) (obj10)), byte0, 768, l, i3, 0, anInt61, j, 0);
                 return;
@@ -1473,7 +1473,7 @@ label5:
                     obj = class8.method205(22, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj = new Class44_Sub3_Sub4_Sub1(i, k1, 22, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj = new GameObject(i, k1, 22, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method284(byte0, k3, j, k, true, j3, ((Animable) (obj)), j1);
                 if(class8.aBoolean224 && class8.aBoolean226)
@@ -1490,7 +1490,7 @@ label5:
                     obj1 = class8.method205(10, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj1 = new Class44_Sub3_Sub4_Sub1(i, k1, 10, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj1 = new GameObject(i, k1, 10, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 if(obj1 != null)
                 {
@@ -1526,7 +1526,7 @@ label5:
                     obj2 = class8.method205(l, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj2 = new Class44_Sub3_Sub4_Sub1(i, k1, l, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj2 = new GameObject(i, k1, l, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method288(0, k, j1, j3, byte0, k3, 0, 1, j, ((Animable) (obj2)), 1);
                 if(class8.aBoolean224)
@@ -1543,7 +1543,7 @@ label5:
                     obj3 = class8.method205(0, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj3 = new Class44_Sub3_Sub4_Sub1(i, k1, 0, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj3 = new GameObject(i, k1, 0, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method286(byte0, anIntArray82[i], j3, k3, j1, ((Animable) (obj3)), -927, 0, null, j, k);
                 if(class8.aBoolean224)
@@ -1560,7 +1560,7 @@ label5:
                     obj4 = class8.method205(1, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj4 = new Class44_Sub3_Sub4_Sub1(i, k1, 1, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj4 = new GameObject(i, k1, 1, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method286(byte0, anIntArray83[i], j3, k3, j1, ((Animable) (obj4)), -927, 0, null, j, k);
                 if(class8.aBoolean224)
@@ -1580,8 +1580,8 @@ label5:
                     obj12 = class8.method205(2, l3, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj11 = new Class44_Sub3_Sub4_Sub1(4 + i, k1, 2, i3, l2, false, j2, class8.anInt230, true, k2);
-                    obj12 = new Class44_Sub3_Sub4_Sub1(l3, k1, 2, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj11 = new GameObject(4 + i, k1, 2, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj12 = new GameObject(l3, k1, 2, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method286(byte0, anIntArray82[i], j3, k3, j1, ((Animable) (obj11)), -927, anIntArray82[l3], ((Animable) (obj12)), j, k);
                 if(class8.aBoolean224)
@@ -1598,7 +1598,7 @@ label5:
                     obj5 = class8.method205(3, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj5 = new Class44_Sub3_Sub4_Sub1(i, k1, 3, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj5 = new GameObject(i, k1, 3, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method286(byte0, anIntArray83[i], j3, k3, j1, ((Animable) (obj5)), -927, 0, null, j, k);
                 if(class8.aBoolean224)
@@ -1615,7 +1615,7 @@ label5:
                     obj6 = class8.method205(l, i, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj6 = new Class44_Sub3_Sub4_Sub1(i, k1, l, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj6 = new GameObject(i, k1, l, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method288(0, k, j1, j3, byte0, k3, 0, 1, j, ((Animable) (obj6)), 1);
                 if(class8.aBoolean224)
@@ -1660,7 +1660,7 @@ label5:
                     obj7 = class8.method205(4, 0, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj7 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj7 = new GameObject(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method287(k, j, j3, ((Animable) (obj7)), byte0, anIntArray82[i], i * 512, k3, 0, anInt61, j1, 0);
                 return;
@@ -1679,7 +1679,7 @@ label5:
                     obj13 = class8.method205(4, 0, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj13 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj13 = new GameObject(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method287(k, j, j3, ((Animable) (obj13)), byte0, anIntArray82[i], i * 512, k3, anIntArray84[i] * l4, anInt61, j1, anIntArray85[i] * l4);
                 return;
@@ -1692,7 +1692,7 @@ label5:
                     obj8 = class8.method205(4, 0, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj8 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj8 = new GameObject(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method287(k, j, j3, ((Animable) (obj8)), byte0, 256, i, k3, 0, anInt61, j1, 0);
                 return;
@@ -1705,7 +1705,7 @@ label5:
                     obj9 = class8.method205(4, 0, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj9 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj9 = new GameObject(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method287(k, j, j3, ((Animable) (obj9)), byte0, 512, i, k3, 0, anInt61, j1, 0);
                 return;
@@ -1718,7 +1718,7 @@ label5:
                     obj10 = class8.method205(4, 0, j2, k2, l2, i3, -1);
                 } else
                 {
-                    obj10 = new Class44_Sub3_Sub4_Sub1(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
+                    obj10 = new GameObject(0, k1, 4, i3, l2, false, j2, class8.anInt230, true, k2);
                 }
                 class36.method287(k, j, j3, ((Animable) (obj10)), byte0, 768, i, k3, 0, anInt61, j1, 0);
                 return;

@@ -11,18 +11,18 @@ public class Class32
     public boolean aBoolean556;
     public byte aByte557;
     public static int anInt558;
-    public static Class32 aClass32Array559[];
+    public static Class32 cache[];
     public int anInt560;
     public int anInt561;
     public int anInt562;
-    public Class26 aClass26_563;
+    public Class26 sequences;
     public int anIntArray564[];
     public int anIntArray565[];
-    public int anInt566;
-    public int anInt567;
-    public int anInt568;
-    public int anInt569;
-    public int anInt570;
+    public int scaleXY;
+    public int scaleZ;
+    public int rotation;
+    public int modelLightFalloff;
+    public int modelLightAmbient;
     public static Class39 aClass39_571 = new Class39((byte)7, 30);
 
     public static void method269(boolean flag, Class47 class47)
@@ -35,18 +35,18 @@ public class Class32
             {
                 return;
             }
-            if(aClass32Array559 == null)
+            if(cache == null)
             {
-                aClass32Array559 = new Class32[anInt558];
+                cache = new Class32[anInt558];
             }
             for(int i = 0; i < anInt558; i++)
             {
-                if(aClass32Array559[i] == null)
+                if(cache[i] == null)
                 {
-                    aClass32Array559[i] = new Class32();
+                    cache[i] = new Class32();
                 }
-                aClass32Array559[i].anInt560 = i;
-                aClass32Array559[i].method270(false, class44_sub3_sub2);
+                cache[i].anInt560 = i;
+                cache[i].method270(false, class44_sub3_sub2);
             }
             return;
         }
@@ -79,30 +79,30 @@ public class Class32
                 if(i == 2)
                 {
                     anInt562 = class44_sub3_sub2.getUnsignedLEShort();
-                    if(Class26.aClass26Array508 != null)
+                    if(Class26.animations != null)
                     {
-                        aClass26_563 = Class26.aClass26Array508[anInt562];
+                        sequences = Class26.animations[anInt562];
                     }
                 } else
                 if(i == 4)
                 {
-                    anInt566 = class44_sub3_sub2.getUnsignedLEShort();
+                    scaleXY = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 5)
                 {
-                    anInt567 = class44_sub3_sub2.getUnsignedLEShort();
+                    scaleZ = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 6)
                 {
-                    anInt568 = class44_sub3_sub2.getUnsignedLEShort();
+                    rotation = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 7)
                 {
-                    anInt569 = class44_sub3_sub2.getUnsignedByte();
+                    modelLightFalloff = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 8)
                 {
-                    anInt570 = class44_sub3_sub2.getUnsignedByte();
+                    modelLightAmbient = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i >= 40 && i < 50)
                 {
@@ -154,8 +154,8 @@ public class Class32
         anInt562 = -1;
         anIntArray564 = new int[6];
         anIntArray565 = new int[6];
-        anInt566 = 128;
-        anInt567 = 128;
+        scaleXY = 128;
+        scaleZ = 128;
     }
 
 }

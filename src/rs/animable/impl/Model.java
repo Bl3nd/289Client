@@ -19,7 +19,7 @@ public class Model extends Animable {
 	public int anInt1527;
 	public static boolean aBoolean1528 = true;
 	public static int anInt1529;
-	public static Model aClass44_Sub3_Sub4_Sub4_1530 = new Model((byte) 91);
+	public static Model model_1530 = new Model((byte) 91);
 	public static int anIntArray1531[] = new int[2000];
 	public static int anIntArray1532[] = new int[2000];
 	public static int anIntArray1533[] = new int[2000];
@@ -55,9 +55,9 @@ public class Model extends Animable {
 	public int anInt1563;
 	public int anIntArray1564[];
 	public int anIntArray1565[];
-	public int anIntArrayArray1566[][];
-	public int anIntArrayArray1567[][];
-	public boolean aBoolean1568;
+	public int vertexSkin[][];
+	public int triangleSkin[][];
+	public boolean singleTile;
 	public Vertex aClass25Array1569[];
 	public static Class21 aClass21Array1570[];
 	public static Class43 aClass43_1571;
@@ -270,7 +270,7 @@ public class Model extends Animable {
 		aByte1525 = 4;
 		aByte1526 = 91;
 		anInt1527 = 188;
-		aBoolean1568 = false;
+		singleTile = false;
 		try {
 			if (byte0 != aByte1526) {
 				throw new NullPointerException();
@@ -287,7 +287,7 @@ public class Model extends Animable {
 		aByte1525 = 4;
 		aByte1526 = 91;
 		anInt1527 = 188;
-		aBoolean1568 = false;
+		singleTile = false;
 		try {
 			anInt1529++;
 			Class21 class21 = aClass21Array1570[i];
@@ -454,7 +454,7 @@ public class Model extends Animable {
 		aByte1525 = 4;
 		aByte1526 = 91;
 		anInt1527 = 188;
-		aBoolean1568 = false;
+		singleTile = false;
 		try {
 			anInt1529++;
 			boolean flag = false;
@@ -590,7 +590,7 @@ public class Model extends Animable {
 		aByte1525 = 4;
 		aByte1526 = 91;
 		anInt1527 = 188;
-		aBoolean1568 = false;
+		singleTile = false;
 		try {
 			anInt1529++;
 			boolean flag1 = false;
@@ -733,7 +733,7 @@ public class Model extends Animable {
 		aByte1525 = 4;
 		aByte1526 = 91;
 		anInt1527 = 188;
-		aBoolean1568 = false;
+		singleTile = false;
 		try {
 			anInt1529++;
 			anInt1535 = class44_sub3_sub4_sub4.anInt1535;
@@ -805,7 +805,7 @@ public class Model extends Animable {
 		aByte1525 = 4;
 		aByte1526 = 91;
 		anInt1527 = 188;
-		aBoolean1568 = false;
+		singleTile = false;
 		try {
 			anInt1529++;
 			anInt1535 = class44_sub3_sub4_sub4.anInt1535;
@@ -928,8 +928,8 @@ public class Model extends Animable {
 			anIntArray1549 = class44_sub3_sub4_sub4.anIntArray1549;
 			anIntArray1547 = class44_sub3_sub4_sub4.anIntArray1547;
 			anInt1550 = class44_sub3_sub4_sub4.anInt1550;
-			anIntArrayArray1567 = class44_sub3_sub4_sub4.anIntArrayArray1567;
-			anIntArrayArray1566 = class44_sub3_sub4_sub4.anIntArrayArray1566;
+			triangleSkin = class44_sub3_sub4_sub4.triangleSkin;
+			vertexSkin = class44_sub3_sub4_sub4.vertexSkin;
 			anIntArray1540 = class44_sub3_sub4_sub4.anIntArray1540;
 			anIntArray1541 = class44_sub3_sub4_sub4.anIntArray1541;
 			anIntArray1542 = class44_sub3_sub4_sub4.anIntArray1542;
@@ -1113,14 +1113,14 @@ public class Model extends Animable {
 						i = i1;
 					}
 				}
-				anIntArrayArray1566 = new int[i + 1][];
+				vertexSkin = new int[i + 1][];
 				for (int j1 = 0; j1 <= i; j1++) {
-					anIntArrayArray1566[j1] = new int[ai[j1]];
+					vertexSkin[j1] = new int[ai[j1]];
 					ai[j1] = 0;
 				}
 				for (int i2 = 0; i2 < anInt1535; i2++) {
 					int k2 = anIntArray1564[i2];
-					anIntArrayArray1566[k2][ai[k2]++] = i2;
+					vertexSkin[k2][ai[k2]++] = i2;
 				}
 				anIntArray1564 = null;
 			}
@@ -1134,14 +1134,14 @@ public class Model extends Animable {
 						j = k1;
 					}
 				}
-				anIntArrayArray1567 = new int[j + 1][];
+				triangleSkin = new int[j + 1][];
 				for (int l1 = 0; l1 <= j; l1++) {
-					anIntArrayArray1567[l1] = new int[ai1[l1]];
+					triangleSkin[l1] = new int[ai1[l1]];
 					ai1[l1] = 0;
 				}
 				for (int j2 = 0; j2 < anInt1539; j2++) {
 					int l2 = anIntArray1565[j2];
-					anIntArrayArray1567[l2][ai1[l2]++] = j2;
+					triangleSkin[l2][ai1[l2]++] = j2;
 				}
 				anIntArray1565 = null;
 				return;
@@ -1155,7 +1155,7 @@ public class Model extends Animable {
 
 	public void method514(int i, int j) {
 		try {
-			if (anIntArrayArray1566 == null) {
+			if (vertexSkin == null) {
 				return;
 			}
 			if (i == -1) {
@@ -1257,8 +1257,8 @@ public class Model extends Animable {
 			anInt1592 = 0;
 			for (int k2 = 0; k2 < i1; k2++) {
 				int l3 = ai[k2];
-				if (l3 < anIntArrayArray1566.length) {
-					int ai5[] = anIntArrayArray1566[l3];
+				if (l3 < vertexSkin.length) {
+					int ai5[] = vertexSkin[l3];
 					for (int i5 = 0; i5 < ai5.length; i5++) {
 						int j6 = ai5[i5];
 						anInt1590 += anIntArray1536[j6];
@@ -1283,8 +1283,8 @@ public class Model extends Animable {
 		if (i == 1) {
 			for (int k1 = 0; k1 < i1; k1++) {
 				int l2 = ai[k1];
-				if (l2 < anIntArrayArray1566.length) {
-					int ai1[] = anIntArrayArray1566[l2];
+				if (l2 < vertexSkin.length) {
+					int ai1[] = vertexSkin[l2];
 					for (int i4 = 0; i4 < ai1.length; i4++) {
 						int j5 = ai1[i4];
 						anIntArray1536[j5] += j;
@@ -1298,8 +1298,8 @@ public class Model extends Animable {
 		if (i == 2) {
 			for (int l1 = 0; l1 < i1; l1++) {
 				int i3 = ai[l1];
-				if (i3 < anIntArrayArray1566.length) {
-					int ai2[] = anIntArrayArray1566[i3];
+				if (i3 < vertexSkin.length) {
+					int ai2[] = vertexSkin[i3];
 					for (int j4 = 0; j4 < ai2.length; j4++) {
 						int k5 = ai2[j4];
 						anIntArray1536[k5] -= anInt1590;
@@ -1346,8 +1346,8 @@ public class Model extends Animable {
 		if (i == 3) {
 			for (int i2 = 0; i2 < i1; i2++) {
 				int j3 = ai[i2];
-				if (j3 < anIntArrayArray1566.length) {
-					int ai3[] = anIntArrayArray1566[j3];
+				if (j3 < vertexSkin.length) {
+					int ai3[] = vertexSkin[j3];
 					for (int k4 = 0; k4 < ai3.length; k4++) {
 						int l5 = ai3[k4];
 						anIntArray1536[l5] -= anInt1590;
@@ -1364,11 +1364,11 @@ public class Model extends Animable {
 			}
 			return;
 		}
-		if (i == 5 && anIntArrayArray1567 != null && anIntArray1548 != null) {
+		if (i == 5 && triangleSkin != null && anIntArray1548 != null) {
 			for (int j2 = 0; j2 < i1; j2++) {
 				int k3 = ai[j2];
-				if (k3 < anIntArrayArray1567.length) {
-					int ai4[] = anIntArrayArray1567[k3];
+				if (k3 < triangleSkin.length) {
+					int ai4[] = triangleSkin[k3];
 					for (int l4 = 0; l4 < ai4.length; l4++) {
 						int i6 = ai4[l4];
 						anIntArray1548[i6] += j * 8;
@@ -1763,7 +1763,7 @@ public class Model extends Animable {
 			int i6 = anInt1594 - Rasterizer.centerX;
 			int k6 = anInt1595 - Rasterizer.centerY;
 			if (i6 > k3 && i6 < l3 && k6 > i5 && k6 < k4) {
-				if (aBoolean1568) {
+				if (singleTile) {
 					anIntArray1597[anInt1596++] = i2;
 				} else {
 					flag1 = true;

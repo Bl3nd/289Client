@@ -29,8 +29,6 @@ import src.rs.Class38;
 import src.rs.Class4;
 import src.rs.Class41;
 import src.rs.Class43_Sub1;
-import src.rs.Class44_Sub3_Sub4_Sub6_Sub1;
-import src.rs.Class44_Sub3_Sub4_Sub6_Sub2;
 import src.rs.Class45;
 import src.rs.Class46;
 import src.rs.Class47;
@@ -40,11 +38,13 @@ import src.rs.Class5;
 import src.rs.Class7;
 import src.rs.Class8;
 import src.rs.animable.Animable;
-import src.rs.animable.impl.Class44_Sub3_Sub4_Sub1;
-import src.rs.animable.impl.Class44_Sub3_Sub4_Sub2;
-import src.rs.animable.impl.Class44_Sub3_Sub4_Sub3;
-import src.rs.animable.impl.Class44_Sub3_Sub4_Sub5;
-import src.rs.animable.impl.Class44_Sub3_Sub4_Sub6;
+import src.rs.animable.entity.Entity;
+import src.rs.animable.entity.npc.NonPlayerCharacter;
+import src.rs.animable.entity.player.Player;
+import src.rs.animable.impl.GameObject;
+import src.rs.animable.impl.Item;
+import src.rs.animable.impl.Projectile;
+import src.rs.animable.impl.StationaryGraphic;
 import src.rs.animable.impl.Model;
 import src.rs.drawing.DrawingArea;
 import src.rs.drawing.impl.Class44_Sub3_Sub1_Sub3;
@@ -56,7 +56,7 @@ import src.rs.node.Node;
 import src.rs.node.NodeList;
 import src.rs.node.object.GameObjectSpawnRequest;
 import src.rs.node.object.InteractiveObject;
-import src.rs.node.unknown.Class44_Sub3_Sub3;
+import src.rs.node.ondemand.OnDemandData;
 import src.rs.stream.Stream;
 import src.rs.window.RSApplet;
 
@@ -262,7 +262,7 @@ public class Client extends RSApplet {
 	public int anInt1005;
 	public int anIntArray1006[];
 	public String aString1007;
-	public Class44_Sub3_Sub4_Sub6_Sub2 aClass44_Sub3_Sub4_Sub6_Sub2Array1008[];
+	public NonPlayerCharacter aClass44_Sub3_Sub4_Sub6_Sub2Array1008[];
 	public int anInt1009;
 	public int anIntArray1010[];
 	public int anInt1011;
@@ -303,7 +303,7 @@ public class Client extends RSApplet {
 	public static BigInteger aBigInteger1045 = new BigInteger(
 			"58778699976184461502525193738213253649000149147835990136706041084440742975821");
 	public static int anInt1046;
-	public static Class44_Sub3_Sub4_Sub6_Sub1 aClass44_Sub3_Sub4_Sub6_Sub1_1047;
+	public static Player aClass44_Sub3_Sub4_Sub6_Sub1_1047;
 	public long aLong1048;
 	public boolean aBoolean1049;
 	public boolean aBoolean1050;
@@ -330,7 +330,7 @@ public class Client extends RSApplet {
 	public long aLong1070;
 	public String aString1071;
 	public String aString1072;
-	public static int anIntArrayArray1073[][] = {
+	public static int playerRecolors[][] = {
 			{ 6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983,
 					54193 },
 			{ 8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153,
@@ -353,7 +353,7 @@ public class Client extends RSApplet {
 	public int anInt1085;
 	public byte aByte1086;
 	public static int anInt1087;
-	public static int anIntArray1088[];
+	public static int BITFIELD_MAX_VALUE[];
 	public int anInt1089;
 	public int anIntArray1090[];
 	public int anInt1091;
@@ -482,7 +482,7 @@ public class Client extends RSApplet {
 	public Sprite aClass44_Sub3_Sub1_Sub2_1211;
 	public int anInt1212;
 	public byte aByte1213;
-	public int anIntArray1214[];
+	public int interfaceSettings[];
 	public int anInt1215;
 	public int anInt1216;
 	public int anInt1217;
@@ -493,7 +493,7 @@ public class Client extends RSApplet {
 	public boolean aBoolean1222;
 	public int anInt1223;
 	public int anInt1224;
-	public Class44_Sub3_Sub4_Sub6_Sub1 aClass44_Sub3_Sub4_Sub6_Sub1Array1225[];
+	public Player aClass44_Sub3_Sub4_Sub6_Sub1Array1225[];
 	public int anInt1226;
 	public int anIntArray1227[];
 	public int anInt1228;
@@ -508,7 +508,7 @@ public class Client extends RSApplet {
 	public boolean aBoolean1237;
 	public static int anInt1238;
 	public int anInt1239;
-	public static int anInt1240;
+	public static int tick;
 	public Class44_Sub3_Sub1_Sub3 aClass44_Sub3_Sub1_Sub3Array1241[];
 	public int anInt1242;
 	public int anInt1243;
@@ -575,7 +575,7 @@ public class Client extends RSApplet {
 			if (aBoolean1236 || aBoolean1055 || aBoolean820) {
 				return;
 			}
-			anInt1240++;
+			tick++;
 			if (!aBoolean863) {
 				method97((byte) 122);
 			} else {
@@ -914,8 +914,8 @@ public class Client extends RSApplet {
 						if (i1 == 1 && ++l1 >= Class22.anInt463) {
 							l1 = 0;
 						}
-					} while (Class22.aClass22Array464[l1].aBoolean470
-							|| Class22.aClass22Array464[l1].anInt465 != j
+					} while (Class22.cache[l1].aBoolean470
+							|| Class22.cache[l1].anInt465 != j
 									+ (aBoolean1179 ? 0 : 7));
 					anIntArray849[j] = l1;
 					aBoolean812 = true;
@@ -926,9 +926,9 @@ public class Client extends RSApplet {
 				int j1 = i & 1;
 				int i2 = anIntArray938[k];
 				if (j1 == 0 && --i2 < 0) {
-					i2 = anIntArrayArray1073[k].length - 1;
+					i2 = playerRecolors[k].length - 1;
 				}
-				if (j1 == 1 && ++i2 >= anIntArrayArray1073[k].length) {
+				if (j1 == 1 && ++i2 >= playerRecolors[k].length) {
 					i2 = 0;
 				}
 				anIntArray938[k] = i2;
@@ -983,23 +983,23 @@ public class Client extends RSApplet {
 				} else {
 					k = anIntArray1227[j];
 				}
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
 				if (class44_sub3_sub4_sub6_sub1 != null
-						&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1628 > 0) {
+						&& ((Entity) (class44_sub3_sub4_sub6_sub1)).anInt1628 > 0) {
 					class44_sub3_sub4_sub6_sub1.anInt1628--;
-					if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1628 == 0) {
-						class44_sub3_sub4_sub6_sub1.aString1627 = null;
+					if (((Entity) (class44_sub3_sub4_sub6_sub1)).anInt1628 == 0) {
+						class44_sub3_sub4_sub6_sub1.overheadTextMessage = null;
 					}
 				}
 			}
 			for (int l = 0; l < anInt1009; l++) {
 				int i1 = anIntArray1010[l];
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[i1];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[i1];
 				if (class44_sub3_sub4_sub6_sub2 != null
-						&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1628 > 0) {
+						&& ((Entity) (class44_sub3_sub4_sub6_sub2)).anInt1628 > 0) {
 					class44_sub3_sub4_sub6_sub2.anInt1628--;
-					if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1628 == 0) {
-						class44_sub3_sub4_sub6_sub2.aString1627 = null;
+					if (((Entity) (class44_sub3_sub4_sub6_sub2)).anInt1628 == 0) {
+						class44_sub3_sub4_sub6_sub2.overheadTextMessage = null;
 					}
 				}
 			}
@@ -1153,9 +1153,9 @@ public class Client extends RSApplet {
 				anInt1247 = aClass46_927.method545();
 			}
 			anInt1245 = 0;
-			int i = (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615 >> 7)
+			int i = (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate >> 7)
 					+ anInt1184;
-			int j = (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616 >> 7)
+			int j = (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate >> 7)
 					+ anInt1185;
 			if (i >= 3053 && i <= 3156 && j >= 3056 && j <= 3136) {
 				anInt1245 = 1;
@@ -1219,9 +1219,9 @@ public class Client extends RSApplet {
 			for (int j3 = 0; j3 < c - 1; j3++) {
 				anIntArray1018[j3] = anIntArray1018[j3 + 1];
 			}
-			anIntArray1018[c - 1] = (int) (Math.sin((double) anInt1240 / 14D)
-					* 16D + Math.sin((double) anInt1240 / 15D) * 14D + Math
-					.sin((double) anInt1240 / 16D) * 12D);
+			anIntArray1018[c - 1] = (int) (Math.sin((double) tick / 14D)
+					* 16D + Math.sin((double) tick / 15D) * 14D + Math
+					.sin((double) tick / 16D) * 12D);
 			if (anInt1259 > 0) {
 				anInt1259 -= 4;
 			}
@@ -1328,7 +1328,7 @@ public class Client extends RSApplet {
 			if (aClass43_Sub1_814 != null) {
 				System.out.println("Od-cycle:" + aClass43_Sub1_814.anInt1322);
 			}
-			System.out.println("loop-cycle:" + anInt1240);
+			System.out.println("loop-cycle:" + tick);
 			System.out.println("draw-cycle:" + anInt1175);
 			System.out.println("ptype:" + anInt1170);
 			System.out.println("psize:" + anInt1169);
@@ -2179,25 +2179,25 @@ public class Client extends RSApplet {
 					anInt1186 = anInt1184;
 					anInt1187 = anInt1185;
 					for (int k26 = 0; k26 < 16384; k26++) {
-						Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k26];
+						NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k26];
 						if (class44_sub3_sub4_sub6_sub2 != null) {
 							for (int i27 = 0; i27 < 10; i27++) {
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anIntArray1665[i27] -= k23;
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anIntArray1666[i27] -= k25;
+								((Entity) (class44_sub3_sub4_sub6_sub2)).waypointX[i27] -= k23;
+								((Entity) (class44_sub3_sub4_sub6_sub2)).waypointY[i27] -= k25;
 							}
-							class44_sub3_sub4_sub6_sub2.anInt1615 -= k23 * 128;
-							class44_sub3_sub4_sub6_sub2.anInt1616 -= k25 * 128;
+							class44_sub3_sub4_sub6_sub2.xCoordinate -= k23 * 128;
+							class44_sub3_sub4_sub6_sub2.yCoordinate -= k25 * 128;
 						}
 					}
 					for (int l26 = 0; l26 < anInt1223; l26++) {
-						Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[l26];
+						Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[l26];
 						if (class44_sub3_sub4_sub6_sub1 != null) {
 							for (int j27 = 0; j27 < 10; j27++) {
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anIntArray1665[j27] -= k23;
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anIntArray1666[j27] -= k25;
+								((Entity) (class44_sub3_sub4_sub6_sub1)).waypointX[j27] -= k23;
+								((Entity) (class44_sub3_sub4_sub6_sub1)).waypointY[j27] -= k25;
 							}
-							class44_sub3_sub4_sub6_sub1.anInt1615 -= k23 * 128;
-							class44_sub3_sub4_sub6_sub1.anInt1616 -= k25 * 128;
+							class44_sub3_sub4_sub6_sub1.xCoordinate -= k23 * 128;
+							class44_sub3_sub4_sub6_sub1.yCoordinate -= k25 * 128;
 						}
 					}
 					aBoolean1275 = true;
@@ -2316,14 +2316,14 @@ public class Client extends RSApplet {
 				if (anInt1170 == 30) {
 					int l4 = aClass44_Sub3_Sub2_1132.getUnsignedLEShort();
 					Class5.aClass5Array100[l4].anInt149 = 3;
-					if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.aClass12_1694 == null) {
-						Class5.aClass5Array100[l4].anInt150 = (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anIntArray1677[0] << 24)
-								+ (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anIntArray1677[4] << 18)
-								+ (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anIntArray1676[0] << 12)
-								+ (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anIntArray1676[8] << 6)
-								+ aClass44_Sub3_Sub4_Sub6_Sub1_1047.anIntArray1676[11];
+					if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.npcAppearance == null) {
+						Class5.aClass5Array100[l4].anInt150 = (aClass44_Sub3_Sub4_Sub6_Sub1_1047.colors[0] << 24)
+								+ (aClass44_Sub3_Sub4_Sub6_Sub1_1047.colors[4] << 18)
+								+ (aClass44_Sub3_Sub4_Sub6_Sub1_1047.appearance[0] << 12)
+								+ (aClass44_Sub3_Sub4_Sub6_Sub1_1047.appearance[8] << 6)
+								+ aClass44_Sub3_Sub4_Sub6_Sub1_1047.appearance[11];
 					} else {
-						Class5.aClass5Array100[l4].anInt150 = (int) (0x12345678L + aClass44_Sub3_Sub4_Sub6_Sub1_1047.aClass12_1694.aLong281);
+						Class5.aClass5Array100[l4].anInt150 = (int) (0x12345678L + aClass44_Sub3_Sub4_Sub6_Sub1_1047.npcAppearance.aLong281);
 					}
 					anInt1170 = -1;
 					return true;
@@ -2495,9 +2495,9 @@ public class Client extends RSApplet {
 					return true;
 				}
 				if (anInt1170 == 172) {
-					for (int k6 = 0; k6 < anIntArray1214.length; k6++) {
-						if (anIntArray1214[k6] != anIntArray1024[k6]) {
-							anIntArray1214[k6] = anIntArray1024[k6];
+					for (int k6 = 0; k6 < interfaceSettings.length; k6++) {
+						if (interfaceSettings[k6] != anIntArray1024[k6]) {
+							interfaceSettings[k6] = anIntArray1024[k6];
 							method147(true, k6);
 							aBoolean898 = true;
 						}
@@ -2551,8 +2551,8 @@ public class Client extends RSApplet {
 					int l7 = aClass44_Sub3_Sub2_1132.getUnsignedLEShort();
 					byte byte0 = aClass44_Sub3_Sub2_1132.get();
 					anIntArray1024[l7] = byte0;
-					if (anIntArray1214[l7] != byte0) {
-						anIntArray1214[l7] = byte0;
+					if (interfaceSettings[l7] != byte0) {
+						interfaceSettings[l7] = byte0;
 						method147(true, l7);
 						aBoolean898 = true;
 						if (anInt965 != -1) {
@@ -2650,12 +2650,12 @@ public class Client extends RSApplet {
 				if (anInt1170 == 201) {
 					for (int i9 = 0; i9 < aClass44_Sub3_Sub4_Sub6_Sub1Array1225.length; i9++) {
 						if (aClass44_Sub3_Sub4_Sub6_Sub1Array1225[i9] != null) {
-							aClass44_Sub3_Sub4_Sub6_Sub1Array1225[i9].anInt1643 = -1;
+							aClass44_Sub3_Sub4_Sub6_Sub1Array1225[i9].animation = -1;
 						}
 					}
 					for (int j14 = 0; j14 < aClass44_Sub3_Sub4_Sub6_Sub2Array1008.length; j14++) {
 						if (aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j14] != null) {
-							aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j14].anInt1643 = -1;
+							aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j14].animation = -1;
 						}
 					}
 					anInt1170 = -1;
@@ -2683,8 +2683,8 @@ public class Client extends RSApplet {
 					int k9 = aClass44_Sub3_Sub2_1132.getUnsignedLEShort();
 					int k14 = aClass44_Sub3_Sub2_1132.getInt();
 					anIntArray1024[k9] = k14;
-					if (anIntArray1214[k9] != k14) {
-						anIntArray1214[k9] = k14;
+					if (interfaceSettings[k9] != k14) {
+						interfaceSettings[k9] = k14;
 						method147(true, k9);
 						aBoolean898 = true;
 						if (anInt965 != -1) {
@@ -2715,9 +2715,9 @@ public class Client extends RSApplet {
 						+ " - "
 						+ anInt1169
 						+ ","
-						+ (anInt1184 + ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0])
+						+ (anInt1184 + ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0])
 						+ ","
-						+ (anInt1185 + ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0])
+						+ (anInt1185 + ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0])
 						+ " - ";
 				for (int l14 = 0; l14 < anInt1169 && l14 < 50; l14++) {
 					s1 = s1 + aClass44_Sub3_Sub2_1132.buffer[l14] + ",";
@@ -3260,7 +3260,7 @@ public class Client extends RSApplet {
 			Class41.method342(class47_4);
 			aClass10_866 = new Class10(228, this);
 			startThread(aClass10_866, 10);
-			Class44_Sub3_Sub4_Sub1.aClient1481 = this;
+			GameObject.client = this;
 			return;
 		} catch (Exception exception) {
 			signlink.reporterror("loaderror " + aString926 + " " + anInt1176);
@@ -3326,18 +3326,18 @@ public class Client extends RSApplet {
 				return;
 			}
 			int j = anInt930 + anInt959 & 0x7ff;
-			int k = 48 + ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615 / 32;
-			int i3 = 464 - ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616 / 32;
+			int k = 48 + ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate / 32;
+			int i3 = 464 - ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate / 32;
 			aClass44_Sub3_Sub1_Sub2_913.rotate(anIntArray881, 5, i3,
 					256 + anInt1075, j, 151, anIntArray868, 146, -687, k, 25);
 			aClass44_Sub3_Sub1_Sub2_988.rotate(anIntArray961, 0, 25, 256,
 					anInt930, 33, anIntArray910, 33, -687, 25, 0);
 			for (int k5 = 0; k5 < anInt826; k5++) {
 				int l = (anIntArray827[k5] * 4 + 2)
-						- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+						- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 						/ 32;
 				int j3 = (anIntArray828[k5] * 4 + 2)
-						- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+						- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 						/ 32;
 				method141(l, aClass44_Sub3_Sub1_Sub2Array872[k5], 139, j3);
 			}
@@ -3346,10 +3346,10 @@ public class Client extends RSApplet {
 					NodeList class28 = aClass28ArrayArrayArray1146[anInt1155][l5][i6];
 					if (class28 != null) {
 						int i1 = (l5 * 4 + 2)
-								- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+								- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 								/ 32;
 						int k3 = (i6 * 4 + 2)
-								- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+								- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 								/ 32;
 						method141(i1, aClass44_Sub3_Sub1_Sub2_1077, 139, k3);
 					}
@@ -3357,36 +3357,36 @@ public class Client extends RSApplet {
 			}
 			anInt1169 += i;
 			for (int j6 = 0; j6 < anInt1009; j6++) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[j6]];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[j6]];
 				if (class44_sub3_sub4_sub6_sub2 != null
-						&& class44_sub3_sub4_sub6_sub2.method535(true)
-						&& class44_sub3_sub4_sub6_sub2.aClass12_1700.aBoolean298) {
-					int j1 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615
+						&& class44_sub3_sub4_sub6_sub2.isVisible(true)
+						&& class44_sub3_sub4_sub6_sub2.npcDefinition.aBoolean298) {
+					int j1 = ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate
 							/ 32
-							- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+							- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 							/ 32;
-					int l3 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616
+					int l3 = ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate
 							/ 32
-							- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+							- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 							/ 32;
 					method141(j1, aClass44_Sub3_Sub1_Sub2_1078, 139, l3);
 				}
 			}
 			for (int k6 = 0; k6 < anInt1226; k6++) {
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[k6]];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[k6]];
 				if (class44_sub3_sub4_sub6_sub1 != null
-						&& class44_sub3_sub4_sub6_sub1.method535(true)) {
-					int k1 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615
+						&& class44_sub3_sub4_sub6_sub1.isVisible(true)) {
+					int k1 = ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate
 							/ 32
-							- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+							- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 							/ 32;
-					int i4 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616
+					int i4 = ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate
 							/ 32
-							- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+							- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 							/ 32;
 					boolean flag = false;
 					long l6 = Class48
-							.method550(class44_sub3_sub4_sub6_sub1.aString1672);
+							.method550(class44_sub3_sub4_sub6_sub1.name);
 					for (int i7 = 0; i7 < anInt1104; i7++) {
 						if (l6 != aLongArray979[i7] || anIntArray894[i7] == 0) {
 							continue;
@@ -3394,9 +3394,9 @@ public class Client extends RSApplet {
 						flag = true;
 						break;
 					}
-					if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1695 != 0
-							&& class44_sub3_sub4_sub6_sub1.anInt1695 != 0) {
-						if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1695 == class44_sub3_sub4_sub6_sub1.anInt1695) {
+					if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.team != 0
+							&& class44_sub3_sub4_sub6_sub1.team != 0) {
+						if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.team == class44_sub3_sub4_sub6_sub1.team) {
 							flag = true;
 						} else {
 							flag = false;
@@ -3409,44 +3409,44 @@ public class Client extends RSApplet {
 					}
 				}
 			}
-			if (anInt1005 != 0 && anInt1240 % 20 < 10) {
+			if (anInt1005 != 0 && tick % 20 < 10) {
 				if (anInt1005 == 1
 						&& anInt901 >= 0
 						&& anInt901 < aClass44_Sub3_Sub4_Sub6_Sub2Array1008.length) {
-					Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2_1 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anInt901];
+					NonPlayerCharacter class44_sub3_sub4_sub6_sub2_1 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anInt901];
 					if (class44_sub3_sub4_sub6_sub2_1 != null) {
-						int l1 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_1)).anInt1615
+						int l1 = ((Entity) (class44_sub3_sub4_sub6_sub2_1)).xCoordinate
 								/ 32
-								- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+								- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 								/ 32;
-						int j4 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_1)).anInt1616
+						int j4 = ((Entity) (class44_sub3_sub4_sub6_sub2_1)).yCoordinate
 								/ 32
-								- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+								- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 								/ 32;
 						method15(l1, aClass44_Sub3_Sub1_Sub2_1211, j4, anInt834);
 					}
 				}
 				if (anInt1005 == 2) {
 					int i2 = ((anInt1248 - anInt1184) * 4 + 2)
-							- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+							- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 							/ 32;
 					int k4 = ((anInt1249 - anInt1185) * 4 + 2)
-							- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+							- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 							/ 32;
 					method15(i2, aClass44_Sub3_Sub1_Sub2_1211, k4, anInt834);
 				}
 				if (anInt1005 == 10
 						&& anInt909 >= 0
 						&& anInt909 < aClass44_Sub3_Sub4_Sub6_Sub1Array1225.length) {
-					Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1_1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anInt909];
+					Player class44_sub3_sub4_sub6_sub1_1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anInt909];
 					if (class44_sub3_sub4_sub6_sub1_1 != null) {
-						int j2 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_1)).anInt1615
+						int j2 = ((Entity) (class44_sub3_sub4_sub6_sub1_1)).xCoordinate
 								/ 32
-								- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+								- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 								/ 32;
-						int l4 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_1)).anInt1616
+						int l4 = ((Entity) (class44_sub3_sub4_sub6_sub1_1)).yCoordinate
 								/ 32
-								- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+								- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 								/ 32;
 						method15(j2, aClass44_Sub3_Sub1_Sub2_1211, l4, anInt834);
 					}
@@ -3454,10 +3454,10 @@ public class Client extends RSApplet {
 			}
 			if (anInt911 != 0) {
 				int k2 = (anInt911 * 4 + 2)
-						- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+						- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 						/ 32;
 				int i5 = (anInt912 * 4 + 2)
-						- ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+						- ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 						/ 32;
 				method141(k2, aClass44_Sub3_Sub1_Sub2_1210, 139, i5);
 			}
@@ -3827,10 +3827,10 @@ public class Client extends RSApplet {
 							class44_sub3_sub4_sub4 = class5_1.method183(0, -1,
 									-1, flag2);
 						} else {
-							Class26 class26 = Class26.aClass26Array508[i7];
+							Class26 class26 = Class26.animations[i7];
 							class44_sub3_sub4_sub4 = class5_1.method183(0,
 									class26.anIntArray511[class5_1.anInt103],
-									class26.anIntArray510[class5_1.anInt103],
+									class26.frame2Ids[class5_1.anInt103],
 									flag2);
 						}
 						if (class44_sub3_sub4_sub4 != null) {
@@ -4188,12 +4188,12 @@ public class Client extends RSApplet {
 			}
 			if (j == 327) {
 				class5.anInt156 = 150;
-				class5.anInt157 = (int) (Math.sin((double) anInt1240 / 40D) * 256D) & 0x7ff;
+				class5.anInt157 = (int) (Math.sin((double) tick / 40D) * 256D) & 0x7ff;
 				if (aBoolean812) {
 					for (int k1 = 0; k1 < 7; k1++) {
 						int l1 = anIntArray849[k1];
 						if (l1 >= 0
-								&& !Class22.aClass22Array464[l1].method249(9)) {
+								&& !Class22.cache[l1].method249(9)) {
 							return;
 						}
 					}
@@ -4203,7 +4203,7 @@ public class Client extends RSApplet {
 					for (int j2 = 0; j2 < 7; j2++) {
 						int k2 = anIntArray849[j2];
 						if (k2 >= 0) {
-							aclass44_sub3_sub4_sub4[i2++] = Class22.aClass22Array464[k2]
+							aclass44_sub3_sub4_sub4[i2++] = Class22.cache[k2]
 									.method250(0);
 						}
 					}
@@ -4212,8 +4212,8 @@ public class Client extends RSApplet {
 					for (int l2 = 0; l2 < 5; l2++) {
 						if (anIntArray938[l2] != 0) {
 							class44_sub3_sub4_sub4.method520(
-									anIntArrayArray1073[l2][0],
-									anIntArrayArray1073[l2][anIntArray938[l2]]);
+									playerRecolors[l2][0],
+									playerRecolors[l2][anIntArray938[l2]]);
 							if (l2 == 1) {
 								class44_sub3_sub4_sub4.method520(
 										anIntArray1043[0],
@@ -4224,7 +4224,7 @@ public class Client extends RSApplet {
 					class44_sub3_sub4_sub4.method513((byte) 3);
 					class44_sub3_sub4_sub4
 							.method514(
-									Class26.aClass26Array508[((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1620].anIntArray510[0],
+									Class26.animations[((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).standAnimationId].frame2Ids[0],
 									188);
 					class44_sub3_sub4_sub4.method523(64, 850, -30, -50, -30,
 							true);
@@ -4262,7 +4262,7 @@ public class Client extends RSApplet {
 			}
 			if (j == 600) {
 				class5.aString141 = aString939;
-				if (anInt1240 % 20 < 10) {
+				if (tick % 20 < 10) {
 					class5.aString141 += "|";
 					return;
 				} else {
@@ -4384,20 +4384,20 @@ public class Client extends RSApplet {
 					break;
 				}
 				if (aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j] == null) {
-					aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j] = new Class44_Sub3_Sub4_Sub6_Sub2();
+					aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j] = new NonPlayerCharacter();
 				}
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j];
 				anIntArray1010[anInt1009++] = j;
-				class44_sub3_sub4_sub6_sub2.anInt1660 = anInt1240;
-				class44_sub3_sub4_sub6_sub2.aClass12_1700 = Class12
+				class44_sub3_sub4_sub6_sub2.anInt1660 = tick;
+				class44_sub3_sub4_sub6_sub2.npcDefinition = Class12
 						.method214(class44_sub3_sub2.readBits(11, false));
-				class44_sub3_sub4_sub6_sub2.anInt1619 = class44_sub3_sub4_sub6_sub2.aClass12_1700.aByte284;
-				class44_sub3_sub4_sub6_sub2.anInt1663 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt306;
-				class44_sub3_sub4_sub6_sub2.anInt1622 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt288;
-				class44_sub3_sub4_sub6_sub2.anInt1623 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt289;
-				class44_sub3_sub4_sub6_sub2.anInt1624 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt290;
-				class44_sub3_sub4_sub6_sub2.anInt1625 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt291;
-				class44_sub3_sub4_sub6_sub2.anInt1620 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt287;
+				class44_sub3_sub4_sub6_sub2.boundaryDimension = class44_sub3_sub4_sub6_sub2.npcDefinition.boundaryDimension;
+				class44_sub3_sub4_sub6_sub2.anInt1663 = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt306;
+				class44_sub3_sub4_sub6_sub2.walkAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt288;
+				class44_sub3_sub4_sub6_sub2.turnAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt289;
+				class44_sub3_sub4_sub6_sub2.turnRightAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt290;
+				class44_sub3_sub4_sub6_sub2.turnLeftAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt291;
+				class44_sub3_sub4_sub6_sub2.standAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt287;
 				int k = class44_sub3_sub2.readBits(5, false);
 				if (k > 15) {
 					k -= 32;
@@ -4408,11 +4408,11 @@ public class Client extends RSApplet {
 				}
 				int i1 = class44_sub3_sub2.readBits(1, false);
 				class44_sub3_sub4_sub6_sub2
-						.method532(
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0]
+						.setPosition(
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0]
 										+ k,
 								i1 == 1,
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]
 										+ l, aByte925);
 				int j1 = class44_sub3_sub2.readBits(1, false);
 				if (j1 == 1) {
@@ -4504,8 +4504,8 @@ public class Client extends RSApplet {
 						l,
 						method51(
 								false,
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616,
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615,
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate,
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate,
 								anInt1155) - 50, anInt1082, anInt1081, j);
 			}
 			int k;
@@ -4689,7 +4689,7 @@ public class Client extends RSApplet {
 	}
 
 	public void method46(int i, byte byte0, Stream class44_sub3_sub2, int j,
-			Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1) {
+			Player class44_sub3_sub4_sub6_sub1) {
 		try {
 			if (byte0 != -106) {
 				for (int k = 1; k > 0; k++) {
@@ -4702,7 +4702,7 @@ public class Client extends RSApplet {
 				Stream class44_sub3_sub2_1 = new Stream(abyte0, 15787);
 				class44_sub3_sub2.getBytes((byte) 95, abyte0, 0, l);
 				aClass44_Sub3_Sub2Array1230[j] = class44_sub3_sub2_1;
-				class44_sub3_sub4_sub6_sub1.method537(false,
+				class44_sub3_sub4_sub6_sub1.updatePlayerAppearance(false,
 						class44_sub3_sub2_1);
 			}
 			if ((i & 2) == 2) {
@@ -4710,58 +4710,58 @@ public class Client extends RSApplet {
 				if (i1 == 65535) {
 					i1 = -1;
 				}
-				if (i1 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1643) {
+				if (i1 == ((Entity) (class44_sub3_sub4_sub6_sub1)).animation) {
 					class44_sub3_sub4_sub6_sub1.anInt1647 = 0;
 				}
 				int j2 = class44_sub3_sub2.getUnsignedByte();
-				if (i1 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1643
+				if (i1 == ((Entity) (class44_sub3_sub4_sub6_sub1)).animation
 						&& i1 != -1) {
-					int j3 = Class26.aClass26Array508[i1].anInt522;
+					int j3 = Class26.animations[i1].anInt522;
 					if (j3 == 1) {
-						class44_sub3_sub4_sub6_sub1.anInt1644 = 0;
+						class44_sub3_sub4_sub6_sub1.currentAnimationFrame = 0;
 						class44_sub3_sub4_sub6_sub1.anInt1645 = 0;
-						class44_sub3_sub4_sub6_sub1.anInt1646 = j2;
+						class44_sub3_sub4_sub6_sub1.animationDelay = j2;
 						class44_sub3_sub4_sub6_sub1.anInt1647 = 0;
 					}
 					if (j3 == 2) {
 						class44_sub3_sub4_sub6_sub1.anInt1647 = 0;
 					}
 				} else if (i1 == -1
-						|| ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1643 == -1
-						|| Class26.aClass26Array508[i1].anInt516 >= Class26.aClass26Array508[((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1643].anInt516) {
-					class44_sub3_sub4_sub6_sub1.anInt1643 = i1;
-					class44_sub3_sub4_sub6_sub1.anInt1644 = 0;
+						|| ((Entity) (class44_sub3_sub4_sub6_sub1)).animation == -1
+						|| Class26.animations[i1].anInt516 >= Class26.animations[((Entity) (class44_sub3_sub4_sub6_sub1)).animation].anInt516) {
+					class44_sub3_sub4_sub6_sub1.animation = i1;
+					class44_sub3_sub4_sub6_sub1.currentAnimationFrame = 0;
 					class44_sub3_sub4_sub6_sub1.anInt1645 = 0;
-					class44_sub3_sub4_sub6_sub1.anInt1646 = j2;
+					class44_sub3_sub4_sub6_sub1.animationDelay = j2;
 					class44_sub3_sub4_sub6_sub1.anInt1647 = 0;
-					class44_sub3_sub4_sub6_sub1.anInt1669 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1664;
+					class44_sub3_sub4_sub6_sub1.stepsRemaining = ((Entity) (class44_sub3_sub4_sub6_sub1)).waypointCount;
 				}
 			}
 			if ((i & 4) == 4) {
 				class44_sub3_sub4_sub6_sub1.anInt1637 = class44_sub3_sub2
 						.getUnsignedLEShort();
-				if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1637 == 65535) {
+				if (((Entity) (class44_sub3_sub4_sub6_sub1)).anInt1637 == 65535) {
 					class44_sub3_sub4_sub6_sub1.anInt1637 = -1;
 				}
 			}
 			if ((i & 8) == 8) {
-				class44_sub3_sub4_sub6_sub1.aString1627 = class44_sub3_sub2
+				class44_sub3_sub4_sub6_sub1.overheadTextMessage = class44_sub3_sub2
 						.getString();
-				if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).aString1627
+				if (((Entity) (class44_sub3_sub4_sub6_sub1)).overheadTextMessage
 						.charAt(0) == '~') {
-					class44_sub3_sub4_sub6_sub1.aString1627 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).aString1627
+					class44_sub3_sub4_sub6_sub1.overheadTextMessage = ((Entity) (class44_sub3_sub4_sub6_sub1)).overheadTextMessage
 							.substring(1);
 					method17(
 							2,
 							(byte) -115,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).aString1627,
-							class44_sub3_sub4_sub6_sub1.aString1672);
+							((Entity) (class44_sub3_sub4_sub6_sub1)).overheadTextMessage,
+							class44_sub3_sub4_sub6_sub1.name);
 				} else if (class44_sub3_sub4_sub6_sub1 == aClass44_Sub3_Sub4_Sub6_Sub1_1047) {
 					method17(
 							2,
 							(byte) -115,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).aString1627,
-							class44_sub3_sub4_sub6_sub1.aString1672);
+							((Entity) (class44_sub3_sub4_sub6_sub1)).overheadTextMessage,
+							class44_sub3_sub4_sub6_sub1.name);
 				}
 				class44_sub3_sub4_sub6_sub1.anInt1629 = 0;
 				class44_sub3_sub4_sub6_sub1.anInt1630 = 0;
@@ -4770,8 +4770,8 @@ public class Client extends RSApplet {
 			if ((i & 0x10) == 16) {
 				int j1 = class44_sub3_sub2.getUnsignedByte();
 				int k2 = class44_sub3_sub2.getUnsignedByte();
-				class44_sub3_sub4_sub6_sub1.method536(k2, anInt1240, j1, false);
-				class44_sub3_sub4_sub6_sub1.anInt1634 = anInt1240 + 300;
+				class44_sub3_sub4_sub6_sub1.updateHitData(k2, tick, j1, false);
+				class44_sub3_sub4_sub6_sub1.anInt1634 = tick + 300;
 				class44_sub3_sub4_sub6_sub1.anInt1635 = class44_sub3_sub2
 						.getUnsignedByte();
 				class44_sub3_sub4_sub6_sub1.anInt1636 = class44_sub3_sub2
@@ -4788,10 +4788,10 @@ public class Client extends RSApplet {
 				int l2 = class44_sub3_sub2.getUnsignedByte();
 				int k3 = class44_sub3_sub2.getUnsignedByte();
 				int l3 = class44_sub3_sub2.currentOffset;
-				if (class44_sub3_sub4_sub6_sub1.aString1672 != null
-						&& class44_sub3_sub4_sub6_sub1.aBoolean1673) {
+				if (class44_sub3_sub4_sub6_sub1.name != null
+						&& class44_sub3_sub4_sub6_sub1.visible) {
 					long l4 = Class48
-							.method550(class44_sub3_sub4_sub6_sub1.aString1672);
+							.method550(class44_sub3_sub4_sub6_sub1.name);
 					boolean flag = false;
 					if (l2 <= 1) {
 						for (int i4 = 0; i4 < anInt957; i4++) {
@@ -4807,7 +4807,7 @@ public class Client extends RSApplet {
 							String s = Class49.method556((byte) -94,
 									class44_sub3_sub2, k3);
 							s = Class41.method352(s, anInt1242);
-							class44_sub3_sub4_sub6_sub1.aString1627 = s;
+							class44_sub3_sub4_sub6_sub1.overheadTextMessage = s;
 							class44_sub3_sub4_sub6_sub1.anInt1629 = k1 >> 8;
 							class44_sub3_sub4_sub6_sub1.anInt1630 = k1 & 0xff;
 							class44_sub3_sub4_sub6_sub1.anInt1628 = 150;
@@ -4817,17 +4817,17 @@ public class Client extends RSApplet {
 										(byte) -115,
 										s,
 										"@cr2@"
-												+ class44_sub3_sub4_sub6_sub1.aString1672);
+												+ class44_sub3_sub4_sub6_sub1.name);
 							} else if (l2 == 1) {
 								method17(
 										1,
 										(byte) -115,
 										s,
 										"@cr1@"
-												+ class44_sub3_sub4_sub6_sub1.aString1672);
+												+ class44_sub3_sub4_sub6_sub1.name);
 							} else {
 								method17(2, (byte) -115, s,
-										class44_sub3_sub4_sub6_sub1.aString1672);
+										class44_sub3_sub4_sub6_sub1.name);
 							}
 						} catch (Exception exception) {
 							signlink.reporterror("cde2");
@@ -4837,19 +4837,19 @@ public class Client extends RSApplet {
 				class44_sub3_sub2.currentOffset = l3 + k3;
 			}
 			if ((i & 0x100) == 256) {
-				class44_sub3_sub4_sub6_sub1.anInt1648 = class44_sub3_sub2
+				class44_sub3_sub4_sub6_sub1.graphicId = class44_sub3_sub2
 						.getUnsignedLEShort();
 				int l1 = class44_sub3_sub2.getInt();
-				class44_sub3_sub4_sub6_sub1.anInt1652 = l1 >> 16;
-				class44_sub3_sub4_sub6_sub1.anInt1651 = anInt1240
+				class44_sub3_sub4_sub6_sub1.graphicHeight = l1 >> 16;
+				class44_sub3_sub4_sub6_sub1.anInt1651 = tick
 						+ (l1 & 0xffff);
-				class44_sub3_sub4_sub6_sub1.anInt1649 = 0;
+				class44_sub3_sub4_sub6_sub1.currentAnimationId = 0;
 				class44_sub3_sub4_sub6_sub1.anInt1650 = 0;
-				if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1651 > anInt1240) {
-					class44_sub3_sub4_sub6_sub1.anInt1649 = -1;
+				if (((Entity) (class44_sub3_sub4_sub6_sub1)).anInt1651 > tick) {
+					class44_sub3_sub4_sub6_sub1.currentAnimationId = -1;
 				}
-				if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1648 == 65535) {
-					class44_sub3_sub4_sub6_sub1.anInt1648 = -1;
+				if (((Entity) (class44_sub3_sub4_sub6_sub1)).graphicId == 65535) {
+					class44_sub3_sub4_sub6_sub1.graphicId = -1;
 				}
 			}
 			if ((i & 0x200) == 512) {
@@ -4862,18 +4862,18 @@ public class Client extends RSApplet {
 				class44_sub3_sub4_sub6_sub1.anInt1656 = class44_sub3_sub2
 						.getUnsignedByte();
 				class44_sub3_sub4_sub6_sub1.anInt1657 = class44_sub3_sub2
-						.getUnsignedLEShort() + anInt1240;
+						.getUnsignedLEShort() + tick;
 				class44_sub3_sub4_sub6_sub1.anInt1658 = class44_sub3_sub2
-						.getUnsignedLEShort() + anInt1240;
+						.getUnsignedLEShort() + tick;
 				class44_sub3_sub4_sub6_sub1.anInt1659 = class44_sub3_sub2
 						.getUnsignedByte();
-				class44_sub3_sub4_sub6_sub1.method534(false);
+				class44_sub3_sub4_sub6_sub1.resetPath(false);
 			}
 			if ((i & 0x400) == 1024) {
 				int i2 = class44_sub3_sub2.getUnsignedByte();
 				int i3 = class44_sub3_sub2.getUnsignedByte();
-				class44_sub3_sub4_sub6_sub1.method536(i3, anInt1240, i2, false);
-				class44_sub3_sub4_sub6_sub1.anInt1634 = anInt1240 + 300;
+				class44_sub3_sub4_sub6_sub1.updateHitData(i3, tick, i2, false);
+				class44_sub3_sub4_sub6_sub1.anInt1634 = tick + 300;
 				class44_sub3_sub4_sub6_sub1.anInt1635 = class44_sub3_sub2
 						.getUnsignedByte();
 				class44_sub3_sub4_sub6_sub1.anInt1636 = class44_sub3_sub2
@@ -5042,8 +5042,8 @@ public class Client extends RSApplet {
 				method21(0, 463, anInt874 - anInt1103 - 77, anInt874, 77, 3);
 				String s;
 				if (aClass44_Sub3_Sub4_Sub6_Sub1_1047 != null
-						&& aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672 != null) {
-					s = aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672;
+						&& aClass44_Sub3_Sub4_Sub6_Sub1_1047.name != null) {
+					s = aClass44_Sub3_Sub4_Sub6_Sub1_1047.name;
 				} else {
 					s = Class48.method554(aString1071, true);
 				}
@@ -5168,9 +5168,9 @@ public class Client extends RSApplet {
 				aBoolean1178 = !aBoolean1178;
 			}
 			try {
-				int i = ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+				int i = ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 						+ anInt1011;
-				int j = ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+				int j = ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 						+ anInt1215;
 				if (anInt1081 - i < -500 || anInt1081 - i > 500
 						|| anInt1082 - j < -500 || anInt1082 - j > 500) {
@@ -5241,9 +5241,9 @@ public class Client extends RSApplet {
 				}
 			} catch (Exception _ex) {
 				signlink.reporterror("glfc_ex "
-						+ ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+						+ ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 						+ ","
-						+ ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+						+ ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 						+ "," + anInt1081 + "," + anInt1082 + "," + anInt841
 						+ "," + anInt842 + "," + anInt1184 + "," + anInt1185);
 				throw new RuntimeException("eek");
@@ -5258,21 +5258,21 @@ public class Client extends RSApplet {
 	public void method50(boolean flag, boolean flag1) {
 		try {
 			for (int i = 0; i < anInt1009; i++) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[i]];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[i]];
 				int j = 0x20000000 + (anIntArray1010[i] << 14);
 				if (class44_sub3_sub4_sub6_sub2 == null
-						|| !class44_sub3_sub4_sub6_sub2.method535(true)
-						|| class44_sub3_sub4_sub6_sub2.aClass12_1700.aBoolean302 != flag1) {
+						|| !class44_sub3_sub4_sub6_sub2.isVisible(true)
+						|| class44_sub3_sub4_sub6_sub2.npcDefinition.aBoolean302 != flag1) {
 					continue;
 				}
-				int k = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615 >> 7;
-				int l = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616 >> 7;
+				int k = ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate >> 7;
+				int l = ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate >> 7;
 				if (k < 0 || k >= 104 || l < 0 || l >= 104) {
 					continue;
 				}
-				if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1619 == 1
-						&& (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615 & 0x7f) == 64
-						&& (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616 & 0x7f) == 64) {
+				if (((Entity) (class44_sub3_sub4_sub6_sub2)).boundaryDimension == 1
+						&& (((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate & 0x7f) == 64
+						&& (((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate & 0x7f) == 64) {
 					if (anIntArrayArray885[k][l] == anInt1189) {
 						continue;
 					}
@@ -5280,19 +5280,19 @@ public class Client extends RSApplet {
 				}
 				aClass36_1192
 						.method289(
-								(((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1619 - 1) * 64 + 60,
+								(((Entity) (class44_sub3_sub4_sub6_sub2)).boundaryDimension - 1) * 64 + 60,
 								j,
 								method51(
 										false,
-										((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616,
-										((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615,
+										((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate,
+										((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate,
 										anInt1155),
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615,
+								((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate,
 								384,
 								class44_sub3_sub4_sub6_sub2,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1617,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).aBoolean1618,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616,
+								((Entity) (class44_sub3_sub4_sub6_sub2)).anInt1617,
+								((Entity) (class44_sub3_sub4_sub6_sub2)).aBoolean1618,
+								((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate,
 								anInt1155);
 			}
 			if (flag) {
@@ -5355,7 +5355,7 @@ public class Client extends RSApplet {
 				s = s + "@whi@ / " + (anInt971 - 2) + " more options";
 			}
 			aClass44_Sub3_Sub1_Sub4_1257.method464(s, true, 0xffffff, 26617, 4,
-					anInt1240 / 1000, 15);
+					tick / 1000, 15);
 			return;
 		} catch (RuntimeException runtimeexception) {
 			signlink.reporterror("20355, " + i + ", "
@@ -5860,7 +5860,7 @@ public class Client extends RSApplet {
 				int k1 = Class36.anInt641;
 				boolean flag = method124(
 						0,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 						0,
 						k1,
 						0,
@@ -5870,7 +5870,7 @@ public class Client extends RSApplet {
 						124,
 						0,
 						k,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				Class36.anInt640 = -1;
 				if (flag) {
 					anInt815 = super.clickX;
@@ -6002,7 +6002,7 @@ public class Client extends RSApplet {
 			method71(class44_sub3_sub2, false, i);
 			for (int j = 0; j < anInt940; j++) {
 				int k = anIntArray941[j];
-				if (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k])).anInt1660 != anInt1240) {
+				if (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k])).anInt1660 != tick) {
 					aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k] = null;
 				}
 			}
@@ -6040,7 +6040,7 @@ public class Client extends RSApplet {
 			if (class12.anInt299 != 0) {
 				s = s
 						+ method137(class12.anInt299,
-								aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1678,
+								aClass44_Sub3_Sub4_Sub6_Sub1_1047.combatLevel,
 								-41081) + " (level-" + class12.anInt299 + ")";
 			}
 			if (anInt952 == 1) {
@@ -6099,7 +6099,7 @@ public class Client extends RSApplet {
 								&& class12.aStringArray294[j1]
 										.equalsIgnoreCase("attack")) {
 							char c = '\0';
-							if (class12.anInt299 > aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1678) {
+							if (class12.anInt299 > aClass44_Sub3_Sub4_Sub6_Sub1_1047.combatLevel) {
 								c = '\u07D0';
 							}
 							aStringArray897[anInt971] = class12.aStringArray294[j1]
@@ -6211,17 +6211,17 @@ public class Client extends RSApplet {
 							- anInt1226]];
 				}
 				if (obj != null
-						&& ((Class44_Sub3_Sub4_Sub6) (obj)).method535(true)) {
+						&& ((Entity) (obj)).isVisible(true)) {
 					if (j < anInt1226) {
 						int l = 30;
-						Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = (Class44_Sub3_Sub4_Sub6_Sub1) obj;
-						if (class44_sub3_sub4_sub6_sub1.anInt1675 != 0) {
+						Player class44_sub3_sub4_sub6_sub1 = (Player) obj;
+						if (class44_sub3_sub4_sub6_sub1.headIcon != 0) {
 							method74(
-									((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661 + 15,
-									((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+									((Entity) (obj)).height + 15,
+									((Entity) (obj)), 0);
 							if (anInt1064 > -1) {
 								for (int i2 = 0; i2 < 8; i2++) {
-									if ((class44_sub3_sub4_sub6_sub1.anInt1675 & 1 << i2) != 0) {
+									if ((class44_sub3_sub4_sub6_sub1.headIcon & 1 << i2) != 0) {
 										aClass44_Sub3_Sub1_Sub2Array1183[i2]
 												.drawImage(anInt1065 - l,
 														aByte1213,
@@ -6234,8 +6234,8 @@ public class Client extends RSApplet {
 						if (j >= 0 && anInt1005 == 10
 								&& anInt909 == anIntArray1227[j]) {
 							method74(
-									((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661 + 15,
-									((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+									((Entity) (obj)).height + 15,
+									((Entity) (obj)), 0);
 							if (anInt1064 > -1) {
 								aClass44_Sub3_Sub1_Sub2Array1183[7].drawImage(
 										anInt1065 - l, aByte1213,
@@ -6243,12 +6243,12 @@ public class Client extends RSApplet {
 							}
 						}
 					} else {
-						Class12 class12 = ((Class44_Sub3_Sub4_Sub6_Sub2) obj).aClass12_1700;
+						Class12 class12 = ((NonPlayerCharacter) obj).npcDefinition;
 						if (class12.anInt305 >= 0
 								&& class12.anInt305 < aClass44_Sub3_Sub1_Sub2Array1183.length) {
 							method74(
-									((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661 + 15,
-									((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+									((Entity) (obj)).height + 15,
+									((Entity) (obj)), 0);
 							if (anInt1064 > -1) {
 								aClass44_Sub3_Sub1_Sub2Array1183[class12.anInt305]
 										.drawImage(anInt1065 - 30, aByte1213,
@@ -6257,10 +6257,10 @@ public class Client extends RSApplet {
 						}
 						if (anInt1005 == 1
 								&& anInt901 == anIntArray1010[j - anInt1226]
-								&& anInt1240 % 20 < 10) {
+								&& tick % 20 < 10) {
 							method74(
-									((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661 + 15,
-									((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+									((Entity) (obj)).height + 15,
+									((Entity) (obj)), 0);
 							if (anInt1064 > -1) {
 								aClass44_Sub3_Sub1_Sub2Array1183[2].drawImage(
 										anInt1065 - 28, aByte1213,
@@ -6268,49 +6268,49 @@ public class Client extends RSApplet {
 							}
 						}
 					}
-					if (((Class44_Sub3_Sub4_Sub6) (obj)).aString1627 != null
+					if (((Entity) (obj)).overheadTextMessage != null
 							&& (j >= anInt1226 || anInt843 == 0
 									|| anInt843 == 3 || anInt843 == 1
 									&& method80(
-											((Class44_Sub3_Sub4_Sub6_Sub1) obj).aString1672,
+											((Player) obj).name,
 											3))) {
-						method74(((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661,
-								((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+						method74(((Entity) (obj)).height,
+								((Entity) (obj)), 0);
 						if (anInt1064 > -1 && anInt1157 < anInt1158) {
 							anIntArray1162[anInt1157] = aClass44_Sub3_Sub1_Sub4_1257
 									.method458(
-											((Class44_Sub3_Sub4_Sub6) (obj)).aString1627,
+											((Entity) (obj)).overheadTextMessage,
 											-725) / 2;
 							anIntArray1161[anInt1157] = aClass44_Sub3_Sub1_Sub4_1257.anInt1478;
 							anIntArray1159[anInt1157] = anInt1064;
 							anIntArray1160[anInt1157] = anInt1065;
-							anIntArray1163[anInt1157] = ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1629;
-							anIntArray1164[anInt1157] = ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1630;
-							anIntArray1165[anInt1157] = ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1628;
-							aStringArray1166[anInt1157++] = ((Class44_Sub3_Sub4_Sub6) (obj)).aString1627;
+							anIntArray1163[anInt1157] = ((Entity) (obj)).anInt1629;
+							anIntArray1164[anInt1157] = ((Entity) (obj)).anInt1630;
+							anIntArray1165[anInt1157] = ((Entity) (obj)).anInt1628;
+							aStringArray1166[anInt1157++] = ((Entity) (obj)).overheadTextMessage;
 							if (anInt970 == 0
-									&& ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1630 >= 1
-									&& ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1630 <= 3) {
+									&& ((Entity) (obj)).anInt1630 >= 1
+									&& ((Entity) (obj)).anInt1630 <= 3) {
 								anIntArray1161[anInt1157] += 10;
 								anIntArray1160[anInt1157] += 5;
 							}
 							if (anInt970 == 0
-									&& ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1630 == 4) {
+									&& ((Entity) (obj)).anInt1630 == 4) {
 								anIntArray1162[anInt1157] = 60;
 							}
 							if (anInt970 == 0
-									&& ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1630 == 5) {
+									&& ((Entity) (obj)).anInt1630 == 5) {
 								anIntArray1161[anInt1157] += 5;
 							}
 						}
 					}
-					if (((Class44_Sub3_Sub4_Sub6) (obj)).anInt1634 > anInt1240) {
+					if (((Entity) (obj)).anInt1634 > tick) {
 						method74(
-								((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661 + 15,
-								((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+								((Entity) (obj)).height + 15,
+								((Entity) (obj)), 0);
 						if (anInt1064 > -1) {
-							int i1 = (((Class44_Sub3_Sub4_Sub6) (obj)).anInt1635 * 30)
-									/ ((Class44_Sub3_Sub4_Sub6) (obj)).anInt1636;
+							int i1 = (((Entity) (obj)).anInt1635 * 30)
+									/ ((Entity) (obj)).anInt1636;
 							if (i1 > 30) {
 								i1 = 30;
 							}
@@ -6322,10 +6322,10 @@ public class Client extends RSApplet {
 						}
 					}
 					for (int j1 = 0; j1 < 4; j1++) {
-						if (((Class44_Sub3_Sub4_Sub6) (obj)).anIntArray1633[j1] > anInt1240) {
+						if (((Entity) (obj)).hitsLoopCycle[j1] > tick) {
 							method74(
-									((Class44_Sub3_Sub4_Sub6) (obj)).anInt1661 / 2,
-									((Class44_Sub3_Sub4_Sub6) (obj)), 0);
+									((Entity) (obj)).height / 2,
+									((Entity) (obj)), 0);
 							if (anInt1064 > -1) {
 								if (j1 == 1) {
 									anInt1065 -= 20;
@@ -6338,18 +6338,18 @@ public class Client extends RSApplet {
 									anInt1064 += 15;
 									anInt1065 -= 10;
 								}
-								aClass44_Sub3_Sub1_Sub2Array1108[((Class44_Sub3_Sub4_Sub6) (obj)).anIntArray1632[j1]]
+								aClass44_Sub3_Sub1_Sub2Array1108[((Entity) (obj)).hitMarkTypes[j1]]
 										.drawImage(anInt1065 - 12, aByte1213,
 												anInt1064 - 12);
 								aClass44_Sub3_Sub1_Sub4_1255
 										.method455(
 												anInt1064,
-												String.valueOf(((Class44_Sub3_Sub4_Sub6) (obj)).anIntArray1631[j1]),
+												String.valueOf(((Entity) (obj)).hitArray[j1]),
 												-31546, 0, anInt1065 + 4);
 								aClass44_Sub3_Sub1_Sub4_1255
 										.method455(
 												anInt1064 - 1,
-												String.valueOf(((Class44_Sub3_Sub4_Sub6) (obj)).anIntArray1631[j1]),
+												String.valueOf(((Entity) (obj)).hitArray[j1]),
 												-31546, 0xffffff, anInt1065 + 3);
 							}
 						}
@@ -6682,16 +6682,16 @@ public class Client extends RSApplet {
 						l = class5_1.anInt153;
 					}
 					if (l != -1) {
-						Class26 class26 = Class26.aClass26Array508[l];
+						Class26 class26 = Class26.animations[l];
 						for (class5_1.anInt104 += i; class5_1.anInt104 > class26
 								.method254(class5_1.anInt103, 24425);) {
 							class5_1.anInt104 -= class26.method254(
 									class5_1.anInt103, 24425) + 1;
 							class5_1.anInt103++;
-							if (class5_1.anInt103 >= class26.anInt509) {
-								class5_1.anInt103 -= class26.anInt513;
+							if (class5_1.anInt103 >= class26.frameCount) {
+								class5_1.anInt103 -= class26.frameStep;
 								if (class5_1.anInt103 < 0
-										|| class5_1.anInt103 >= class26.anInt509) {
+										|| class5_1.anInt103 >= class26.frameCount) {
 									class5_1.anInt103 = 0;
 								}
 							}
@@ -6761,7 +6761,7 @@ public class Client extends RSApplet {
 								"Username: "
 										+ aString1071
 										+ ((anInt831 == 0)
-												& (anInt1240 % 40 < 20) ? "@yel@|"
+												& (tick % 40 < 20) ? "@yel@|"
 												: ""));
 				j += 15;
 				aClass44_Sub3_Sub1_Sub4_1257
@@ -6774,7 +6774,7 @@ public class Client extends RSApplet {
 								"Password: "
 										+ Class48.method555(0, aString1072)
 										+ ((anInt831 == 1)
-												& (anInt1240 % 40 < 20) ? "@yel@|"
+												& (tick % 40 < 20) ? "@yel@|"
 												: ""));
 				j += 15;
 				if (!flag) {
@@ -6883,14 +6883,14 @@ public class Client extends RSApplet {
 						if (class33 != null) {
 							int j20 = class33.anInt579 >> 14 & 0x7fff;
 							if (i11 == 2) {
-								class33.aClass44_Sub3_Sub4_577 = new Class44_Sub3_Sub4_Sub1(
+								class33.aClass44_Sub3_Sub4_577 = new GameObject(
 										4 + j13, j20, 2, k19, l18, false, j17,
 										k16, false, i18);
-								class33.aClass44_Sub3_Sub4_578 = new Class44_Sub3_Sub4_Sub1(
+								class33.aClass44_Sub3_Sub4_578 = new GameObject(
 										j13 + 1 & 3, j20, 2, k19, l18, false,
 										j17, k16, false, i18);
 							} else {
-								class33.aClass44_Sub3_Sub4_577 = new Class44_Sub3_Sub4_Sub1(
+								class33.aClass44_Sub3_Sub4_577 = new GameObject(
 										j13, j20, i11, k19, l18, false, j17,
 										k16, false, i18);
 							}
@@ -6900,7 +6900,7 @@ public class Client extends RSApplet {
 						Class13 class13 = aClass36_1192.method301(i6, 0,
 								anInt1155, k3);
 						if (class13 != null) {
-							class13.aClass44_Sub3_Sub4_313 = new Class44_Sub3_Sub4_Sub1(
+							class13.aClass44_Sub3_Sub4_313 = new GameObject(
 									0, class13.anInt314 >> 14 & 0x7fff, 4, k19,
 									l18, false, j17, k16, false, i18);
 						}
@@ -6912,7 +6912,7 @@ public class Client extends RSApplet {
 							i11 = 10;
 						}
 						if (class30 != null) {
-							class30.renderable = new Class44_Sub3_Sub4_Sub1(
+							class30.renderable = new GameObject(
 									j13, class30.anInt551 >> 14 & 0x7fff, i11,
 									k19, l18, false, j17, k16, false, i18);
 						}
@@ -6921,7 +6921,7 @@ public class Client extends RSApplet {
 						Class17 class17 = aClass36_1192.method303(anInt1155, 0,
 								i6, k3);
 						if (class17 != null) {
-							class17.aClass44_Sub3_Sub4_402 = new Class44_Sub3_Sub4_Sub1(
+							class17.aClass44_Sub3_Sub4_402 = new GameObject(
 									j13, class17.anInt403 >> 14 & 0x7fff, 22,
 									k19, l18, false, j17, k16, false, i18);
 						}
@@ -6936,9 +6936,9 @@ public class Client extends RSApplet {
 				int l8 = class44_sub3_sub2.getUnsignedLEShort();
 				int j11 = class44_sub3_sub2.getUnsignedLEShort();
 				if (l3 >= 0 && j6 >= 0 && l3 < 104 && j6 < 104) {
-					Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2 = new Class44_Sub3_Sub4_Sub2();
-					class44_sub3_sub4_sub2.anInt1495 = l8;
-					class44_sub3_sub4_sub2.anInt1496 = j11;
+					Item class44_sub3_sub4_sub2 = new Item();
+					class44_sub3_sub4_sub2.itemId = l8;
+					class44_sub3_sub4_sub2.itemCount = j11;
 					if (aClass28ArrayArrayArray1146[anInt1155][l3][j6] == null) {
 						aClass28ArrayArrayArray1146[anInt1155][l3][j6] = new NodeList(
 								-199);
@@ -6957,10 +6957,10 @@ public class Client extends RSApplet {
 				if (i4 >= 0 && k6 >= 0 && i4 < 104 && k6 < 104) {
 					NodeList class28 = aClass28ArrayArrayArray1146[anInt1155][i4][k6];
 					if (class28 != null) {
-						for (Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2_1 = (Class44_Sub3_Sub4_Sub2) class28
-								.getBack(); class44_sub3_sub4_sub2_1 != null; class44_sub3_sub4_sub2_1 = (Class44_Sub3_Sub4_Sub2) class28
+						for (Item class44_sub3_sub4_sub2_1 = (Item) class28
+								.getBack(); class44_sub3_sub4_sub2_1 != null; class44_sub3_sub4_sub2_1 = (Item) class28
 								.reverseGetNext(false)) {
-							if (class44_sub3_sub4_sub2_1.anInt1495 != (i9 & 0x7fff)) {
+							if (class44_sub3_sub4_sub2_1.itemId != (i9 & 0x7fff)) {
 								continue;
 							}
 							class44_sub3_sub4_sub2_1.unlink();
@@ -6994,13 +6994,13 @@ public class Client extends RSApplet {
 					l6 = l6 * 128 + 64;
 					j9 = j9 * 128 + 64;
 					k11 = k11 * 128 + 64;
-					Class44_Sub3_Sub4_Sub3 class44_sub3_sub4_sub3 = new Class44_Sub3_Sub4_Sub3(
+					Projectile class44_sub3_sub4_sub3 = new Projectile(
 							i20, method51(false, l6, j4, anInt1155) - l16, j18
-									+ anInt1240, k15, j4, k13, anInt1155, l6,
-							i19 + anInt1240, l19, false, k17);
-					class44_sub3_sub4_sub3.method500(
+									+ tick, k15, j4, k13, anInt1155, l6,
+							i19 + tick, l19, false, k17);
+					class44_sub3_sub4_sub3.trackTarget(
 							method51(false, k11, j9, anInt1155) - k17, true,
-							k11, j18 + anInt1240, j9);
+							k11, j18 + tick, j9);
 					aClass28_918.insertHead(class44_sub3_sub4_sub3);
 				}
 				return;
@@ -7015,9 +7015,9 @@ public class Client extends RSApplet {
 				if (k4 >= 0 && i7 >= 0 && k4 < 104 && i7 < 104) {
 					k4 = k4 * 128 + 64;
 					i7 = i7 * 128 + 64;
-					Class44_Sub3_Sub4_Sub5 class44_sub3_sub4_sub5 = new Class44_Sub3_Sub4_Sub5(
+					StationaryGraphic class44_sub3_sub4_sub5 = new StationaryGraphic(
 							k4, anInt1155, method51(false, i7, k4, anInt1155)
-									- l11, l13, true, i7, k9, anInt1240);
+									- l11, l13, true, i7, k9, tick);
 					aClass28_1054.insertHead(class44_sub3_sub4_sub5);
 				}
 				return;
@@ -7031,9 +7031,9 @@ public class Client extends RSApplet {
 				int i14 = class44_sub3_sub2.getUnsignedLEShort();
 				if (l4 >= 0 && j7 >= 0 && l4 < 104 && j7 < 104
 						&& i14 != anInt1115) {
-					Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2_2 = new Class44_Sub3_Sub4_Sub2();
-					class44_sub3_sub4_sub2_2.anInt1495 = l9;
-					class44_sub3_sub4_sub2_2.anInt1496 = i12;
+					Item class44_sub3_sub4_sub2_2 = new Item();
+					class44_sub3_sub4_sub2_2.itemId = l9;
+					class44_sub3_sub4_sub2_2.itemCount = i12;
 					if (aClass28ArrayArrayArray1146[anInt1155][l4][j7] == null) {
 						aClass28ArrayArrayArray1146[anInt1155][l4][j7] = new NodeList(
 								-199);
@@ -7060,7 +7060,7 @@ public class Client extends RSApplet {
 				byte byte1 = class44_sub3_sub2.get();
 				byte byte2 = class44_sub3_sub2.get();
 				byte byte3 = class44_sub3_sub2.get();
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1;
+				Player class44_sub3_sub4_sub6_sub1;
 				if (j19 == anInt1115) {
 					class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1_1047;
 				} else {
@@ -7077,9 +7077,9 @@ public class Client extends RSApplet {
 					if (class44_sub3_sub4_sub4 != null) {
 						method82(-23081, l17 + 1, anInt1155, -1, 0, k7, 0,
 								k18 + 1, l15, i5);
-						class44_sub3_sub4_sub6_sub1.anInt1682 = l17 + anInt1240;
-						class44_sub3_sub4_sub6_sub1.anInt1683 = k18 + anInt1240;
-						class44_sub3_sub4_sub6_sub1.aClass44_Sub3_Sub4_Sub4_1687 = class44_sub3_sub4_sub4;
+						class44_sub3_sub4_sub6_sub1.anInt1682 = l17 + tick;
+						class44_sub3_sub4_sub6_sub1.modelAppearanceEndTime = k18 + tick;
+						class44_sub3_sub4_sub6_sub1.playerModel = class44_sub3_sub4_sub4;
 						int k21 = class8.anInt222;
 						int l21 = class8.anInt223;
 						if (j14 == 1 || j14 == 3) {
@@ -7090,7 +7090,7 @@ public class Client extends RSApplet {
 								* 64;
 						class44_sub3_sub4_sub6_sub1.anInt1686 = k7 * 128 + l21
 								* 64;
-						class44_sub3_sub4_sub6_sub1.anInt1685 = method51(false,
+						class44_sub3_sub4_sub6_sub1.drawHeight = method51(false,
 								class44_sub3_sub4_sub6_sub1.anInt1686,
 								class44_sub3_sub4_sub6_sub1.anInt1684,
 								anInt1155);
@@ -7121,14 +7121,14 @@ public class Client extends RSApplet {
 				if (j5 >= 0 && l7 >= 0 && j5 < 104 && l7 < 104) {
 					NodeList class28_1 = aClass28ArrayArrayArray1146[anInt1155][j5][l7];
 					if (class28_1 != null) {
-						for (Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2_3 = (Class44_Sub3_Sub4_Sub2) class28_1
-								.getBack(); class44_sub3_sub4_sub2_3 != null; class44_sub3_sub4_sub2_3 = (Class44_Sub3_Sub4_Sub2) class28_1
+						for (Item class44_sub3_sub4_sub2_3 = (Item) class28_1
+								.getBack(); class44_sub3_sub4_sub2_3 != null; class44_sub3_sub4_sub2_3 = (Item) class28_1
 								.reverseGetNext(false)) {
-							if (class44_sub3_sub4_sub2_3.anInt1495 != (j10 & 0x7fff)
-									|| class44_sub3_sub4_sub2_3.anInt1496 != k12) {
+							if (class44_sub3_sub4_sub2_3.itemId != (j10 & 0x7fff)
+									|| class44_sub3_sub4_sub2_3.itemCount != k12) {
 								continue;
 							}
-							class44_sub3_sub4_sub2_3.anInt1496 = k14;
+							class44_sub3_sub4_sub2_3.itemCount = k14;
 							break;
 						}
 						method92(j5, l7);
@@ -7144,13 +7144,13 @@ public class Client extends RSApplet {
 				int l12 = class44_sub3_sub2.getUnsignedByte();
 				int l14 = l12 >> 4 & 0xf;
 				int i16 = l12 & 7;
-				if (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0] >= k5
+				if (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0] >= k5
 						- l14
-						&& ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0] <= k5
+						&& ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0] <= k5
 								+ l14
-						&& ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0] >= i8
+						&& ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0] >= i8
 								- l14
-						&& ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0] <= i8
+						&& ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0] <= i8
 								+ l14
 						&& aBoolean1050
 						&& !aBoolean1235
@@ -7245,69 +7245,69 @@ public class Client extends RSApplet {
 
 	public void method69(byte byte0) {
 		try {
-			for (Class44_Sub3_Sub4_Sub3 class44_sub3_sub4_sub3 = (Class44_Sub3_Sub4_Sub3) aClass28_918
-					.getBack(); class44_sub3_sub4_sub3 != null; class44_sub3_sub4_sub3 = (Class44_Sub3_Sub4_Sub3) aClass28_918
+			for (Projectile class44_sub3_sub4_sub3 = (Projectile) aClass28_918
+					.getBack(); class44_sub3_sub4_sub3 != null; class44_sub3_sub4_sub3 = (Projectile) aClass28_918
 					.reverseGetNext(false)) {
-				if (class44_sub3_sub4_sub3.anInt1500 != anInt1155
-						|| anInt1240 > class44_sub3_sub4_sub3.anInt1506) {
+				if (class44_sub3_sub4_sub3.plane != anInt1155
+						|| tick > class44_sub3_sub4_sub3.endCycle) {
 					class44_sub3_sub4_sub3.unlink();
-				} else if (anInt1240 >= class44_sub3_sub4_sub3.anInt1505) {
-					if (class44_sub3_sub4_sub3.anInt1509 > 0) {
-						Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[class44_sub3_sub4_sub3.anInt1509 - 1];
+				} else if (tick >= class44_sub3_sub4_sub3.delay) {
+					if (class44_sub3_sub4_sub3.targetId > 0) {
+						NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[class44_sub3_sub4_sub3.targetId - 1];
 						if (class44_sub3_sub4_sub6_sub2 != null
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615 >= 0
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615 < 13312
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616 >= 0
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616 < 13312) {
+								&& ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate >= 0
+								&& ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate < 13312
+								&& ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate >= 0
+								&& ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate < 13312) {
 							class44_sub3_sub4_sub3
-									.method500(
+									.trackTarget(
 											method51(
 													false,
-													((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616,
-													((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615,
-													class44_sub3_sub4_sub3.anInt1500)
-													- class44_sub3_sub4_sub3.anInt1504,
+													((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate,
+													((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate,
+													class44_sub3_sub4_sub3.plane)
+													- class44_sub3_sub4_sub3.endZ,
 											true,
-											((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616,
-											anInt1240,
-											((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615);
+											((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate,
+											tick,
+											((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate);
 						}
 					}
-					if (class44_sub3_sub4_sub3.anInt1509 < 0) {
-						int j = -class44_sub3_sub4_sub3.anInt1509 - 1;
-						Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1;
+					if (class44_sub3_sub4_sub3.targetId < 0) {
+						int j = -class44_sub3_sub4_sub3.targetId - 1;
+						Player class44_sub3_sub4_sub6_sub1;
 						if (j == anInt1115) {
 							class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1_1047;
 						} else {
 							class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j];
 						}
 						if (class44_sub3_sub4_sub6_sub1 != null
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615 >= 0
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615 < 13312
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616 >= 0
-								&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616 < 13312) {
+								&& ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate >= 0
+								&& ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate < 13312
+								&& ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate >= 0
+								&& ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate < 13312) {
 							class44_sub3_sub4_sub3
-									.method500(
+									.trackTarget(
 											method51(
 													false,
-													((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616,
-													((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615,
-													class44_sub3_sub4_sub3.anInt1500)
-													- class44_sub3_sub4_sub3.anInt1504,
+													((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate,
+													((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate,
+													class44_sub3_sub4_sub3.plane)
+													- class44_sub3_sub4_sub3.endZ,
 											true,
-											((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616,
-											anInt1240,
-											((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615);
+											((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate,
+											tick,
+											((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate);
 						}
 					}
-					class44_sub3_sub4_sub3.method501(anInt824, -816);
+					class44_sub3_sub4_sub3.move(anInt824, -816);
 					aClass36_1192
 							.method289(60, -1,
-									(int) class44_sub3_sub4_sub3.aDouble1513,
-									(int) class44_sub3_sub4_sub3.aDouble1511,
+									(int) class44_sub3_sub4_sub3.currentZ,
+									(int) class44_sub3_sub4_sub3.currentX,
 									384, class44_sub3_sub4_sub3,
-									class44_sub3_sub4_sub3.anInt1519, false,
-									(int) class44_sub3_sub4_sub3.aDouble1512,
+									class44_sub3_sub4_sub3.rotationY, false,
+									(int) class44_sub3_sub4_sub3.currentY,
 									anInt1155);
 				}
 			}
@@ -7355,8 +7355,8 @@ public class Client extends RSApplet {
 			for (int i = 0; i < 7; i++) {
 				anIntArray849[i] = -1;
 				for (int j = 0; j < Class22.anInt463; j++) {
-					if (Class22.aClass22Array464[j].aBoolean470
-							|| Class22.aClass22Array464[j].anInt465 != i
+					if (Class22.cache[j].aBoolean470
+							|| Class22.cache[j].anInt465 != i
 									+ (aBoolean1179 ? 0 : 7)) {
 						continue;
 					}
@@ -7382,7 +7382,7 @@ public class Client extends RSApplet {
 			}
 			for (int j = 0; j < anInt1228; j++) {
 				int k = anIntArray1229[j];
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
 				int l = class44_sub3_sub2.getUnsignedByte();
 				if ((l & 0x80) == 128) {
 					l += class44_sub3_sub2.getUnsignedByte() << 8;
@@ -7498,14 +7498,14 @@ public class Client extends RSApplet {
 		}
 	}
 
-	public void method74(int i, Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6,
+	public void method74(int i, Entity class44_sub3_sub4_sub6,
 			int j) {
 		try {
 			if (j != 0) {
 				anInt964 = aClass46_927.method545();
 			}
-			method75(class44_sub3_sub4_sub6.anInt1615, i, (byte) -79,
-					class44_sub3_sub4_sub6.anInt1616);
+			method75(class44_sub3_sub4_sub6.xCoordinate, i, (byte) -79,
+					class44_sub3_sub4_sub6.yCoordinate);
 			return;
 		} catch (RuntimeException runtimeexception) {
 			signlink.reporterror("86761, " + i + ", " + class44_sub3_sub4_sub6
@@ -7564,7 +7564,7 @@ public class Client extends RSApplet {
 			Class12.aClass39_307.method341();
 			Class14.aClass39_369.method341();
 			Class14.aClass39_370.method341();
-			Class44_Sub3_Sub4_Sub6_Sub1.aClass39_1696.method341();
+			Player.mruNodes.method341();
 			Class32.aClass39_571.method341();
 			return;
 		} catch (RuntimeException runtimeexception) {
@@ -7647,7 +7647,7 @@ public class Client extends RSApplet {
 				}
 				method124(
 						j2,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 						0,
 						k,
 						l2,
@@ -7657,11 +7657,11 @@ public class Client extends RSApplet {
 						124,
 						k2,
 						l,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 			} else {
 				method124(
 						0,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 						l1,
 						k,
 						0,
@@ -7671,7 +7671,7 @@ public class Client extends RSApplet {
 						124,
 						0,
 						l,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 			}
 			anInt815 = super.clickX;
 			if (flag) {
@@ -7718,7 +7718,7 @@ public class Client extends RSApplet {
 					return true;
 				}
 			}
-			return s.equalsIgnoreCase(aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672);
+			return s.equalsIgnoreCase(aClass44_Sub3_Sub4_Sub6_Sub1_1047.name);
 		} catch (RuntimeException runtimeexception) {
 			signlink.reporterror("59627, " + s + ", " + i + ", "
 					+ runtimeexception.toString());
@@ -7838,7 +7838,7 @@ public class Client extends RSApplet {
 				} else {
 					j = anIntArray1227[i];
 				}
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j];
 				if (class44_sub3_sub4_sub6_sub1 != null) {
 					method117(-34028, class44_sub3_sub4_sub6_sub1, 1);
 				}
@@ -8312,15 +8312,15 @@ public class Client extends RSApplet {
 					break;
 				}
 				if (aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k] == null) {
-					aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k] = new Class44_Sub3_Sub4_Sub6_Sub1();
+					aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k] = new Player();
 					if (aClass44_Sub3_Sub2Array1230[k] != null) {
-						aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k].method537(
+						aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k].updatePlayerAppearance(
 								false, aClass44_Sub3_Sub2Array1230[k]);
 					}
 				}
 				anIntArray1227[anInt1226++] = k;
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
-				class44_sub3_sub4_sub6_sub1.anInt1660 = anInt1240;
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k];
+				class44_sub3_sub4_sub6_sub1.anInt1660 = tick;
 				int l = class44_sub3_sub2.readBits(5, false);
 				if (l > 15) {
 					l -= 32;
@@ -8331,11 +8331,11 @@ public class Client extends RSApplet {
 				}
 				int j1 = class44_sub3_sub2.readBits(1, false);
 				class44_sub3_sub4_sub6_sub1
-						.method532(
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0]
+						.setPosition(
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0]
 										+ l,
 								j1 == 1,
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]
 										+ i1, aByte925);
 				int k1 = class44_sub3_sub2.readBits(1, false);
 				if (k1 == 1) {
@@ -8375,14 +8375,14 @@ public class Client extends RSApplet {
 		}
 		int k = 0xfa0a1f01;
 		Object obj = null;
-		for (Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2 = (Class44_Sub3_Sub4_Sub2) class28
-				.getBack(); class44_sub3_sub4_sub2 != null; class44_sub3_sub4_sub2 = (Class44_Sub3_Sub4_Sub2) class28
+		for (Item class44_sub3_sub4_sub2 = (Item) class28
+				.getBack(); class44_sub3_sub4_sub2 != null; class44_sub3_sub4_sub2 = (Item) class28
 				.reverseGetNext(false)) {
 			Class14 class14 = Class14
-					.method220(class44_sub3_sub4_sub2.anInt1495);
+					.method220(class44_sub3_sub4_sub2.itemId);
 			int l = class14.anInt343;
 			if (class14.aBoolean342) {
-				l *= class44_sub3_sub4_sub2.anInt1496 + 1;
+				l *= class44_sub3_sub4_sub2.itemCount + 1;
 			}
 			if (l > k) {
 				k = l;
@@ -8392,15 +8392,15 @@ public class Client extends RSApplet {
 		class28.insertTail(((Node) (obj)), -12925);
 		Object obj1 = null;
 		Object obj2 = null;
-		for (Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2_1 = (Class44_Sub3_Sub4_Sub2) class28
-				.getBack(); class44_sub3_sub4_sub2_1 != null; class44_sub3_sub4_sub2_1 = (Class44_Sub3_Sub4_Sub2) class28
+		for (Item class44_sub3_sub4_sub2_1 = (Item) class28
+				.getBack(); class44_sub3_sub4_sub2_1 != null; class44_sub3_sub4_sub2_1 = (Item) class28
 				.reverseGetNext(false)) {
-			if (class44_sub3_sub4_sub2_1.anInt1495 != ((Class44_Sub3_Sub4_Sub2) (obj)).anInt1495
+			if (class44_sub3_sub4_sub2_1.itemId != ((Item) (obj)).itemId
 					&& obj1 == null) {
 				obj1 = class44_sub3_sub4_sub2_1;
 			}
-			if (class44_sub3_sub4_sub2_1.anInt1495 != ((Class44_Sub3_Sub4_Sub2) (obj)).anInt1495
-					&& class44_sub3_sub4_sub2_1.anInt1495 != ((Class44_Sub3_Sub4_Sub2) (obj1)).anInt1495
+			if (class44_sub3_sub4_sub2_1.itemId != ((Item) (obj)).itemId
+					&& class44_sub3_sub4_sub2_1.itemId != ((Item) (obj1)).itemId
 					&& obj2 == null) {
 				obj2 = class44_sub3_sub4_sub2_1;
 			}
@@ -8418,7 +8418,7 @@ public class Client extends RSApplet {
 				anInt1170 = aClass44_Sub3_Sub2_1132.getUnsignedByte();
 			}
 			do {
-				Class44_Sub3_Sub3 class44_sub3_sub3;
+				OnDemandData class44_sub3_sub3;
 				do {
 					class44_sub3_sub3 = aClass43_Sub1_814.method394();
 					if (class44_sub3_sub3 == null) {
@@ -8426,7 +8426,7 @@ public class Client extends RSApplet {
 					}
 					if (class44_sub3_sub3.anInt1405 == 0) {
 						Model.method504(
-								class44_sub3_sub3.aByteArray1407,
+								class44_sub3_sub3.buffer,
 								class44_sub3_sub3.anInt1406, (byte) 23);
 						if ((aClass43_Sub1_814.method390(
 								class44_sub3_sub3.anInt1406, -600) & 0x62) != 0) {
@@ -8437,20 +8437,20 @@ public class Client extends RSApplet {
 						}
 					}
 					if (class44_sub3_sub3.anInt1405 == 1
-							&& class44_sub3_sub3.aByteArray1407 != null) {
-						Class11.method208(2, class44_sub3_sub3.aByteArray1407);
+							&& class44_sub3_sub3.buffer != null) {
+						Class11.method208(2, class44_sub3_sub3.buffer);
 					}
 					if (class44_sub3_sub3.anInt1405 == 2
 							&& class44_sub3_sub3.anInt1406 == anInt1190
-							&& class44_sub3_sub3.aByteArray1407 != null) {
-						method33((byte) 27, class44_sub3_sub3.aByteArray1407,
+							&& class44_sub3_sub3.buffer != null) {
+						method33((byte) 27, class44_sub3_sub3.buffer,
 								aBoolean1191);
 					}
 					if (class44_sub3_sub3.anInt1405 == 3 && anInt882 == 1) {
 						for (int i = 0; i < aByteArrayArray981.length; i++) {
 							if (anIntArray1040[i] == class44_sub3_sub3.anInt1406) {
-								aByteArrayArray981[i] = class44_sub3_sub3.aByteArray1407;
-								if (class44_sub3_sub3.aByteArray1407 == null) {
+								aByteArrayArray981[i] = class44_sub3_sub3.buffer;
+								if (class44_sub3_sub3.buffer == null) {
 									anIntArray1040[i] = -1;
 								}
 								break;
@@ -8458,8 +8458,8 @@ public class Client extends RSApplet {
 							if (anIntArray1041[i] != class44_sub3_sub3.anInt1406) {
 								continue;
 							}
-							aByteArrayArray973[i] = class44_sub3_sub3.aByteArray1407;
-							if (class44_sub3_sub3.aByteArray1407 == null) {
+							aByteArrayArray973[i] = class44_sub3_sub3.buffer;
+							if (class44_sub3_sub3.buffer == null) {
 								anIntArray1041[i] = -1;
 							}
 							break;
@@ -8469,7 +8469,7 @@ public class Client extends RSApplet {
 						|| !aClass43_Sub1_814.method389(
 								class44_sub3_sub3.anInt1406, anInt857));
 				Class3.method160(aClass43_Sub1_814, new Stream(
-						class44_sub3_sub3.aByteArray1407, 15787), anInt1247);
+						class44_sub3_sub3.buffer, 15787), anInt1247);
 			} while (true);
 		} catch (RuntimeException runtimeexception) {
 			signlink.reporterror("44515, " + flag + ", "
@@ -8512,7 +8512,7 @@ public class Client extends RSApplet {
 						Class5 class5_1 = Class5.aClass5Array100[ai[k++]];
 						int j2 = ai[k++];
 						if (j2 >= 0
-								&& j2 < Class14.anInt323
+								&& j2 < Class14.itemCount
 								&& (!Class14.method220(j2).aBoolean344 || aBoolean1234)) {
 							for (int i3 = 0; i3 < class5_1.anIntArray101.length; i3++) {
 								if (class5_1.anIntArray101[i3] == j2 + 1) {
@@ -8522,16 +8522,16 @@ public class Client extends RSApplet {
 						}
 					}
 					if (i1 == 5) {
-						j1 = anIntArray1214[ai[k++]];
+						j1 = interfaceSettings[ai[k++]];
 					}
 					if (i1 == 6) {
 						j1 = anIntArray984[anIntArray1090[ai[k++]] - 1];
 					}
 					if (i1 == 7) {
-						j1 = (anIntArray1214[ai[k++]] * 100) / 46875;
+						j1 = (interfaceSettings[ai[k++]] * 100) / 46875;
 					}
 					if (i1 == 8) {
-						j1 = aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1678;
+						j1 = aClass44_Sub3_Sub4_Sub6_Sub1_1047.combatLevel;
 					}
 					if (i1 == 9) {
 						for (int k1 = 0; k1 < Class29.anInt536; k1++) {
@@ -8544,7 +8544,7 @@ public class Client extends RSApplet {
 						Class5 class5_2 = Class5.aClass5Array100[ai[k++]];
 						int k2 = ai[k++] + 1;
 						if (k2 >= 0
-								&& k2 < Class14.anInt323
+								&& k2 < Class14.itemCount
 								&& (!Class14.method220(k2).aBoolean344 || aBoolean1234)) {
 							for (int j3 = 0; j3 < class5_2.anIntArray101.length; j3++) {
 								if (class5_2.anIntArray101[j3] != k2) {
@@ -8562,18 +8562,18 @@ public class Client extends RSApplet {
 						j1 = anInt1205;
 					}
 					if (i1 == 13) {
-						int l1 = anIntArray1214[ai[k++]];
+						int l1 = interfaceSettings[ai[k++]];
 						int l2 = ai[k++];
 						j1 = (l1 & 1 << l2) == 0 ? 0 : 1;
 					}
 					if (i1 == 14) {
 						int i2 = ai[k++];
-						Class35 class35 = Class35.aClass35Array590[i2];
+						Class35 class35 = Class35.cache[i2];
 						int k3 = class35.anInt592;
 						int l3 = class35.anInt593;
 						int i4 = class35.anInt594;
-						int j4 = anIntArray1088[i4 - l3];
-						j1 = anIntArray1214[k3] >> l3 & j4;
+						int j4 = BITFIELD_MAX_VALUE[i4 - l3];
+						j1 = interfaceSettings[k3] >> l3 & j4;
 					}
 					if (i1 == 15) {
 						byte1 = 1;
@@ -8585,11 +8585,11 @@ public class Client extends RSApplet {
 						byte1 = 3;
 					}
 					if (i1 == 18) {
-						j1 = (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615 >> 7)
+						j1 = (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate >> 7)
 								+ anInt1184;
 					}
 					if (i1 == 19) {
-						j1 = (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616 >> 7)
+						j1 = (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate >> 7)
 								+ anInt1185;
 					}
 					if (i1 == 20) {
@@ -8659,7 +8659,7 @@ public class Client extends RSApplet {
 					return;
 				}
 			}
-			if (s.equals(aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672)) {
+			if (s.equals(aClass44_Sub3_Sub4_Sub6_Sub1_1047.name)) {
 				return;
 			}
 			aStringArray1044[anInt1104] = s;
@@ -8806,7 +8806,7 @@ public class Client extends RSApplet {
 				for (int j2 = 0; j2 < 16384; j2++) {
 					aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j2] = null;
 				}
-				aClass44_Sub3_Sub4_Sub6_Sub1_1047 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anInt1224] = new Class44_Sub3_Sub4_Sub6_Sub1();
+				aClass44_Sub3_Sub4_Sub6_Sub1_1047 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anInt1224] = new Player();
 				aClass28_918.removeAll();
 				aClass28_1054.removeAll();
 				for (int k2 = 0; k2 < 4; k2++) {
@@ -9250,22 +9250,22 @@ public class Client extends RSApplet {
 			anInt1226 = 0;
 			for (int i1 = 0; i1 < k; i1++) {
 				int j1 = anIntArray1227[i1];
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
 				int k1 = class44_sub3_sub2.readBits(1, false);
 				if (k1 == 0) {
 					anIntArray1227[anInt1226++] = j1;
-					class44_sub3_sub4_sub6_sub1.anInt1660 = anInt1240;
+					class44_sub3_sub4_sub6_sub1.anInt1660 = tick;
 				} else {
 					int l1 = class44_sub3_sub2.readBits(2, false);
 					if (l1 == 0) {
 						anIntArray1227[anInt1226++] = j1;
-						class44_sub3_sub4_sub6_sub1.anInt1660 = anInt1240;
+						class44_sub3_sub4_sub6_sub1.anInt1660 = tick;
 						anIntArray1229[anInt1228++] = j1;
 					} else if (l1 == 1) {
 						anIntArray1227[anInt1226++] = j1;
-						class44_sub3_sub4_sub6_sub1.anInt1660 = anInt1240;
+						class44_sub3_sub4_sub6_sub1.anInt1660 = tick;
 						int i2 = class44_sub3_sub2.readBits(3, false);
-						class44_sub3_sub4_sub6_sub1.method533(false, i2,
+						class44_sub3_sub4_sub6_sub1.move(false, i2,
 								anInt1153);
 						int k2 = class44_sub3_sub2.readBits(1, false);
 						if (k2 == 1) {
@@ -9273,12 +9273,12 @@ public class Client extends RSApplet {
 						}
 					} else if (l1 == 2) {
 						anIntArray1227[anInt1226++] = j1;
-						class44_sub3_sub4_sub6_sub1.anInt1660 = anInt1240;
+						class44_sub3_sub4_sub6_sub1.anInt1660 = tick;
 						int j2 = class44_sub3_sub2.readBits(3, false);
-						class44_sub3_sub4_sub6_sub1.method533(true, j2,
+						class44_sub3_sub4_sub6_sub1.move(true, j2,
 								anInt1153);
 						int l2 = class44_sub3_sub2.readBits(3, false);
-						class44_sub3_sub4_sub6_sub1.method533(true, l2,
+						class44_sub3_sub4_sub6_sub1.move(true, l2,
 								anInt1153);
 						int i3 = class44_sub3_sub2.readBits(1, false);
 						if (i3 == 1) {
@@ -9334,8 +9334,8 @@ public class Client extends RSApplet {
 			}
 			for (int j = 0; j < anInt940; j++) {
 				int k = anIntArray941[j];
-				if (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k])).anInt1660 != anInt1240) {
-					aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k].aClass12_1700 = null;
+				if (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k])).anInt1660 != tick) {
+					aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k].npcDefinition = null;
 					aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k] = null;
 				}
 			}
@@ -9627,8 +9627,8 @@ public class Client extends RSApplet {
 
 	public void method110(boolean flag, boolean flag1) {
 		try {
-			if (((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615 >> 7 == anInt911
-					&& ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616 >> 7 == anInt912) {
+			if (((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate >> 7 == anInt911
+					&& ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate >> 7 == anInt912) {
 				anInt911 = 0;
 				anInt944++;
 				if (anInt944 > 122) {
@@ -9645,7 +9645,7 @@ public class Client extends RSApplet {
 				i = 1;
 			}
 			for (int j = 0; j < i; j++) {
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1;
+				Player class44_sub3_sub4_sub6_sub1;
 				int k;
 				if (flag1) {
 					class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1_1047;
@@ -9655,28 +9655,28 @@ public class Client extends RSApplet {
 					k = anIntArray1227[j] << 14;
 				}
 				if (class44_sub3_sub4_sub6_sub1 == null
-						|| !class44_sub3_sub4_sub6_sub1.method535(true)) {
+						|| !class44_sub3_sub4_sub6_sub1.isVisible(true)) {
 					continue;
 				}
-				class44_sub3_sub4_sub6_sub1.aBoolean1692 = false;
+				class44_sub3_sub4_sub6_sub1.preventRotation = false;
 				if ((aBoolean1235 && anInt1226 > 50 || anInt1226 > 200)
 						&& !flag1
-						&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1640 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1620) {
-					class44_sub3_sub4_sub6_sub1.aBoolean1692 = true;
+						&& ((Entity) (class44_sub3_sub4_sub6_sub1)).queuedAnimationId == ((Entity) (class44_sub3_sub4_sub6_sub1)).standAnimationId) {
+					class44_sub3_sub4_sub6_sub1.preventRotation = true;
 				}
-				int l = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615 >> 7;
-				int i1 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616 >> 7;
+				int l = ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate >> 7;
+				int i1 = ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate >> 7;
 				if (l < 0 || l >= 104 || i1 < 0 || i1 >= 104) {
 					continue;
 				}
-				if (class44_sub3_sub4_sub6_sub1.aClass44_Sub3_Sub4_Sub4_1687 != null
-						&& anInt1240 >= class44_sub3_sub4_sub6_sub1.anInt1682
-						&& anInt1240 < class44_sub3_sub4_sub6_sub1.anInt1683) {
-					class44_sub3_sub4_sub6_sub1.aBoolean1692 = false;
-					class44_sub3_sub4_sub6_sub1.anInt1681 = method51(
+				if (class44_sub3_sub4_sub6_sub1.playerModel != null
+						&& tick >= class44_sub3_sub4_sub6_sub1.anInt1682
+						&& tick < class44_sub3_sub4_sub6_sub1.modelAppearanceEndTime) {
+					class44_sub3_sub4_sub6_sub1.preventRotation = false;
+					class44_sub3_sub4_sub6_sub1.drawHeight2 = method51(
 							false,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615,
+							((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate,
+							((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate,
 							anInt1155);
 					aClass36_1192
 							.method290(
@@ -9685,39 +9685,39 @@ public class Client extends RSApplet {
 									true,
 									class44_sub3_sub4_sub6_sub1.anInt1689,
 									class44_sub3_sub4_sub6_sub1.anInt1690,
-									((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615,
+									((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate,
 									class44_sub3_sub4_sub6_sub1.anInt1691,
 									class44_sub3_sub4_sub6_sub1,
-									((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616,
+									((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate,
 									anInt1155,
-									class44_sub3_sub4_sub6_sub1.anInt1681,
+									class44_sub3_sub4_sub6_sub1.drawHeight2,
 									class44_sub3_sub4_sub6_sub1.anInt1688,
-									((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1617);
+									((Entity) (class44_sub3_sub4_sub6_sub1)).anInt1617);
 					continue;
 				}
-				if ((((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615 & 0x7f) == 64
-						&& (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616 & 0x7f) == 64) {
+				if ((((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate & 0x7f) == 64
+						&& (((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate & 0x7f) == 64) {
 					if (anIntArrayArray885[l][i1] == anInt1189) {
 						continue;
 					}
 					anIntArrayArray885[l][i1] = anInt1189;
 				}
-				class44_sub3_sub4_sub6_sub1.anInt1681 = method51(
+				class44_sub3_sub4_sub6_sub1.drawHeight2 = method51(
 						false,
-						((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616,
-						((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615,
+						((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate,
+						((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate,
 						anInt1155);
 				aClass36_1192
 						.method289(
 								60,
 								k,
-								class44_sub3_sub4_sub6_sub1.anInt1681,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615,
+								class44_sub3_sub4_sub6_sub1.drawHeight2,
+								((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate,
 								384,
 								class44_sub3_sub4_sub6_sub1,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1617,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).aBoolean1618,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616,
+								((Entity) (class44_sub3_sub4_sub6_sub1)).anInt1617,
+								((Entity) (class44_sub3_sub4_sub6_sub1)).aBoolean1618,
+								((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate,
 								anInt1155);
 			}
 			return;
@@ -9758,7 +9758,7 @@ public class Client extends RSApplet {
 								&& method80(s, 3))) {
 					if (j > j1 - 14
 							&& j <= j1
-							&& !s.equals(aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672)) {
+							&& !s.equals(aClass44_Sub3_Sub4_Sub6_Sub1_1047.name)) {
 						if (anInt1188 >= 1) {
 							aStringArray897[anInt971] = "Report abuse @whi@"
 									+ s;
@@ -9829,7 +9829,7 @@ public class Client extends RSApplet {
 	}
 
 	public void method112(int i, int j,
-			Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1, int k,
+			Player class44_sub3_sub4_sub6_sub1, int k,
 			int l) {
 		try {
 			if (class44_sub3_sub4_sub6_sub1 == aClass44_Sub3_Sub4_Sub6_Sub1_1047) {
@@ -9839,15 +9839,15 @@ public class Client extends RSApplet {
 				return;
 			}
 			String s;
-			if (class44_sub3_sub4_sub6_sub1.anInt1679 == 0) {
-				s = class44_sub3_sub4_sub6_sub1.aString1672
-						+ method137(class44_sub3_sub4_sub6_sub1.anInt1678,
-								aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1678,
+			if (class44_sub3_sub4_sub6_sub1.skill == 0) {
+				s = class44_sub3_sub4_sub6_sub1.name
+						+ method137(class44_sub3_sub4_sub6_sub1.combatLevel,
+								aClass44_Sub3_Sub4_Sub6_Sub1_1047.combatLevel,
 								-41081) + " (level-"
-						+ class44_sub3_sub4_sub6_sub1.anInt1678 + ")";
+						+ class44_sub3_sub4_sub6_sub1.combatLevel + ")";
 			} else {
-				s = class44_sub3_sub4_sub6_sub1.aString1672 + " (skill-"
-						+ class44_sub3_sub4_sub6_sub1.anInt1679 + ")";
+				s = class44_sub3_sub4_sub6_sub1.name + " (skill-"
+						+ class44_sub3_sub4_sub6_sub1.skill + ")";
 			}
 			if (anInt952 == 1) {
 				aStringArray897[anInt971] = "Use " + aString956 + " with @whi@"
@@ -9873,12 +9873,12 @@ public class Client extends RSApplet {
 								+ " @whi@" + s;
 						char c = '\0';
 						if (aStringArray919[i1].equalsIgnoreCase("attack")) {
-							if (class44_sub3_sub4_sub6_sub1.anInt1678 > aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1678) {
+							if (class44_sub3_sub4_sub6_sub1.combatLevel > aClass44_Sub3_Sub4_Sub6_Sub1_1047.combatLevel) {
 								c = '\u07D0';
 							}
-							if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1695 != 0
-									&& class44_sub3_sub4_sub6_sub1.anInt1695 != 0) {
-								if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1695 == class44_sub3_sub4_sub6_sub1.anInt1695) {
+							if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.team != 0
+									&& class44_sub3_sub4_sub6_sub1.team != 0) {
+								if (aClass44_Sub3_Sub4_Sub6_Sub1_1047.team == class44_sub3_sub4_sub6_sub1.team) {
 									c = '\u07D0';
 								} else {
 									c = '\0';
@@ -9958,27 +9958,27 @@ public class Client extends RSApplet {
 
 	public void method114(int i) {
 		try {
-			Class44_Sub3_Sub4_Sub5 class44_sub3_sub4_sub5 = (Class44_Sub3_Sub4_Sub5) aClass28_1054
+			StationaryGraphic class44_sub3_sub4_sub5 = (StationaryGraphic) aClass28_1054
 					.getBack();
 			if (i >= 0) {
 				aClass44_Sub3_Sub2_850.putByte(87);
 			}
-			for (; class44_sub3_sub4_sub5 != null; class44_sub3_sub4_sub5 = (Class44_Sub3_Sub4_Sub5) aClass28_1054
+			for (; class44_sub3_sub4_sub5 != null; class44_sub3_sub4_sub5 = (StationaryGraphic) aClass28_1054
 					.reverseGetNext(false)) {
-				if (class44_sub3_sub4_sub5.anInt1606 != anInt1155
-						|| class44_sub3_sub4_sub5.aBoolean1612) {
+				if (class44_sub3_sub4_sub5.z != anInt1155
+						|| class44_sub3_sub4_sub5.transformationCompleted) {
 					class44_sub3_sub4_sub5.unlink();
-				} else if (anInt1240 >= class44_sub3_sub4_sub5.anInt1605) {
-					class44_sub3_sub4_sub5.method531(922, anInt824);
-					if (class44_sub3_sub4_sub5.aBoolean1612) {
+				} else if (tick >= class44_sub3_sub4_sub5.stationaryGraphicLoopCycle) {
+					class44_sub3_sub4_sub5.animationStep(922, anInt824);
+					if (class44_sub3_sub4_sub5.transformationCompleted) {
 						class44_sub3_sub4_sub5.unlink();
 					} else {
 						aClass36_1192.method289(60, -1,
-								class44_sub3_sub4_sub5.anInt1609,
-								class44_sub3_sub4_sub5.anInt1607, 384,
+								class44_sub3_sub4_sub5.drawHeight,
+								class44_sub3_sub4_sub5.x, 384,
 								class44_sub3_sub4_sub5, 0, false,
-								class44_sub3_sub4_sub5.anInt1608,
-								class44_sub3_sub4_sub5.anInt1606);
+								class44_sub3_sub4_sub5.y,
+								class44_sub3_sub4_sub5.z);
 					}
 				}
 			}
@@ -10040,10 +10040,10 @@ public class Client extends RSApplet {
 		try {
 			for (int j = 0; j < anInt1009; j++) {
 				int k = anIntArray1010[j];
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k];
 				if (class44_sub3_sub4_sub6_sub2 != null) {
 					method117(-34028, class44_sub3_sub4_sub6_sub2,
-							class44_sub3_sub4_sub6_sub2.aClass12_1700.aByte284);
+							class44_sub3_sub4_sub6_sub2.npcDefinition.boundaryDimension);
 				}
 			}
 			if (i <= 0) {
@@ -10057,43 +10057,43 @@ public class Client extends RSApplet {
 		}
 	}
 
-	public void method117(int i, Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6,
+	public void method117(int i, Entity class44_sub3_sub4_sub6,
 			int j) {
 		try {
 			if (i != -34028) {
 				anInt1170 = aClass44_Sub3_Sub2_1132.getUnsignedByte();
 			}
-			if (class44_sub3_sub4_sub6.anInt1615 < 128
-					|| class44_sub3_sub4_sub6.anInt1616 < 128
-					|| class44_sub3_sub4_sub6.anInt1615 >= 13184
-					|| class44_sub3_sub4_sub6.anInt1616 >= 13184) {
-				class44_sub3_sub4_sub6.anInt1643 = -1;
-				class44_sub3_sub4_sub6.anInt1648 = -1;
+			if (class44_sub3_sub4_sub6.xCoordinate < 128
+					|| class44_sub3_sub4_sub6.yCoordinate < 128
+					|| class44_sub3_sub4_sub6.xCoordinate >= 13184
+					|| class44_sub3_sub4_sub6.yCoordinate >= 13184) {
+				class44_sub3_sub4_sub6.animation = -1;
+				class44_sub3_sub4_sub6.graphicId = -1;
 				class44_sub3_sub4_sub6.anInt1657 = 0;
 				class44_sub3_sub4_sub6.anInt1658 = 0;
-				class44_sub3_sub4_sub6.anInt1615 = class44_sub3_sub4_sub6.anIntArray1665[0]
-						* 128 + class44_sub3_sub4_sub6.anInt1619 * 64;
-				class44_sub3_sub4_sub6.anInt1616 = class44_sub3_sub4_sub6.anIntArray1666[0]
-						* 128 + class44_sub3_sub4_sub6.anInt1619 * 64;
-				class44_sub3_sub4_sub6.method534(false);
+				class44_sub3_sub4_sub6.xCoordinate = class44_sub3_sub4_sub6.waypointX[0]
+						* 128 + class44_sub3_sub4_sub6.boundaryDimension * 64;
+				class44_sub3_sub4_sub6.yCoordinate = class44_sub3_sub4_sub6.waypointY[0]
+						* 128 + class44_sub3_sub4_sub6.boundaryDimension * 64;
+				class44_sub3_sub4_sub6.resetPath(false);
 			}
 			if (class44_sub3_sub4_sub6 == aClass44_Sub3_Sub4_Sub6_Sub1_1047
-					&& (class44_sub3_sub4_sub6.anInt1615 < 1536
-							|| class44_sub3_sub4_sub6.anInt1616 < 1536
-							|| class44_sub3_sub4_sub6.anInt1615 >= 11776 || class44_sub3_sub4_sub6.anInt1616 >= 11776)) {
-				class44_sub3_sub4_sub6.anInt1643 = -1;
-				class44_sub3_sub4_sub6.anInt1648 = -1;
+					&& (class44_sub3_sub4_sub6.xCoordinate < 1536
+							|| class44_sub3_sub4_sub6.yCoordinate < 1536
+							|| class44_sub3_sub4_sub6.xCoordinate >= 11776 || class44_sub3_sub4_sub6.yCoordinate >= 11776)) {
+				class44_sub3_sub4_sub6.animation = -1;
+				class44_sub3_sub4_sub6.graphicId = -1;
 				class44_sub3_sub4_sub6.anInt1657 = 0;
 				class44_sub3_sub4_sub6.anInt1658 = 0;
-				class44_sub3_sub4_sub6.anInt1615 = class44_sub3_sub4_sub6.anIntArray1665[0]
-						* 128 + class44_sub3_sub4_sub6.anInt1619 * 64;
-				class44_sub3_sub4_sub6.anInt1616 = class44_sub3_sub4_sub6.anIntArray1666[0]
-						* 128 + class44_sub3_sub4_sub6.anInt1619 * 64;
-				class44_sub3_sub4_sub6.method534(false);
+				class44_sub3_sub4_sub6.xCoordinate = class44_sub3_sub4_sub6.waypointX[0]
+						* 128 + class44_sub3_sub4_sub6.boundaryDimension * 64;
+				class44_sub3_sub4_sub6.yCoordinate = class44_sub3_sub4_sub6.waypointY[0]
+						* 128 + class44_sub3_sub4_sub6.boundaryDimension * 64;
+				class44_sub3_sub4_sub6.resetPath(false);
 			}
-			if (class44_sub3_sub4_sub6.anInt1657 > anInt1240) {
+			if (class44_sub3_sub4_sub6.anInt1657 > tick) {
 				method118(5, class44_sub3_sub4_sub6);
-			} else if (class44_sub3_sub4_sub6.anInt1658 >= anInt1240) {
+			} else if (class44_sub3_sub4_sub6.anInt1658 >= tick) {
 				method119(anInt1091, class44_sub3_sub4_sub6);
 			} else {
 				method120(class44_sub3_sub4_sub6, 0);
@@ -10108,32 +10108,32 @@ public class Client extends RSApplet {
 		throw new RuntimeException();
 	}
 
-	public void method118(int i, Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6) {
+	public void method118(int i, Entity class44_sub3_sub4_sub6) {
 		try {
-			int j = class44_sub3_sub4_sub6.anInt1657 - anInt1240;
+			int j = class44_sub3_sub4_sub6.anInt1657 - tick;
 			if (i < 5 || i > 5) {
 				aClass28ArrayArrayArray1146 = null;
 			}
 			int k = class44_sub3_sub4_sub6.anInt1653 * 128
-					+ class44_sub3_sub4_sub6.anInt1619 * 64;
+					+ class44_sub3_sub4_sub6.boundaryDimension * 64;
 			int l = class44_sub3_sub4_sub6.anInt1655 * 128
-					+ class44_sub3_sub4_sub6.anInt1619 * 64;
-			class44_sub3_sub4_sub6.anInt1615 += (k - class44_sub3_sub4_sub6.anInt1615)
+					+ class44_sub3_sub4_sub6.boundaryDimension * 64;
+			class44_sub3_sub4_sub6.xCoordinate += (k - class44_sub3_sub4_sub6.xCoordinate)
 					/ j;
-			class44_sub3_sub4_sub6.anInt1616 += (l - class44_sub3_sub4_sub6.anInt1616)
+			class44_sub3_sub4_sub6.yCoordinate += (l - class44_sub3_sub4_sub6.yCoordinate)
 					/ j;
-			class44_sub3_sub4_sub6.anInt1668 = 0;
+			class44_sub3_sub4_sub6.stepsDelayed = 0;
 			if (class44_sub3_sub4_sub6.anInt1659 == 0) {
-				class44_sub3_sub4_sub6.anInt1662 = 1024;
+				class44_sub3_sub4_sub6.turnDirection = 1024;
 			}
 			if (class44_sub3_sub4_sub6.anInt1659 == 1) {
-				class44_sub3_sub4_sub6.anInt1662 = 1536;
+				class44_sub3_sub4_sub6.turnDirection = 1536;
 			}
 			if (class44_sub3_sub4_sub6.anInt1659 == 2) {
-				class44_sub3_sub4_sub6.anInt1662 = 0;
+				class44_sub3_sub4_sub6.turnDirection = 0;
 			}
 			if (class44_sub3_sub4_sub6.anInt1659 == 3) {
-				class44_sub3_sub4_sub6.anInt1662 = 512;
+				class44_sub3_sub4_sub6.turnDirection = 512;
 				return;
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -10143,41 +10143,41 @@ public class Client extends RSApplet {
 		}
 	}
 
-	public void method119(int i, Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6) {
+	public void method119(int i, Entity class44_sub3_sub4_sub6) {
 		try {
-			if (class44_sub3_sub4_sub6.anInt1658 == anInt1240
-					|| class44_sub3_sub4_sub6.anInt1643 == -1
-					|| class44_sub3_sub4_sub6.anInt1646 != 0
-					|| class44_sub3_sub4_sub6.anInt1645 + 1 > Class26.aClass26Array508[class44_sub3_sub4_sub6.anInt1643]
-							.method254(class44_sub3_sub4_sub6.anInt1644, 24425)) {
+			if (class44_sub3_sub4_sub6.anInt1658 == tick
+					|| class44_sub3_sub4_sub6.animation == -1
+					|| class44_sub3_sub4_sub6.animationDelay != 0
+					|| class44_sub3_sub4_sub6.anInt1645 + 1 > Class26.animations[class44_sub3_sub4_sub6.animation]
+							.method254(class44_sub3_sub4_sub6.currentAnimationFrame, 24425)) {
 				int j = class44_sub3_sub4_sub6.anInt1658
 						- class44_sub3_sub4_sub6.anInt1657;
-				int k = anInt1240 - class44_sub3_sub4_sub6.anInt1657;
+				int k = tick - class44_sub3_sub4_sub6.anInt1657;
 				int l = class44_sub3_sub4_sub6.anInt1653 * 128
-						+ class44_sub3_sub4_sub6.anInt1619 * 64;
+						+ class44_sub3_sub4_sub6.boundaryDimension * 64;
 				int i1 = class44_sub3_sub4_sub6.anInt1655 * 128
-						+ class44_sub3_sub4_sub6.anInt1619 * 64;
+						+ class44_sub3_sub4_sub6.boundaryDimension * 64;
 				int j1 = class44_sub3_sub4_sub6.anInt1654 * 128
-						+ class44_sub3_sub4_sub6.anInt1619 * 64;
+						+ class44_sub3_sub4_sub6.boundaryDimension * 64;
 				int k1 = class44_sub3_sub4_sub6.anInt1656 * 128
-						+ class44_sub3_sub4_sub6.anInt1619 * 64;
-				class44_sub3_sub4_sub6.anInt1615 = (l * (j - k) + j1 * k) / j;
-				class44_sub3_sub4_sub6.anInt1616 = (i1 * (j - k) + k1 * k) / j;
+						+ class44_sub3_sub4_sub6.boundaryDimension * 64;
+				class44_sub3_sub4_sub6.xCoordinate = (l * (j - k) + j1 * k) / j;
+				class44_sub3_sub4_sub6.yCoordinate = (i1 * (j - k) + k1 * k) / j;
 			}
-			class44_sub3_sub4_sub6.anInt1668 = 0;
+			class44_sub3_sub4_sub6.stepsDelayed = 0;
 			if (class44_sub3_sub4_sub6.anInt1659 == 0) {
-				class44_sub3_sub4_sub6.anInt1662 = 1024;
+				class44_sub3_sub4_sub6.turnDirection = 1024;
 			}
 			if (class44_sub3_sub4_sub6.anInt1659 == 1) {
-				class44_sub3_sub4_sub6.anInt1662 = 1536;
+				class44_sub3_sub4_sub6.turnDirection = 1536;
 			}
 			if (class44_sub3_sub4_sub6.anInt1659 == 2) {
-				class44_sub3_sub4_sub6.anInt1662 = 0;
+				class44_sub3_sub4_sub6.turnDirection = 0;
 			}
 			if (class44_sub3_sub4_sub6.anInt1659 == 3) {
-				class44_sub3_sub4_sub6.anInt1662 = 512;
+				class44_sub3_sub4_sub6.turnDirection = 512;
 			}
-			class44_sub3_sub4_sub6.anInt1617 = class44_sub3_sub4_sub6.anInt1662;
+			class44_sub3_sub4_sub6.anInt1617 = class44_sub3_sub4_sub6.turnDirection;
 			if (i != 37395) {
 				anInt1170 = aClass44_Sub3_Sub2_1132.getUnsignedByte();
 				return;
@@ -10189,129 +10189,129 @@ public class Client extends RSApplet {
 		}
 	}
 
-	public void method120(Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6, int i) {
+	public void method120(Entity class44_sub3_sub4_sub6, int i) {
 		try {
-			class44_sub3_sub4_sub6.anInt1640 = class44_sub3_sub4_sub6.anInt1620;
-			if (class44_sub3_sub4_sub6.anInt1664 == 0) {
-				class44_sub3_sub4_sub6.anInt1668 = 0;
+			class44_sub3_sub4_sub6.queuedAnimationId = class44_sub3_sub4_sub6.standAnimationId;
+			if (class44_sub3_sub4_sub6.waypointCount == 0) {
+				class44_sub3_sub4_sub6.stepsDelayed = 0;
 				return;
 			}
-			if (class44_sub3_sub4_sub6.anInt1643 != -1
-					&& class44_sub3_sub4_sub6.anInt1646 == 0) {
-				Class26 class26 = Class26.aClass26Array508[class44_sub3_sub4_sub6.anInt1643];
-				if (class44_sub3_sub4_sub6.anInt1669 > 0
+			if (class44_sub3_sub4_sub6.animation != -1
+					&& class44_sub3_sub4_sub6.animationDelay == 0) {
+				Class26 class26 = Class26.animations[class44_sub3_sub4_sub6.animation];
+				if (class44_sub3_sub4_sub6.stepsRemaining > 0
 						&& class26.anInt520 == 0) {
-					class44_sub3_sub4_sub6.anInt1668++;
+					class44_sub3_sub4_sub6.stepsDelayed++;
 					return;
 				}
-				if (class44_sub3_sub4_sub6.anInt1669 <= 0
-						&& class26.anInt521 == 0) {
-					class44_sub3_sub4_sub6.anInt1668++;
+				if (class44_sub3_sub4_sub6.stepsRemaining <= 0
+						&& class26.precendenceWalking == 0) {
+					class44_sub3_sub4_sub6.stepsDelayed++;
 					return;
 				}
 			}
-			int j = class44_sub3_sub4_sub6.anInt1615;
-			int k = class44_sub3_sub4_sub6.anInt1616;
-			int l = class44_sub3_sub4_sub6.anIntArray1665[class44_sub3_sub4_sub6.anInt1664 - 1]
-					* 128 + class44_sub3_sub4_sub6.anInt1619 * 64;
-			int i1 = class44_sub3_sub4_sub6.anIntArray1666[class44_sub3_sub4_sub6.anInt1664 - 1]
-					* 128 + class44_sub3_sub4_sub6.anInt1619 * 64;
+			int j = class44_sub3_sub4_sub6.xCoordinate;
+			int k = class44_sub3_sub4_sub6.yCoordinate;
+			int l = class44_sub3_sub4_sub6.waypointX[class44_sub3_sub4_sub6.waypointCount - 1]
+					* 128 + class44_sub3_sub4_sub6.boundaryDimension * 64;
+			int i1 = class44_sub3_sub4_sub6.waypointY[class44_sub3_sub4_sub6.waypointCount - 1]
+					* 128 + class44_sub3_sub4_sub6.boundaryDimension * 64;
 			if (l - j > 256 || l - j < -256 || i1 - k > 256 || i1 - k < -256) {
-				class44_sub3_sub4_sub6.anInt1615 = l;
-				class44_sub3_sub4_sub6.anInt1616 = i1;
+				class44_sub3_sub4_sub6.xCoordinate = l;
+				class44_sub3_sub4_sub6.yCoordinate = i1;
 				return;
 			}
 			if (j < l) {
 				if (k < i1) {
-					class44_sub3_sub4_sub6.anInt1662 = 1280;
+					class44_sub3_sub4_sub6.turnDirection = 1280;
 				} else if (k > i1) {
-					class44_sub3_sub4_sub6.anInt1662 = 1792;
+					class44_sub3_sub4_sub6.turnDirection = 1792;
 				} else {
-					class44_sub3_sub4_sub6.anInt1662 = 1536;
+					class44_sub3_sub4_sub6.turnDirection = 1536;
 				}
 			} else if (j > l) {
 				if (k < i1) {
-					class44_sub3_sub4_sub6.anInt1662 = 768;
+					class44_sub3_sub4_sub6.turnDirection = 768;
 				} else if (k > i1) {
-					class44_sub3_sub4_sub6.anInt1662 = 256;
+					class44_sub3_sub4_sub6.turnDirection = 256;
 				} else {
-					class44_sub3_sub4_sub6.anInt1662 = 512;
+					class44_sub3_sub4_sub6.turnDirection = 512;
 				}
 			} else if (k < i1) {
-				class44_sub3_sub4_sub6.anInt1662 = 1024;
+				class44_sub3_sub4_sub6.turnDirection = 1024;
 			} else {
-				class44_sub3_sub4_sub6.anInt1662 = 0;
+				class44_sub3_sub4_sub6.turnDirection = 0;
 			}
-			int j1 = class44_sub3_sub4_sub6.anInt1662
+			int j1 = class44_sub3_sub4_sub6.turnDirection
 					- class44_sub3_sub4_sub6.anInt1617 & 0x7ff;
 			if (j1 > 1024) {
 				j1 -= 2048;
 			}
-			int k1 = class44_sub3_sub4_sub6.anInt1623;
+			int k1 = class44_sub3_sub4_sub6.turnAnimationId;
 			anInt1169 += i;
 			if (j1 >= -256 && j1 <= 256) {
-				k1 = class44_sub3_sub4_sub6.anInt1622;
+				k1 = class44_sub3_sub4_sub6.walkAnimationId;
 			} else if (j1 >= 256 && j1 < 768) {
-				k1 = class44_sub3_sub4_sub6.anInt1625;
+				k1 = class44_sub3_sub4_sub6.turnLeftAnimationId;
 			} else if (j1 >= -768 && j1 <= -256) {
-				k1 = class44_sub3_sub4_sub6.anInt1624;
+				k1 = class44_sub3_sub4_sub6.turnRightAnimationId;
 			}
 			if (k1 == -1) {
-				k1 = class44_sub3_sub4_sub6.anInt1622;
+				k1 = class44_sub3_sub4_sub6.walkAnimationId;
 			}
-			class44_sub3_sub4_sub6.anInt1640 = k1;
+			class44_sub3_sub4_sub6.queuedAnimationId = k1;
 			int l1 = 4;
-			if (class44_sub3_sub4_sub6.anInt1617 != class44_sub3_sub4_sub6.anInt1662
+			if (class44_sub3_sub4_sub6.anInt1617 != class44_sub3_sub4_sub6.turnDirection
 					&& class44_sub3_sub4_sub6.anInt1637 == -1
 					&& class44_sub3_sub4_sub6.anInt1663 != 0) {
 				l1 = 2;
 			}
-			if (class44_sub3_sub4_sub6.anInt1664 > 2) {
+			if (class44_sub3_sub4_sub6.waypointCount > 2) {
 				l1 = 6;
 			}
-			if (class44_sub3_sub4_sub6.anInt1664 > 3) {
+			if (class44_sub3_sub4_sub6.waypointCount > 3) {
 				l1 = 8;
 			}
-			if (class44_sub3_sub4_sub6.anInt1668 > 0
-					&& class44_sub3_sub4_sub6.anInt1664 > 1) {
+			if (class44_sub3_sub4_sub6.stepsDelayed > 0
+					&& class44_sub3_sub4_sub6.waypointCount > 1) {
 				l1 = 8;
-				class44_sub3_sub4_sub6.anInt1668--;
+				class44_sub3_sub4_sub6.stepsDelayed--;
 			}
-			if (class44_sub3_sub4_sub6.aBooleanArray1667[class44_sub3_sub4_sub6.anInt1664 - 1]) {
+			if (class44_sub3_sub4_sub6.ranWaypoint[class44_sub3_sub4_sub6.waypointCount - 1]) {
 				l1 <<= 1;
 			}
 			if (l1 >= 8
-					&& class44_sub3_sub4_sub6.anInt1640 == class44_sub3_sub4_sub6.anInt1622
-					&& class44_sub3_sub4_sub6.anInt1626 != -1) {
-				class44_sub3_sub4_sub6.anInt1640 = class44_sub3_sub4_sub6.anInt1626;
+					&& class44_sub3_sub4_sub6.queuedAnimationId == class44_sub3_sub4_sub6.walkAnimationId
+					&& class44_sub3_sub4_sub6.runAnimationId != -1) {
+				class44_sub3_sub4_sub6.queuedAnimationId = class44_sub3_sub4_sub6.runAnimationId;
 			}
 			if (j < l) {
-				class44_sub3_sub4_sub6.anInt1615 += l1;
-				if (class44_sub3_sub4_sub6.anInt1615 > l) {
-					class44_sub3_sub4_sub6.anInt1615 = l;
+				class44_sub3_sub4_sub6.xCoordinate += l1;
+				if (class44_sub3_sub4_sub6.xCoordinate > l) {
+					class44_sub3_sub4_sub6.xCoordinate = l;
 				}
 			} else if (j > l) {
-				class44_sub3_sub4_sub6.anInt1615 -= l1;
-				if (class44_sub3_sub4_sub6.anInt1615 < l) {
-					class44_sub3_sub4_sub6.anInt1615 = l;
+				class44_sub3_sub4_sub6.xCoordinate -= l1;
+				if (class44_sub3_sub4_sub6.xCoordinate < l) {
+					class44_sub3_sub4_sub6.xCoordinate = l;
 				}
 			}
 			if (k < i1) {
-				class44_sub3_sub4_sub6.anInt1616 += l1;
-				if (class44_sub3_sub4_sub6.anInt1616 > i1) {
-					class44_sub3_sub4_sub6.anInt1616 = i1;
+				class44_sub3_sub4_sub6.yCoordinate += l1;
+				if (class44_sub3_sub4_sub6.yCoordinate > i1) {
+					class44_sub3_sub4_sub6.yCoordinate = i1;
 				}
 			} else if (k > i1) {
-				class44_sub3_sub4_sub6.anInt1616 -= l1;
-				if (class44_sub3_sub4_sub6.anInt1616 < i1) {
-					class44_sub3_sub4_sub6.anInt1616 = i1;
+				class44_sub3_sub4_sub6.yCoordinate -= l1;
+				if (class44_sub3_sub4_sub6.yCoordinate < i1) {
+					class44_sub3_sub4_sub6.yCoordinate = i1;
 				}
 			}
-			if (class44_sub3_sub4_sub6.anInt1615 == l
-					&& class44_sub3_sub4_sub6.anInt1616 == i1) {
-				class44_sub3_sub4_sub6.anInt1664--;
-				if (class44_sub3_sub4_sub6.anInt1669 > 0) {
-					class44_sub3_sub4_sub6.anInt1669--;
+			if (class44_sub3_sub4_sub6.xCoordinate == l
+					&& class44_sub3_sub4_sub6.yCoordinate == i1) {
+				class44_sub3_sub4_sub6.waypointCount--;
+				if (class44_sub3_sub4_sub6.stepsRemaining > 0) {
+					class44_sub3_sub4_sub6.stepsRemaining--;
 					return;
 				}
 			}
@@ -10323,7 +10323,7 @@ public class Client extends RSApplet {
 	}
 
 	public void method121(byte byte0,
-			Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6) {
+			Entity class44_sub3_sub4_sub6) {
 		try {
 			if (byte0 == 2) {
 				byte0 = 0;
@@ -10335,14 +10335,14 @@ public class Client extends RSApplet {
 			}
 			if (class44_sub3_sub4_sub6.anInt1637 != -1
 					&& class44_sub3_sub4_sub6.anInt1637 < 32768) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[class44_sub3_sub4_sub6.anInt1637];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[class44_sub3_sub4_sub6.anInt1637];
 				if (class44_sub3_sub4_sub6_sub2 != null) {
-					int l = class44_sub3_sub4_sub6.anInt1615
-							- ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615;
-					int j1 = class44_sub3_sub4_sub6.anInt1616
-							- ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616;
+					int l = class44_sub3_sub4_sub6.xCoordinate
+							- ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate;
+					int j1 = class44_sub3_sub4_sub6.yCoordinate
+							- ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate;
 					if (l != 0 || j1 != 0) {
-						class44_sub3_sub4_sub6.anInt1662 = (int) (Math.atan2(l,
+						class44_sub3_sub4_sub6.turnDirection = (int) (Math.atan2(l,
 								j1) * 325.94900000000001D) & 0x7ff;
 					}
 				}
@@ -10352,51 +10352,51 @@ public class Client extends RSApplet {
 				if (i == anInt1115) {
 					i = anInt1224;
 				}
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[i];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[i];
 				if (class44_sub3_sub4_sub6_sub1 != null) {
-					int k1 = class44_sub3_sub4_sub6.anInt1615
-							- ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615;
-					int l1 = class44_sub3_sub4_sub6.anInt1616
-							- ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616;
+					int k1 = class44_sub3_sub4_sub6.xCoordinate
+							- ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate;
+					int l1 = class44_sub3_sub4_sub6.yCoordinate
+							- ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate;
 					if (k1 != 0 || l1 != 0) {
-						class44_sub3_sub4_sub6.anInt1662 = (int) (Math.atan2(
+						class44_sub3_sub4_sub6.turnDirection = (int) (Math.atan2(
 								k1, l1) * 325.94900000000001D) & 0x7ff;
 					}
 				}
 			}
 			if ((class44_sub3_sub4_sub6.anInt1638 != 0 || class44_sub3_sub4_sub6.anInt1639 != 0)
-					&& (class44_sub3_sub4_sub6.anInt1664 == 0 || class44_sub3_sub4_sub6.anInt1668 > 0)) {
-				int j = class44_sub3_sub4_sub6.anInt1615
+					&& (class44_sub3_sub4_sub6.waypointCount == 0 || class44_sub3_sub4_sub6.stepsDelayed > 0)) {
+				int j = class44_sub3_sub4_sub6.xCoordinate
 						- (class44_sub3_sub4_sub6.anInt1638 - anInt1184 - anInt1184)
 						* 64;
-				int i1 = class44_sub3_sub4_sub6.anInt1616
+				int i1 = class44_sub3_sub4_sub6.yCoordinate
 						- (class44_sub3_sub4_sub6.anInt1639 - anInt1185 - anInt1185)
 						* 64;
 				if (j != 0 || i1 != 0) {
-					class44_sub3_sub4_sub6.anInt1662 = (int) (Math.atan2(j, i1) * 325.94900000000001D) & 0x7ff;
+					class44_sub3_sub4_sub6.turnDirection = (int) (Math.atan2(j, i1) * 325.94900000000001D) & 0x7ff;
 				}
 				class44_sub3_sub4_sub6.anInt1638 = 0;
 				class44_sub3_sub4_sub6.anInt1639 = 0;
 			}
-			int k = class44_sub3_sub4_sub6.anInt1662
+			int k = class44_sub3_sub4_sub6.turnDirection
 					- class44_sub3_sub4_sub6.anInt1617 & 0x7ff;
 			if (k != 0) {
 				if (k < class44_sub3_sub4_sub6.anInt1663
 						|| k > 2048 - class44_sub3_sub4_sub6.anInt1663) {
-					class44_sub3_sub4_sub6.anInt1617 = class44_sub3_sub4_sub6.anInt1662;
+					class44_sub3_sub4_sub6.anInt1617 = class44_sub3_sub4_sub6.turnDirection;
 				} else if (k > 1024) {
 					class44_sub3_sub4_sub6.anInt1617 -= class44_sub3_sub4_sub6.anInt1663;
 				} else {
 					class44_sub3_sub4_sub6.anInt1617 += class44_sub3_sub4_sub6.anInt1663;
 				}
 				class44_sub3_sub4_sub6.anInt1617 &= 0x7ff;
-				if (class44_sub3_sub4_sub6.anInt1640 == class44_sub3_sub4_sub6.anInt1620
-						&& class44_sub3_sub4_sub6.anInt1617 != class44_sub3_sub4_sub6.anInt1662) {
-					if (class44_sub3_sub4_sub6.anInt1621 != -1) {
-						class44_sub3_sub4_sub6.anInt1640 = class44_sub3_sub4_sub6.anInt1621;
+				if (class44_sub3_sub4_sub6.queuedAnimationId == class44_sub3_sub4_sub6.standAnimationId
+						&& class44_sub3_sub4_sub6.anInt1617 != class44_sub3_sub4_sub6.turnDirection) {
+					if (class44_sub3_sub4_sub6.standTurnAnimationId != -1) {
+						class44_sub3_sub4_sub6.queuedAnimationId = class44_sub3_sub4_sub6.standTurnAnimationId;
 						return;
 					} else {
-						class44_sub3_sub4_sub6.anInt1640 = class44_sub3_sub4_sub6.anInt1622;
+						class44_sub3_sub4_sub6.queuedAnimationId = class44_sub3_sub4_sub6.walkAnimationId;
 						return;
 					}
 				}
@@ -10409,79 +10409,79 @@ public class Client extends RSApplet {
 		}
 	}
 
-	public void method122(Class44_Sub3_Sub4_Sub6 class44_sub3_sub4_sub6, int i) {
+	public void method122(Entity class44_sub3_sub4_sub6, int i) {
 		try {
 			anInt1169 += i;
 			class44_sub3_sub4_sub6.aBoolean1618 = false;
-			if (class44_sub3_sub4_sub6.anInt1640 != -1) {
-				Class26 class26 = Class26.aClass26Array508[class44_sub3_sub4_sub6.anInt1640];
+			if (class44_sub3_sub4_sub6.queuedAnimationId != -1) {
+				Class26 class26 = Class26.animations[class44_sub3_sub4_sub6.queuedAnimationId];
 				class44_sub3_sub4_sub6.anInt1642++;
-				if (class44_sub3_sub4_sub6.anInt1641 < class26.anInt509
+				if (class44_sub3_sub4_sub6.queuedAnimationFrame < class26.frameCount
 						&& class44_sub3_sub4_sub6.anInt1642 > class26
-								.method254(class44_sub3_sub4_sub6.anInt1641,
+								.method254(class44_sub3_sub4_sub6.queuedAnimationFrame,
 										24425)) {
 					class44_sub3_sub4_sub6.anInt1642 = 0;
-					class44_sub3_sub4_sub6.anInt1641++;
+					class44_sub3_sub4_sub6.queuedAnimationFrame++;
 				}
-				if (class44_sub3_sub4_sub6.anInt1641 >= class26.anInt509) {
+				if (class44_sub3_sub4_sub6.queuedAnimationFrame >= class26.frameCount) {
 					class44_sub3_sub4_sub6.anInt1642 = 0;
-					class44_sub3_sub4_sub6.anInt1641 = 0;
+					class44_sub3_sub4_sub6.queuedAnimationFrame = 0;
 				}
 			}
-			if (class44_sub3_sub4_sub6.anInt1648 != -1
-					&& anInt1240 >= class44_sub3_sub4_sub6.anInt1651) {
-				if (class44_sub3_sub4_sub6.anInt1649 < 0) {
-					class44_sub3_sub4_sub6.anInt1649 = 0;
+			if (class44_sub3_sub4_sub6.graphicId != -1
+					&& tick >= class44_sub3_sub4_sub6.anInt1651) {
+				if (class44_sub3_sub4_sub6.currentAnimationId < 0) {
+					class44_sub3_sub4_sub6.currentAnimationId = 0;
 				}
-				Class26 class26_1 = Class32.aClass32Array559[class44_sub3_sub4_sub6.anInt1648].aClass26_563;
-				for (class44_sub3_sub4_sub6.anInt1650++; class44_sub3_sub4_sub6.anInt1649 < class26_1.anInt509
+				Class26 class26_1 = Class32.cache[class44_sub3_sub4_sub6.graphicId].sequences;
+				for (class44_sub3_sub4_sub6.anInt1650++; class44_sub3_sub4_sub6.currentAnimationId < class26_1.frameCount
 						&& class44_sub3_sub4_sub6.anInt1650 > class26_1
-								.method254(class44_sub3_sub4_sub6.anInt1649,
-										24425); class44_sub3_sub4_sub6.anInt1649++) {
+								.method254(class44_sub3_sub4_sub6.currentAnimationId,
+										24425); class44_sub3_sub4_sub6.currentAnimationId++) {
 					class44_sub3_sub4_sub6.anInt1650 -= class26_1.method254(
-							class44_sub3_sub4_sub6.anInt1649, 24425);
+							class44_sub3_sub4_sub6.currentAnimationId, 24425);
 				}
-				if (class44_sub3_sub4_sub6.anInt1649 >= class26_1.anInt509
-						&& (class44_sub3_sub4_sub6.anInt1649 < 0 || class44_sub3_sub4_sub6.anInt1649 >= class26_1.anInt509)) {
-					class44_sub3_sub4_sub6.anInt1648 = -1;
+				if (class44_sub3_sub4_sub6.currentAnimationId >= class26_1.frameCount
+						&& (class44_sub3_sub4_sub6.currentAnimationId < 0 || class44_sub3_sub4_sub6.currentAnimationId >= class26_1.frameCount)) {
+					class44_sub3_sub4_sub6.graphicId = -1;
 				}
 			}
-			if (class44_sub3_sub4_sub6.anInt1643 != -1
-					&& class44_sub3_sub4_sub6.anInt1646 <= 1) {
-				Class26 class26_2 = Class26.aClass26Array508[class44_sub3_sub4_sub6.anInt1643];
+			if (class44_sub3_sub4_sub6.animation != -1
+					&& class44_sub3_sub4_sub6.animationDelay <= 1) {
+				Class26 class26_2 = Class26.animations[class44_sub3_sub4_sub6.animation];
 				if (class26_2.anInt520 == 1
-						&& class44_sub3_sub4_sub6.anInt1669 > 0
-						&& class44_sub3_sub4_sub6.anInt1657 <= anInt1240
-						&& class44_sub3_sub4_sub6.anInt1658 < anInt1240) {
-					class44_sub3_sub4_sub6.anInt1646 = 1;
+						&& class44_sub3_sub4_sub6.stepsRemaining > 0
+						&& class44_sub3_sub4_sub6.anInt1657 <= tick
+						&& class44_sub3_sub4_sub6.anInt1658 < tick) {
+					class44_sub3_sub4_sub6.animationDelay = 1;
 					return;
 				}
 			}
-			if (class44_sub3_sub4_sub6.anInt1643 != -1
-					&& class44_sub3_sub4_sub6.anInt1646 == 0) {
-				Class26 class26_3 = Class26.aClass26Array508[class44_sub3_sub4_sub6.anInt1643];
-				for (class44_sub3_sub4_sub6.anInt1645++; class44_sub3_sub4_sub6.anInt1644 < class26_3.anInt509
+			if (class44_sub3_sub4_sub6.animation != -1
+					&& class44_sub3_sub4_sub6.animationDelay == 0) {
+				Class26 class26_3 = Class26.animations[class44_sub3_sub4_sub6.animation];
+				for (class44_sub3_sub4_sub6.anInt1645++; class44_sub3_sub4_sub6.currentAnimationFrame < class26_3.frameCount
 						&& class44_sub3_sub4_sub6.anInt1645 > class26_3
-								.method254(class44_sub3_sub4_sub6.anInt1644,
-										24425); class44_sub3_sub4_sub6.anInt1644++) {
+								.method254(class44_sub3_sub4_sub6.currentAnimationFrame,
+										24425); class44_sub3_sub4_sub6.currentAnimationFrame++) {
 					class44_sub3_sub4_sub6.anInt1645 -= class26_3.method254(
-							class44_sub3_sub4_sub6.anInt1644, 24425);
+							class44_sub3_sub4_sub6.currentAnimationFrame, 24425);
 				}
-				if (class44_sub3_sub4_sub6.anInt1644 >= class26_3.anInt509) {
-					class44_sub3_sub4_sub6.anInt1644 -= class26_3.anInt513;
+				if (class44_sub3_sub4_sub6.currentAnimationFrame >= class26_3.frameCount) {
+					class44_sub3_sub4_sub6.currentAnimationFrame -= class26_3.frameStep;
 					class44_sub3_sub4_sub6.anInt1647++;
 					if (class44_sub3_sub4_sub6.anInt1647 >= class26_3.anInt519) {
-						class44_sub3_sub4_sub6.anInt1643 = -1;
+						class44_sub3_sub4_sub6.animation = -1;
 					}
-					if (class44_sub3_sub4_sub6.anInt1644 < 0
-							|| class44_sub3_sub4_sub6.anInt1644 >= class26_3.anInt509) {
-						class44_sub3_sub4_sub6.anInt1643 = -1;
+					if (class44_sub3_sub4_sub6.currentAnimationFrame < 0
+							|| class44_sub3_sub4_sub6.currentAnimationFrame >= class26_3.frameCount) {
+						class44_sub3_sub4_sub6.animation = -1;
 					}
 				}
 				class44_sub3_sub4_sub6.aBoolean1618 = class26_3.aBoolean515;
 			}
-			if (class44_sub3_sub4_sub6.anInt1646 > 0) {
-				class44_sub3_sub4_sub6.anInt1646--;
+			if (class44_sub3_sub4_sub6.animationDelay > 0) {
+				class44_sub3_sub4_sub6.animationDelay--;
 				return;
 			}
 		} catch (RuntimeException runtimeexception) {
@@ -10627,37 +10627,37 @@ public class Client extends RSApplet {
 						}
 					}
 					if (anIntArray1060[0] != -1
-							&& (anInt833 != 0 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 0 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[0].method453(13,
 								aByte1213, 29);
 					}
 					if (anIntArray1060[1] != -1
-							&& (anInt833 != 1 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 1 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[1].method453(11,
 								aByte1213, 53);
 					}
 					if (anIntArray1060[2] != -1
-							&& (anInt833 != 2 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 2 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[2].method453(11,
 								aByte1213, 82);
 					}
 					if (anIntArray1060[3] != -1
-							&& (anInt833 != 3 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 3 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[3].method453(12,
 								aByte1213, 115);
 					}
 					if (anIntArray1060[4] != -1
-							&& (anInt833 != 4 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 4 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[4].method453(13,
 								aByte1213, 153);
 					}
 					if (anIntArray1060[5] != -1
-							&& (anInt833 != 5 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 5 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[5].method453(11,
 								aByte1213, 180);
 					}
 					if (anIntArray1060[6] != -1
-							&& (anInt833 != 6 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 6 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[6].method453(13,
 								aByte1213, 208);
 					}
@@ -10697,32 +10697,32 @@ public class Client extends RSApplet {
 						}
 					}
 					if (anIntArray1060[8] != -1
-							&& (anInt833 != 8 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 8 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[7].method453(2,
 								aByte1213, 74);
 					}
 					if (anIntArray1060[9] != -1
-							&& (anInt833 != 9 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 9 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[8].method453(3,
 								aByte1213, 102);
 					}
 					if (anIntArray1060[10] != -1
-							&& (anInt833 != 10 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 10 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[9].method453(4,
 								aByte1213, 137);
 					}
 					if (anIntArray1060[11] != -1
-							&& (anInt833 != 11 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 11 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[10].method453(2,
 								aByte1213, 174);
 					}
 					if (anIntArray1060[12] != -1
-							&& (anInt833 != 12 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 12 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[11].method453(2,
 								aByte1213, 201);
 					}
 					if (anIntArray1060[13] != -1
-							&& (anInt833 != 13 || anInt1240 % 20 < 10)) {
+							&& (anInt833 != 13 || tick % 20 < 10)) {
 						aClass44_Sub3_Sub1_Sub3Array1276[12].method453(2,
 								aByte1213, 226);
 					}
@@ -11162,8 +11162,8 @@ public class Client extends RSApplet {
 			if (anInt878 < 310) {
 				int j = anInt875 >> 7;
 				int k = anInt877 >> 7;
-				int l = ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615 >> 7;
-				int i1 = ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616 >> 7;
+				int l = ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate >> 7;
+				int i1 = ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate >> 7;
 				if ((aByteArrayArrayArray871[anInt1155][j][k] & 4) != 0) {
 					i = anInt1155;
 				}
@@ -11231,7 +11231,7 @@ public class Client extends RSApplet {
 					}
 				}
 			}
-			if ((aByteArrayArrayArray871[anInt1155][((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615 >> 7][((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616 >> 7] & 4) != 0) {
+			if ((aByteArrayArrayArray871[anInt1155][((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate >> 7][((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate >> 7] & 4) != 0) {
 				i = anInt1155;
 			}
 			return i;
@@ -11442,7 +11442,7 @@ public class Client extends RSApplet {
 			if (k == 1) {
 				int l = class44_sub3_sub2.readBits(3, false);
 				aClass44_Sub3_Sub4_Sub6_Sub1_1047
-						.method533(false, l, anInt1153);
+						.move(false, l, anInt1153);
 				int k1 = class44_sub3_sub2.readBits(1, false);
 				if (k1 == 1) {
 					anIntArray1229[anInt1228++] = anInt1224;
@@ -11452,10 +11452,10 @@ public class Client extends RSApplet {
 			if (k == 2) {
 				int i1 = class44_sub3_sub2.readBits(3, false);
 				aClass44_Sub3_Sub4_Sub6_Sub1_1047
-						.method533(true, i1, anInt1153);
+						.move(true, i1, anInt1153);
 				int l1 = class44_sub3_sub2.readBits(3, false);
 				aClass44_Sub3_Sub4_Sub6_Sub1_1047
-						.method533(true, l1, anInt1153);
+						.move(true, l1, anInt1153);
 				int j2 = class44_sub3_sub2.readBits(1, false);
 				if (j2 == 1) {
 					anIntArray1229[anInt1228++] = anInt1224;
@@ -11467,7 +11467,7 @@ public class Client extends RSApplet {
 				int j1 = class44_sub3_sub2.readBits(7, false);
 				int i2 = class44_sub3_sub2.readBits(7, false);
 				int k2 = class44_sub3_sub2.readBits(1, false);
-				aClass44_Sub3_Sub4_Sub6_Sub1_1047.method532(j1, k2 == 1, i2,
+				aClass44_Sub3_Sub4_Sub6_Sub1_1047.setPosition(j1, k2 == 1, i2,
 						aByte925);
 				int l2 = class44_sub3_sub2.readBits(1, false);
 				if (l2 == 1) {
@@ -11812,7 +11812,7 @@ public class Client extends RSApplet {
 									anInt1242);
 							aString1141 = Class41.method352(aString1141,
 									anInt1242);
-							aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1627 = aString1141;
+							aClass44_Sub3_Sub4_Sub6_Sub1_1047.overheadTextMessage = aString1141;
 							aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1629 = k1;
 							aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1630 = i2;
 							aClass44_Sub3_Sub4_Sub6_Sub1_1047.anInt1628 = 150;
@@ -11820,22 +11820,22 @@ public class Client extends RSApplet {
 								method17(
 										2,
 										(byte) -115,
-										((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).aString1627,
+										((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).overheadTextMessage,
 										"@cr2@"
-												+ aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672);
+												+ aClass44_Sub3_Sub4_Sub6_Sub1_1047.name);
 							} else if (anInt1188 == 1) {
 								method17(
 										2,
 										(byte) -115,
-										((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).aString1627,
+										((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).overheadTextMessage,
 										"@cr1@"
-												+ aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672);
+												+ aClass44_Sub3_Sub4_Sub6_Sub1_1047.name);
 							} else {
 								method17(
 										2,
 										(byte) -115,
-										((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).aString1627,
-										aClass44_Sub3_Sub4_Sub6_Sub1_1047.aString1672);
+										((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).overheadTextMessage,
+										aClass44_Sub3_Sub4_Sub6_Sub1_1047.name);
 							}
 							if (anInt843 == 2) {
 								anInt843 = 3;
@@ -11918,21 +11918,21 @@ public class Client extends RSApplet {
 				}
 			}
 			if (i1 == 131) {
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
+				Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
 				if (class44_sub3_sub4_sub6_sub1 != null) {
 					method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anIntArray1666[0],
+							((Entity) (class44_sub3_sub4_sub6_sub1)).waypointY[0],
 							0,
 							0,
 							false,
 							2,
 							124,
 							1,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anIntArray1665[0],
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (class44_sub3_sub4_sub6_sub1)).waypointX[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					anInt815 = super.clickX;
 					anInt816 = super.clickY;
 					anInt818 = 2;
@@ -11952,26 +11952,26 @@ public class Client extends RSApplet {
 									true), true);
 					boolean flag4 = false;
 					for (int k3 = 0; k3 < anInt1226; k3++) {
-						Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1_3 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[k3]];
+						Player class44_sub3_sub4_sub6_sub1_3 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[k3]];
 						if (class44_sub3_sub4_sub6_sub1_3 == null
-								|| class44_sub3_sub4_sub6_sub1_3.aString1672 == null
-								|| !class44_sub3_sub4_sub6_sub1_3.aString1672
+								|| class44_sub3_sub4_sub6_sub1_3.name == null
+								|| !class44_sub3_sub4_sub6_sub1_3.name
 										.equalsIgnoreCase(s8)) {
 							continue;
 						}
 						method124(
 								1,
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 								0,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_3)).anIntArray1666[0],
+								((Entity) (class44_sub3_sub4_sub6_sub1_3)).waypointY[0],
 								0,
 								0,
 								false,
 								2,
 								124,
 								1,
-								((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_3)).anIntArray1665[0],
-								((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+								((Entity) (class44_sub3_sub4_sub6_sub1_3)).waypointX[0],
+								((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 						if (i1 == 507) {
 							anInt821 += j1;
 							if (anInt821 >= 66) {
@@ -12104,8 +12104,8 @@ public class Client extends RSApplet {
 				if (class5_1.anIntArrayArray115 != null
 						&& class5_1.anIntArrayArray115[0][0] == 5) {
 					int k2 = class5_1.anIntArrayArray115[0][1];
-					if (anIntArray1214[k2] != class5_1.anIntArray117[0]) {
-						anIntArray1214[k2] = class5_1.anIntArray117[0];
+					if (interfaceSettings[k2] != class5_1.anIntArray117[0]) {
+						interfaceSettings[k2] = class5_1.anIntArray117[0];
 						method147(true, k2);
 						aBoolean898 = true;
 					}
@@ -12137,21 +12137,21 @@ public class Client extends RSApplet {
 				}
 			}
 			if (i1 == 242 || i1 == 209 || i1 == 309 || i1 == 852 || i1 == 793) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
 				if (class44_sub3_sub4_sub6_sub2 != null) {
 					method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anIntArray1666[0],
+							((Entity) (class44_sub3_sub4_sub6_sub2)).waypointY[0],
 							0,
 							0,
 							false,
 							2,
 							124,
 							1,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anIntArray1665[0],
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (class44_sub3_sub4_sub6_sub2)).waypointX[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					anInt815 = super.clickX;
 					anInt816 = super.clickY;
 					anInt818 = 2;
@@ -12186,15 +12186,15 @@ public class Client extends RSApplet {
 				}
 			}
 			if (i1 == 1714) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2_1 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2_1 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
 				if (class44_sub3_sub4_sub6_sub2_1 != null) {
 					String s6;
-					if (class44_sub3_sub4_sub6_sub2_1.aClass12_1700.aByteArray283 != null) {
+					if (class44_sub3_sub4_sub6_sub2_1.npcDefinition.aByteArray283 != null) {
 						s6 = new String(
-								class44_sub3_sub4_sub6_sub2_1.aClass12_1700.aByteArray283);
+								class44_sub3_sub4_sub6_sub2_1.npcDefinition.aByteArray283);
 					} else {
 						s6 = "It's a "
-								+ class44_sub3_sub4_sub6_sub2_1.aClass12_1700.aString282
+								+ class44_sub3_sub4_sub6_sub2_1.npcDefinition.aString282
 								+ ".";
 					}
 					method17(0, (byte) -115, s6, "");
@@ -12273,21 +12273,21 @@ public class Client extends RSApplet {
 				}
 			}
 			if (i1 == 275) {
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1_1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
+				Player class44_sub3_sub4_sub6_sub1_1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
 				if (class44_sub3_sub4_sub6_sub1_1 != null) {
 					method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_1)).anIntArray1666[0],
+							((Entity) (class44_sub3_sub4_sub6_sub1_1)).waypointY[0],
 							0,
 							0,
 							false,
 							2,
 							124,
 							1,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_1)).anIntArray1665[0],
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (class44_sub3_sub4_sub6_sub1_1)).waypointX[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					anInt815 = super.clickX;
 					anInt816 = super.clickY;
 					anInt818 = 2;
@@ -12300,21 +12300,21 @@ public class Client extends RSApplet {
 				}
 			}
 			if (i1 == 240) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2_2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2_2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
 				if (class44_sub3_sub4_sub6_sub2_2 != null) {
 					method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_2)).anIntArray1666[0],
+							((Entity) (class44_sub3_sub4_sub6_sub2_2)).waypointY[0],
 							0,
 							0,
 							false,
 							2,
 							124,
 							1,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_2)).anIntArray1665[0],
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (class44_sub3_sub4_sub6_sub2_2)).waypointX[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					anInt815 = super.clickX;
 					anInt816 = super.clickY;
 					anInt818 = 2;
@@ -12335,7 +12335,7 @@ public class Client extends RSApplet {
 			if (i1 == 111) {
 				boolean flag = method124(
 						0,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 						0,
 						l,
 						0,
@@ -12345,11 +12345,11 @@ public class Client extends RSApplet {
 						124,
 						0,
 						k,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				if (!flag) {
 					flag = method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
 							l,
 							0,
@@ -12359,7 +12359,7 @@ public class Client extends RSApplet {
 							124,
 							1,
 							k,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				}
 				anInt815 = super.clickX;
 				anInt816 = super.clickY;
@@ -12379,21 +12379,21 @@ public class Client extends RSApplet {
 				aClass44_Sub3_Sub2_850.putShort(anInt954);
 			}
 			if (i1 == 829) {
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2_3 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2_3 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
 				if (class44_sub3_sub4_sub6_sub2_3 != null) {
 					method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_3)).anIntArray1666[0],
+							((Entity) (class44_sub3_sub4_sub6_sub2_3)).waypointY[0],
 							0,
 							0,
 							false,
 							2,
 							124,
 							1,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_3)).anIntArray1665[0],
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (class44_sub3_sub4_sub6_sub2_3)).waypointX[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					anInt815 = super.clickX;
 					anInt816 = super.clickY;
 					anInt818 = 2;
@@ -12422,7 +12422,7 @@ public class Client extends RSApplet {
 			if (i1 == 139 || i1 == 778 || i1 == 617 || i1 == 224 || i1 == 662) {
 				boolean flag1 = method124(
 						0,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 						0,
 						l,
 						0,
@@ -12432,11 +12432,11 @@ public class Client extends RSApplet {
 						124,
 						0,
 						k,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				if (!flag1) {
 					flag1 = method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
 							l,
 							0,
@@ -12446,7 +12446,7 @@ public class Client extends RSApplet {
 							124,
 							1,
 							k,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				}
 				anInt815 = super.clickX;
 				anInt816 = super.clickY;
@@ -12495,7 +12495,7 @@ public class Client extends RSApplet {
 				if (class5_3.anIntArrayArray115 != null
 						&& class5_3.anIntArrayArray115[0][0] == 5) {
 					int i3 = class5_3.anIntArrayArray115[0][1];
-					anIntArray1214[i3] = 1 - anIntArray1214[i3];
+					interfaceSettings[i3] = 1 - interfaceSettings[i3];
 					method147(true, i3);
 					aBoolean898 = true;
 				}
@@ -12506,7 +12506,7 @@ public class Client extends RSApplet {
 			if (i1 == 370) {
 				boolean flag2 = method124(
 						0,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 						0,
 						l,
 						0,
@@ -12516,11 +12516,11 @@ public class Client extends RSApplet {
 						124,
 						0,
 						k,
-						((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+						((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				if (!flag2) {
 					flag2 = method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
 							l,
 							0,
@@ -12530,7 +12530,7 @@ public class Client extends RSApplet {
 							124,
 							1,
 							k,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 				}
 				anInt815 = super.clickX;
 				anInt816 = super.clickY;
@@ -12543,21 +12543,21 @@ public class Client extends RSApplet {
 				aClass44_Sub3_Sub2_850.putShort(anInt995);
 			}
 			if (i1 == 639 || i1 == 499 || i1 == 27 || i1 == 387 || i1 == 185) {
-				Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1_2 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
+				Player class44_sub3_sub4_sub6_sub1_2 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[j1];
 				if (class44_sub3_sub4_sub6_sub1_2 != null) {
 					method124(
 							1,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_2)).anIntArray1666[0],
+							((Entity) (class44_sub3_sub4_sub6_sub1_2)).waypointY[0],
 							0,
 							0,
 							false,
 							2,
 							124,
 							1,
-							((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_2)).anIntArray1665[0],
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (class44_sub3_sub4_sub6_sub1_2)).waypointX[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					anInt815 = super.clickX;
 					anInt816 = super.clickY;
 					anInt818 = 2;
@@ -12678,12 +12678,12 @@ public class Client extends RSApplet {
 						&& aClass36_1192.method308(anInt1155, l, i1, k) >= 0) {
 					Class8 class8 = Class8.method199(k1);
 					if (class8.anIntArray250 != null) {
-						Class35 class35 = Class35.aClass35Array590[class8.anInt249];
+						Class35 class35 = Class35.cache[class8.anInt249];
 						int k2 = class35.anInt592;
 						int j3 = class35.anInt593;
 						int l3 = class35.anInt594;
-						int i4 = anIntArray1088[l3 - j3];
-						int j4 = anIntArray1214[k2] >> j3 & i4;
+						int i4 = BITFIELD_MAX_VALUE[l3 - j3];
+						int j4 = interfaceSettings[k2] >> j3 & i4;
 						if (j4 < 0 || j4 >= class8.anIntArray250.length
 								|| class8.anIntArray250[j4] == -1) {
 							continue;
@@ -12746,59 +12746,59 @@ public class Client extends RSApplet {
 					}
 				}
 				if (j1 == 1) {
-					Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k1];
-					if (class44_sub3_sub4_sub6_sub2.aClass12_1700.aByte284 == 1
-							&& (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615 & 0x7f) == 64
-							&& (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616 & 0x7f) == 64) {
+					NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[k1];
+					if (class44_sub3_sub4_sub6_sub2.npcDefinition.boundaryDimension == 1
+							&& (((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate & 0x7f) == 64
+							&& (((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate & 0x7f) == 64) {
 						for (int i2 = 0; i2 < anInt1009; i2++) {
-							Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2_1 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[i2]];
+							NonPlayerCharacter class44_sub3_sub4_sub6_sub2_1 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[i2]];
 							if (class44_sub3_sub4_sub6_sub2_1 != null
 									&& class44_sub3_sub4_sub6_sub2_1 != class44_sub3_sub4_sub6_sub2
-									&& class44_sub3_sub4_sub6_sub2_1.aClass12_1700.aByte284 == 1
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_1)).anInt1615 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_1)).anInt1616 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616) {
+									&& class44_sub3_sub4_sub6_sub2_1.npcDefinition.boundaryDimension == 1
+									&& ((Entity) (class44_sub3_sub4_sub6_sub2_1)).xCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate
+									&& ((Entity) (class44_sub3_sub4_sub6_sub2_1)).yCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate) {
 								method58(
 										anIntArray1010[i2],
-										class44_sub3_sub4_sub6_sub2_1.aClass12_1700,
+										class44_sub3_sub4_sub6_sub2_1.npcDefinition,
 										l, 559, i1);
 							}
 						}
 						for (int l2 = 0; l2 < anInt1226; l2++) {
-							Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1_1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[l2]];
+							Player class44_sub3_sub4_sub6_sub1_1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[l2]];
 							if (class44_sub3_sub4_sub6_sub1_1 != null
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_1)).anInt1615 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1615
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_1)).anInt1616 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1616) {
+									&& ((Entity) (class44_sub3_sub4_sub6_sub1_1)).xCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub2)).xCoordinate
+									&& ((Entity) (class44_sub3_sub4_sub6_sub1_1)).yCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub2)).yCoordinate) {
 								method112(i1, 705,
 										class44_sub3_sub4_sub6_sub1_1, l,
 										anIntArray1227[l2]);
 							}
 						}
 					}
-					method58(k1, class44_sub3_sub4_sub6_sub2.aClass12_1700, l,
+					method58(k1, class44_sub3_sub4_sub6_sub2.npcDefinition, l,
 							559, i1);
 				}
 				if (j1 == 0) {
-					Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k1];
-					if ((((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615 & 0x7f) == 64
-							&& (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616 & 0x7f) == 64) {
+					Player class44_sub3_sub4_sub6_sub1 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[k1];
+					if ((((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate & 0x7f) == 64
+							&& (((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate & 0x7f) == 64) {
 						for (int j2 = 0; j2 < anInt1009; j2++) {
-							Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2_2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[j2]];
+							NonPlayerCharacter class44_sub3_sub4_sub6_sub2_2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[anIntArray1010[j2]];
 							if (class44_sub3_sub4_sub6_sub2_2 != null
-									&& class44_sub3_sub4_sub6_sub2_2.aClass12_1700.aByte284 == 1
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_2)).anInt1615 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2_2)).anInt1616 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616) {
+									&& class44_sub3_sub4_sub6_sub2_2.npcDefinition.boundaryDimension == 1
+									&& ((Entity) (class44_sub3_sub4_sub6_sub2_2)).xCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate
+									&& ((Entity) (class44_sub3_sub4_sub6_sub2_2)).yCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate) {
 								method58(
 										anIntArray1010[j2],
-										class44_sub3_sub4_sub6_sub2_2.aClass12_1700,
+										class44_sub3_sub4_sub6_sub2_2.npcDefinition,
 										l, 559, i1);
 							}
 						}
 						for (int i3 = 0; i3 < anInt1226; i3++) {
-							Class44_Sub3_Sub4_Sub6_Sub1 class44_sub3_sub4_sub6_sub1_2 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[i3]];
+							Player class44_sub3_sub4_sub6_sub1_2 = aClass44_Sub3_Sub4_Sub6_Sub1Array1225[anIntArray1227[i3]];
 							if (class44_sub3_sub4_sub6_sub1_2 != null
 									&& class44_sub3_sub4_sub6_sub1_2 != class44_sub3_sub4_sub6_sub1
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_2)).anInt1615 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1615
-									&& ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1_2)).anInt1616 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub1)).anInt1616) {
+									&& ((Entity) (class44_sub3_sub4_sub6_sub1_2)).xCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub1)).xCoordinate
+									&& ((Entity) (class44_sub3_sub4_sub6_sub1_2)).yCoordinate == ((Entity) (class44_sub3_sub4_sub6_sub1)).yCoordinate) {
 								method112(i1, 705,
 										class44_sub3_sub4_sub6_sub1_2, l,
 										anIntArray1227[i3]);
@@ -12810,16 +12810,16 @@ public class Client extends RSApplet {
 				if (j1 == 3) {
 					NodeList class28 = aClass28ArrayArrayArray1146[anInt1155][l][i1];
 					if (class28 != null) {
-						for (Class44_Sub3_Sub4_Sub2 class44_sub3_sub4_sub2 = (Class44_Sub3_Sub4_Sub2) class28
-								.getFirst(0); class44_sub3_sub4_sub2 != null; class44_sub3_sub4_sub2 = (Class44_Sub3_Sub4_Sub2) class28
+						for (Item class44_sub3_sub4_sub2 = (Item) class28
+								.getFirst(0); class44_sub3_sub4_sub2 != null; class44_sub3_sub4_sub2 = (Item) class28
 								.getNext(-20683)) {
 							Class14 class14 = Class14
-									.method220(class44_sub3_sub4_sub2.anInt1495);
+									.method220(class44_sub3_sub4_sub2.itemId);
 							if (anInt952 == 1) {
 								aStringArray897[anInt971] = "Use " + aString956
 										+ " with @lre@" + class14.aString331;
 								anIntArray839[anInt971] = 111;
-								anIntArray840[anInt971] = class44_sub3_sub4_sub2.anInt1495;
+								anIntArray840[anInt971] = class44_sub3_sub4_sub2.itemId;
 								anIntArray837[anInt971] = l;
 								anIntArray838[anInt971] = i1;
 								anInt971++;
@@ -12828,7 +12828,7 @@ public class Client extends RSApplet {
 									aStringArray897[anInt971] = aString997
 											+ " @lre@" + class14.aString331;
 									anIntArray839[anInt971] = 370;
-									anIntArray840[anInt971] = class44_sub3_sub4_sub2.anInt1495;
+									anIntArray840[anInt971] = class44_sub3_sub4_sub2.itemId;
 									anIntArray837[anInt971] = l;
 									anIntArray838[anInt971] = i1;
 									anInt971++;
@@ -12854,7 +12854,7 @@ public class Client extends RSApplet {
 										if (k3 == 4) {
 											anIntArray839[anInt971] = 662;
 										}
-										anIntArray840[anInt971] = class44_sub3_sub4_sub2.anInt1495;
+										anIntArray840[anInt971] = class44_sub3_sub4_sub2.itemId;
 										anIntArray837[anInt971] = l;
 										anIntArray838[anInt971] = i1;
 										anInt971++;
@@ -12862,7 +12862,7 @@ public class Client extends RSApplet {
 										aStringArray897[anInt971] = "Take @lre@"
 												+ class14.aString331;
 										anIntArray839[anInt971] = 617;
-										anIntArray840[anInt971] = class44_sub3_sub4_sub2.anInt1495;
+										anIntArray840[anInt971] = class44_sub3_sub4_sub2.itemId;
 										anIntArray837[anInt971] = l;
 										anIntArray838[anInt971] = i1;
 										anInt971++;
@@ -12871,7 +12871,7 @@ public class Client extends RSApplet {
 								aStringArray897[anInt971] = "Examine @lre@"
 										+ class14.aString331;
 								anIntArray839[anInt971] = 1152;
-								anIntArray840[anInt971] = class44_sub3_sub4_sub2.anInt1495;
+								anIntArray840[anInt971] = class44_sub3_sub4_sub2.itemId;
 								anIntArray837[anInt971] = l;
 								anIntArray838[anInt971] = i1;
 								anInt971++;
@@ -12898,7 +12898,7 @@ public class Client extends RSApplet {
 			}
 			method75((anInt1248 - anInt1184 << 7) + anInt1251, anInt1250 * 2,
 					(byte) -79, (anInt1249 - anInt1185 << 7) + anInt1252);
-			if (anInt1064 > -1 && anInt1240 % 20 < 10) {
+			if (anInt1064 > -1 && tick % 20 < 10) {
 				aClass44_Sub3_Sub1_Sub2Array1183[2].drawImage(anInt1065 - 28,
 						aByte1213, anInt1064 - 12);
 				return;
@@ -13036,14 +13036,14 @@ public class Client extends RSApplet {
 			j += i;
 			for (int k = 0; k < anInt1228; k++) {
 				int l = anIntArray1229[k];
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[l];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[l];
 				int i1 = class44_sub3_sub2.getUnsignedByte();
 				if ((i1 & 1) == 1) {
 					int j1 = class44_sub3_sub2.getUnsignedByte();
 					int j2 = class44_sub3_sub2.getUnsignedByte();
-					class44_sub3_sub4_sub6_sub2.method536(j2, anInt1240, j1,
+					class44_sub3_sub4_sub6_sub2.updateHitData(j2, tick, j1,
 							false);
-					class44_sub3_sub4_sub6_sub2.anInt1634 = anInt1240 + 300;
+					class44_sub3_sub4_sub6_sub2.anInt1634 = tick + 300;
 					class44_sub3_sub4_sub6_sub2.anInt1635 = class44_sub3_sub2
 							.getUnsignedByte();
 					class44_sub3_sub4_sub6_sub2.anInt1636 = class44_sub3_sub2
@@ -13054,81 +13054,81 @@ public class Client extends RSApplet {
 					if (k1 == 65535) {
 						k1 = -1;
 					}
-					if (k1 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1643) {
+					if (k1 == ((Entity) (class44_sub3_sub4_sub6_sub2)).animation) {
 						class44_sub3_sub4_sub6_sub2.anInt1647 = 0;
 					}
 					int k2 = class44_sub3_sub2.getUnsignedByte();
-					if (k1 == ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1643
+					if (k1 == ((Entity) (class44_sub3_sub4_sub6_sub2)).animation
 							&& k1 != -1) {
-						int i3 = Class26.aClass26Array508[k1].anInt522;
+						int i3 = Class26.animations[k1].anInt522;
 						if (i3 == 1) {
-							class44_sub3_sub4_sub6_sub2.anInt1644 = 0;
+							class44_sub3_sub4_sub6_sub2.currentAnimationFrame = 0;
 							class44_sub3_sub4_sub6_sub2.anInt1645 = 0;
-							class44_sub3_sub4_sub6_sub2.anInt1646 = k2;
+							class44_sub3_sub4_sub6_sub2.animationDelay = k2;
 							class44_sub3_sub4_sub6_sub2.anInt1647 = 0;
 						}
 						if (i3 == 2) {
 							class44_sub3_sub4_sub6_sub2.anInt1647 = 0;
 						}
 					} else if (k1 == -1
-							|| ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1643 == -1
-							|| Class26.aClass26Array508[k1].anInt516 >= Class26.aClass26Array508[((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1643].anInt516) {
-						class44_sub3_sub4_sub6_sub2.anInt1643 = k1;
-						class44_sub3_sub4_sub6_sub2.anInt1644 = 0;
+							|| ((Entity) (class44_sub3_sub4_sub6_sub2)).animation == -1
+							|| Class26.animations[k1].anInt516 >= Class26.animations[((Entity) (class44_sub3_sub4_sub6_sub2)).animation].anInt516) {
+						class44_sub3_sub4_sub6_sub2.animation = k1;
+						class44_sub3_sub4_sub6_sub2.currentAnimationFrame = 0;
 						class44_sub3_sub4_sub6_sub2.anInt1645 = 0;
-						class44_sub3_sub4_sub6_sub2.anInt1646 = k2;
+						class44_sub3_sub4_sub6_sub2.animationDelay = k2;
 						class44_sub3_sub4_sub6_sub2.anInt1647 = 0;
-						class44_sub3_sub4_sub6_sub2.anInt1669 = ((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1664;
+						class44_sub3_sub4_sub6_sub2.stepsRemaining = ((Entity) (class44_sub3_sub4_sub6_sub2)).waypointCount;
 					}
 				}
 				if ((i1 & 4) == 4) {
 					class44_sub3_sub4_sub6_sub2.anInt1637 = class44_sub3_sub2
 							.getUnsignedLEShort();
-					if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1637 == 65535) {
+					if (((Entity) (class44_sub3_sub4_sub6_sub2)).anInt1637 == 65535) {
 						class44_sub3_sub4_sub6_sub2.anInt1637 = -1;
 					}
 				}
 				if ((i1 & 8) == 8) {
-					class44_sub3_sub4_sub6_sub2.aString1627 = class44_sub3_sub2
+					class44_sub3_sub4_sub6_sub2.overheadTextMessage = class44_sub3_sub2
 							.getString();
 					class44_sub3_sub4_sub6_sub2.anInt1628 = 100;
 				}
 				if ((i1 & 0x10) == 16) {
 					int l1 = class44_sub3_sub2.getUnsignedByte();
 					int l2 = class44_sub3_sub2.getUnsignedByte();
-					class44_sub3_sub4_sub6_sub2.method536(l2, anInt1240, l1,
+					class44_sub3_sub4_sub6_sub2.updateHitData(l2, tick, l1,
 							false);
-					class44_sub3_sub4_sub6_sub2.anInt1634 = anInt1240 + 300;
+					class44_sub3_sub4_sub6_sub2.anInt1634 = tick + 300;
 					class44_sub3_sub4_sub6_sub2.anInt1635 = class44_sub3_sub2
 							.getUnsignedByte();
 					class44_sub3_sub4_sub6_sub2.anInt1636 = class44_sub3_sub2
 							.getUnsignedByte();
 				}
 				if ((i1 & 0x20) == 32) {
-					class44_sub3_sub4_sub6_sub2.aClass12_1700 = Class12
+					class44_sub3_sub4_sub6_sub2.npcDefinition = Class12
 							.method214(class44_sub3_sub2.getUnsignedLEShort());
-					class44_sub3_sub4_sub6_sub2.anInt1619 = class44_sub3_sub4_sub6_sub2.aClass12_1700.aByte284;
-					class44_sub3_sub4_sub6_sub2.anInt1663 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt306;
-					class44_sub3_sub4_sub6_sub2.anInt1622 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt288;
-					class44_sub3_sub4_sub6_sub2.anInt1623 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt289;
-					class44_sub3_sub4_sub6_sub2.anInt1624 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt290;
-					class44_sub3_sub4_sub6_sub2.anInt1625 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt291;
-					class44_sub3_sub4_sub6_sub2.anInt1620 = class44_sub3_sub4_sub6_sub2.aClass12_1700.anInt287;
+					class44_sub3_sub4_sub6_sub2.boundaryDimension = class44_sub3_sub4_sub6_sub2.npcDefinition.boundaryDimension;
+					class44_sub3_sub4_sub6_sub2.anInt1663 = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt306;
+					class44_sub3_sub4_sub6_sub2.walkAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt288;
+					class44_sub3_sub4_sub6_sub2.turnAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt289;
+					class44_sub3_sub4_sub6_sub2.turnRightAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt290;
+					class44_sub3_sub4_sub6_sub2.turnLeftAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt291;
+					class44_sub3_sub4_sub6_sub2.standAnimationId = class44_sub3_sub4_sub6_sub2.npcDefinition.anInt287;
 				}
 				if ((i1 & 0x40) == 64) {
-					class44_sub3_sub4_sub6_sub2.anInt1648 = class44_sub3_sub2
+					class44_sub3_sub4_sub6_sub2.graphicId = class44_sub3_sub2
 							.getUnsignedLEShort();
 					int i2 = class44_sub3_sub2.getInt();
-					class44_sub3_sub4_sub6_sub2.anInt1652 = i2 >> 16;
-					class44_sub3_sub4_sub6_sub2.anInt1651 = anInt1240
+					class44_sub3_sub4_sub6_sub2.graphicHeight = i2 >> 16;
+					class44_sub3_sub4_sub6_sub2.anInt1651 = tick
 							+ (i2 & 0xffff);
-					class44_sub3_sub4_sub6_sub2.anInt1649 = 0;
+					class44_sub3_sub4_sub6_sub2.currentAnimationId = 0;
 					class44_sub3_sub4_sub6_sub2.anInt1650 = 0;
-					if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1651 > anInt1240) {
-						class44_sub3_sub4_sub6_sub2.anInt1649 = -1;
+					if (((Entity) (class44_sub3_sub4_sub6_sub2)).anInt1651 > tick) {
+						class44_sub3_sub4_sub6_sub2.currentAnimationId = -1;
 					}
-					if (((Class44_Sub3_Sub4_Sub6) (class44_sub3_sub4_sub6_sub2)).anInt1648 == 65535) {
-						class44_sub3_sub4_sub6_sub2.anInt1648 = -1;
+					if (((Entity) (class44_sub3_sub4_sub6_sub2)).graphicId == 65535) {
+						class44_sub3_sub4_sub6_sub2.graphicId = -1;
 					}
 				}
 				if ((i1 & 0x80) == 128) {
@@ -13232,13 +13232,13 @@ public class Client extends RSApplet {
 					j1 = j1 * (anInt1075 + 256) >> 8;
 					int k1 = k * i1 + j * j1 >> 11;
 					int l1 = k * j1 - j * i1 >> 11;
-					int i2 = ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615
+					int i2 = ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate
 							+ k1 >> 7;
-					int j2 = ((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616
+					int j2 = ((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate
 							- l1 >> 7;
 					boolean flag = method124(
 							0,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1665[0],
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointX[0],
 							0,
 							j2,
 							0,
@@ -13248,7 +13248,7 @@ public class Client extends RSApplet {
 							124,
 							0,
 							i2,
-							((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anIntArray1666[0]);
+							((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).waypointY[0]);
 					if (flag) {
 						aClass44_Sub3_Sub2_850.putByte(j);
 						aClass44_Sub3_Sub2_850.putByte(k);
@@ -13258,9 +13258,9 @@ public class Client extends RSApplet {
 						aClass44_Sub3_Sub2_850.putByte(anInt1075);
 						aClass44_Sub3_Sub2_850.putByte(89);
 						aClass44_Sub3_Sub2_850
-								.putShort(((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1615);
+								.putShort(((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).xCoordinate);
 						aClass44_Sub3_Sub2_850
-								.putShort(((Class44_Sub3_Sub4_Sub6) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).anInt1616);
+								.putShort(((Entity) (aClass44_Sub3_Sub4_Sub6_Sub1_1047)).yCoordinate);
 						aClass44_Sub3_Sub2_850.putByte(anInt972);
 						aClass44_Sub3_Sub2_850.putByte(63);
 						return;
@@ -13290,22 +13290,22 @@ public class Client extends RSApplet {
 			anInt1009 = 0;
 			for (int i1 = 0; i1 < k; i1++) {
 				int j1 = anIntArray1010[i1];
-				Class44_Sub3_Sub4_Sub6_Sub2 class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
+				NonPlayerCharacter class44_sub3_sub4_sub6_sub2 = aClass44_Sub3_Sub4_Sub6_Sub2Array1008[j1];
 				int k1 = class44_sub3_sub2.readBits(1, false);
 				if (k1 == 0) {
 					anIntArray1010[anInt1009++] = j1;
-					class44_sub3_sub4_sub6_sub2.anInt1660 = anInt1240;
+					class44_sub3_sub4_sub6_sub2.anInt1660 = tick;
 				} else {
 					int l1 = class44_sub3_sub2.readBits(2, false);
 					if (l1 == 0) {
 						anIntArray1010[anInt1009++] = j1;
-						class44_sub3_sub4_sub6_sub2.anInt1660 = anInt1240;
+						class44_sub3_sub4_sub6_sub2.anInt1660 = tick;
 						anIntArray1229[anInt1228++] = j1;
 					} else if (l1 == 1) {
 						anIntArray1010[anInt1009++] = j1;
-						class44_sub3_sub4_sub6_sub2.anInt1660 = anInt1240;
+						class44_sub3_sub4_sub6_sub2.anInt1660 = tick;
 						int i2 = class44_sub3_sub2.readBits(3, false);
-						class44_sub3_sub4_sub6_sub2.method533(false, i2,
+						class44_sub3_sub4_sub6_sub2.move(false, i2,
 								anInt1153);
 						int k2 = class44_sub3_sub2.readBits(1, false);
 						if (k2 == 1) {
@@ -13313,12 +13313,12 @@ public class Client extends RSApplet {
 						}
 					} else if (l1 == 2) {
 						anIntArray1010[anInt1009++] = j1;
-						class44_sub3_sub4_sub6_sub2.anInt1660 = anInt1240;
+						class44_sub3_sub4_sub6_sub2.anInt1660 = tick;
 						int j2 = class44_sub3_sub2.readBits(3, false);
-						class44_sub3_sub4_sub6_sub2.method533(true, j2,
+						class44_sub3_sub4_sub6_sub2.move(true, j2,
 								anInt1153);
 						int l2 = class44_sub3_sub2.readBits(3, false);
-						class44_sub3_sub4_sub6_sub2.method533(true, l2,
+						class44_sub3_sub4_sub6_sub2.move(true, l2,
 								anInt1153);
 						int i3 = class44_sub3_sub2.readBits(1, false);
 						if (i3 == 1) {
@@ -13434,7 +13434,7 @@ public class Client extends RSApplet {
 			anIntArray839 = null;
 			anIntArray840 = null;
 			aStringArray897 = null;
-			anIntArray1214 = null;
+			interfaceSettings = null;
 			anIntArray827 = null;
 			anIntArray828 = null;
 			aClass44_Sub3_Sub1_Sub2Array872 = null;
@@ -13459,15 +13459,15 @@ public class Client extends RSApplet {
 			Class12.method213((byte) 42);
 			Class14.method219((byte) 42);
 			Class20.aClass20Array430 = null;
-			Class22.aClass22Array464 = null;
+			Class22.cache = null;
 			Class5.aClass5Array100 = null;
 			Class24.aClass24Array490 = null;
-			Class26.aClass26Array508 = null;
-			Class32.aClass32Array559 = null;
+			Class26.animations = null;
+			Class32.cache = null;
 			Class32.aClass39_571 = null;
 			Class38.aClass38Array674 = null;
 			super.fullGameScreen = null;
-			Class44_Sub3_Sub4_Sub6_Sub1.aClass39_1696 = null;
+			Player.mruNodes = null;
 			Rasterizer.nullLoader((byte) 42);
 			Class36.method277((byte) 42);
 			Model.method502((byte) 42);
@@ -13574,7 +13574,7 @@ public class Client extends RSApplet {
 			if (j == 0) {
 				return;
 			}
-			int k = anIntArray1214[i];
+			int k = interfaceSettings[i];
 			if (j == 1) {
 				if (k == 1) {
 					Rasterizer.calculatePalette(0.90000000000000002D, 0);
@@ -13743,7 +13743,7 @@ public class Client extends RSApplet {
 		aStringArray1004 = new String[100];
 		anIntArray1006 = new int[50];
 		aString1007 = "";
-		aClass44_Sub3_Sub4_Sub6_Sub2Array1008 = new Class44_Sub3_Sub4_Sub6_Sub2[16384];
+		aClass44_Sub3_Sub4_Sub6_Sub2Array1008 = new NonPlayerCharacter[16384];
 		anIntArray1010 = new int[16384];
 		anInt1012 = 2;
 		anInt1015 = 100;
@@ -13825,13 +13825,13 @@ public class Client extends RSApplet {
 		aClass45Array1208 = new Class45[5];
 		aBooleanArray1209 = new boolean[5];
 		aByte1213 = 1;
-		anIntArray1214 = new int[2000];
+		interfaceSettings = new int[2000];
 		anInt1216 = 2;
 		anInt1217 = -1;
 		aBoolean1222 = false;
 		anInt1223 = 2048;
 		anInt1224 = 2047;
-		aClass44_Sub3_Sub4_Sub6_Sub1Array1225 = new Class44_Sub3_Sub4_Sub6_Sub1[anInt1223];
+		aClass44_Sub3_Sub4_Sub6_Sub1Array1225 = new Player[anInt1223];
 		anIntArray1227 = new int[anInt1223];
 		anIntArray1229 = new int[anInt1223];
 		aClass44_Sub3_Sub2Array1230 = new Stream[anInt1223];
@@ -13857,10 +13857,10 @@ public class Client extends RSApplet {
 			i += i1;
 			anIntArray984[j] = i / 4;
 		}
-		anIntArray1088 = new int[32];
+		BITFIELD_MAX_VALUE = new int[32];
 		i = 2;
 		for (int k = 0; k < 32; k++) {
-			anIntArray1088[k] = i - 1;
+			BITFIELD_MAX_VALUE[k] = i - 1;
 			i += i;
 		}
 	}

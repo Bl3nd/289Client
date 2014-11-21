@@ -17,7 +17,7 @@ public class Class14
     public static byte aByte320 = 1;
     public static byte aByte321 = 8;
     public int anInt322;
-    public static int anInt323;
+    public static int itemCount;
     public static int anIntArray324[];
     public static Stream aClass44_Sub3_Sub2_325;
     public static Class14 aClass14Array326[];
@@ -62,7 +62,7 @@ public class Class14
     public int anInt365;
     public int anInt366;
     public int anInt367;
-    public int anInt368;
+    public int teamId;
     public static Class39 aClass39_369 = new Class39((byte)7, 50);
     public static Class39 aClass39_370 = new Class39((byte)7, 100);
 
@@ -70,10 +70,10 @@ public class Class14
     {
         aClass44_Sub3_Sub2_325 = new Stream(class47.method549("obj.dat", null), 15787);
         Stream class44_sub3_sub2 = new Stream(class47.method549("obj.idx", null), 15787);
-        anInt323 = class44_sub3_sub2.getUnsignedLEShort();
-        anIntArray324 = new int[anInt323];
+        itemCount = class44_sub3_sub2.getUnsignedLEShort();
+        anIntArray324 = new int[itemCount];
         int i = 2;
-        for(int j = 0; j < anInt323; j++)
+        for(int j = 0; j < itemCount; j++)
         {
             anIntArray324[j] = i;
             i += class44_sub3_sub2.getUnsignedLEShort();
@@ -176,7 +176,7 @@ public class Class14
         anInt365 = 128;
         anInt366 = 0;
         anInt367 = 0;
-        anInt368 = 0;
+        teamId = 0;
     }
 
     public void method222(boolean flag, Stream class44_sub3_sub2)
@@ -367,7 +367,7 @@ public class Class14
                 } else
                 if(i == 115)
                 {
-                    anInt368 = class44_sub3_sub2.getUnsignedByte();
+                    teamId = class44_sub3_sub2.getUnsignedByte();
                 }
             } while(true);
         }
@@ -456,7 +456,7 @@ public class Class14
             }
         }
         class44_sub3_sub4_sub4.method523(64 + anInt366, 768 + anInt367, -50, -10, -50, true);
-        class44_sub3_sub4_sub4.aBoolean1568 = true;
+        class44_sub3_sub4_sub4.singleTile = true;
         aClass39_369.method340(anInt329, (byte)76, class44_sub3_sub4_sub4);
         return class44_sub3_sub4_sub4;
     }

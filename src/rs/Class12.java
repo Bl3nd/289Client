@@ -17,7 +17,7 @@ public class Class12
     public long aLong281;
     public String aString282;
     public byte aByteArray283[];
-    public byte aByte284;
+    public byte boundaryDimension;
     public int anIntArray285[];
     public int anIntArray286[];
     public int anInt287;
@@ -137,7 +137,7 @@ public class Class12
                 } else
                 if(j == 12)
                 {
-                    aByte284 = class44_sub3_sub2.get();
+                    boundaryDimension = class44_sub3_sub2.get();
                 } else
                 if(j == 13)
                 {
@@ -291,7 +291,7 @@ public class Class12
                 class44_sub3_sub4_sub4.method523(64 + anInt303, 850 + anInt304, -30, -50, -30, true);
                 aClass39_307.method340(aLong281, (byte)76, class44_sub3_sub4_sub4);
             }
-            Model class44_sub3_sub4_sub4_1 = Model.aClass44_Sub3_Sub4_Sub4_1530;
+            Model class44_sub3_sub4_sub4_1 = Model.model_1530;
             class44_sub3_sub4_sub4_1.method508(Class11.method211(k, 0) & Class11.method211(j, 0), class44_sub3_sub4_sub4, 0);
             if(k != -1 && j != -1)
             {
@@ -306,11 +306,11 @@ public class Class12
                 class44_sub3_sub4_sub4_1.method522(anInt300, anInt300, anInt301, (byte)31);
             }
             class44_sub3_sub4_sub4_1.method510(-18258);
-            class44_sub3_sub4_sub4_1.anIntArrayArray1567 = null;
-            class44_sub3_sub4_sub4_1.anIntArrayArray1566 = null;
-            if(aByte284 == 1)
+            class44_sub3_sub4_sub4_1.triangleSkin = null;
+            class44_sub3_sub4_sub4_1.vertexSkin = null;
+            if(boundaryDimension == 1)
             {
-                class44_sub3_sub4_sub4_1.aBoolean1568 = true;
+                class44_sub3_sub4_sub4_1.singleTile = true;
             }
             return class44_sub3_sub4_sub4_1;
         }
@@ -380,7 +380,7 @@ public class Class12
         anInt274 = 44692;
         aByte275 = 4;
         aLong281 = -1L;
-        aByte284 = 1;
+        boundaryDimension = 1;
         anInt287 = -1;
         anInt288 = -1;
         anInt289 = -1;

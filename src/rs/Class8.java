@@ -635,8 +635,8 @@ label0:
             {
                 class44_sub3_sub4_sub4_3.method513((byte)3);
                 class44_sub3_sub4_sub4_3.method514(i, 188);
-                class44_sub3_sub4_sub4_3.anIntArrayArray1567 = null;
-                class44_sub3_sub4_sub4_3.anIntArrayArray1566 = null;
+                class44_sub3_sub4_sub4_3.triangleSkin = null;
+                class44_sub3_sub4_sub4_3.vertexSkin = null;
             }
             while(j-- > 0)
             {

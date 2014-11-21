@@ -431,7 +431,7 @@ public class Class5
         }
         if(i == 3)
         {
-            class44_sub3_sub4_sub4 = Client.aClass44_Sub3_Sub4_Sub6_Sub1_1047.method539(false);
+            class44_sub3_sub4_sub4 = Client.aClass44_Sub3_Sub4_Sub6_Sub1_1047.getHeadModel(false);
         }
         if(i == 4)
         {

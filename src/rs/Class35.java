@@ -9,7 +9,7 @@ public class Class35
 
     public static int anInt588 = 810;
     public static int anInt589;
-    public static Class35 aClass35Array590[];
+    public static Class35 cache[];
     public String aString591;
     public int anInt592;
     public int anInt593;
@@ -28,20 +28,20 @@ public class Class35
             }
             Stream class44_sub3_sub2 = new Stream(class47.method549("varbit.dat", null), 15787);
             anInt589 = class44_sub3_sub2.getUnsignedLEShort();
-            if(aClass35Array590 == null)
+            if(cache == null)
             {
-                aClass35Array590 = new Class35[anInt589];
+                cache = new Class35[anInt589];
             }
             for(int i = 0; i < anInt589; i++)
             {
-                if(aClass35Array590[i] == null)
+                if(cache[i] == null)
                 {
-                    aClass35Array590[i] = new Class35();
+                    cache[i] = new Class35();
                 }
-                aClass35Array590[i].method276(anInt588, i, class44_sub3_sub2);
-                if(aClass35Array590[i].aBoolean595)
+                cache[i].method276(anInt588, i, class44_sub3_sub2);
+                if(cache[i].aBoolean595)
                 {
-                    Class38.aClass38Array674[aClass35Array590[i].anInt592].aBoolean686 = true;
+                    Class38.aClass38Array674[cache[i].anInt592].aBoolean686 = true;
                 }
             }
             if(class44_sub3_sub2.currentOffset != class44_sub3_sub2.buffer.length)

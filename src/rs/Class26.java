@@ -11,20 +11,20 @@ public class Class26
     public byte aByte505;
     public static boolean aBoolean506 = true;
     public static int anInt507;
-    public static Class26 aClass26Array508[];
-    public int anInt509;
-    public int anIntArray510[];
+    public static Class26 animations[];
+    public int frameCount;
+    public int frame2Ids[];
     public int anIntArray511[];
     public int anIntArray512[];
-    public int anInt513;
-    public int anIntArray514[];
+    public int frameStep;
+    public int flowControl[];
     public boolean aBoolean515;
     public int anInt516;
-    public int anInt517;
-    public int anInt518;
+    public int playerReplacementShield;
+    public int playerReplacementWeapon;
     public int anInt519;
     public int anInt520;
-    public int anInt521;
+    public int precendenceWalking;
     public int anInt522;
     public int anInt523;
     public static int anInt524;
@@ -35,17 +35,17 @@ public class Class26
         {
             Stream class44_sub3_sub2 = new Stream(class47.method549("seq.dat", null), 15787);
             anInt507 = class44_sub3_sub2.getUnsignedLEShort();
-            if(aClass26Array508 == null)
+            if(animations == null)
             {
-                aClass26Array508 = new Class26[anInt507];
+                animations = new Class26[anInt507];
             }
             for(int i = 0; i < anInt507; i++)
             {
-                if(aClass26Array508[i] == null)
+                if(animations[i] == null)
                 {
-                    aClass26Array508[i] = new Class26();
+                    animations[i] = new Class26();
                 }
-                aClass26Array508[i].method255(false, class44_sub3_sub2);
+                animations[i].method255(false, class44_sub3_sub2);
             }
             if(!flag)
             {
@@ -73,7 +73,7 @@ public class Class26
             int l = anIntArray512[i];
             if(l == 0)
             {
-                Class11 class11 = Class11.method210(anIntArray510[i], aByte505);
+                Class11 class11 = Class11.method210(frame2Ids[i], aByte505);
                 if(class11 != null)
                 {
                     l = anIntArray512[i] = class11.anInt265;
@@ -109,13 +109,13 @@ public class Class26
                 }
                 if(i == 1)
                 {
-                    anInt509 = class44_sub3_sub2.getUnsignedByte();
-                    anIntArray510 = new int[anInt509];
-                    anIntArray511 = new int[anInt509];
-                    anIntArray512 = new int[anInt509];
-                    for(int j = 0; j < anInt509; j++)
+                    frameCount = class44_sub3_sub2.getUnsignedByte();
+                    frame2Ids = new int[frameCount];
+                    anIntArray511 = new int[frameCount];
+                    anIntArray512 = new int[frameCount];
+                    for(int j = 0; j < frameCount; j++)
                     {
-                        anIntArray510[j] = class44_sub3_sub2.getUnsignedLEShort();
+                        frame2Ids[j] = class44_sub3_sub2.getUnsignedLEShort();
                         anIntArray511[j] = class44_sub3_sub2.getUnsignedLEShort();
                         if(anIntArray511[j] == 65535)
                         {
@@ -126,17 +126,17 @@ public class Class26
                 } else
                 if(i == 2)
                 {
-                    anInt513 = class44_sub3_sub2.getUnsignedLEShort();
+                    frameStep = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 3)
                 {
                     int k = class44_sub3_sub2.getUnsignedByte();
-                    anIntArray514 = new int[k + 1];
+                    flowControl = new int[k + 1];
                     for(int l = 0; l < k; l++)
                     {
-                        anIntArray514[l] = class44_sub3_sub2.getUnsignedByte();
+                        flowControl[l] = class44_sub3_sub2.getUnsignedByte();
                     }
-                    anIntArray514[k] = 0x98967f;
+                    flowControl[k] = 0x98967f;
                 } else
                 if(i == 4)
                 {
@@ -148,11 +148,11 @@ public class Class26
                 } else
                 if(i == 6)
                 {
-                    anInt517 = class44_sub3_sub2.getUnsignedLEShort();
+                    playerReplacementShield = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 7)
                 {
-                    anInt518 = class44_sub3_sub2.getUnsignedLEShort();
+                    playerReplacementWeapon = class44_sub3_sub2.getUnsignedLEShort();
                 } else
                 if(i == 8)
                 {
@@ -164,7 +164,7 @@ public class Class26
                 } else
                 if(i == 10)
                 {
-                    anInt521 = class44_sub3_sub2.getUnsignedByte();
+                    precendenceWalking = class44_sub3_sub2.getUnsignedByte();
                 } else
                 if(i == 11)
                 {
@@ -178,11 +178,11 @@ public class Class26
                     System.out.println("Error unrecognised seq config code: " + i);
                 }
             } while(true);
-            if(anInt509 == 0)
+            if(frameCount == 0)
             {
-                anInt509 = 1;
-                anIntArray510 = new int[1];
-                anIntArray510[0] = -1;
+                frameCount = 1;
+                frame2Ids = new int[1];
+                frame2Ids[0] = -1;
                 anIntArray511 = new int[1];
                 anIntArray511[0] = -1;
                 anIntArray512 = new int[1];
@@ -190,7 +190,7 @@ public class Class26
             }
             if(anInt520 == -1)
             {
-                if(anIntArray514 != null)
+                if(flowControl != null)
                 {
                     anInt520 = 2;
                 } else
@@ -198,15 +198,15 @@ public class Class26
                     anInt520 = 0;
                 }
             }
-            if(anInt521 == -1)
+            if(precendenceWalking == -1)
             {
-                if(anIntArray514 != null)
+                if(flowControl != null)
                 {
-                    anInt521 = 2;
+                    precendenceWalking = 2;
                     return;
                 } else
                 {
-                    anInt521 = 0;
+                    precendenceWalking = 0;
                     return;
                 }
             }
@@ -222,14 +222,14 @@ public class Class26
     {
         aBoolean504 = false;
         aByte505 = 4;
-        anInt513 = -1;
+        frameStep = -1;
         aBoolean515 = false;
         anInt516 = 5;
-        anInt517 = -1;
-        anInt518 = -1;
+        playerReplacementShield = -1;
+        playerReplacementWeapon = -1;
         anInt519 = 99;
         anInt520 = -1;
-        anInt521 = -1;
+        precendenceWalking = -1;
     }
 
 }

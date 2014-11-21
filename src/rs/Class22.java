@@ -13,7 +13,7 @@ public class Class22
     public int anInt461;
     public static boolean aBoolean462;
     public static int anInt463;
-    public static Class22 aClass22Array464[];
+    public static Class22 cache[];
     public int anInt465;
     public int anIntArray466[];
     public int anIntArray467[];
@@ -33,17 +33,17 @@ public class Class22
                 aBoolean462 = !aBoolean462;
             }
             anInt463 = class44_sub3_sub2.getUnsignedLEShort();
-            if(aClass22Array464 == null)
+            if(cache == null)
             {
-                aClass22Array464 = new Class22[anInt463];
+                cache = new Class22[anInt463];
             }
             for(int i = 0; i < anInt463; i++)
             {
-                if(aClass22Array464[i] == null)
+                if(cache[i] == null)
                 {
-                    aClass22Array464[i] = new Class22();
+                    cache[i] = new Class22();
                 }
-                aClass22Array464[i].method248(false, class44_sub3_sub2);
+                cache[i].method248(false, class44_sub3_sub2);
             }
             return;
         }
