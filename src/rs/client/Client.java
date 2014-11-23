@@ -62,6 +62,8 @@ import src.rs.window.RSApplet;
 
 public class Client extends RSApplet {
 
+	public int sadlkjipou;
+	
 	/**
 	 * Generated Serial Version UID.
 	 */
@@ -5577,8 +5579,7 @@ public class Client extends RSApplet {
 		try {
 			System.out.println("RS2 user client - release #" + 289);
 			if (args.length != 5) {
-				System.out
-						.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
+				System.out.println("Usage: node-id, port-offset, [lowmem/highmem], [free/members], storeid");
 				return;
 			}
 			anInt1232 = Integer.parseInt(args[0]);
