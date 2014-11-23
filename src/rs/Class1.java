@@ -4,6 +4,8 @@ import src.rs.stream.Stream;
 
 public class Class1 {
 
+	public int testGit;
+	
 	public boolean aBoolean37;
 	public int anInt38;
 	public int anIntArray39[];
